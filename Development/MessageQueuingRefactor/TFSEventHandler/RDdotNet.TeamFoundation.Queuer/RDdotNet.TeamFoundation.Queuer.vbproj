@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</ProjectGuid>
+    <ProjectGuid>{444260BD-48B7-4442-8ACE-4C66D859AC03}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RDdotNet.TeamFoundation</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation</AssemblyName>
+    <AssemblyName>RDdotNet.TeamFoundation.Queuer</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.Queuer.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,14 +30,19 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.Queuer.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.TeamFoundation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\PrivateAssemblies\Microsoft.TeamFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\PrivateAssemblies\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
@@ -52,24 +57,15 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\ConfigurationElementCollection.vb" />
-    <Compile Include="Config\DebugItemElement.vb" />
-    <Compile Include="Config\HandlerCollection.vb" />
-    <Compile Include="Config\HandlerItemElement.vb" />
-    <Compile Include="Config\IConfigurationElement.vb" />
-    <Compile Include="Config\MailItemElement.vb" />
-    <Compile Include="Config\RepositoryItemElement.vb" />
-    <Compile Include="Config\ServiceItemElement.vb" />
-    <Compile Include="Config\TeamFoundationSettingsSection.vb" />
-    <Compile Include="EventHandlers\AEventHandler.vb" />
-    <Compile Include="EventHandlers\EventHandlerAttribute.vb" />
-    <Compile Include="EventHandlers\MailSettingsAttribute.vb" />
-    <Compile Include="EventResources\WorkItemEventQuerys.vb" />
-    <Compile Include="Events\AEvent.vb" />
-    <Compile Include="Events\EndpointBase.vb" />
-    <Compile Include="Events\EventTypes.vb" />
-    <Compile Include="Events\NotifyEventArgs.vb" />
-    <Compile Include="Events\SubscriptionInfo.vb" />
+    <Compile Include="Services\AEventService.vb" />
+    <Compile Include="Services\Contracts\INotification.vb" />
+    <Compile Include="Services\Contracts\ISubscriptionAdmin.vb" />
+    <Compile Include="Services\Contracts\ISubscriptionAdminCallback.vb" />
+    <Compile Include="Services\Contracts\ITeamServerAdmin.vb" />
+    <Compile Include="Services\Contracts\ITeamServerAdminCallback.vb" />
+    <Compile Include="Services\DataContracts\TeamServerFault.vb" />
+    <Compile Include="Services\DataContracts\SubscriptionFault.vb" />
+    <Compile Include="Services\DataContracts\Subscription.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -85,6 +81,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Services\QueuerService.vb" />
+    <Compile Include="Services\WorkItemChangedService.vb" />
+    <Compile Include="SubscriptionHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -106,13 +105,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
-      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
+      <Name>RDdotNet.TeamFoundation</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataContracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
