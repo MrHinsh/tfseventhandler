@@ -19,6 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/RDdotNetTe
 		SccAuxPath = "SAK"
 		SccLocalPath = "SAK"
 		SccProvider = "SAK"
+		ProjectReferences = "{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}|RDdotNet.TeamFoundation.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/RDdotNetTeamServices"
 		Debug.AspNetCompiler.PhysicalPath = "RDdotNet.TeamFoundation.Services\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\RDdotNetTeamServices\"
