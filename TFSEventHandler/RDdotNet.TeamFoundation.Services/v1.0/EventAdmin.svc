@@ -1,1 +1,1 @@
-<% @ServiceHost Language=VB Debug="true" Service="MerrillLynch.TeamFoundation.EventAdminService" %>
+<% @ServiceHost Language=VB Debug="true" Service="RDdotNet.TeamFoundation.EventAdminService" %>

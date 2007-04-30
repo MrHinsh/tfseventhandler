@@ -52,7 +52,7 @@ Namespace Config
         ''' <summary>
         ''' The configuration section name for this section.
         ''' </summary>
-        Public Const SectionName As String = "MerrillLynch.TeamFoundation"
+        Public Const SectionName As String = "RDdotNet.TeamFoundation"
 
         ''' <summary>
         ''' List of  services that will be initialized on the host.
