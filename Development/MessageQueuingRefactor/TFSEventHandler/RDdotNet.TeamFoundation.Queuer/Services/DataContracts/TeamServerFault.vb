@@ -1,0 +1,24 @@
+Imports System.ServiceModel
+Imports System.ServiceModel.Description
+Imports System.Collections.Generic
+Imports System.Collections.ObjectModel
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
+Imports System.Runtime.Serialization
+
+
+Namespace Services.DataContracts
+
+
+    <DataContract()> _
+    Public Class TeamServerFault(Of T)
+        Inherits System.ServiceModel.FaultException(Of T)
+
+        Public Sub New(ByVal detail As T)
+            MyBase.New(detail)
+        End Sub
+
+    End Class
+
+
+End Namespace
