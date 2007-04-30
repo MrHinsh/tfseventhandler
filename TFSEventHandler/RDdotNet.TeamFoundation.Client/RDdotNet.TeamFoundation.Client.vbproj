@@ -66,6 +66,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Service References\EventAdmin.vb">
+      <DependentUpon>EventAdmin.map</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormControls\EventHandlerAdminControl.Designer.vb">
       <DependentUpon>EventHandlerAdminControl.vb</DependentUpon>
     </Compile>
@@ -126,6 +129,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="Service References\EventAdmin.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
@@ -134,7 +138,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Service References\" />
     <Folder Include="UI\WpfControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />

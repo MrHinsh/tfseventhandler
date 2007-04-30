@@ -7,14 +7,15 @@ Imports RDdotNet.TeamFoundation.Config
 Public Class SubscriptionAdminControl
     Implements EventAdmin.ISubscriptionAdminCallback
 
+
     Private SubscriptionAdminCallback As InstanceContext
     Private SubscriptionAdminClient As EventAdmin.SubscriptionAdminClient
 
-    Public Sub Updated(ByVal Subscriptions() As EventAdmin.Subscription) Implements EventAdmin.ISubscriptionAdminCallback.Updated
+    Public Sub Updated(ByVal Subscriptions As System.ComponentModel.BindingList(Of EventAdmin.Subscription)) Implements EventAdmin.ISubscriptionAdminCallback.Updated
         BuildSubscriptionList(Subscriptions)
     End Sub
 
-    Private Sub BuildSubscriptionList(Optional ByVal Subscriptions() As EventAdmin.Subscription = Nothing)
+    Private Sub BuildSubscriptionList(Optional ByVal Subscriptions As System.ComponentModel.BindingList(Of EventAdmin.Subscription) = Nothing)
         If Subscriptions Is Nothing Then
             Subscriptions = SubscriptionAdminClient.GetSubscriptions
         End If
@@ -55,7 +56,7 @@ Public Class SubscriptionAdminControl
         End Try
     End Sub
 
-    
+
     Private Sub uxToolStripButtonAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles uxToolStripButtonAdd.Click
         Dim x As New SubscriptionAddForm()
         Dim Result As Windows.Forms.DialogResult = x.ShowDialog(Me)
