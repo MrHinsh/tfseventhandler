@@ -7,14 +7,15 @@ Imports RDdotNet.TeamFoundation.Config
 Public Class TeamServerAdminControl
     Implements EventAdmin.ITeamServerAdminCallback
 
+
     Private TeamServerAdminCallback As InstanceContext
     Private TeamServerAdminClient As EventAdmin.TeamServerAdminClient
 
-    Public Sub Updated(ByVal TeamServers() As String) Implements EventAdmin.ITeamServerAdminCallback.Updated
+    Public Sub Updated(ByVal TeamServers As System.ComponentModel.BindingList(Of String)) Implements EventAdmin.ITeamServerAdminCallback.Updated
         BuildTeamServerList(TeamServers)
     End Sub
 
-    Private Sub BuildTeamServerList(Optional ByVal TeamServers() As String = Nothing)
+    Private Sub BuildTeamServerList(Optional ByVal TeamServers As System.ComponentModel.BindingList(Of String) = Nothing)
         If TeamServers Is Nothing Then
             TeamServers = TeamServerAdminClient.GetServers
         End If
@@ -57,4 +58,5 @@ Public Class TeamServerAdminControl
         End Try
     End Sub
 
+ 
 End Class
