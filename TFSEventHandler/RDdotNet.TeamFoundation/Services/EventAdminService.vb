@@ -1,18 +1,18 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
-Imports merrilllynch.TeamFoundation
-Imports merrilllynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 Imports microsoft.TeamFoundation.Server
 
 <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
 Public Class EventAdminService
-    Implements MerrillLynch.TeamFoundation.ITeamServerAdmin
-    Implements MerrillLynch.TeamFoundation.ISubscriptionAdmin
-    Implements MerrillLynch.TeamFoundation.INotificationAdmin
-    Implements MerrillLynch.TeamFoundation.IEventHandlerAdmin
+    Implements RDdotNet.TeamFoundation.ITeamServerAdmin
+    Implements RDdotNet.TeamFoundation.ISubscriptionAdmin
+    Implements RDdotNet.TeamFoundation.INotificationAdmin
+    Implements RDdotNet.TeamFoundation.IEventHandlerAdmin
 
     Implements IDisposable
 

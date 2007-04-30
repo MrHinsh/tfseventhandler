@@ -36,6 +36,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -66,19 +70,27 @@
     <Compile Include="UI\FormControls\EventHandlerAdminControl.Designer.vb">
       <DependentUpon>EventHandlerAdminControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormControls\EventHandlerAdminControl.vb" />
+    <Compile Include="UI\FormControls\EventHandlerAdminControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UI\FormControls\SubscriptionAddForm.Designer.vb">
       <DependentUpon>SubscriptionAddForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAddForm.vb" />
+    <Compile Include="UI\FormControls\SubscriptionAddForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\FormControls\SubscriptionAdminControl.Designer.vb">
       <DependentUpon>SubscriptionAdminControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAdminControl.vb" />
+    <Compile Include="UI\FormControls\SubscriptionAdminControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UI\FormControls\TeamServerAdminControl.Designer.vb">
       <DependentUpon>TeamServerAdminControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormControls\TeamServerAdminControl.vb" />
+    <Compile Include="UI\FormControls\TeamServerAdminControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -116,6 +128,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="Service References\EventAdmin.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
+      <Name>RDdotNet.TeamFoundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\WpfControls\" />

@@ -34,6 +34,8 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.TeamFoundation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -87,6 +89,16 @@
   <ItemGroup>
     <Content Include="AssignedTo.htm" />
     <Content Include="ChangeSet.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
+      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
+      <Name>RDdotNet.TeamFoundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
