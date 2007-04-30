@@ -40,6 +40,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/RDdotNetTe
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.ActiveDirectory", "RDdotNet.ActiveDiretory\RDdotNet.ActiveDirectory.vbproj", "{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Queuer", "TFS Event Handler Queuer", "{5B6ADFB7-967F-4782-9E2B-32201C877C12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Manager", "TFS Event Handler Manager", "{438D935B-A9DE-4B07-BC11-3F937CE34A8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Admin", "TFS Event Handler Admin", "{3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handlers", "TFS Event Handlers", "{C9851ECE-AFAC-406D-8661-F1E9B2A36B65}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 8
@@ -59,9 +67,11 @@ Global
 		SccProjectName3 = RDdotNet.TeamFoundation.EventResource
 		SccLocalPath3 = RDdotNet.TeamFoundation.EventResource
 		SccProjectUniqueName4 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.TestApp.vbproj
+		SccProjectTopLevelParentUniqueName4 = TFSEventHandler.sln
 		SccProjectName4 = RDdotNet.TeamFoundation.TestApp
 		SccLocalPath4 = RDdotNet.TeamFoundation.TestApp
 		SccProjectUniqueName5 = RDdotNet.TeamFoundation.Handlers.Demo\\RDdotNet.TeamFoundation.Handlers.Demo.vbproj
+		SccProjectTopLevelParentUniqueName5 = TFSEventHandler.sln
 		SccProjectName5 = RDdotNet.TeamFoundation.Handlers.Demo
 		SccLocalPath5 = RDdotNet.TeamFoundation.Handlers.Demo
 		SccWebProject6 = true
@@ -158,9 +168,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
 		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
 		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{D772B4DC-4A41-464C-99C5-9554524D4369} = {3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F}
+		{A28FBF01-E129-417D-91C5-387F02A32AB2} = {C9851ECE-AFAC-406D-8661-F1E9B2A36B65}
 	EndGlobalSection
 EndGlobal
