@@ -39,7 +39,7 @@ Public MustInherit Class AEventHandler(Of TEvent As {New})
         End Get
     End Property
 
-    Public MustOverride Sub Run(ByVal sender As AEventService(Of TEvent), ByVal e As NotifyEventArgs(Of TEvent))
-    Public MustOverride Function IsValid(ByVal sender As AEventService(Of TEvent), ByVal e As NotifyEventArgs(Of TEvent)) As Boolean
+    Public MustOverride Sub Run(ByVal e As NotifyEventArgs(Of TEvent))
+    Public MustOverride Function IsValid(ByVal e As NotifyEventArgs(Of TEvent)) As Boolean
 
 End Class

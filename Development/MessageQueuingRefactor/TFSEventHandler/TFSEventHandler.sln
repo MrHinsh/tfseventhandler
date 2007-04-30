@@ -2,18 +2,42 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation", "RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj", "{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Client", "RDdotNet.TeamFoundation.Client\RDdotNet.TeamFoundation.Client.vbproj", "{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDdotNet.TeamFoundation.EventResource", "RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj", "{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.TestApp", "RDdotNet.TeamFoundation.TestApp\RDdotNet.TeamFoundation.TestApp.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Handlers.Demo", "RDdotNet.TeamFoundation.Handlers.Demo\RDdotNet.TeamFoundation.Handlers.Demo.vbproj", "{A28FBF01-E129-417D-91C5-387F02A32AB2}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CD068EB5-5622-4195-A40F-9C1CF3A0FC25}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/RDdotNetTeamServices/", "http://localhost/RDdotNetTeamServices", "{097FFA4F-279E-462F-AD10-04DDF3BD9A56}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "D:\...\RDdotNet.TeamFoundation.Services\", "http://localhost/RDdotNetTeamServices", "{097FFA4F-279E-462F-AD10-04DDF3BD9A56}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
 		SccAuxPath = "SAK"
@@ -34,23 +58,67 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/RDdotNetTe
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "RDdotNet.TeamFoundation.Services\"
+		VWDPort = "58357"
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.ActiveDirectory", "RDdotNet.ActiveDiretory\RDdotNet.ActiveDirectory.vbproj", "{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Queuer", "TFS Event Handler Queuer", "{5B6ADFB7-967F-4782-9E2B-32201C877C12}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queuer", "Queuer", "{5B6ADFB7-967F-4782-9E2B-32201C877C12}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Manager", "TFS Event Handler Manager", "{438D935B-A9DE-4B07-BC11-3F937CE34A8D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventHandlers", "EventHandlers", "{438D935B-A9DE-4B07-BC11-3F937CE34A8D}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handler Admin", "TFS Event Handler Admin", "{3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFS Event Handlers", "TFS Event Handlers", "{C9851ECE-AFAC-406D-8661-F1E9B2A36B65}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFSDemoEventHandlers", "TFSDemoEventHandlers", "{C9851ECE-AFAC-406D-8661-F1E9B2A36B65}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Queuer", "RDdotNet.TeamFoundation.Queuer\RDdotNet.TeamFoundation.Queuer.vbproj", "{444260BD-48B7-4442-8ACE-4C66D859AC03}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.EventHandlers", "RDdotNet.TeamFoundation.EventHandlers\RDdotNet.TeamFoundation.EventHandlers.vbproj", "{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D3680108-98DE-4832-AB93-B06B11CCA50D}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TFSEventHandler", "TFSEventHandler", "{7EBC56B0-972E-40D2-9F38-8F61E23D3A2C}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 10
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -74,15 +142,23 @@ Global
 		SccProjectTopLevelParentUniqueName5 = TFSEventHandler.sln
 		SccProjectName5 = RDdotNet.TeamFoundation.Handlers.Demo
 		SccLocalPath5 = RDdotNet.TeamFoundation.Handlers.Demo
-		SccWebProject6 = true
-		SccProjectUniqueName6 = http://localhost/RDdotNetTeamServices
-		SccProjectName6 = RDdotNet.TeamFoundation.Services
-		SccLocalPath6 = RDdotNet.TeamFoundation.Services
-		SccProjectEnlistmentChoice6 = 2
-		SccProjectUniqueName7 = RDdotNet.ActiveDiretory\\RDdotNet.ActiveDirectory.vbproj
-		SccProjectTopLevelParentUniqueName7 = TFSEventHandler.sln
-		SccProjectName7 = RDdotNet.ActiveDiretory
-		SccLocalPath7 = RDdotNet.ActiveDiretory
+		SccProjectUniqueName6 = RDdotNet.ActiveDiretory\\RDdotNet.ActiveDirectory.vbproj
+		SccProjectTopLevelParentUniqueName6 = TFSEventHandler.sln
+		SccProjectName6 = RDdotNet.ActiveDiretory
+		SccLocalPath6 = RDdotNet.ActiveDiretory
+		SccWebProject7 = true
+		SccProjectUniqueName7 = http://localhost/RDdotNetTeamServices
+		SccProjectName7 = RDdotNet.TeamFoundation.Services
+		SccLocalPath7 = http://localhost/RDdotNetTeamServices/
+		SccProjectEnlistmentChoice7 = 2
+		SccProjectUniqueName8 = RDdotNet.TeamFoundation.Queuer\\RDdotNet.TeamFoundation.Queuer.vbproj
+		SccProjectTopLevelParentUniqueName8 = TFSEventHandler.sln
+		SccProjectName8 = RDdotNet.TeamFoundation.Queuer
+		SccLocalPath8 = RDdotNet.TeamFoundation.Queuer
+		SccProjectUniqueName9 = RDdotNet.TeamFoundation.EventHandlers\\RDdotNet.TeamFoundation.EventHandlers.vbproj
+		SccProjectTopLevelParentUniqueName9 = TFSEventHandler.sln
+		SccProjectName9 = RDdotNet.TeamFoundation.EventHandlers
+		SccLocalPath9 = RDdotNet.TeamFoundation.EventHandlers
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -163,16 +239,43 @@ Global
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Release|.NET.ActiveCfg = Release|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{444260BD-48B7-4442-8ACE-4C66D859AC03}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
-		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
-		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
-		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
-		{D772B4DC-4A41-464C-99C5-9554524D4369} = {3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F}
+		{5B6ADFB7-967F-4782-9E2B-32201C877C12} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{438D935B-A9DE-4B07-BC11-3F937CE34A8D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{3FA0017F-3DFA-490A-9F0E-FB17BA4FDA9F} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{D3680108-98DE-4832-AB93-B06B11CCA50D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{7EBC56B0-972E-40D2-9F38-8F61E23D3A2C} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
 		{A28FBF01-E129-417D-91C5-387F02A32AB2} = {C9851ECE-AFAC-406D-8661-F1E9B2A36B65}
+		{444260BD-48B7-4442-8ACE-4C66D859AC03} = {5B6ADFB7-967F-4782-9E2B-32201C877C12}
+		{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5} = {438D935B-A9DE-4B07-BC11-3F937CE34A8D}
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{D772B4DC-4A41-464C-99C5-9554524D4369} = {7EBC56B0-972E-40D2-9F38-8F61E23D3A2C}
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {7EBC56B0-972E-40D2-9F38-8F61E23D3A2C}
 	EndGlobalSection
 EndGlobal
