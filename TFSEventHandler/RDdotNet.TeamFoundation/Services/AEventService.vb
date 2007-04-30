@@ -1,15 +1,15 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
-Imports merrilllynch.TeamFoundation
-Imports merrilllynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 
 <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
 Public MustInherit Class AEventService(Of TEvent As {New})
-    Implements MerrillLynch.TeamFoundation.INotification
-    Implements MerrillLynch.TeamFoundation.INotificationAdmin
+    Implements RDdotNet.TeamFoundation.INotification
+    Implements RDdotNet.TeamFoundation.INotificationAdmin
     Implements IDisposable
 
 

@@ -23,9 +23,9 @@ Partial Class Form1
         Me.uxContextMenuStripDetails = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.uxToolStripMenuItemViewasText = New System.Windows.Forms.ToolStripMenuItem
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel
-        Me.TeamServerAdminControl1 = New MerrillLynch.TeamFoundation.Client.TeamServerAdminControl
-        Me.SubscriptionAdminControl1 = New MerrillLynch.TeamFoundation.Client.SubscriptionAdminControl
-        Me.EventHandlerAdminControl1 = New MerrillLynch.TeamFoundation.Client.EventHandlerAdminControl
+        Me.TeamServerAdminControl1 = New RDdotNet.TeamFoundation.Client.TeamServerAdminControl
+        Me.SubscriptionAdminControl1 = New RDdotNet.TeamFoundation.Client.SubscriptionAdminControl
+        Me.EventHandlerAdminControl1 = New RDdotNet.TeamFoundation.Client.EventHandlerAdminControl
         Me.uxContextMenuStripDetails.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -99,9 +99,9 @@ Partial Class Form1
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents uxContextMenuStripDetails As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents uxToolStripMenuItemViewasText As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TeamServerAdminControl1 As MerrillLynch.TeamFoundation.Client.TeamServerAdminControl
-    Friend WithEvents SubscriptionAdminControl1 As MerrillLynch.TeamFoundation.Client.SubscriptionAdminControl
-    Friend WithEvents EventHandlerAdminControl1 As MerrillLynch.TeamFoundation.Client.EventHandlerAdminControl
+    Friend WithEvents TeamServerAdminControl1 As RDdotNet.TeamFoundation.Client.TeamServerAdminControl
+    Friend WithEvents SubscriptionAdminControl1 As RDdotNet.TeamFoundation.Client.SubscriptionAdminControl
+    Friend WithEvents EventHandlerAdminControl1 As RDdotNet.TeamFoundation.Client.EventHandlerAdminControl
 
 
 End Class

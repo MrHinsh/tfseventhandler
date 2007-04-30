@@ -7,8 +7,8 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports MerrillLynch.TeamFoundation.EventResources
-Imports MerrillLynch.TeamFoundation
+Imports RDdotNet.TeamFoundation.EventResources
+Imports RDdotNet.TeamFoundation
 Imports Microsoft.TeamFoundation.Common
 Imports Microsoft.TeamFoundation.Server
 Imports Microsoft.TeamFoundation
@@ -33,10 +33,10 @@ Public Class AssignedToHandler
         'Dim CommonStructureService As ICommonStructureService = DirectCast(TeamServer.Subject.GetService(GetType(ICommonStructureService)), ICommonStructureService)
 
         Dim toName As String = WorkItemEventQuerys.GetAssignedToName(e.Event)
-        Dim toAddress As String = MerrillLynch.ActiveDirectory.Querys.GetEmailAddress(toName)
+        Dim toAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(toName)
         Dim [to] As New MailAddress(toAddress, toName)
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-        Dim fromAddress As String = MerrillLynch.ActiveDirectory.Querys.GetEmailAddress(fromName)
+        Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(fromName)
         Dim from As New MailAddress(fromAddress, fromName)
         If String.IsNullOrEmpty(toAddress) Then
             'Logger.Log("Can't send email because no email address was found for " + toName)
@@ -75,7 +75,7 @@ Public Class AssignedToHandler
         replacers.Add("##ChangedByName##", WorkItemEventQuerys.GetChangedByName(e))
         replacers.Add("##WorkItemID##", WorkItemEventQuerys.GetWorkItemID(e))
         replacers.Add("##WorkItemType##", WorkItemEventQuerys.GetWorkItemType(e))
-        replacers.Add("##ChangedByEmail##", MerrillLynch.ActiveDirectory.Querys.GetEmailAddress(CStr(replacers("##ChangedByName##"))))
+        replacers.Add("##ChangedByEmail##", RDdotNet.ActiveDirectory.Querys.GetEmailAddress(CStr(replacers("##ChangedByName##"))))
         replacers.Add("##PortfolioProject##", e.PortfolioProject)
         replacers.Add("##WorkItemTitle##", e.WorkItemTitle)
         replacers.Add("##DisplayURL##", e.DisplayUrl)

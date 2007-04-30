@@ -3,8 +3,8 @@ Imports System.ServiceModel.Description
 Imports System.Runtime.Serialization
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports MerrillLynch.TeamFoundation
-Imports MerrillLynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 
 
 Public Class FaultGen

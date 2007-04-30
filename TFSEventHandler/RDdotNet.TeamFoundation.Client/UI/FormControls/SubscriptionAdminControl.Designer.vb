@@ -151,7 +151,7 @@ Partial Class SubscriptionAdminControl
         '
         'uxBindingSourceSubscriptions
         '
-        Me.uxBindingSourceSubscriptions.DataSource = GetType(MerrillLynch.TeamFoundation.Client.EventAdmin.Subscription)
+        Me.uxBindingSourceSubscriptions.DataSource = GetType(RDdotNet.TeamFoundation.Client.EventAdmin.Subscription)
         '
         'uxContextMenuStripData
         '

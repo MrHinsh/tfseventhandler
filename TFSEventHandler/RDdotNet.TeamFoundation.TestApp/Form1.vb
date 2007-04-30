@@ -1,9 +1,7 @@
-Imports System.ServiceModel
-Imports System.ServiceModel.Description
 Imports System.Collections.Generic
-Imports MerrillLynch.TeamFoundation
-Imports MerrillLynch.TeamFoundation.Config
-Imports MerrillLynch.TeamFoundation.Client
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Client
 
 
 Public Class Form1

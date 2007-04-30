@@ -100,6 +100,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.Client\RDdotNet.TeamFoundation.Client.vbproj">
+      <Project>{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}</Project>
+      <Name>RDdotNet.TeamFoundation.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
+      <Name>RDdotNet.TeamFoundation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

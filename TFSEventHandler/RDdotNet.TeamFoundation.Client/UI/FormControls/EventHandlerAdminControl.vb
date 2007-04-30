@@ -1,8 +1,8 @@
 Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
-Imports MerrillLynch.TeamFoundation
-Imports MerrillLynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 
 Public Class EventHandlerAdminControl
     Implements EventAdmin.IEventHandlerAdminCallback

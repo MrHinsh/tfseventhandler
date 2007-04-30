@@ -1,8 +1,8 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
-Imports merrilllynch.TeamFoundation
-Imports merrilllynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 
 <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
 Public Class WorkItemChangedService

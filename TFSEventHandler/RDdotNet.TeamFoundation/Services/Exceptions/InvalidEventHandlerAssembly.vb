@@ -2,8 +2,8 @@ Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports MerrillLynch.TeamFoundation
-Imports MerrillLynch.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Config
 Imports System.Runtime.Serialization
 
 <DataContract()> _

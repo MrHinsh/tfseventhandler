@@ -7,8 +7,8 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports MerrillLynch.TeamFoundation.EventResources
-Imports MerrillLynch.TeamFoundation
+Imports RDdotNet.TeamFoundation.EventResources
+Imports RDdotNet.TeamFoundation
 Imports Microsoft.TeamFoundation.Common
 Imports Microsoft.TeamFoundation.Server
 Imports Microsoft.TeamFoundation
