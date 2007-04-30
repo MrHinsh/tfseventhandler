@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A28FBF01-E129-417D-91C5-387F02A32AB2}</ProjectGuid>
+    <ProjectGuid>{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation.Handlers.Demo</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.Handlers.Demo</AssemblyName>
+    <RootNamespace>RDdotNet.ActiveDirectory</RootNamespace>
+    <AssemblyName>RDdotNet.ActiveDirectory</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Handlers.Demo.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.ActiveDiretory.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,14 +30,13 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Handlers.Demo.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.ActiveDiretory.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +48,6 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignedToHandler.vb" />
-    <Compile Include="ChangeSetHandler.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -66,6 +63,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Querys.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -85,24 +83,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AssignedTo.htm" />
-    <Content Include="ChangeSet.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.ActiveDiretory\RDdotNet.ActiveDirectory.vbproj">
-      <Project>{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}</Project>
-      <Name>RDdotNet.ActiveDirectory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
-      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
-      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
-      <Name>RDdotNet.TeamFoundation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
