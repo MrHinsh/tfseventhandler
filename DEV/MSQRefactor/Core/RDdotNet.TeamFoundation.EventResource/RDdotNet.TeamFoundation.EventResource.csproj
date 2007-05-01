@@ -65,4 +65,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
