@@ -5,25 +5,27 @@ Imports System.Collections.ObjectModel
 Namespace Services.Contracts
 
 
-
     ''' <summary>
     ''' This is the seervice contract for integrating with the Team Foundation Server notification events.
     ''' </summary>
     ''' <remarks></remarks>
-    <ServiceContract(CallbackContract:=GetType(ISubscriptionAdminCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2005/06/Services/SubscriptionAdmin")> _
-    Public Interface ISubscriptionAdmin
+    <ServiceContract(CallbackContract:=GetType(ITeamServersCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2007/04/Services/TeamServerAdmin/03")> _
+    Public Interface ITeamServers
 
         <OperationContract(IsOneWay:=True)> _
-        Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes)
+        Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String)
 
         <OperationContract(IsOneWay:=True)> _
-        Sub RemoveSubscriptions(ByVal ServiceUrl As String)
+        Sub RemoveServer(ByVal TeamServerName As String)
 
         <OperationContract(IsOneWay:=False)> _
-        Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
+        Function ServceUrl() As Uri
+
+        <OperationContract(IsOneWay:=False)> _
+        Function GetServers() As String()
 
 
     End Interface
 
-End Namespace
 
+End Namespace
