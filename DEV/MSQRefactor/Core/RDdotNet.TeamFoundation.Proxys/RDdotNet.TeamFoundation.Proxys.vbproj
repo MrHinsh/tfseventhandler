@@ -89,6 +89,12 @@
     </None>
     <None Include="Service References\EventHandlerService.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
+      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

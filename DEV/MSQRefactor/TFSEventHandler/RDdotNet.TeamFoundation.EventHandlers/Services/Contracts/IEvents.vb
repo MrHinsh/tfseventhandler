@@ -19,6 +19,11 @@ Namespace Services.Contracts
         <OperationContract(IsOneWay:=True)> _
         Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As TeamFoundation.SubscriptionInfo)
 
+        <OperationContract(IsOneWay:=True)> _
+        Sub RaiseUnknown(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo)
+
+
+
     End Interface
 
 
