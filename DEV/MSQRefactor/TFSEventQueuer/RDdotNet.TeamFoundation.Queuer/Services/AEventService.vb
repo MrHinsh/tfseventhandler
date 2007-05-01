@@ -11,8 +11,7 @@ Namespace Services
 
     <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
     Public MustInherit Class AEventService(Of TEvent As {New})
-        Implements RDdotNet.TeamFoundation.INotification
-        Implements RDdotNet.TeamFoundation.INotificationAdmin
+        Implements Services.Contracts.INotification
         Implements IDisposable
 
 
@@ -38,7 +37,7 @@ Namespace Services
 
 #Region " INotification "
 
-        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements INotification.Notify
+        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Services.Contracts.INotification.Notify
             Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
             Dim EventObject As TEvent = EndpointBase.CreateInstance(Of TEvent)(eventXml)
             Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), GetType(TEvent).Name), EventTypes)
@@ -80,20 +79,6 @@ Namespace Services
 #End Region
 
 #End Region
-
-#Region " INotificationAdmin "
-
-        Public Function GetEventType() As EventTypes Implements INotificationAdmin.GetEventType
-            Return CType([Enum].Parse(GetType(EventTypes), GetType(TEvent).Name), EventTypes)
-        End Function
-
-        Public Function GetLocal() As String Implements INotificationAdmin.GetLocal
-            Return Me.OperationContext.EndpointDispatcher.EndpointAddress.Uri.LocalPath
-        End Function
-
-#End Region
-
-
 
     End Class
 

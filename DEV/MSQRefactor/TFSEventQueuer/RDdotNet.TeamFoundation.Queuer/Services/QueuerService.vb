@@ -70,12 +70,12 @@ Namespace Services
             End Try
         End Function
 
-        Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of Subscription)
+        Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
             Try
-                Dim Subscriptions As New Collection(Of Subscription)
+                Dim Subscriptions As New Collection(Of DataContracts.Subscription)
                 Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
                 For Each serverSub As Server.Subscription In ServerSubs
-                    Subscriptions.Add(New Subscription(serverSub))
+                    Subscriptions.Add(New DataContracts.Subscription(serverSub))
                 Next
                 Return Subscriptions
             Catch ex As System.ServiceModel.FaultException
@@ -169,7 +169,7 @@ Namespace Services
                 For Each TeamServerName As String In Me.GetServers()
                     Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
                     Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-                    For Each SubScription As Subscription In GetServerSubscriptions(TeamServerName)
+                    For Each SubScription As DataContracts.Subscription In GetServerSubscriptions(TeamServerName)
                         If SubScription.Address = ServiceUrl Then
                             EventService.UnsubscribeEvent(SubScription.ID)
                             SubscriptionAdminCallback.Updated(GetSubscriptions)
@@ -183,11 +183,11 @@ Namespace Services
         End Sub
 
         Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptionAdmin.GetSubscriptions
-            Dim Subscriptions As New Collection(Of Subscription)
+            Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             For Each TeamServerName As String In Me.GetServers()
                 Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
                 For Each serverSub As Server.Subscription In ServerSubs
-                    Subscriptions.Add(New Subscription(serverSub))
+                    Subscriptions.Add(New DataContracts.Subscription(serverSub))
                 Next
             Next
             Return Subscriptions
