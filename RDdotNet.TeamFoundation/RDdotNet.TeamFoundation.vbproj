@@ -61,6 +61,7 @@
     <Compile Include="Config\RepositoryItemElement.vb" />
     <Compile Include="Config\ServiceItemElement.vb" />
     <Compile Include="Config\TeamFoundationSettingsSection.vb" />
+    <Compile Include="CustomXmlSerializer.vb" />
     <Compile Include="EventHandlers\AEventHandler.vb" />
     <Compile Include="EventHandlers\EventHandlerAttribute.vb" />
     <Compile Include="EventHandlers\MailSettingsAttribute.vb" />
