@@ -13,8 +13,11 @@ Namespace Services
     Public Class QueuerService
         Implements Contracts.ITeamServerAdmin
         Implements Contracts.ISubscriptionAdmin
-
         Implements IDisposable
+
+        Public Sub New()
+
+        End Sub
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get

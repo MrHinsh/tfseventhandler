@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{444260BD-48B7-4442-8ACE-4C66D859AC03}</ProjectGuid>
+    <ProjectGuid>{0922E7D3-F0C8-4159-B2C9-9B8F570D316A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.Queuer</AssemblyName>
+    <RootNamespace>RDdotNet.TeamFoundation.Proxys</RootNamespace>
+    <AssemblyName>RDdotNet.TeamFoundation.Proxys</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Queuer.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.Proxys.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,28 +30,11 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Queuer.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.Proxys.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\PrivateAssemblies\Microsoft.TeamFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\PrivateAssemblies\Microsoft.TeamFoundation.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="RDdotNet.TeamFoundation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="RDdotNet.TeamFoundation.EventResource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.EventResource.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
@@ -66,15 +49,6 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\AEventService.vb" />
-    <Compile Include="Services\Contracts\INotification.vb" />
-    <Compile Include="Services\Contracts\ISubscriptionAdmin.vb" />
-    <Compile Include="Services\Contracts\ISubscriptionAdminCallback.vb" />
-    <Compile Include="Services\Contracts\ITeamServerAdmin.vb" />
-    <Compile Include="Services\Contracts\ITeamServerAdminCallback.vb" />
-    <Compile Include="Services\DataContracts\TeamServerFault.vb" />
-    <Compile Include="Services\DataContracts\SubscriptionFault.vb" />
-    <Compile Include="Services\DataContracts\Subscription.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -90,9 +64,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Services\QueuerService.vb" />
-    <Compile Include="Services\WorkItemChangedService.vb" />
-    <Compile Include="SubscriptionHelper.vb" />
+    <Compile Include="Service References\EventHandlerService.vb">
+      <DependentUpon>EventHandlerService.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -113,9 +87,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service References\" />
+    <None Include="Service References\EventHandlerService.map" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -125,4 +97,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
