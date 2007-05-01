@@ -10,8 +10,8 @@ Namespace Services.Contracts
     ''' This is the seervice contract for integrating with the Team Foundation Server notification events.
     ''' </summary>
     ''' <remarks></remarks>
-    <ServiceContract(CallbackContract:=GetType(IEventHandlerAdminCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2005/06/Services/EventHandlerAdmin")> _
-    Public Interface IEventHandlerAdmin
+    <ServiceContract(CallbackContract:=GetType(IHandlersCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2005/06/Services/TFSEventHandler/HandlerAdmin")> _
+    Public Interface IHandlers
 
         <OperationContract(IsOneWay:=True)> _
         Sub AddAssembly(ByVal AssemblyItem As AssemblyItem)

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyHelper.vb" />
+    <Compile Include="Services\Contracts\IEvents.vb" />
     <Compile Include="Services\DataContracts\InvalidEventHandlerAssembly.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -83,8 +84,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Services\Contracts\IEventHandlerAdmin.vb" />
-    <Compile Include="Services\Contracts\IEventHandlerAdminCallback.vb" />
+    <Compile Include="Services\Contracts\IHandlers.vb" />
+    <Compile Include="Services\Contracts\IHandlersCallback.vb" />
     <Compile Include="Services\DataContracts\AssemblyItem.vb" />
     <Compile Include="Services\DataContracts\AssemblyManaifest.vb" />
     <Compile Include="Services\DataContracts\AssemblyValidationResult.vb" />
