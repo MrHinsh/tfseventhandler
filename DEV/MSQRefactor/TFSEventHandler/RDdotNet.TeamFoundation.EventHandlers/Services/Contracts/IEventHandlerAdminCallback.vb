@@ -1,6 +1,7 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Services.Contracts
 

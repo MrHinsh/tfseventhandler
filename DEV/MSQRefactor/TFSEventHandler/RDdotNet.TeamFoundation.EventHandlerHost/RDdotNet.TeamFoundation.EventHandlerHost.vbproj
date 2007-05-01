@@ -97,6 +97,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventHandlers\RDdotNet.TeamFoundation.EventHandlers.vbproj">
+      <Project>{F1F2189A-F4CC-4CD6-8F7F-934FD5AB3BC5}</Project>
+      <Name>RDdotNet.TeamFoundation.EventHandlers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

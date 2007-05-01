@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Public Class AssemblyHelper
 
@@ -23,7 +24,7 @@ Public Class AssemblyHelper
     End Property
 
     Friend Shared Function GetEventHandlers(ByVal Assembly As System.Reflection.Assembly) As Collection(Of EventHandlerItem)
-        GetEventHandlers = New Collection(Of EventHandlerItem)
+        GetEventHandlers = New Collection(Of Services.DataContracts.EventHandlerItem)
         For Each objType As System.Type In Assembly.GetTypes
             For Each objAttribute As EventHandlerAttribute In objType.GetCustomAttributes(GetType(EventHandlerAttribute), False)
                 GetEventHandlers.Add(New EventHandlerItem(objType, objAttribute.EventType))
