@@ -2,16 +2,17 @@ Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 Imports microsoft.TeamFoundation.Server
 
-Namespace Services.DataContracts
+Namespace Services
 
     <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
     Public Class EventHandlerService
-        Implements Contracts.IEventHandlerAdmin
-
+        Implements Contracts.IHandlers
+        Implements Contracts.IEvents
         Implements IDisposable
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
@@ -59,7 +60,7 @@ Namespace Services.DataContracts
 
 #End Region
 
-#Region " IEventHandlerAdmin "
+#Region " IHandlerAdmin "
 
 #Region " Bits "
 
@@ -93,41 +94,41 @@ Namespace Services.DataContracts
 
 #End Region
 
-        Private _EventHandlerAdminCallback As Contracts.IEventHandlerAdminCallback
+        Private _HandlerAdminCallback As Contracts.IHandlersCallback
 
-        Public ReadOnly Property EventHandlerAdminCallback() As Contracts.IEventHandlerAdminCallback
+        Public ReadOnly Property HandlerAdminCallback() As Contracts.IHandlersCallback
             Get
-                If _EventHandlerAdminCallback Is Nothing Then
-                    _EventHandlerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.IEventHandlerAdminCallback)()
+                If _HandlerAdminCallback Is Nothing Then
+                    _HandlerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.IHandlersCallback)()
                 End If
-                Return _EventHandlerAdminCallback
+                Return _HandlerAdminCallback
             End Get
         End Property
 
-        Public Sub AddAssembly(ByVal AssemblyItem As AssemblyItem) Implements Contracts.IEventHandlerAdmin.AddAssembly
+        Public Sub AddAssembly(ByVal AssemblyItem As AssemblyItem) Implements Contracts.IHandlers.AddAssembly
             If ValidateAssembly(AssemblyItem) Then
                 Dim AssemblyManaifest As AssemblyManaifest = Nothing
                 AssemblyManaifest = GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
                 AssemblyManaifest.Assemblys.Add(AssemblyItem)
                 AssemblyManaifest.Version = AssemblyManaifest.Version + 1
                 SetObject(Of AssemblyManaifest)(XmlFiles.Manifest, AssemblyManaifest)
-                EventHandlerAdminCallback.Updated(AssemblyManaifest)
+                HandlerAdminCallback.Updated(AssemblyManaifest)
             End If
         End Sub
 
-        Public Function GetAssemblys() As AssemblyManaifest Implements Contracts.IEventHandlerAdmin.GetAssemblys
+        Public Function GetAssemblys() As AssemblyManaifest Implements Contracts.IHandlers.GetAssemblys
             Return GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
         End Function
 
-        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Contracts.IEventHandlerAdmin.RemoveAssembly
+        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Contracts.IHandlers.RemoveAssembly
 
         End Sub
 
-        Public Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte()) Implements Contracts.IEventHandlerAdmin.AddAssemblyDirect
+        Public Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte()) Implements Contracts.IHandlers.AddAssemblyDirect
             AddAssembly(GetAssemblyItem(AssemblyBytes))
         End Sub
 
-        Public Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem Implements Contracts.IEventHandlerAdmin.GetAssemblyItem
+        Public Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem Implements Contracts.IHandlers.GetAssemblyItem
             Try
                 '------------------
                 Dim AssemblyItem As AssemblyItem = Nothing
@@ -138,13 +139,25 @@ Namespace Services.DataContracts
             End Try
         End Function
 
-        Public Function ValidateAssembly(ByVal AssemblyItem As AssemblyItem) As Boolean Implements Contracts.IEventHandlerAdmin.ValidateAssembly
+        Public Function ValidateAssembly(ByVal AssemblyItem As AssemblyItem) As Boolean Implements Contracts.IHandlers.ValidateAssembly
             If Not AssemblyItem.EventHandlers.Count > 0 Then
                 Return True
             Else
                 Return False
             End If
         End Function
+
+#End Region
+
+#Region " IEvent "
+
+        Public Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseCheckinEvent
+
+        End Sub
+
+        Public Sub RaiseWorkItemChangedEvent(ByVal [Event] As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseWorkItemChangedEvent
+
+        End Sub
 
 #End Region
 
