@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.EventResource.dll</HintPath>
     </Reference>
+    <Reference Include="RDdotNet.TeamFoundation.Proxys, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.Proxys.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -68,10 +72,11 @@
   <ItemGroup>
     <Compile Include="Services\AEventService.vb" />
     <Compile Include="Services\Contracts\INotification.vb" />
-    <Compile Include="Services\Contracts\ISubscriptionAdmin.vb" />
-    <Compile Include="Services\Contracts\ISubscriptionAdminCallback.vb" />
-    <Compile Include="Services\Contracts\ITeamServerAdmin.vb" />
-    <Compile Include="Services\Contracts\ITeamServerAdminCallback.vb" />
+    <Compile Include="Services\Contracts\ISubscriptions.vb" />
+    <Compile Include="Services\Contracts\ISubscriptionsCallback.vb" />
+    <Compile Include="Services\Contracts\ITeamServers.vb" />
+    <Compile Include="Services\Contracts\ITeamServersCallback.vb" />
+    <Compile Include="Services\DataContracts\Adapter.vb" />
     <Compile Include="Services\DataContracts\TeamServerFault.vb" />
     <Compile Include="Services\DataContracts\SubscriptionFault.vb" />
     <Compile Include="Services\DataContracts\Subscription.vb" />
@@ -91,7 +96,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\QueuerService.vb" />
-    <Compile Include="Services\WorkItemChangedService.vb" />
     <Compile Include="SubscriptionHelper.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +107,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

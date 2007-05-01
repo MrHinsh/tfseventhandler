@@ -11,8 +11,9 @@ Namespace Services
 
     <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
     Public Class QueuerService
-        Implements Contracts.ITeamServerAdmin
-        Implements Contracts.ISubscriptionAdmin
+        Implements Contracts.ITeamServers
+        Implements Contracts.ISubscriptions
+        Implements Contracts.INotification
         Implements IDisposable
 
         Public Sub New()
@@ -90,24 +91,24 @@ Namespace Services
 
 #End Region
 
-#Region " ITeamServerAdmin "
+#Region " ITeamServers "
 
-        Private _TeamServerAdminCallback As Contracts.ITeamServerAdminCallback
+        Private _TeamServerAdminCallback As Contracts.ITeamServersCallback
 
-        Public ReadOnly Property TeamServerAdminCallback() As Contracts.ITeamServerAdminCallback
+        Public ReadOnly Property TeamServerAdminCallback() As Contracts.ITeamServersCallback
             Get
                 If _TeamServerAdminCallback Is Nothing Then
-                    _TeamServerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ITeamServerAdminCallback)()
+                    _TeamServerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ITeamServersCallback)()
                 End If
                 Return _TeamServerAdminCallback
             End Get
         End Property
 
-        Public Function ServceUrl() As System.Uri Implements Contracts.ITeamServerAdmin.ServceUrl
+        Public Function ServceUrl() As System.Uri Implements Contracts.ITeamServers.ServceUrl
             Return OperationContext.EndpointDispatcher.EndpointAddress.Uri
         End Function
 
-        Public Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String) Implements Contracts.ITeamServerAdmin.AddServer
+        Public Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String) Implements Contracts.ITeamServers.AddServer
             Try
                 If RegisteredServers.GetUriForServer(TeamServerName) = Nothing Then
                     RegisteredServers.AddServer(TeamServerName, TeamServerUri)
@@ -119,7 +120,7 @@ Namespace Services
             End Try
         End Sub
 
-        Public Sub RemoveServer(ByVal TeamServerName As String) Implements Contracts.ITeamServerAdmin.RemoveServer
+        Public Sub RemoveServer(ByVal TeamServerName As String) Implements Contracts.ITeamServers.RemoveServer
             Try
                 RegisteredServers.RemoveServer(TeamServerName)
                 TeamServerAdminCallback.Updated(GetServers)
@@ -129,7 +130,7 @@ Namespace Services
             End Try
         End Sub
 
-        Public Function GetServers() As String() Implements Contracts.ITeamServerAdmin.GetServers
+        Public Function GetServers() As String() Implements Contracts.ITeamServers.GetServers
             Return RegisteredServers.GetServerNames
         End Function
 
@@ -137,18 +138,18 @@ Namespace Services
 
 #Region " ISubscriptionAdmin"
 
-        Private _SubscriptionAdminCallback As Contracts.ISubscriptionAdminCallback
+        Private _SubscriptionAdminCallback As Contracts.ISubscriptionsCallback
 
-        Public ReadOnly Property SubscriptionAdminCallback() As Contracts.ISubscriptionAdminCallback
+        Public ReadOnly Property SubscriptionAdminCallback() As Contracts.ISubscriptionsCallback
             Get
                 If _SubscriptionAdminCallback Is Nothing Then
-                    _SubscriptionAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ISubscriptionAdminCallback)()
+                    _SubscriptionAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ISubscriptionsCallback)()
                 End If
                 Return _SubscriptionAdminCallback
             End Get
         End Property
 
-        Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptionAdmin.AddSubscriptions
+        Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
                 For Each TeamServerName As String In Me.GetServers()
                     Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
@@ -167,7 +168,7 @@ Namespace Services
             End Try
         End Sub
 
-        Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptionAdmin.RemoveSubscriptions
+        Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
             Try
                 For Each TeamServerName As String In Me.GetServers()
                     Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
@@ -185,7 +186,7 @@ Namespace Services
             End Try
         End Sub
 
-        Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptionAdmin.GetSubscriptions
+        Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
             Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             For Each TeamServerName As String In Me.GetServers()
                 Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
@@ -222,6 +223,42 @@ Namespace Services
             GC.SuppressFinalize(Me)
         End Sub
 #End Region
+
+#End Region
+
+#Region " INotification "
+
+        Private _EventsClient As Proxys.EventHandlerService.EventsClient
+
+        Public ReadOnly Property EventsClient() As Proxys.EventHandlerService.EventsClient
+            Get
+                If _EventsClient Is Nothing Then
+                    _EventsClient = New Proxys.EventHandlerService.EventsClient
+                End If
+                Return _EventsClient
+            End Get
+        End Property
+
+        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.INotification.Notify
+            Dim IdentityObject As Proxys.EventHandlerService.TFSIdentity = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.TFSIdentity)(tfsIdentityXml)
+            '---------------
+            Dim UriString As String = OperationContext.EndpointDispatcher.EndpointAddress.Uri.AbsoluteUri
+            Dim SlashIndex As Integer = UriString.LastIndexOf("/")
+            Dim EndieBit As String = UriString.Substring(SlashIndex, (UriString.Length - (UriString.Length - SlashIndex)))
+            Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), EndieBit), EventTypes)
+            '---------------
+            Select Case EventType
+                Case EventTypes.WorkItemChangedEvent
+                    Dim EventObject As Proxys.EventHandlerService.WorkItemChangedEvent = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.WorkItemChangedEvent)(eventXml)
+                    EventsClient.RaiseWorkItemChangedEvent(EventObject, IdentityObject, Adapter.Convert(SubscriptionInfo))
+                Case EventTypes.CheckinEvent
+                    Dim EventObject As Proxys.EventHandlerService.CheckinEvent = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.CheckinEvent)(eventXml)
+                    EventsClient.RaiseCheckinEvent(EventObject, IdentityObject, Adapter.Convert(SubscriptionInfo))
+                Case Else
+
+            End Select
+            '---------------
+        End Sub
 
 #End Region
 
