@@ -12,7 +12,7 @@ Public Enum SerializationMethod
 
     ''' <summary>
     ''' Serialize private, friend, and public members
-    ''' </summary>
+    ''' </summary> 
     ''' <remarks></remarks>
     Deep
 End Enum
