@@ -3,7 +3,7 @@ Public Class Form1
     Private Host As System.ServiceModel.ServiceHost
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Host = New System.ServiceModel.ServiceHost(GetType(sometype))
+        Host = New System.ServiceModel.ServiceHost(GetType(Services.DataContracts.EventHandlerService))
         Host.Open()
     End Sub
 

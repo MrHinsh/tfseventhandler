@@ -2,23 +2,27 @@ Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 Imports microsoft.TeamFoundation.Server
 
 Namespace Services.DataContracts
 
-
     <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
     Public Class EventHandlerService
-        Implements RDdotNet.TeamFoundation.IEventHandlerAdmin
+        Implements Contracts.IEventHandlerAdmin
 
         Implements IDisposable
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get
                 Return Config.SettingsSection.Instance.Services.Item(Me.GetType.Name)
+            End Get
+        End Property
+
+        Public ReadOnly Property RepositorySettings() As Config.RepositoryItemElement
+            Get
+                Return Config.SettingsSection.Instance.Repository
             End Get
         End Property
 
@@ -64,7 +68,7 @@ Namespace Services.DataContracts
         End Enum
 
         Private Function GetObject(Of T As {New})(ByVal XmlFile As XmlFiles) As T
-            Dim XmlFileLocation As String = SettingsSection.Instance.Repository.LocalPath
+            Dim XmlFileLocation As String = RepositorySettings.LocalPath
             XmlFileLocation = System.IO.Path.Combine(XmlFileLocation, XmlFile.ToString & ".xml")
             Dim x As New CustomXmlSerializer()
             SyncLock x
@@ -79,7 +83,7 @@ Namespace Services.DataContracts
         End Function
 
         Private Sub SetObject(Of T)(ByVal XmlFile As XmlFiles, ByVal target As T)
-            Dim XmlFileLocation As String = SettingsSection.Instance.Repository.LocalPath
+            Dim XmlFileLocation As String = RepositorySettings.LocalPath
             XmlFileLocation = System.IO.Path.Combine(XmlFileLocation, XmlFile.ToString & ".xml")
             Dim x As New CustomXmlSerializer()
             SyncLock x
@@ -89,18 +93,18 @@ Namespace Services.DataContracts
 
 #End Region
 
-        Private _EventHandlerAdminCallback As IEventHandlerAdminCallback
+        Private _EventHandlerAdminCallback As Contracts.IEventHandlerAdminCallback
 
-        Public ReadOnly Property EventHandlerAdminCallback() As IEventHandlerAdminCallback
+        Public ReadOnly Property EventHandlerAdminCallback() As Contracts.IEventHandlerAdminCallback
             Get
                 If _EventHandlerAdminCallback Is Nothing Then
-                    _EventHandlerAdminCallback = OperationContext.GetCallbackChannel(Of IEventHandlerAdminCallback)()
+                    _EventHandlerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.IEventHandlerAdminCallback)()
                 End If
                 Return _EventHandlerAdminCallback
             End Get
         End Property
 
-        Public Sub AddAssembly(ByVal AssemblyItem As AssemblyItem) Implements IEventHandlerAdmin.AddAssembly
+        Public Sub AddAssembly(ByVal AssemblyItem As AssemblyItem) Implements Contracts.IEventHandlerAdmin.AddAssembly
             If ValidateAssembly(AssemblyItem) Then
                 Dim AssemblyManaifest As AssemblyManaifest = Nothing
                 AssemblyManaifest = GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
@@ -111,29 +115,30 @@ Namespace Services.DataContracts
             End If
         End Sub
 
-        Public Function GetAssemblys() As AssemblyManaifest Implements IEventHandlerAdmin.GetAssemblys
+        Public Function GetAssemblys() As AssemblyManaifest Implements Contracts.IEventHandlerAdmin.GetAssemblys
             Return GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
         End Function
 
-        Public Sub RemoveAssembly(ByVal ID As Integer) Implements IEventHandlerAdmin.RemoveAssembly
+        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Contracts.IEventHandlerAdmin.RemoveAssembly
 
         End Sub
 
-        Public Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte()) Implements IEventHandlerAdmin.AddAssemblyDirect
+        Public Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte()) Implements Contracts.IEventHandlerAdmin.AddAssemblyDirect
             AddAssembly(GetAssemblyItem(AssemblyBytes))
         End Sub
 
-        Public Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem Implements IEventHandlerAdmin.GetAssemblyItem
+        Public Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem Implements Contracts.IEventHandlerAdmin.GetAssemblyItem
             Try
                 '------------------
-                Dim AssemblyItem As AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.SettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
-                Return New AssemblyItem
+                Dim AssemblyItem As AssemblyItem = Nothing
+                AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.SettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
+                Return AssemblyItem
             Catch ex As Exception
                 Throw New System.ServiceModel.FaultException(Of Exception)(ex, "An error occurerd. That Assembly may not be of the correct type.")
             End Try
         End Function
 
-        Public Function ValidateAssembly(ByVal AssemblyItem As AssemblyItem) As Boolean Implements IEventHandlerAdmin.ValidateAssembly
+        Public Function ValidateAssembly(ByVal AssemblyItem As AssemblyItem) As Boolean Implements Contracts.IEventHandlerAdmin.ValidateAssembly
             If Not AssemblyItem.EventHandlers.Count > 0 Then
                 Return True
             Else
