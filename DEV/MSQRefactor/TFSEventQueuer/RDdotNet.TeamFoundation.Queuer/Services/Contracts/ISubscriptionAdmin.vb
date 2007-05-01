@@ -20,7 +20,7 @@ Namespace Services.Contracts
         Sub RemoveSubscriptions(ByVal ServiceUrl As String)
 
         <OperationContract(IsOneWay:=False)> _
-        Function GetSubscriptions() As Collection(Of Subscription)
+        Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
 
 
     End Interface

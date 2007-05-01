@@ -11,7 +11,7 @@ Namespace Services.Contracts
     Public Interface ISubscriptionAdminCallback
 
         <OperationContract(IsOneWay:=True)> _
-      Sub Updated(ByVal Subscriptions As Collection(Of Subscription))
+      Sub Updated(ByVal Subscriptions As Collection(Of DataContracts.Subscription))
 
     End Interface
 
