@@ -2,7 +2,8 @@ Imports System.Messaging
 
 Public Class Form1
 
-    Private Host As System.ServiceModel.ServiceHost
+    Private EventHandlerHost As System.ServiceModel.ServiceHost
+    Private QueuerHost As System.ServiceModel.ServiceHost
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -12,12 +13,17 @@ Public Class Form1
             MessageQueue.Create(queueName, True)
         End If
 
-        Host = New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService))
-        Host.Open()
+        EventHandlerHost = New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService))
+        EventHandlerHost.Open()
+        '-----------
+        QueuerHost = New System.ServiceModel.ServiceHost(GetType(Services.QueuerService))
+        QueuerHost.Open()
+        '-----------
     End Sub
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        Host.Close()
+        QueuerHost.Close()
+        EventHandlerHost.Close()
     End Sub
 
 
