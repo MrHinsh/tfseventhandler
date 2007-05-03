@@ -1,3 +1,5 @@
+Imports RDdotNet.TeamFoundation.Services.DataContracts
+
 Namespace Events
 
 
@@ -8,7 +10,7 @@ Namespace Events
         Private _EventType As EventTypes
         Private _Event As TEvent
         Private _Identity As TFSIdentity
-        Private _SubscriptionInfo As TeamFoundation.SubscriptionInfo
+        Private _SubscriptionInfo As SubscriptionInfo
 
         Public ReadOnly Property EventID() As Guid
             Get
@@ -34,13 +36,13 @@ Namespace Events
             End Get
         End Property
 
-        Public ReadOnly Property SubscriptionInfo() As TeamFoundation.SubscriptionInfo
+        Public ReadOnly Property SubscriptionInfo() As SubscriptionInfo
             Get
                 Return _SubscriptionInfo
             End Get
         End Property
 
-        Public Sub New(ByVal EventType As EventTypes, ByVal EventObject As TEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As TeamFoundation.SubscriptionInfo)
+        Public Sub New(ByVal EventType As EventTypes, ByVal EventObject As TEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo)
             _EventType = EventType
             _Event = EventObject
             _Identity = EventIdentity
