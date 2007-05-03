@@ -6,11 +6,12 @@ Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
 Imports System.Runtime.Serialization
 
-Namespace Services.DataContracts
+
+Namespace Services.FaultContracts
 
 
     <DataContract()> _
-    Public Class SubscriptionFault(Of T)
+    Public Class TeamServerFault(Of T)
         Inherits System.ServiceModel.FaultException(Of T)
 
         Public Sub New(ByVal detail As T)
@@ -18,5 +19,6 @@ Namespace Services.DataContracts
         End Sub
 
     End Class
+
 
 End Namespace

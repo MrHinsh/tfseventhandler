@@ -3,6 +3,9 @@ Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Events
+Imports RDdotNet.TeamFoundation.Services
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 

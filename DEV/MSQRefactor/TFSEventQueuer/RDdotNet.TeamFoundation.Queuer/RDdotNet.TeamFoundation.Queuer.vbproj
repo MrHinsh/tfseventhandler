@@ -70,15 +70,16 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />
     <Compile Include="Services\Contracts\INotification.vb" />
     <Compile Include="Services\Contracts\ISubscriptions.vb" />
     <Compile Include="Services\Contracts\ISubscriptionsCallback.vb" />
     <Compile Include="Services\Contracts\ITeamServers.vb" />
     <Compile Include="Services\Contracts\ITeamServersCallback.vb" />
-    <Compile Include="Services\DataContracts\Adapter.vb" />
-    <Compile Include="Services\DataContracts\TeamServerFault.vb" />
-    <Compile Include="Services\DataContracts\SubscriptionFault.vb" />
+    <Compile Include="Services\Adapters\Adapter.vb" />
+    <Compile Include="Services\FaultContract\TeamServerFault.vb" />
+    <Compile Include="Services\FaultContract\SubscriptionFault.vb" />
     <Compile Include="Services\DataContracts\Subscription.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
