@@ -6,7 +6,7 @@ Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
 Imports System.Runtime.Serialization
 
-Namespace Services.DataContracts
+Namespace Services.FaultContracts
 
 
     <DataContract()> _

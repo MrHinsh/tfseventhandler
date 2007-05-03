@@ -1,3 +1,9 @@
-Public Class AEvent
+Namespace Events
 
-End Class
+
+
+    Public Class AEvent
+
+    End Class
+
+End Namespace

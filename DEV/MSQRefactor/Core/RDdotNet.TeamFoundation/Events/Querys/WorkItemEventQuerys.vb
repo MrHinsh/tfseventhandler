@@ -1,6 +1,6 @@
 Imports System.Xml
 
-Namespace EventResources
+Namespace Events.Querys
 
 
     ''' <summary>

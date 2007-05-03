@@ -159,7 +159,12 @@ Namespace Services
 
         End Sub
 
+        Public Sub RaiseUnknown(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseUnknown
+
+        End Sub
+
 #End Region
+
 
     End Class
 
