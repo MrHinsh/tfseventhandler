@@ -1,4 +1,5 @@
 Imports System.ServiceModel
+Imports System.ServiceModel.Description
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 
@@ -48,6 +49,9 @@ Public Class ServiceFactory
                         }
         '---------------
         Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
+        '----------------
+        SetServiceMetadataBehavior(sh)
+        SetServiceDebugBehavior(sh)
         '---------------
         sh.AddServiceEndpoint(GetType(Services.Contracts.IHandlers), GetSecureWSDualHttpBinding, "Handlers")
         sh.AddServiceEndpoint(GetType(Services.Contracts.IEvents), GetSecureWSDualHttpBinding, "Events")
@@ -64,6 +68,9 @@ Public Class ServiceFactory
         '---------------
         Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
         '---------------
+        SetServiceMetadataBehavior(sh)
+        SetServiceDebugBehavior(sh)
+        '---------------
         sh.AddServiceEndpoint(GetType(Services.Contracts.INotification), GetSecureWSHttpBinding, "Notification")
         sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding, "Subscriptions")
         sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding, "Subscriptions")
@@ -71,6 +78,33 @@ Public Class ServiceFactory
         '----------------
         Return sh
     End Function
+
+#End Region
+
+#Region " ServiceMetaData "
+
+    Private Shared Sub SetServiceMetadataBehavior(ByRef sh As ServiceHost)
+        Dim smb As ServiceMetadataBehavior = sh.Description.Behaviors.Find(Of ServiceMetadataBehavior)()
+        If smb Is Nothing Then
+            smb = New ServiceMetadataBehavior()
+            smb.HttpGetEnabled = True
+            sh.Description.Behaviors.Add(smb)
+        Else
+            smb.HttpGetEnabled = True
+        End If
+    End Sub
+
+    Private Shared Sub SetServiceDebugBehavior(ByRef sh As ServiceHost)
+        Dim sdb As ServiceDebugBehavior = sh.Description.Behaviors.Find(Of ServiceDebugBehavior)()
+        If sdb Is Nothing Then
+            sdb = New ServiceDebugBehavior()
+            sdb.IncludeExceptionDetailInFaults = True
+            sh.Description.Behaviors.Add(sdb)
+        Else
+            sdb.IncludeExceptionDetailInFaults = True
+        End If
+    End Sub
+
 
 #End Region
 
