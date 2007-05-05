@@ -240,7 +240,7 @@ Namespace Services
         Public ReadOnly Property EventsClient() As Proxys.EventHandlerService.EventsClient
             Get
                 If _EventsClient Is Nothing Then
-                    _EventsClient = New Proxys.EventHandlerService.EventsClient
+                    _EventsClient = Clients.ClientFactory.GetEventsClient
                 End If
                 Return _EventsClient
             End Get
