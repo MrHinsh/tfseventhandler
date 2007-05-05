@@ -7,7 +7,6 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports RDdotNet.TeamFoundation.EventResources
 Imports RDdotNet.TeamFoundation
 Imports Microsoft.TeamFoundation.Common
 Imports Microsoft.TeamFoundation.Server

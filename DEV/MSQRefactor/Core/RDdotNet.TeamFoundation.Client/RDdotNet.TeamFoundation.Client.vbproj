@@ -70,7 +70,6 @@
       <DependentUpon>EventHandlerAdminControl.vb</DependentUpon>
     </Compile>
     <Compile Include="UI\FormControls\EventHandlerAdminControl.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FormControls\SubscriptionAddForm.Designer.vb">
       <DependentUpon>SubscriptionAddForm.vb</DependentUpon>
@@ -116,7 +115,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -128,6 +126,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
+      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.TeamFoundation.Proxys\RDdotNet.TeamFoundation.Proxys.vbproj">
       <Project>{0922E7D3-F0C8-4159-B2C9-9B8F570D316A}</Project>
       <Name>RDdotNet.TeamFoundation.Proxys</Name>
@@ -140,6 +142,7 @@
   <ItemGroup>
     <Folder Include="Adapters\" />
     <Folder Include="Client\" />
+    <Folder Include="UI\WebControls\" />
     <Folder Include="UI\WpfControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
@@ -150,4 +153,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
