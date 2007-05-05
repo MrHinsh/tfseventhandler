@@ -20,7 +20,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonQHStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonQHStart.Click
-        QueuerHost = New System.ServiceModel.ServiceHost(GetType(Services.QueuerService))
+        QueuerHost = ServiceFactory.GetQueuerServiceHost
         QueuerHost.Open()
         Me.ButtonQHStop.Enabled = True
         Me.ButtonQHStart.Enabled = False
@@ -35,7 +35,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonEHHStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonEHHStart.Click
-        EventHandlerHost = New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService))
+        EventHandlerHost = ServiceFactory.GetEventHandlerServiceHost
         EventHandlerHost.Open()
         Me.ButtonEHHStop.Enabled = True
         Me.ButtonEHHStart.Enabled = False

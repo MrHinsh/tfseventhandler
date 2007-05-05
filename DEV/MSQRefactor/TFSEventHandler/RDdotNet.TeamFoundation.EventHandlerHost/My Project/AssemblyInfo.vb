@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("RDdotNet.TeamFoundation.EventHandlerHost")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("RDdotNet.TeamFoundation.EventHandlerHost")> 
-<Assembly: AssemblyCopyright("Copyright ©  2007")> 
+<Assembly: AssemblyCompany("RDdotNet")> 
+<Assembly: AssemblyProduct("TFS Event Handler (Host)")> 
+<Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
