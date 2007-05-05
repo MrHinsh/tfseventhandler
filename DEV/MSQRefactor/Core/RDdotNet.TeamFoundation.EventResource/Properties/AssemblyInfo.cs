@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RDdotNet.TeamFoundation.EventResource")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Merrill Lynch")]
-[assembly: AssemblyProduct("RDdotNet.TeamFoundation.EventResource")]
-[assembly: AssemblyCopyright("Copyright © Merrill Lynch 2007")]
+[assembly: AssemblyCompany("RDdotNet")]
+[assembly: AssemblyProduct("TFS Event handler")]
+[assembly: AssemblyCopyright("Copyright © RDdotNet 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
