@@ -5,13 +5,13 @@
 'Imports RDdotNet.TeamFoundation.Config
 
 'Public Class EventHandlerAdminControl
-'    Implements EventAdmin.IEventHandlerAdminCallback
+'    Implements Proxys.EventHandlerService.IHandlersCallback
 
 
 '    Private EventHandlerAdminCallback As InstanceContext
-'    Private EventHandlerAdminClient As EventAdmin.EventHandlerAdminClient
+'    Private EventHandlerAdminClient As Proxys.EventHandlerService.EventsClient
 
-'    Private Sub BuildEventHandlerList(Optional ByVal AssemblyManaifest As EventAdmin.AssemblyManaifest = Nothing)
+'    Private Sub BuildEventHandlerList(Optional ByVal AssemblyManaifest As Proxys.EventHandlerService.AssemblyManaifest = Nothing)
 '        If AssemblyManaifest Is Nothing Then
 '            Try
 '                AssemblyManaifest = EventHandlerAdminClient.GetAssemblys
@@ -30,12 +30,12 @@
 '            Dim binding As New System.ServiceModel.WSDualHttpBinding(WSDualHttpSecurityMode.Message)
 '            binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
 '            binding.Security.Message.NegotiateServiceCredential = True
-'            binding.ClientBaseAddress = New System.Uri("http://" & My.Computer.Name & ":4567/EventHandlerAdminCallback")
+'            binding.ClientBaseAddress = New System.Uri("http://" & My.Computer.Name & ":6666/EventHandlerAdminCallback")
 '            binding.MaxReceivedMessageSize = 655360
 '            binding.ReaderQuotas.MaxStringContentLength = 655360
 '            binding.ReaderQuotas.MaxArrayLength = 655360
-'            Dim ep As New System.ServiceModel.EndpointAddress("http://eglavm060.emea.win.ml.com/MerrillLynchTeamServices/v1.0/EventAdmin.svc/EventHandlerAdmin")
-'            EventHandlerAdminClient = New EventAdmin.EventHandlerAdminClient(EventHandlerAdminCallback, binding, ep)
+'            Dim ep As New System.ServiceModel.EndpointAddress("http://Localhost/TFSEveventHandler")
+'            EventHandlerAdminClient = New Proxys.EventHandlerService.HandlersClient(EventHandlerAdminCallback, binding, ep)
 '            '----------------------------
 '            EventHandlerAdminClient.Open()
 '            '-------------------------
@@ -68,7 +68,7 @@
 '                Dim abytBuffer(CInt(FileStream.Length - 1)) As Byte
 '                FileStream.Read(abytBuffer, 0, CInt(FileStream.Length))
 '                '-------------------
-'                Dim AssemblyItem As EventAdmin.AssemblyItem = EventHandlerAdminClient.GetAssemblyItem(abytBuffer)
+'                Dim AssemblyItem As Proxys.EventHandlerService.AssemblyItem = EventHandlerAdminClient.GetAssemblyItem(abytBuffer)
 '                If EventHandlerAdminClient.ValidateAssembly(AssemblyItem) Then
 '                    EventHandlerAdminClient.AddAssembly(AssemblyItem)
 '                Else
@@ -85,7 +85,7 @@
 '        End If
 '    End Sub
 
-'    Public Sub Updated(ByVal AssemblyManaifest As EventAdmin.AssemblyManaifest) Implements EventAdmin.IEventHandlerAdminCallback.Updated
+'    Public Sub Updated(ByVal AssemblyManaifest As Proxys.EventHandlerService.AssemblyManaifest) Implements Proxys.EventHandlerService.IHandlersCallback.Updated
 '        BuildEventHandlerList(AssemblyManaifest)
 '    End Sub
 
