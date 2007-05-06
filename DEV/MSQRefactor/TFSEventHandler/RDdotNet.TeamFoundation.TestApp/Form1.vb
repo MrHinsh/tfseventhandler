@@ -7,7 +7,7 @@ Imports RDdotNet.TeamFoundation.Clients
 Public Class Form1
 
 
-    Private WithEvents EventHandler As RDdotNet.TeamFoundation.
+    Private WithEvents EventHandler As New RDdotNet.TeamFoundation.Clients.TFSEventHandlerClient
 
 #Region " Form1 "
 
@@ -24,5 +24,9 @@ Public Class Form1
 
 #End Region
 
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        EventHandler.GetServers()
+    End Sub
 
 End Class
