@@ -19,36 +19,28 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.uxContextMenuStripDetails = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.uxToolStripMenuItemViewasText = New System.Windows.Forms.ToolStripMenuItem
-        Me.uxContextMenuStripDetails.SuspendLayout()
+        Me.TFSEventHandlerControl = New RDdotNet.TeamFoundation.TestApp.TFSEventHandlerControl
         Me.SuspendLayout()
         '
-        'uxContextMenuStripDetails
+        'TFSEventHandlerControl
         '
-        Me.uxContextMenuStripDetails.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.uxToolStripMenuItemViewasText})
-        Me.uxContextMenuStripDetails.Name = "uxContextMenuStripDetails"
-        Me.uxContextMenuStripDetails.Size = New System.Drawing.Size(139, 26)
-        '
-        'uxToolStripMenuItemViewasText
-        '
-        Me.uxToolStripMenuItemViewasText.Name = "uxToolStripMenuItemViewasText"
-        Me.uxToolStripMenuItemViewasText.Size = New System.Drawing.Size(138, 22)
-        Me.uxToolStripMenuItemViewasText.Text = "View as Text"
+        Me.TFSEventHandlerControl.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TFSEventHandlerControl.Location = New System.Drawing.Point(0, 0)
+        Me.TFSEventHandlerControl.Name = "TFSEventHandlerControl"
+        Me.TFSEventHandlerControl.Size = New System.Drawing.Size(554, 421)
+        Me.TFSEventHandlerControl.TabIndex = 0
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(554, 421)
+        Me.Controls.Add(Me.TFSEventHandlerControl)
         Me.Name = "Form1"
-        Me.Text = "Form1"
-        Me.uxContextMenuStripDetails.ResumeLayout(False)
+        Me.Text = "TFS Event Handler Explorer"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents uxContextMenuStripDetails As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents uxToolStripMenuItemViewasText As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TFSEventHandlerControl As TFSEventHandlerControl
 
 End Class

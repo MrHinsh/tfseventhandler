@@ -34,20 +34,24 @@ Partial Class TFSEventHandlerControl
         Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Demo2")
         Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Assemblies", New System.Windows.Forms.TreeNode() {TreeNode9, TreeNode10})
         Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Handler Services", New System.Windows.Forms.TreeNode() {TreeNode3, TreeNode7, TreeNode11})
-        Me.TreeView1 = New System.Windows.Forms.TreeView
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TFSEventHandlerControl))
+        Me.uxTreeView = New System.Windows.Forms.TreeView
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer
         Me.uxToolStrip = New System.Windows.Forms.ToolStrip
+        Me.uxToolStripButtonRefresh = New System.Windows.Forms.ToolStripButton
+        Me.uxToolStripButtonAdd = New System.Windows.Forms.ToolStripButton
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
+        Me.uxToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TreeView1
+        'uxTreeView
         '
-        Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TreeView1.Location = New System.Drawing.Point(0, 0)
-        Me.TreeView1.Name = "TreeView1"
+        Me.uxTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.uxTreeView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.uxTreeView.Location = New System.Drawing.Point(0, 0)
+        Me.uxTreeView.Name = "uxTreeView"
         TreeNode1.Name = "Node7"
         TreeNode1.Text = "https://tfs03.codeplex.com:443"
         TreeNode2.Name = "Node8"
@@ -72,9 +76,9 @@ Partial Class TFSEventHandlerControl
         TreeNode11.Text = "Assemblies"
         TreeNode12.Name = "Handler Services"
         TreeNode12.Text = "Handler Services"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode12})
-        Me.TreeView1.Size = New System.Drawing.Size(255, 231)
-        Me.TreeView1.TabIndex = 0
+        Me.uxTreeView.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode12})
+        Me.uxTreeView.Size = New System.Drawing.Size(255, 231)
+        Me.uxTreeView.TabIndex = 0
         '
         'ToolStripContainer1
         '
@@ -82,7 +86,7 @@ Partial Class TFSEventHandlerControl
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.AutoScroll = True
-        Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TreeView1)
+        Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.uxTreeView)
         Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(255, 231)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
@@ -97,14 +101,31 @@ Partial Class TFSEventHandlerControl
         '
         'uxToolStrip
         '
-        Me.uxToolStrip.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.uxToolStrip.Dock = System.Windows.Forms.DockStyle.None
         Me.uxToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.uxToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.uxToolStripButtonAdd, Me.uxToolStripButtonRefresh})
         Me.uxToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.uxToolStrip.Name = "uxToolStrip"
         Me.uxToolStrip.Padding = New System.Windows.Forms.Padding(0, 0, 0, 1)
         Me.uxToolStrip.Size = New System.Drawing.Size(255, 25)
         Me.uxToolStrip.Stretch = True
         Me.uxToolStrip.TabIndex = 0
+        '
+        'uxToolStripButtonRefresh
+        '
+        Me.uxToolStripButtonRefresh.Image = CType(resources.GetObject("uxToolStripButtonRefresh.Image"), System.Drawing.Image)
+        Me.uxToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.uxToolStripButtonRefresh.Name = "uxToolStripButtonRefresh"
+        Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(66, 21)
+        Me.uxToolStripButtonRefresh.Text = "Refresh"
+        '
+        'uxToolStripButtonAdd
+        '
+        Me.uxToolStripButtonAdd.Image = CType(resources.GetObject("uxToolStripButtonAdd.Image"), System.Drawing.Image)
+        Me.uxToolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.uxToolStripButtonAdd.Name = "uxToolStripButtonAdd"
+        Me.uxToolStripButtonAdd.Size = New System.Drawing.Size(49, 21)
+        Me.uxToolStripButtonAdd.Text = "Add"
         '
         'TFSEventHandlerControl
         '
@@ -118,11 +139,15 @@ Partial Class TFSEventHandlerControl
         Me.ToolStripContainer1.TopToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
+        Me.uxToolStrip.ResumeLayout(False)
+        Me.uxToolStrip.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
+    Friend WithEvents uxTreeView As System.Windows.Forms.TreeView
     Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
     Friend WithEvents uxToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents uxToolStripButtonRefresh As System.Windows.Forms.ToolStripButton
+    Friend WithEvents uxToolStripButtonAdd As System.Windows.Forms.ToolStripButton
 
 End Class
