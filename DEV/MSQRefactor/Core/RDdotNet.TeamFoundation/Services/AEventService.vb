@@ -11,10 +11,7 @@ Imports microsoft.TeamFoundation.Client
 
 Namespace Services
 
-
-    <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
     Public MustInherit Class AEventService(Of TEvent As {New})
-        Implements Services.Contracts.INotification
         Implements IDisposable
 
 
@@ -36,24 +33,8 @@ Namespace Services
 
         Public MustOverride Sub OnStart()
         Public MustOverride Sub OnEnd()
-        Public MustOverride Sub OnEventRecieved(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent))
-
-#Region " INotification "
-
-        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo) Implements Services.Contracts.INotification.Notify
-            Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
-            Dim EventObject As TEvent = EndpointBase.CreateInstance(Of TEvent)(eventXml)
-            Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), GetType(TEvent).Name), EventTypes)
-            Dim NotifyEventArgs As New NotifyEventArgs(Of TEvent)(EventType, EventObject, IdentityObject, SubscriptionInfo)
-            '------------------------
-            If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry(String.Format("Event of type {0} recieven and assigned id of {1}:", EventType.ToString, NotifyEventArgs.EventID.ToString))
-            '------------------------
-            Dim ServerName As String = RegisteredServers.GetServerForUri(New Uri(IdentityObject.Url))
-            Dim tfs As TeamFoundationServer = TeamFoundationServerFactory.GetServer(ServerName)
-            OnEventRecieved(tfs, NotifyEventArgs)
-        End Sub
-
-#End Region
+        Public MustOverride Sub Run(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent))
+        Public MustOverride Sub IsValid(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent))
 
 #Region " IDisposable "
 

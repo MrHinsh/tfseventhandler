@@ -130,10 +130,6 @@
       <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
       <Name>RDdotNet.TeamFoundation.EventResource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.Proxys\RDdotNet.TeamFoundation.Proxys.vbproj">
-      <Project>{0922E7D3-F0C8-4159-B2C9-9B8F570D316A}</Project>
-      <Name>RDdotNet.TeamFoundation.Proxys</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
       <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
       <Name>RDdotNet.TeamFoundation</Name>
