@@ -27,11 +27,11 @@ Namespace Services
             End Get
         End Property
 
-        Public ReadOnly Property Adapters() As Adapters.DataContract
-            Get
-                Return New Adapters.DataContract
-            End Get
-        End Property
+        'Public ReadOnly Property Adapters() As Adapters.DataContract
+        '    Get
+        '        Return New Adapters.DataContract
+        '    End Get
+        'End Property
 
         Public ReadOnly Property OperationContext() As OperationContext
             Get
@@ -235,19 +235,19 @@ Namespace Services
 
 #Region " INotification "
 
-        Private _EventsClient As Proxys.EventHandlerService.EventsClient
+        Private _EventHandlerClient As Clients.TFSEventHandlerClient
 
-        Public ReadOnly Property EventsClient() As Proxys.EventHandlerService.EventsClient
+        Public ReadOnly Property EventHandlerClient() As Clients.TFSEventHandlerClient
             Get
-                If _EventsClient Is Nothing Then
-                    _EventsClient = Clients.ClientFactory.GetEventsClient
+                If _EventHandlerClient Is Nothing Then
+                    _EventHandlerClient = New Clients.TFSEventHandlerClient()
                 End If
-                Return _EventsClient
+                Return _EventHandlerClient
             End Get
         End Property
 
         Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.INotification.Notify
-            Dim IdentityObject As Proxys.EventHandlerService.TFSIdentity = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.TFSIdentity)(tfsIdentityXml)
+            Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
             '---------------
             Dim UriString As String = OperationContext.EndpointDispatcher.EndpointAddress.Uri.AbsoluteUri
             Dim SlashIndex As Integer = UriString.LastIndexOf("/")
@@ -256,11 +256,11 @@ Namespace Services
             '---------------
             Select Case EventType
                 Case EventTypes.WorkItemChangedEvent
-                    Dim EventObject As Proxys.EventHandlerService.WorkItemChangedEvent = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.WorkItemChangedEvent)(eventXml)
-                    EventsClient.RaiseWorkItemChangedEvent(EventObject, IdentityObject, Adapters.Convert(SubscriptionInfo))
+                    Dim EventObject As WorkItemChangedEvent = EndpointBase.CreateInstance(Of WorkItemChangedEvent)(eventXml)
+                    EventHandlerClient.RaiseWorkItemChangedEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
                 Case EventTypes.CheckinEvent
-                    Dim EventObject As Proxys.EventHandlerService.CheckinEvent = EndpointBase.CreateInstance(Of Proxys.EventHandlerService.CheckinEvent)(eventXml)
-                    EventsClient.RaiseCheckinEvent(EventObject, IdentityObject, Adapters.Convert(SubscriptionInfo))
+                    Dim EventObject As CheckinEvent = EndpointBase.CreateInstance(Of CheckinEvent)(eventXml)
+                    EventHandlerClient.RaiseCheckinEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
                 Case Else
 
             End Select

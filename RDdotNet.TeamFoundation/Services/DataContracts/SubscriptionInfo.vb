@@ -31,6 +31,16 @@ Namespace Services.DataContracts
         <DataMember()> _
      Public Classification As String
 
+        Public Sub New()
+
+        End Sub
+
+        Public Sub New(ByVal SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo)
+            Me.Classification = SubscriptionInfo.Classification
+            Me.ID = SubscriptionInfo.ID
+            Me.Subscriber = SubscriptionInfo.Subscriber
+        End Sub
+
     End Class
 
 End Namespace

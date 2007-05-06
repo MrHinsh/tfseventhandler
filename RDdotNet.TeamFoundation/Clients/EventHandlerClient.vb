@@ -17,12 +17,13 @@
 
 '#Region " IHandlers "
 
-'        Private _HandlersClient As Proxys.EventHandlerService.HandlersClient
+'        Private _HandlersClient As Proxys.EventHandlerServiceProxy.HandlersClient
 
-'        Private ReadOnly Property HandlersClient() As Proxys.EventHandlerService.HandlersClient
+'        Private ReadOnly Property HandlersClient() As Proxys.EventHandlerServiceProxy.HandlersClient
 '            Get
 '                If _HandlersClient Is Nothing Then
-'                    _HandlersClient = New Proxys.EventHandlerService.HandlersClient(
+'                    _HandlersClient = New Proxys.EventHandlerServiceProxy.HandlersClient
+'                    _HandlersClient.Open()
 '                End If
 '                Return _HandlersClient
 '            End Get
@@ -62,12 +63,12 @@
 
 '#Region " IEvents "
 
-'        Private _EventsClient As Proxys.EventHandlerService.EventsClient
+'        Private _EventsClient As Proxys.EventHandlerServiceProxy.EventsClient
 
-'        Private ReadOnly Property EventsClient() As Proxys.EventHandlerService.EventsClient
+'        Private ReadOnly Property EventsClient() As Proxys.EventHandlerServiceProxy.EventsClient
 '            Get
 '                If _EventsClient Is Nothing Then
-'                    _EventsClient = New Proxys.EventHandlerService.EventsClient
+'                    _EventsClient = New Proxys.EventHandlerServiceProxy.EventsClient
 '                End If
 '                Return _EventsClient
 '            End Get
