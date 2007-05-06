@@ -42,7 +42,6 @@ Global
 		SccProjectName1 = RDdotNet.TeamFoundation.EventHandlerHost
 		SccLocalPath1 = RDdotNet.TeamFoundation.EventHandlerHost
 		SccProjectUniqueName2 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.TestApp.vbproj
-		SccProjectTopLevelParentUniqueName2 = TFSEventHandler.sln
 		SccProjectName2 = RDdotNet.TeamFoundation.TestApp
 		SccLocalPath2 = RDdotNet.TeamFoundation.TestApp
 		SccProjectUniqueName3 = RDDotNet.TeamFoundation.EventHandler\\RDDotNet.TeamFoundation.EventHandler.vbproj
@@ -73,7 +72,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF} = {7102B116-0A33-4CD2-8AC6-327DB3FF67A6}
-		{D772B4DC-4A41-464C-99C5-9554524D4369} = {E60406C1-5198-49A2-A8B7-D8EA957D742C}
 		{49668E94-3762-43F5-BD8C-8AEE17AABBC5} = {E60406C1-5198-49A2-A8B7-D8EA957D742C}
 	EndGlobalSection
 EndGlobal
