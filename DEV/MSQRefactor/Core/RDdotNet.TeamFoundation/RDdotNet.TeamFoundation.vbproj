@@ -55,7 +55,6 @@
     <Compile Include="AssemblyHelper.vb" />
     <Compile Include="Clients\Proxy\TeamServersClient.vb" />
     <Compile Include="Clients\TFSEventHandlerClient.vb" />
-    <Compile Include="Clients\EventHandlerClient.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
