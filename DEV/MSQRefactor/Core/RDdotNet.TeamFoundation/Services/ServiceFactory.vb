@@ -41,11 +41,11 @@ Public Class ServiceFactory
 
 #Region " Builders "
 
-    Public Shared Function GetEventHandlerServiceHost() As ServiceHost
+    Public Shared Function GetEventHandlerServiceHost(ByVal Port As Integer) As ServiceHost
         '---------------
         Dim baseAddresses() As Uri = { _
                         New Uri(String.Format("net.msmq://{0}/private/TFSEventHandler", My.Computer.Name)), _
-                        New Uri(String.Format("http://{0}:6661/TFSEventHandler", My.Computer.Name)) _
+                        New Uri(String.Format("http://{0}:{1}/TFSEventHandler", My.Computer.Name, Port)) _
                         }
         '---------------
         Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
@@ -53,6 +53,7 @@ Public Class ServiceFactory
         SetServiceMetadataBehavior(sh)
         SetServiceDebugBehavior(sh)
         '---------------
+        sh.Description.Endpoints.Clear()
         sh.AddServiceEndpoint(GetType(Services.Contracts.IHandlers), GetSecureWSDualHttpBinding, "Handlers")
         sh.AddServiceEndpoint(GetType(Services.Contracts.IEvents), GetSecureWSDualHttpBinding, "Events")
         sh.AddServiceEndpoint(GetType(Description.IMetadataExchange), GetSecureWSHttpBinding, "mex")
@@ -60,20 +61,23 @@ Public Class ServiceFactory
         Return sh
     End Function
 
-    Public Shared Function GetQueuerServiceHost() As ServiceHost
+    Public Shared Function GetQueuerServiceHost(ByVal Port As Integer) As ServiceHost
         '---------------
         Dim baseAddresses() As Uri = { _
-                        New Uri(String.Format("http://{0}:6661/TFSQueuer", My.Computer.Name)) _
+                        New Uri(String.Format("http://{0}:{1}/TFSQueuer", My.Computer.Name, Port)) _
                         }
         '---------------
-        Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
+        Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.QueuerService), baseAddresses)
         '---------------
         SetServiceMetadataBehavior(sh)
         SetServiceDebugBehavior(sh)
         '---------------
-        sh.AddServiceEndpoint(GetType(Services.Contracts.INotification), GetSecureWSHttpBinding, "Notification")
+        sh.Description.Endpoints.Clear()
+        For Each EventType As Events.EventTypes In [Enum].GetValues(GetType(Events.EventTypes))
+            sh.AddServiceEndpoint(GetType(Services.Contracts.INotification), GetSecureWSHttpBinding, "Notification/" & EventType.ToString)
+        Next
         sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding, "Subscriptions")
-        sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding, "Subscriptions")
+        sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding, "TeamServers")
         sh.AddServiceEndpoint(GetType(Description.IMetadataExchange), GetSecureWSHttpBinding, "mex")
         '----------------
         Return sh
