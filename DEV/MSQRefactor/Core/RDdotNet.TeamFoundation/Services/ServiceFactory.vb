@@ -48,7 +48,7 @@ Namespace Services
             '---------------
             Dim baseAddresses() As Uri = { _
                             New Uri(String.Format("net.msmq://{0}/private/TFSEventHandler", My.Computer.Name)), _
-                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler", My.Computer.Name, Port)) _
+                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/EventHandling", My.Computer.Name, Port)) _
                             }
             '---------------
             Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
@@ -67,7 +67,7 @@ Namespace Services
         Public Shared Function GetQueuerServiceHost(ByVal Port As Integer) As ServiceHost
             '---------------
             Dim baseAddresses() As Uri = { _
-                            New Uri(String.Format("http://{0}:{1}/TFSQueuer", My.Computer.Name, Port)) _
+                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/Queuer", My.Computer.Name, Port)) _
                             }
             '---------------
             Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.QueuerService), baseAddresses)
