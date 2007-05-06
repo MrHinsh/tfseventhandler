@@ -10,7 +10,7 @@ Namespace Events
         Private _EventType As EventTypes
         Private _Event As TEvent
         Private _Identity As TFSIdentity
-        Private _SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo
+        Private _SubscriptionInfo As Services.DataContracts.SubscriptionInfo
 
         Public ReadOnly Property EventID() As Guid
             Get
@@ -36,13 +36,13 @@ Namespace Events
             End Get
         End Property
 
-        Public ReadOnly Property SubscriptionInfo() As Microsoft.TeamFoundation.Server.SubscriptionInfo
+        Public ReadOnly Property SubscriptionInfo() As Services.DataContracts.SubscriptionInfo
             Get
                 Return _SubscriptionInfo
             End Get
         End Property
 
-        Public Sub New(ByVal EventType As EventTypes, ByVal EventObject As TEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo)
+        Public Sub New(ByVal EventType As EventTypes, ByVal EventObject As TEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo)
             _EventType = EventType
             _Event = EventObject
             _Identity = EventIdentity

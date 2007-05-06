@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyHelper.vb" />
-    <Compile Include="Clients\ClientFactory.vb" />
+    <Compile Include="Clients\Proxy\TeamServersClient.vb" />
+    <Compile Include="Clients\TFSEventHandlerClient.vb" />
     <Compile Include="Clients\EventHandlerClient.vb" />
+    <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
     <Compile Include="Config\HandlerCollection.vb" />
@@ -136,10 +138,6 @@
     <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
       <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
       <Name>RDdotNet.TeamFoundation.EventResource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.Proxys\RDdotNet.TeamFoundation.Proxys.vbproj">
-      <Project>{0922E7D3-F0C8-4159-B2C9-9B8F570D316A}</Project>
-      <Name>RDdotNet.TeamFoundation.Proxys</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
