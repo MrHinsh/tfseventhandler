@@ -93,7 +93,7 @@ Namespace Clients
         Private ReadOnly Property SubscriptionsClient() As Proxy.SubscriptionsClient
             Get
                 If _SubscriptionsProxy Is Nothing Then
-                    Dim ep As New EndpointAddress(New Uri(_Server, "Subscriptions"))
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Subscriptions"))
                     _SubscriptionsProxy = New Proxy.SubscriptionsClient(SubscriptionsCallback, GetSecureWSDualHttpBinding, ep)
                 End If
                 Return _SubscriptionsProxy
@@ -133,7 +133,7 @@ Namespace Clients
         Private ReadOnly Property TeamServersClient() As Proxy.TeamServersClient
             Get
                 If _TeamServersClient Is Nothing Then
-                    Dim ep As New EndpointAddress(New Uri(_Server, "TeamServers"))
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/TeamServers"))
                     _TeamServersClient = New Proxy.TeamServersClient(TeamServersCallback, GetSecureWSDualHttpBinding, ep)
                 End If
                 Return _TeamServersClient
