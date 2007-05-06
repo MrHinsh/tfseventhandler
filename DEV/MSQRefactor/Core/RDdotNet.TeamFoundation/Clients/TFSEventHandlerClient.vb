@@ -18,7 +18,7 @@ Namespace Clients
         Implements Contracts.IEvents
         Implements IDisposable
 
-        Private _Server As Uri = New Uri("http://localhost:6661/TFSEventHandler")
+        Private _Server As Uri = New Uri("http://localhost:6661")
 
         Public Sub New(Optional ByVal Server As Uri = Nothing)
             If Not Server Is Nothing Then
@@ -28,50 +28,76 @@ Namespace Clients
 
 #Region " IEvents "
 
-        Public Event RecievedCheckInEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo)
-        Public Event RecievedWorkItemChangedEvent(ByVal [Event] As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo)
-        Public Event RecievedUnknownEvent(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo)
+        Private _EventsClient As Proxy.EventsClient
 
-        Public Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseCheckinEvent
-            RaiseEvent RecievedCheckInEvent([Event], EventIdentity, SubscriptionInfo)
+        Private ReadOnly Property EventsClient() As Proxy.EventsClient
+            Get
+                If _EventsClient Is Nothing Then
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Handlers"))
+                    _EventsClient = New Proxy.EventsClient(Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                End If
+                Return _EventsClient
+            End Get
+        End Property
+
+        Friend Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseCheckinEvent
+            EventsClient.RaiseCheckinEvent([Event], EventIdentity, SubscriptionInfo)
         End Sub
 
-        Public Sub RaiseUnknown(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseUnknown
-            RaiseEvent RecievedUnknownEvent(eventXml, tfsIdentityXml, SubscriptionInfo)
+        Friend Sub RaiseUnknown(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseUnknown
+            EventsClient.RaiseUnknown(eventXml, tfsIdentityXml, SubscriptionInfo)
         End Sub
 
-        Public Sub RaiseWorkItemChangedEvent(ByVal [Event] As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseWorkItemChangedEvent
-            RaiseEvent RecievedWorkItemChangedEvent([Event], EventIdentity, SubscriptionInfo)
+        Friend Sub RaiseWorkItemChangedEvent(ByVal [Event] As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseWorkItemChangedEvent
+            EventsClient.RaiseWorkItemChangedEvent([Event], EventIdentity, SubscriptionInfo)
         End Sub
 
 #End Region
 
 #Region " IHandlers "
 
+        Private _HandlersClient As Proxy.HandlersClient
+
+        Private ReadOnly Property HandlersCallback() As InstanceContext
+            Get
+                Return New InstanceContext(Me)
+            End Get
+        End Property
+
+        Private ReadOnly Property HandlersClient() As Proxy.HandlersClient
+            Get
+                If _HandlersClient Is Nothing Then
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Handlers"))
+                    _HandlersClient = New Proxy.HandlersClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                End If
+                Return _HandlersClient
+            End Get
+        End Property
+
         Public Event HandlersUpdated(ByVal AssemblyManaifest As Services.DataContracts.AssemblyManaifest)
 
         Public Sub AddAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) Implements Services.Contracts.IHandlers.AddAssembly
-
+            HandlersClient.AddAssembly(AssemblyItem)
         End Sub
 
         Public Sub AddAssemblyDirect(ByVal AssemblyBytes() As Byte) Implements Services.Contracts.IHandlers.AddAssemblyDirect
-
+            HandlersClient.AddAssemblyDirect(AssemblyBytes)
         End Sub
 
         Public Function GetAssemblyItem(ByVal AssemblyBytes() As Byte) As Services.DataContracts.AssemblyItem Implements Services.Contracts.IHandlers.GetAssemblyItem
-
+            Return HandlersClient.GetAssemblyItem(AssemblyBytes)
         End Function
 
         Public Function GetAssemblys() As Services.DataContracts.AssemblyManaifest Implements Services.Contracts.IHandlers.GetAssemblys
-
+            Return HandlersClient.GetAssemblys()
         End Function
 
         Public Sub RemoveAssembly(ByVal ID As Integer) Implements Services.Contracts.IHandlers.RemoveAssembly
-
+            HandlersClient.RemoveAssembly(ID)
         End Sub
 
         Public Function ValidateAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) As Boolean Implements Services.Contracts.IHandlers.ValidateAssembly
-
+            Return HandlersClient.ValidateAssembly(AssemblyItem)
         End Function
 
         Public Sub Updated(ByVal AssemblyManaifest As Services.DataContracts.AssemblyManaifest) Implements Services.Contracts.IHandlersCallback.Updated
@@ -82,7 +108,7 @@ Namespace Clients
 
 #Region " ISubscriptions  "
 
-        Private _SubscriptionsProxy As Proxy.SubscriptionsClient
+        Private _SubscriptionsClient As Proxy.SubscriptionsClient
 
         Private ReadOnly Property SubscriptionsCallback() As InstanceContext
             Get
@@ -92,11 +118,11 @@ Namespace Clients
 
         Private ReadOnly Property SubscriptionsClient() As Proxy.SubscriptionsClient
             Get
-                If _SubscriptionsProxy Is Nothing Then
-                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Subscriptions"))
-                    _SubscriptionsProxy = New Proxy.SubscriptionsClient(SubscriptionsCallback, GetSecureWSDualHttpBinding, ep)
+                If _SubscriptionsClient Is Nothing Then
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/Queuer/Subscriptions"))
+                    _SubscriptionsClient = New Proxy.SubscriptionsClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
                 End If
-                Return _SubscriptionsProxy
+                Return _SubscriptionsClient
             End Get
         End Property
 
@@ -133,8 +159,8 @@ Namespace Clients
         Private ReadOnly Property TeamServersClient() As Proxy.TeamServersClient
             Get
                 If _TeamServersClient Is Nothing Then
-                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/TeamServers"))
-                    _TeamServersClient = New Proxy.TeamServersClient(TeamServersCallback, GetSecureWSDualHttpBinding, ep)
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/Queuer/TeamServers"))
+                    _TeamServersClient = New Proxy.TeamServersClient(TeamServersCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
                 End If
                 Return _TeamServersClient
             End Get
@@ -164,36 +190,6 @@ Namespace Clients
 
 #End Region
 
-#Region " Bindings "
-
-        Friend Shared Function GetSecureWSDualHttpBinding() As WSDualHttpBinding
-            Dim Binding As New WSDualHttpBinding(WSDualHttpSecurityMode.Message)
-            Binding.MaxReceivedMessageSize = 655360
-            Binding.ReaderQuotas.MaxStringContentLength = 655360
-            Binding.ReaderQuotas.MaxArrayLength = 655360
-            Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
-            Binding.Security.Message.NegotiateServiceCredential = True
-            Return Binding
-        End Function
-
-        Friend Shared Function GetSecureWSHttpBinding() As WSHttpBinding
-            Dim Binding As New WSHttpBinding(SecurityMode.Message, True)
-            'Binding.MaxReceivedMessageSize = 655360
-            'Binding.ReaderQuotas.MaxStringContentLength = 655360
-            'Binding.ReaderQuotas.MaxArrayLength = 655360
-            Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
-            Binding.Security.Message.NegotiateServiceCredential = True
-            Return Binding
-        End Function
-
-        Friend Shared Function GetSecureNetMsmqBinding() As NetMsmqBinding
-            Dim Binding As New NetMsmqBinding(NetMsmqSecurityMode.Message)
-            Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
-            Return Binding
-        End Function
-
-#End Region
-
 #Region " IDisposable "
 
         Private disposedValue As Boolean = False        ' To detect redundant calls
@@ -206,8 +202,8 @@ Namespace Clients
                     If Not _TeamServersClient Is Nothing Then
                         _TeamServersClient.Close()
                     End If
-                    If Not Me._SubscriptionsProxy Is Nothing Then
-                        Me._SubscriptionsProxy.Close()
+                    If Not Me._SubscriptionsClient Is Nothing Then
+                        Me._SubscriptionsClient.Close()
                     End If
                 End If
                 ' TODO: free shared unmanaged resources
@@ -226,9 +222,6 @@ Namespace Clients
 
 #End Region
 
-
-
-     
     End Class
 
 
