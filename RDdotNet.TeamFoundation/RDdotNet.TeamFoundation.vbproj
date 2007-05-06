@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyHelper.vb" />
+    <Compile Include="Clients\Proxy\EventsClient.vb" />
+    <Compile Include="Clients\Proxy\HandlersClient.vb" />
     <Compile Include="Clients\Proxy\TeamServersClient.vb" />
     <Compile Include="Clients\TFSEventHandlerClient.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
