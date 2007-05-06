@@ -1,5 +1,5 @@
 Imports System.Messaging
-Imports RDdotNet.TeamFoundation
+Imports RDdotNet.TeamFoundation.Services
 
 Public Class Form1
 
