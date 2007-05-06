@@ -1,4 +1,5 @@
 Imports System.Messaging
+Imports RDdotNet.TeamFoundation
 
 Public Class Form1
 
@@ -20,11 +21,15 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonQHStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonQHStart.Click
-        QueuerHost = ServiceFactory.GetQueuerServiceHost
-        QueuerHost.Open()
-        Me.ButtonQHStop.Enabled = True
-        Me.ButtonQHStart.Enabled = False
-        Me.CheckBoxQHEnabled.Checked = True
+        QueuerHost = ServiceFactory.GetQueuerServiceHost(6661)
+        Try
+            QueuerHost.Open()
+            Me.ButtonQHStop.Enabled = True
+            Me.ButtonQHStart.Enabled = False
+            Me.CheckBoxQHEnabled.Checked = True
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub ButtonQHStop_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonQHStop.Click
@@ -35,7 +40,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonEHHStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonEHHStart.Click
-        EventHandlerHost = ServiceFactory.GetEventHandlerServiceHost
+        EventHandlerHost = ServiceFactory.GetEventHandlerServiceHost(6661)
         EventHandlerHost.Open()
         Me.ButtonEHHStop.Enabled = True
         Me.ButtonEHHStart.Enabled = False

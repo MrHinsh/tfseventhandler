@@ -1,11 +1,13 @@
 Imports System.Collections.Generic
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
-Imports RDdotNet.TeamFoundation.Client
+Imports RDdotNet.TeamFoundation.Clients
 
 
 Public Class Form1
 
+
+    Private WithEvents EventHandler As RDdotNet.TeamFoundation.
 
 #Region " Form1 "
 
