@@ -20,10 +20,23 @@ Namespace Clients
 
         Private _Server As Uri = New Uri("http://localhost:6661")
 
+        Public ReadOnly Property Server() As Uri
+            Get
+                Return _Server
+            End Get
+        End Property
+
         Public Sub New(Optional ByVal Server As Uri = Nothing)
             If Not Server Is Nothing Then
                 _Server = Server
             End If
+        End Sub
+
+        Public Sub Open()
+            EventsClient.Open()
+            HandlersClient.Open()
+            SubscriptionsCallback.Open()
+            TeamServersClient.Open()
         End Sub
 
 #Region " IEvents "
@@ -204,6 +217,12 @@ Namespace Clients
                     End If
                     If Not Me._SubscriptionsClient Is Nothing Then
                         Me._SubscriptionsClient.Close()
+                    End If
+                    If Not HandlersClient Is Nothing Then
+                        HandlersClient.Close()
+                    End If
+                    If Not EventsClient Is Nothing Then
+                        EventsClient.Close()
                     End If
                 End If
                 ' TODO: free shared unmanaged resources
