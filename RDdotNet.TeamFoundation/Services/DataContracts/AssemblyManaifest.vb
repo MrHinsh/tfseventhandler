@@ -8,7 +8,7 @@ Namespace Services.DataContracts
     Public Class AssemblyManaifest
 
         Private _Version As Integer
-        Private _Assemblys As Collection(Of AssemblyItem)
+        Private _Assemblys As New Collection(Of AssemblyItem)
 
 
         <DataMember()> _
