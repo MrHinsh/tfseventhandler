@@ -46,7 +46,7 @@ Namespace Services
             Try
                 Dim ui As ICredentialsProvider = New UICredentialsProvider
 
-                Dim account As Net.NetworkCredential = New Net.NetworkCredential("srvteamsetup", "1Nst4ll4t10n", "EMEA")
+                Dim account As Net.NetworkCredential = New Net.NetworkCredential("hinshelmw_cp", "mjh260178", "snd")
                 tfs = New TeamFoundationServer(TeamServerName, account)
             Catch ex As System.ServiceModel.FaultException
                 Throw ex
@@ -75,6 +75,8 @@ Namespace Services
                 Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
                 Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
                 Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
+            Catch ex As TeamFoundationServerUnauthorizedException
+                Throw New FaultException(Of TeamFoundationServerUnauthorizedException)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
                 Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
