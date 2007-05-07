@@ -71,17 +71,9 @@ Namespace Services
         End Function
 
         Public Function GetServerSubs(ByVal TeamServerName As String) As Server.Subscription()
-            Try
-                Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
-                Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-                Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
-            Catch ex As TeamFoundationServerUnauthorizedException
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                Throw New FaultException(Of TeamFoundationServerUnauthorizedException)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
-            Catch ex As System.Exception
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
-                Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
-            End Try
+            Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
+            Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
+            Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
         End Function
 
         Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
@@ -198,14 +190,22 @@ Namespace Services
         End Sub
 
         Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
-            Dim Subscriptions As New Collection(Of DataContracts.Subscription)
-            For Each TeamServerName As String In Me.GetServers()
-                Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
-                For Each serverSub As Server.Subscription In ServerSubs
-                    Subscriptions.Add(New DataContracts.Subscription(serverSub))
+            Try
+                Dim Subscriptions As New Collection(Of DataContracts.Subscription)
+                For Each TeamServerName As String In Me.GetServers()
+                    Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
+                    For Each serverSub As Server.Subscription In ServerSubs
+                        Subscriptions.Add(New DataContracts.Subscription(serverSub))
+                    Next
                 Next
-            Next
-            Return Subscriptions
+                Return Subscriptions
+            Catch ex As TeamFoundationServerUnauthorizedException
+                My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
+                Throw New FaultException(ex.Message, New FaultCode("TFS:EH:S:0001"))
+            Catch ex As System.Exception
+                My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
+                Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
+            End Try
         End Function
 
 #End Region
