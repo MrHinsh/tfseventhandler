@@ -35,7 +35,7 @@ Namespace Clients
         Public Sub Open()
             EventsClient.Open()
             HandlersClient.Open()
-            SubscriptionsCallback.Open()
+            SubscriptionsClient.Open()
             TeamServersClient.Open()
         End Sub
 

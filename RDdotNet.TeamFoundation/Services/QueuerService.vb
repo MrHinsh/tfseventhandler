@@ -75,9 +75,9 @@ Namespace Services
                 Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
                 Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
                 Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
-            Catch ex As System.ServiceModel.FaultException
+            Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
-                Throw ex
+                Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
             End Try
         End Function
 
@@ -122,8 +122,9 @@ Namespace Services
                 End If
                 TeamServerAdminCallback.Updated(GetServers)
                 If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServerName)
-            Catch ex As System.ServiceModel.FaultException
+            Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
+                Throw New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001"))
             End Try
         End Sub
 
