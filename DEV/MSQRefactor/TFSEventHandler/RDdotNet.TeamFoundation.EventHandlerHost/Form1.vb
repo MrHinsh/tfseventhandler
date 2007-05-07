@@ -13,6 +13,8 @@ Public Class Form1
         If Not MessageQueue.Exists(queueName) Then
             MessageQueue.Create(queueName, True)
         End If
+        ButtonQHStart.PerformClick()
+        ButtonEHHStart.PerformClick()
     End Sub
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing

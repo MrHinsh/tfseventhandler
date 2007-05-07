@@ -17,13 +17,16 @@ Public Class TFSEventHandlerControl
     End Sub
 
     Private Sub uxToolStripButtonAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles uxToolStripButtonAdd.Click
-        Dim x As String = InputBox("Enter url")
+        Dim x As String = InputBox("Enter url", DefaultResponse:="http://localhost:6661")
         Dim url As New Uri(x)
-        Dim EventHandler As New TFSEventHandlerClient
+        Dim EventHandler As New TFSEventHandlerClient(url)
         ' TODO: Add event handlers
         'addhandler EventHandler.TeamServersUpdated, Addressof xxxxxxxxxxxx
         ' Start Services
         _ConnectedEventHandler.Add(EventHandler)
+        RefershEventHandlers()
+        ' Then make sure that all nodes are expanded
+        Me.uxTreeView.ExpandAll()
     End Sub
 
     Private Sub RefershEventHandlers()
@@ -41,7 +44,7 @@ Public Class TFSEventHandlerControl
         Private _ContextMenuStrip As New ContextMenuStrip
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient)
-            Me.Text = EventHandler.Server
+            Me.Text = EventHandler.Server.ToString
             '-----------------------
             ' Create Handler and attach Events
             _EventHandler = EventHandler
@@ -49,11 +52,15 @@ Public Class TFSEventHandlerControl
             '-----------------------
             ' Create Contect Menu as Add events
             _ContextMenuStrip = New ContextMenuStrip
-            _ContextMenuStrip.Items.Add(New ToolStripButton("Connect"))
             _ContextMenuStrip.Items.Add(New ToolStripButton("Refresh"))
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Remove"))
+            Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Add Team Servers
             _TeamServersNode = New TreeName_TeamServers(EventHandler)
+            Me.Nodes.Add(_TeamServersNode)
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
         End Sub
 
         Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
@@ -79,12 +86,13 @@ Public Class TFSEventHandlerControl
             '-----------------------
             ' Create Contect Menu as Add events
             _ContextMenuStrip = New ContextMenuStrip
-            'TODO: Add Contect Menu Options
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Add Team Server", Nothing, AddressOf AddTeamServer_Click))
+            Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Initilise team server List
-            For Each s As String In _EventHandler.GetServers
-                Me.Nodes.Add(s)
-            Next
+            GenerateChildren(_EventHandler.GetServers)
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
         End Sub
 
         Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
@@ -94,10 +102,57 @@ Public Class TFSEventHandlerControl
         End Property
 
         Public Sub OnTeamServersUpdated(ByVal TeamServers() As String)
+            GenerateChildren(TeamServers)
+        End Sub
+
+        Public Sub GenerateChildren(ByVal TeamServers() As String)
             Me.Nodes.Clear()
             For Each s As String In TeamServers
-                Me.Nodes.Add(s)
+                Me.Nodes.Add(New TreeName_TeamServer(EventHandler, s))
             Next
+        End Sub
+
+        Private Sub AddTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim x As String = InputBox("Enter url", DefaultResponse:="http://localhost:8080")
+            Dim url As New Uri(x)
+            _EventHandler.AddServer(x.ToString, x.ToString)
+        End Sub
+
+    End Class
+
+    Private Class TreeName_TeamServer
+        Inherits TreeNode
+
+        Private _EventHandler As TFSEventHandlerClient
+        Private _ContextMenuStrip As New ContextMenuStrip
+
+        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal ServerName As String)
+            Me.Text = ServerName
+            '-----------------------
+            ' Create Handler and attach Events
+            _EventHandler = EventHandler
+            'AddHandler _EventHandler.TeamServersUpdate, AddressOf OnTeamServersUpdated
+            '-----------------------
+            ' Create Contect Menu as Add events
+            _ContextMenuStrip = New ContextMenuStrip
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Remove", Nothing, AddressOf RemoveTeamServer_Click))
+            Me.ContextMenuStrip = _ContextMenuStrip
+            '-----------------------
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
+        End Sub
+
+        Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
+            Get
+                Return _EventHandler
+            End Get
+        End Property
+
+        Private Sub RemoveTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
+            ' Get Selected Team Server
+            Dim TeamServer As TreeName_TeamServer = CType(Me.TreeView.SelectedNode, TreeName_TeamServer)
+            ' Call remove
+            _EventHandler.RemoveServer(TeamServer.Name)
         End Sub
 
     End Class
