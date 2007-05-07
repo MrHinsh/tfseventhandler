@@ -216,9 +216,11 @@ Public Class TFSEventHandlerControl
                 If AssemblyManaifest Is Nothing Then
                     AssemblyManaifest = _EventHandler.GetAssemblys()
                 End If
-                For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
-                    Me.Nodes.Add(New TreeNode_AssemblyItem(EventHandler, AI))
-                Next
+                If Not AssemblyManaifest.Assemblys Is Nothing Then
+                    For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
+                        Me.Nodes.Add(New TreeNode_AssemblyItem(EventHandler, AI))
+                    Next
+                End If
             Catch ex As Exception
                 Me.Nodes.Add("Error: " & ex.ToString)
             End Try
