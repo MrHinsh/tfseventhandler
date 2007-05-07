@@ -76,6 +76,7 @@ Namespace Services
                 Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
                 Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
             Catch ex As TeamFoundationServerUnauthorizedException
+                My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
                 Throw New FaultException(Of TeamFoundationServerUnauthorizedException)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
