@@ -2,6 +2,7 @@ Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Events
+Imports Microsoft.TeamFoundation
 
 Namespace Services.Contracts
 
@@ -21,6 +22,8 @@ Namespace Services.Contracts
         Sub RemoveSubscriptions(ByVal ServiceUrl As String)
 
         <OperationContract(IsOneWay:=False)> _
+        <FaultContract(GetType(TeamFoundationServerUnauthorizedException))> _
+        <FaultContract(GetType(System.Exception))> _
         Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
 
 
