@@ -7,9 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D772B4DC-4A41-464C-99C5-9554524D4369}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>RDdotNet.TeamFoundation.TestApp.My.MyApplication</StartupObject>
-    <RootNamespace>RDdotNet.TeamFoundation.TestApp</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.TestApp</AssemblyName>
+    <StartupObject>RDdotNet.TeamFoundation.EventHandler.Explorer.My.MyApplication</StartupObject>
+    <RootNamespace>RDdotNet.TeamFoundation.EventHandler.Explorer</RootNamespace>
+    <AssemblyName>RDdotNet.TeamFoundation.EventHandler.Explorer</AssemblyName>
     <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
