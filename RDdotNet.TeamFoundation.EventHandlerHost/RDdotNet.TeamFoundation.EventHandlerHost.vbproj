@@ -5,11 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.Client</AssemblyName>
-    <MyType>Windows</MyType>
+    <ProjectGuid>{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>RDdotNet.TeamFoundation.EventHandlerHost.My.MyApplication</StartupObject>
+    <RootNamespace>RDdotNet.TeamFoundation.EventHandlerHost</RootNamespace>
+    <AssemblyName>RDdotNet.TeamFoundation.EventHandlerHost</AssemblyName>
+    <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -21,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Client.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.EventHandlerHost.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,13 +31,19 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RDdotNet.TeamFoundation.Client.xml</DocumentationFile>
+    <DocumentationFile>RDdotNet.TeamFoundation.EventHandlerHost.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RDdotNet.TeamFoundation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
@@ -48,9 +55,18 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -66,34 +82,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UI\FormControls\ExplorerControl.Designer.vb">
-      <DependentUpon>ExplorerControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormControls\ExplorerControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\FormControls\TreeNode_AssemblyItem.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandler.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandlerItem.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandlers.vb" />
-    <Compile Include="UI\FormControls\TreeNode_Subscription.vb" />
-    <Compile Include="UI\FormControls\TreeNode_Subscriptions.vb" />
-    <Compile Include="UI\FormControls\TreeNode_TeamServer.vb" />
-    <Compile Include="UI\FormControls\TreeNode_TeamServers.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormControls\ExplorerControl.resx">
-      <DependentUpon>ExplorerControl.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -104,21 +107,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
-      <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
-      <Project>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</Project>
-      <Name>RDdotNet.TeamFoundation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Adapters\" />
-    <Folder Include="UI\WebControls\" />
-    <Folder Include="UI\WpfControls\" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -127,7 +115,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
-  </PropertyGroup>
 </Project>
