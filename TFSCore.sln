@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Client", "RDdotNet.TeamFoundation.Client\RDdotNet.TeamFoundation.Client.vbproj", "{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.EventHandlerHost", "RDdotNet.TeamFoundation.EventHandlerHost\RDdotNet.TeamFoundation.EventHandlerHost.vbproj", "{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Host", "RDdotNet.TeamFoundation.EventHandlerHost\Host.vbproj", "{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.EventHandlerExplorer", "RDdotNet.TeamFoundation.TestApp\RDdotNet.TeamFoundation.EventHandlerExplorer.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Explorer", "RDdotNet.TeamFoundation.TestApp\Explorer.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -41,14 +41,14 @@ Global
 		SccProjectTopLevelParentUniqueName4 = TFSCore.sln
 		SccProjectName4 = RDdotNet.TeamFoundation.Client
 		SccLocalPath4 = RDdotNet.TeamFoundation.Client
-		SccProjectUniqueName5 = RDdotNet.TeamFoundation.EventHandlerHost\\RDdotNet.TeamFoundation.EventHandlerHost.vbproj
+		SccProjectUniqueName5 = RDdotNet.TeamFoundation.TestApp\\Explorer.vbproj
 		SccProjectTopLevelParentUniqueName5 = TFSCore.sln
-		SccProjectName5 = RDdotNet.TeamFoundation.EventHandlerHost
-		SccLocalPath5 = RDdotNet.TeamFoundation.EventHandlerHost
-		SccProjectUniqueName6 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.EventHandlerExplorer.vbproj
+		SccProjectName5 = RDdotNet.TeamFoundation.TestApp
+		SccLocalPath5 = RDdotNet.TeamFoundation.TestApp
+		SccProjectUniqueName6 = RDdotNet.TeamFoundation.EventHandlerHost\\Host.vbproj
 		SccProjectTopLevelParentUniqueName6 = TFSCore.sln
-		SccProjectName6 = RDdotNet.TeamFoundation.TestApp
-		SccLocalPath6 = RDdotNet.TeamFoundation.TestApp
+		SccProjectName6 = RDdotNet.TeamFoundation.EventHandlerHost
+		SccLocalPath6 = RDdotNet.TeamFoundation.EventHandlerHost
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET

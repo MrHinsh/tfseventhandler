@@ -7,9 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>RDdotNet.TeamFoundation.EventHandlerHost.My.MyApplication</StartupObject>
-    <RootNamespace>RDdotNet.TeamFoundation.EventHandlerHost</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.EventHandlerHost</AssemblyName>
+    <StartupObject>RDdotNet.TeamFoundation.EventHandler.Host.My.MyApplication</StartupObject>
+    <RootNamespace>RDdotNet.TeamFoundation.EventHandler.Host</RootNamespace>
+    <AssemblyName>RDdotNet.TeamFoundation.EventHandler.Host</AssemblyName>
     <MyType>WindowsForms</MyType>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
