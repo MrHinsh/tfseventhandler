@@ -78,6 +78,7 @@
     <Compile Include="UI\FormControls\ExplorerControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\FormControls\TreeNodeCustom.vb" />
     <Compile Include="UI\FormControls\TreeNode_AssemblyItem.vb" />
     <Compile Include="UI\FormControls\TreeNode_EventHandler.vb" />
     <Compile Include="UI\FormControls\TreeNode_EventHandlerItem.vb" />
