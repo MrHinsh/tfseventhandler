@@ -12,8 +12,9 @@ Namespace UI.FormControls
         Private _ContextMenuStrip As New ContextMenuStrip
         Private _DataThread As System.Threading.Thread
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient)
+        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             Me.Text = "Team Servers"
+            Me.Delay = Delay
             '-----------------------
             ' Create Handler and attach Events
             _EventHandler = EventHandler
@@ -39,7 +40,7 @@ Namespace UI.FormControls
         End Sub
 
         Public Sub GenerateChildren(ByVal state As Object)
-            Me.UpdateStatus("Team Servers", Status.Loading)
+            Me.UpdateStatus("Team Servers", Status.Working)
             Dim TeamServers() As String = Nothing
             Try
                 TeamServers = _EventHandler.GetServers()
@@ -63,13 +64,20 @@ Namespace UI.FormControls
             End If
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
-            Me.UpdateStatus("Team Servers", Status.Loaded)
+            Me.UpdateStatus("Team Servers", Status.Normal)
         End Sub
 
         Private Sub AddTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
-            Dim x As String = InputBox("Enter url", DefaultResponse:="http://localhost:8080")
-            Dim url As New Uri(x)
-            _EventHandler.AddServer(x.ToString, x.ToString)
+            Dim frmConnectTo As New frmConnectTo("Team Foundation Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=8080, ServerName:=My.Computer.Name)
+            Dim DialogResult As DialogResult = frmConnectTo.ShowDialog(Me)
+            If DialogResult = Windows.Forms.DialogResult.OK Then
+                '---------
+                frmConnectTo.Close()
+                frmConnectTo.Dispose()
+                '---------
+                Dim ServerUri As Uri = frmConnectTo.ServerUri
+                _EventHandler.AddServer(ServerUri.ToString, ServerUri.ToString)
+            End If
         End Sub
 
 

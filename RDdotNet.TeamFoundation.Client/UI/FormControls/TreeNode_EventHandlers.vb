@@ -17,8 +17,9 @@ Namespace UI.FormControls
             End Get
         End Property
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient)
+        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             Me.Text = "Event Handlers"
+            Me.Delay = Delay
             '-----------------------
             ' Create Handler and attach Events
             _EventHandler = EventHandler
@@ -34,7 +35,7 @@ Namespace UI.FormControls
         End Sub
 
         Public Sub GenerateChildren(ByVal state As Object)
-            Me.UpdateStatus("Event Handlers", Status.Loading)
+            Me.UpdateStatus("Event Handlers", Status.Working)
             Dim AssemblyManaifest As AssemblyManaifest = Nothing
             Try
                 AssemblyManaifest = _EventHandler.GetAssemblys()
@@ -56,7 +57,7 @@ Namespace UI.FormControls
             If Me.Nodes.Count = 0 Then
                 AddMessage("No Assemblies found")
             End If
-            Me.UpdateStatus("Event Handlers", Status.Loaded)
+            Me.UpdateStatus("Event Handlers", Status.Normal)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
