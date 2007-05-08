@@ -15,9 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Client", "RDdotNet.TeamFoundation.Client\RDdotNet.TeamFoundation.Client.vbproj", "{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.EventHandlerHost", "RDdotNet.TeamFoundation.EventHandlerHost\RDdotNet.TeamFoundation.EventHandlerHost.vbproj", "{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.EventHandlerExplorer", "RDdotNet.TeamFoundation.TestApp\RDdotNet.TeamFoundation.EventHandlerExplorer.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -34,8 +38,17 @@ Global
 		SccProjectName3 = RDdotNet.ActiveDiretory
 		SccLocalPath3 = RDdotNet.ActiveDiretory
 		SccProjectUniqueName4 = RDdotNet.TeamFoundation.Client\\RDdotNet.TeamFoundation.Client.vbproj
+		SccProjectTopLevelParentUniqueName4 = TFSCore.sln
 		SccProjectName4 = RDdotNet.TeamFoundation.Client
 		SccLocalPath4 = RDdotNet.TeamFoundation.Client
+		SccProjectUniqueName5 = RDdotNet.TeamFoundation.EventHandlerHost\\RDdotNet.TeamFoundation.EventHandlerHost.vbproj
+		SccProjectTopLevelParentUniqueName5 = TFSCore.sln
+		SccProjectName5 = RDdotNet.TeamFoundation.EventHandlerHost
+		SccLocalPath5 = RDdotNet.TeamFoundation.EventHandlerHost
+		SccProjectUniqueName6 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.EventHandlerExplorer.vbproj
+		SccProjectTopLevelParentUniqueName6 = TFSCore.sln
+		SccProjectName6 = RDdotNet.TeamFoundation.TestApp
+		SccLocalPath6 = RDdotNet.TeamFoundation.TestApp
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -86,14 +99,37 @@ Global
 		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3680108-98DE-4832-AB93-B06B11CCA50D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{D772B4DC-4A41-464C-99C5-9554524D4369} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
 		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
 		{CEB795EC-A667-4A15-84ED-1E4672DFFD27} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
 		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
 	EndGlobalSection
