@@ -27,13 +27,14 @@ Namespace UI.FormControls
             _ContextMenuStrip.Items.Add(New ToolStripButton("Remove"))
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
+            Dim AddedNodeID As Integer = 0
             ' Add Team Servers
-            _TeamServersNode = New TreeNode_TeamServers(EventHandler, 100)
-            Me.Nodes.Add(_TeamServersNode)
-            _EventHandlersNode = New TreeNode_EventHandlers(EventHandler, 100)
-            Me.Nodes.Add(_EventHandlersNode)
-            _SubscriptionsNode = New TreeNode_Subscriptions(EventHandler, 100)
-            Me.Nodes.Add(_SubscriptionsNode)
+            AddedNodeID = Me.Nodes.Add(New TreeNode_TeamServers(EventHandler, 100))
+            _TeamServersNode = Me.Nodes(AddedNodeID)
+            AddedNodeID = Me.Nodes.Add(New TreeNode_EventHandlers(EventHandler, 100))
+            _EventHandlersNode = Me.Nodes(AddedNodeID)
+            AddedNodeID = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, 100))
+            _SubscriptionsNode = Me.Nodes(AddedNodeID)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
