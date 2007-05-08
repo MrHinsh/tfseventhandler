@@ -12,8 +12,9 @@ Namespace UI.FormControls
         Private _EventHandler As TFSEventHandlerClient
         Private _ContextMenuStrip As New ContextMenuStrip
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient)
+        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             Me.Text = "Subscriptions"
+            Me.Delay = Delay
             '-----------------------
             ' Create Handler and attach Events
             _EventHandler = EventHandler
@@ -39,13 +40,16 @@ Namespace UI.FormControls
         End Sub
 
         Public Sub GenerateChildren(ByVal State As Object)
+            Me.UpdateStatus("Subscriptions", Status.Working)
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
                 subscriptions = _EventHandler.GetSubscriptions()
             Catch ex As Services.FaultContracts.TeamFoundationServerUnauthorizedException
                 AddError("TFS Denied", ex)
+                Me.UpdateStatus("Subscriptions", Status.Faulted)
             Catch ex As ServiceModel.FaultException
                 AddError("Error", ex)
+                Me.UpdateStatus("Subscriptions", Status.Faulted)
             Finally
                 GenerateChildren(subscriptions)
             End Try
@@ -63,6 +67,7 @@ Namespace UI.FormControls
             End If
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
+            Me.UpdateStatus("Subscriptions", Status.Normal)
         End Sub
 
     End Class

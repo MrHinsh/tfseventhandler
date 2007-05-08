@@ -6,14 +6,24 @@ Imports System.Windows.Forms
 Namespace UI.FormControls
 
     Public Enum Status
-        Loaded = 0
+        Normal = 0
         Faulted = 1
-        Loading = 2
+        Working = 2
     End Enum
 
     Public MustInherit Class TreeNodeCustom(Of T As {TreeNode})
         Inherits TreeNode
 
+        Private _Delay As Integer = 0
+
+        Public Property Delay() As Integer
+            Get
+                Return _Delay
+            End Get
+            Set(ByVal value As Integer)
+                _Delay = value
+            End Set
+        End Property
 
         Public Delegate Sub SimpleDelegate()
         Public Delegate Sub AddMessageDelegate(ByVal Message As String)
@@ -24,6 +34,7 @@ Namespace UI.FormControls
         Protected Sub ClearNodes()
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New SimpleDelegate(AddressOf ClearNodes))
+                System.Threading.Thread.Sleep(_Delay)
             Else
                 MyBase.Nodes.Clear()
             End If
@@ -33,6 +44,7 @@ Namespace UI.FormControls
         Protected Overloads Sub ExpandAll()
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New SimpleDelegate(AddressOf ExpandAll))
+                System.Threading.Thread.Sleep(_Delay)
             Else
                 MyBase.ExpandAll()
             End If
@@ -41,6 +53,7 @@ Namespace UI.FormControls
         Protected Sub AddError(ByVal Catagory As String, ByVal ex As Exception)
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New AddCatagoryErrorDelegate(AddressOf AddError), Catagory, ex)
+                System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(Catagory & ": " & ex.ToString)
             End If
@@ -49,6 +62,7 @@ Namespace UI.FormControls
         Protected Sub AddMessage(ByVal Message As String)
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New AddMessageDelegate(AddressOf AddMessage), Message)
+                System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(Message)
             End If
@@ -57,6 +71,7 @@ Namespace UI.FormControls
         Protected Sub AddNode(ByVal TreeNode As T)
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New AddNodeDelegate(AddressOf AddNode), TreeNode)
+                System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(TreeNode)
             End If
@@ -65,8 +80,9 @@ Namespace UI.FormControls
         Protected Sub UpdateStatus(ByVal Header As String, ByVal Status As Status)
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New UpdateStatusDelegate(AddressOf UpdateStatus), Header, Status)
+                System.Threading.Thread.Sleep(_Delay)
             Else
-                If Status = FormControls.Status.Loaded Then
+                If Status = FormControls.Status.Normal Then
                     Me.Text = Header
                 Else
                     Me.Text = String.Format("{0} ({1})", Header, Status.ToString)

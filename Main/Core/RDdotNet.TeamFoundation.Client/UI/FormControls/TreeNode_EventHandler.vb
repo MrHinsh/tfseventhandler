@@ -28,11 +28,11 @@ Namespace UI.FormControls
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Add Team Servers
-            _TeamServersNode = New TreeNode_TeamServers(EventHandler)
+            _TeamServersNode = New TreeNode_TeamServers(EventHandler, 100)
             Me.Nodes.Add(_TeamServersNode)
-            _EventHandlersNode = New TreeNode_EventHandlers(EventHandler)
+            _EventHandlersNode = New TreeNode_EventHandlers(EventHandler, 100)
             Me.Nodes.Add(_EventHandlersNode)
-            _SubscriptionsNode = New TreeNode_Subscriptions(EventHandler)
+            _SubscriptionsNode = New TreeNode_Subscriptions(EventHandler, 100)
             Me.Nodes.Add(_SubscriptionsNode)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
