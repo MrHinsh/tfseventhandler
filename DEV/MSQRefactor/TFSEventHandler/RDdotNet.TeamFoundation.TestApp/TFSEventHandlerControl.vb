@@ -329,16 +329,16 @@ Public Class TFSEventHandlerControl
 
         Public Sub GenerateChildren(Optional ByVal subscriptions As Collection(Of Subscription) = Nothing)
             Me.Nodes.Clear()
-            Try
-                If subscriptions Is Nothing Then
-                    subscriptions = _EventHandler.GetSubscriptions()
-                End If
-                For Each s As Subscription In subscriptions
-                    Me.Nodes.Add(New TreeNode_Subscription(EventHandler, s))
-                Next
-            Catch ex As Exception
-                Me.Nodes.Add("Error: " & ex.ToString)
-            End Try
+            'Try
+            If subscriptions Is Nothing Then
+                subscriptions = _EventHandler.GetSubscriptions()
+            End If
+            For Each s As Subscription In subscriptions
+                Me.Nodes.Add(New TreeNode_Subscription(EventHandler, s))
+            Next
+            'Catch ex As Exception
+            'Me.Nodes.Add("Error: " & ex.ToString)
+            'End Try
             If Me.Nodes.Count = 0 Then
                 Me.Nodes.Add("No Subscriptions found")
             End If
