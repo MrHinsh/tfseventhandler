@@ -201,7 +201,7 @@ Namespace Services
                 Return Subscriptions
             Catch ex As TeamFoundationServerUnauthorizedException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                Throw New FaultException(ex.Message, New FaultCode("TFS:EH:S:0001"))
+                Throw New FaultException(ex.Message)
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
                 Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
