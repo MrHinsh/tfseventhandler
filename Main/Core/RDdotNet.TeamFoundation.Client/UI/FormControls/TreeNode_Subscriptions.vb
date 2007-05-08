@@ -7,7 +7,7 @@ Namespace UI.FormControls
 
 
     Friend Class TreeNode_Subscriptions
-        Inherits TreeNode
+        Inherits TreeNodeCustom(Of TreeNode_Subscription)
 
         Private _EventHandler As TFSEventHandlerClient
         Private _ContextMenuStrip As New ContextMenuStrip
@@ -25,9 +25,7 @@ Namespace UI.FormControls
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Initilise team server List
-            GenerateChildren()
-            ' Then make sure that all nodes are expanded
-            Me.ExpandAll()
+            System.Threading.ThreadPool.QueueUserWorkItem(AddressOf GenerateChildren)
         End Sub
 
         Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
@@ -40,25 +38,33 @@ Namespace UI.FormControls
             GenerateChildren(subscriptions)
         End Sub
 
-        Public Sub GenerateChildren(Optional ByVal subscriptions As Collection(Of Subscription) = Nothing)
-            Me.Nodes.Clear()
-            'Try
-            If subscriptions Is Nothing Then
+        Public Sub GenerateChildren(ByVal State As Object)
+            Dim subscriptions As Collection(Of Subscription) = Nothing
+            Try
                 subscriptions = _EventHandler.GetSubscriptions()
+            Catch ex As Services.FaultContracts.TeamFoundationServerUnauthorizedException
+                AddError("TFS Denied", ex)
+            Catch ex As ServiceModel.FaultException
+                AddError("Error", ex)
+            Finally
+                GenerateChildren(subscriptions)
+            End Try
+        End Sub
+
+        Public Sub GenerateChildren(ByVal subscriptions As Collection(Of Subscription))
+            ClearNodes()
+            If Not subscriptions Is Nothing Then
+                For Each s As Subscription In subscriptions
+                    AddNode(New TreeNode_Subscription(EventHandler, s))
+                Next
             End If
-            For Each s As Subscription In subscriptions
-                Me.Nodes.Add(New TreeNode_Subscription(EventHandler, s))
-            Next
-            'Catch ex As Exception
-            'Me.Nodes.Add("Error: " & ex.ToString)
-            'End Try
             If Me.Nodes.Count = 0 Then
-                Me.Nodes.Add("No Subscriptions found")
+                AddMessage("No Subscriptions found")
             End If
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
         End Sub
 
     End Class
-
-
 
 End Namespace
