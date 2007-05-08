@@ -20,17 +20,22 @@ Namespace UI.FormControls
             RefershEventHandlers()
         End Sub
 
-        Private Sub uxToolStripButtonAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles uxToolStripButtonAdd.Click
-            Dim x As String = InputBox("Enter url", DefaultResponse:="http://localhost:6661")
-            Dim url As New Uri(x)
-            Dim EventHandler As New TFSEventHandlerClient(url)
-            ' TODO: Add event handlers
-            'addhandler EventHandler.TeamServersUpdated, Addressof xxxxxxxxxxxx
-            ' Start Services
-            _ConnectedEventHandler.Add(EventHandler)
-            RefershEventHandlers()
-            ' Then make sure that all nodes are expanded
-            Me.uxTreeView.ExpandAll()
+        Private Sub uxToolStripButtonAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+            Dim frmConnectTo As New frmConnectTo
+            Dim DialogResult As DialogResult = frmConnectTo.ShowDialog(Me)
+            If DialogResult = Windows.Forms.DialogResult.OK Then
+                '---------
+                frmConnectTo.Close()
+                frmConnectTo.Dispose()
+                '---------
+                Dim ServerUri As Uri = frmConnectTo.ServerUri
+                Dim EventHandler As New TFSEventHandlerClient(ServerUri)
+                ' Start Services
+                _ConnectedEventHandler.Add(EventHandler)
+                RefershEventHandlers()
+                ' Then make sure that all nodes are expanded
+                Me.uxTreeView.ExpandAll()
+            End If
         End Sub
 
         Private Sub RefershEventHandlers()
