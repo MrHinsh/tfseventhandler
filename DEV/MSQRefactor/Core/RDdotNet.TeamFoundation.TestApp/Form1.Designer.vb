@@ -19,7 +19,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TFSEventHandlerControl = New RDdotNet.TeamFoundation.TestApp.TFSEventHandlerControl
+        Me.TFSEventHandlerControl = New RDdotNet.TeamFoundation.UI.FormControls.TFSEventHandlerControl
         Me.SuspendLayout()
         '
         'TFSEventHandlerControl
@@ -41,6 +41,6 @@ Partial Class Form1
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TFSEventHandlerControl As TFSEventHandlerControl
+    Friend WithEvents TFSEventHandlerControl As RDdotNet.TeamFoundation.UI.FormControls.TFSEventHandlerControl
 
 End Class

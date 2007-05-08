@@ -66,29 +66,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UI\FormControls\EventHandlerAdminControl.Designer.vb">
-      <DependentUpon>EventHandlerAdminControl.vb</DependentUpon>
+    <Compile Include="UI\FormControls\ExplorerControl.Designer.vb">
+      <DependentUpon>ExplorerControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormControls\EventHandlerAdminControl.vb">
-    </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAddForm.Designer.vb">
-      <DependentUpon>SubscriptionAddForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAddForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAdminControl.Designer.vb">
-      <DependentUpon>SubscriptionAdminControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormControls\SubscriptionAdminControl.vb">
+    <Compile Include="UI\FormControls\ExplorerControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\FormControls\TeamServerAdminControl.Designer.vb">
-      <DependentUpon>TeamServerAdminControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormControls\TeamServerAdminControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UI\FormControls\TreeNode_AssemblyItem.vb" />
+    <Compile Include="UI\FormControls\TreeNode_EventHandler.vb" />
+    <Compile Include="UI\FormControls\TreeNode_EventHandlerItem.vb" />
+    <Compile Include="UI\FormControls\TreeNode_EventHandlers.vb" />
+    <Compile Include="UI\FormControls\TreeNode_Subscription.vb" />
+    <Compile Include="UI\FormControls\TreeNode_Subscriptions.vb" />
+    <Compile Include="UI\FormControls\TreeNode_TeamServer.vb" />
+    <Compile Include="UI\FormControls\TreeNode_TeamServers.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -97,20 +88,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormControls\EventHandlerAdminControl.resx">
-      <DependentUpon>EventHandlerAdminControl.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormControls\SubscriptionAddForm.resx">
-      <DependentUpon>SubscriptionAddForm.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormControls\SubscriptionAdminControl.resx">
-      <DependentUpon>SubscriptionAdminControl.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormControls\TeamServerAdminControl.resx">
-      <DependentUpon>TeamServerAdminControl.vb</DependentUpon>
+    <EmbeddedResource Include="UI\FormControls\ExplorerControl.resx">
+      <DependentUpon>ExplorerControl.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
