@@ -46,7 +46,7 @@ Namespace Services
             Try
                 Dim ui As ICredentialsProvider = New UICredentialsProvider
 
-                Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "mjh260178", "snd")
+                Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
                 tfs = New TeamFoundationServer(TeamServerName, account)
             Catch ex As System.ServiceModel.FaultException
                 Throw ex
