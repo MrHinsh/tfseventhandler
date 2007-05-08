@@ -6,10 +6,11 @@ Imports System.Windows.Forms
 Namespace UI.FormControls
 
     Friend Class TreeNode_TeamServers
-        Inherits TreeNode
+        Inherits TreeNodeCustom(Of TreeNode_TeamServer)
 
         Private _EventHandler As TFSEventHandlerClient
         Private _ContextMenuStrip As New ContextMenuStrip
+        Private _DataThread As System.Threading.Thread
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient)
             Me.Text = "Team Servers"
@@ -24,9 +25,7 @@ Namespace UI.FormControls
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Initilise team server List
-            GenerateChildren()
-            ' Then make sure that all nodes are expanded
-            Me.ExpandAll()
+            System.Threading.ThreadPool.QueueUserWorkItem(AddressOf GenerateChildren)
         End Sub
 
         Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
@@ -39,21 +38,32 @@ Namespace UI.FormControls
             GenerateChildren(TeamServers)
         End Sub
 
-        Public Sub GenerateChildren(Optional ByVal TeamServers() As String = Nothing)
-            Me.Nodes.Clear()
+        Public Sub GenerateChildren(ByVal state As Object)
+            Me.UpdateStatus("Team Servers", Status.Loading)
+            Dim TeamServers() As String = Nothing
             Try
-                If TeamServers Is Nothing Then
-                    TeamServers = _EventHandler.GetServers()
-                End If
-                For Each s As String In TeamServers
-                    Me.Nodes.Add(New TreeNode_TeamServer(EventHandler, s))
-                Next
+                TeamServers = _EventHandler.GetServers()
             Catch ex As Exception
-                Me.Nodes.Add("Error:" & ex.ToString)
+                AddError("Error", ex)
+                Me.UpdateStatus("Team Servers", Status.Faulted)
+            Finally
+                GenerateChildren(TeamServers)
             End Try
-            If Me.Nodes.Count = 0 Then
-                Me.Nodes.Add("No Servers Found")
+        End Sub
+
+        Public Sub GenerateChildren(ByVal TeamServers() As String)
+            ClearNodes()
+            If Not TeamServers Is Nothing Then
+                For Each s As String In TeamServers
+                    AddNode(New TreeNode_TeamServer(EventHandler, s))
+                Next
             End If
+            If Me.Nodes.Count = 0 Then
+                AddMessage("No Servers Found")
+            End If
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
+            Me.UpdateStatus("Team Servers", Status.Loaded)
         End Sub
 
         Private Sub AddTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -61,6 +71,7 @@ Namespace UI.FormControls
             Dim url As New Uri(x)
             _EventHandler.AddServer(x.ToString, x.ToString)
         End Sub
+
 
     End Class
 

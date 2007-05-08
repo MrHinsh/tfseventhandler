@@ -6,7 +6,7 @@ Imports System.Windows.Forms
 Namespace UI.FormControls
 
     Friend Class TreeNode_EventHandlers
-        Inherits TreeNode
+        Inherits TreeNodeCustom(Of TreeNode_AssemblyItem)
 
         Private _EventHandler As TFSEventHandlerClient
         Private _ContextMenuStrip As New ContextMenuStrip
@@ -30,28 +30,35 @@ Namespace UI.FormControls
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Initilise Assembly List
-            GenerateChildren()
-            ' Then make sure that all nodes are expanded
-            Me.ExpandAll()
+            System.Threading.ThreadPool.QueueUserWorkItem(AddressOf GenerateChildren)
         End Sub
 
-        Public Sub GenerateChildren(Optional ByVal AssemblyManaifest As AssemblyManaifest = Nothing)
-            Me.Nodes.Clear()
+        Public Sub GenerateChildren(ByVal state As Object)
+            Me.UpdateStatus("Event Handlers", Status.Loading)
+            Dim AssemblyManaifest As AssemblyManaifest = Nothing
             Try
-                If AssemblyManaifest Is Nothing Then
-                    AssemblyManaifest = _EventHandler.GetAssemblys()
-                End If
-                If Not AssemblyManaifest.Assemblys Is Nothing Then
-                    For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
-                        Me.Nodes.Add(New TreeNode_AssemblyItem(EventHandler, AI))
-                    Next
-                End If
+                AssemblyManaifest = _EventHandler.GetAssemblys()
             Catch ex As Exception
-                Me.Nodes.Add("Error: " & ex.ToString)
+                AddError("Error", ex)
+                Me.UpdateStatus("Event Handler", Status.Faulted)
+            Finally
+                Me.GenerateChildren(AssemblyManaifest)
             End Try
-            If Me.Nodes.Count = 0 Then
-                Me.Nodes.Add("No Assemblies found")
+        End Sub
+
+        Public Sub GenerateChildren(ByVal AssemblyManaifest As AssemblyManaifest)
+            ClearNodes()
+            If Not AssemblyManaifest.Assemblys Is Nothing Then
+                For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
+                    AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
+                Next
             End If
+            If Me.Nodes.Count = 0 Then
+                AddMessage("No Assemblies found")
+            End If
+            Me.UpdateStatus("Event Handlers", Status.Loaded)
+            ' Then make sure that all nodes are expanded
+            Me.ExpandAll()
         End Sub
 
         Public Sub OnHandlersUpdated(ByVal AssemblyManaifest As RDdotNet.TeamFoundation.Services.DataContracts.AssemblyManaifest)
