@@ -83,6 +83,7 @@
     <Compile Include="Services\Adapters\DataContract.vb" />
     <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />
+    <Compile Include="Services\FaultContracts\TeamFoundationServerUnauthorizedException.vb" />
     <Compile Include="Services\ServiceFactory.vb" />
     <Compile Include="Services\Contracts\IEvents.vb" />
     <Compile Include="Services\Contracts\IHandlers.vb" />
