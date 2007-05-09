@@ -59,7 +59,7 @@ Namespace UI.FormControls
             _EventHandler = EventHandler
             _Delay = Delay
             _NodeName = NodeName
-            Me.Name = NodeName
+            Me.Text = NodeName
         End Sub
 
         Public Sub Refresh()
