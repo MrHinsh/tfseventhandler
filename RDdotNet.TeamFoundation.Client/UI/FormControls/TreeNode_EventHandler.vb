@@ -23,8 +23,8 @@ Namespace UI.FormControls
             '-----------------------
             ' Create Contect Menu as Add events
             _ContextMenuStrip = New ContextMenuStrip
-            _ContextMenuStrip.Items.Add(New ToolStripButton("Refresh"))
-            _ContextMenuStrip.Items.Add(New ToolStripButton("Remove"))
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Refresh", Nothing, AddressOf Refresh_Click))
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Remove", Nothing, AddressOf Remove_Click))
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             Dim AddedNodeID As Integer = 0
@@ -44,6 +44,14 @@ Namespace UI.FormControls
                 Return _EventHandler
             End Get
         End Property
+
+        Private Sub Refresh_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+        End Sub
+
+        Private Sub Remove_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+        End Sub
 
     End Class
 
