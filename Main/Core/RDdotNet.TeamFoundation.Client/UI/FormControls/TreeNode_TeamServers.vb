@@ -8,51 +8,37 @@ Namespace UI.FormControls
     Friend Class TreeNode_TeamServers
         Inherits TreeNodeCustom(Of TreeNode_TeamServer)
 
-        Private _EventHandler As TFSEventHandlerClient
-        Private _ContextMenuStrip As New ContextMenuStrip
-        Private _DataThread As System.Threading.Thread
-
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
-            Me.Text = "Team Servers"
-            Me.Delay = Delay
+            MyBase.New("Team Servers", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
-            _EventHandler = EventHandler
-            AddHandler _EventHandler.TeamServersUpdated, AddressOf OnTeamServersUpdated
+            AddHandler EventHandler.TeamServersUpdated, AddressOf OnTeamServersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
-            _ContextMenuStrip = New ContextMenuStrip
-            _ContextMenuStrip.Items.Add(New ToolStripButton("Add Team Server", Nothing, AddressOf AddTeamServer_Click))
-            Me.ContextMenuStrip = _ContextMenuStrip
+            ContextMenuStrip.Items.Add(New ToolStripButton("Add Team Server", Nothing, AddressOf AddTeamServer_Click))
             '-----------------------
             ' Initilise team server List
-            System.Threading.ThreadPool.QueueUserWorkItem(AddressOf GenerateChildren)
+            Refresh()
         End Sub
-
-        Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
-            Get
-                Return _EventHandler
-            End Get
-        End Property
 
         Public Sub OnTeamServersUpdated(ByVal TeamServers() As String)
             GenerateChildren(TeamServers)
         End Sub
 
-        Public Sub GenerateChildren(ByVal state As Object)
-            Me.UpdateStatus("Team Servers", Status.Working)
+        Protected Overrides Sub GenerateChildren(ByVal state As Object)
+            Me.ChangeStatus(Status.Working)
             Dim TeamServers() As String = Nothing
             Try
-                TeamServers = _EventHandler.GetServers()
+                TeamServers = EventHandler.GetServers()
             Catch ex As Exception
                 AddError("Error", ex)
-                Me.UpdateStatus("Team Servers", Status.Faulted)
+                Me.ChangeStatus(Status.Faulted)
             Finally
                 GenerateChildren(TeamServers)
             End Try
         End Sub
 
-        Public Sub GenerateChildren(ByVal TeamServers() As String)
+        Public Overloads Sub GenerateChildren(ByVal TeamServers() As String)
             ClearNodes()
             If Not TeamServers Is Nothing Then
                 For Each s As String In TeamServers
@@ -64,7 +50,7 @@ Namespace UI.FormControls
             End If
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
-            Me.UpdateStatus("Team Servers", Status.Normal)
+            Me.ChangeStatus(Status.Normal)
         End Sub
 
         Private Sub AddTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -76,7 +62,7 @@ Namespace UI.FormControls
                 frmConnectTo.Dispose()
                 '---------
                 Dim ServerUri As Uri = frmConnectTo.ServerUri
-                _EventHandler.AddServer(ServerUri.ToString, ServerUri.ToString)
+                EventHandler.AddServer(ServerUri.ToString, ServerUri.ToString)
             End If
         End Sub
 
