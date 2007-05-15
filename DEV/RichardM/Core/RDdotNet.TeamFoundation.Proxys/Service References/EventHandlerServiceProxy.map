@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceReference>
+	<ProxyGenerationParameters
+		ServiceReferenceUri="http://hinshlap02:6662/TFSEventHandler"
+		Name="EventHandlerServiceProxy"
+		NotifyPropertyChange="False"
+		UseObservableCollection="False">
+	</ProxyGenerationParameters>
+	<EndPoints>
+		<EndPoint
+			Address="http://hinshlap02:6662/TFSEventHandler/Handlers"
+			BindingConfiguration="WSDualHttpBinding_IHandlers1"
+			Contract="EventHandlerServiceProxy.IHandlers"
+			>
+		</EndPoint>
+		<EndPoint
+			Address="http://hinshlap02:6662/TFSEventHandler/Events"
+			BindingConfiguration="WSDualHttpBinding_IEvents"
+			Contract="EventHandlerServiceProxy.IEvents"
+			>
+		</EndPoint>
+	</EndPoints>
+</ServiceReference>
