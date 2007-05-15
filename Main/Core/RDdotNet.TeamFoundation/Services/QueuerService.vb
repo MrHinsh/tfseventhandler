@@ -46,8 +46,8 @@ Namespace Services
             Try
                 Dim ui As ICredentialsProvider = New UICredentialsProvider
 
-                Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
-                tfs = New TeamFoundationServer(TeamServerName, account)
+                'Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
+                tfs = New TeamFoundationServer(TeamServerName, ui)
             Catch ex As System.ServiceModel.FaultException
                 Throw ex
             End Try
@@ -73,7 +73,7 @@ Namespace Services
         Public Function GetServerSubs(ByVal TeamServerName As String) As Server.Subscription()
             Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
             Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-            Return EventService.EventSubscriptions("EMEA\srvteamsetup", "EventAdminService")
+            Return EventService.EventSubscriptions("TFSEventHandler", "EventAdminService")
         End Function
 
         Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
@@ -161,7 +161,7 @@ Namespace Services
                     delivery.Type = DeliveryType.Soap
                     delivery.Schedule = DeliverySchedule.Immediate
                     delivery.Address = ServiceUrl
-                    Dim subId As Integer = EventService.SubscribeEvent("EMEA\srvteamsetup", EventType.ToString, "", delivery, "EventAdminService")
+                    Dim subId As Integer = EventService.SubscribeEvent("TFSEventHandler", EventType.ToString, "", delivery, "EventAdminService")
                     If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Event Subscribed:" & TeamServerName)
                     SubscriptionAdminCallback.Updated(GetSubscriptions)
                 Next
@@ -201,7 +201,7 @@ Namespace Services
                 Return Subscriptions
             Catch ex As TeamFoundationServerUnauthorizedException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                Throw New FaultContracts.TeamFoundationServerUnauthorizedException
+                Throw New FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)(New FaultContracts.TeamFoundationServerUnauthorizedException())
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
                 Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))

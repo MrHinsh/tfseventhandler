@@ -3,7 +3,7 @@ Public Class frmConnectTo
     Private _Protocol As Protocol = Protocol.None
     Private _ServerName As String = ""
     Private _Port As Integer = 0
-    Private _ConnectTo As String = "[Server]"
+    Private _ConnectTo As String = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName
 
     Public ReadOnly Property ServerName() As String
         Get

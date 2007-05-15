@@ -21,6 +21,8 @@ Namespace Services
             Binding.ReaderQuotas.MaxArrayLength = 655360
             Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
             Binding.Security.Message.NegotiateServiceCredential = True
+            Binding.ClientBaseAddress = New System.Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":660")
+            Binding.BypassProxyOnLocal = True
             Return Binding
         End Function
 
@@ -31,6 +33,7 @@ Namespace Services
             'Binding.ReaderQuotas.MaxArrayLength = 655360
             Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
             Binding.Security.Message.NegotiateServiceCredential = True
+            Binding.BypassProxyOnLocal = True
             Return Binding
         End Function
 
@@ -47,8 +50,8 @@ Namespace Services
         Public Shared Function GetEventHandlerServiceHost(ByVal Port As Integer) As ServiceHost
             '---------------
             Dim baseAddresses() As Uri = { _
-                            New Uri(String.Format("net.msmq://{0}/private/TFSEventHandler", My.Computer.Name)), _
-                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/EventHandling", My.Computer.Name, Port)) _
+                            New Uri(String.Format("net.msmq://{0}/private/TFSEventHandler", System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)), _
+                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/EventHandling", System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName, Port)) _
                             }
             '---------------
             Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)

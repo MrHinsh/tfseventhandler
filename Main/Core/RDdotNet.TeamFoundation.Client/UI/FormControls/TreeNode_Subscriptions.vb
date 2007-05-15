@@ -1,6 +1,8 @@
 Imports system.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Clients
 Imports RDdotNet.TeamFoundation.Services.DataContracts
+Imports RDdotNet.TeamFoundation.Services.FaultContracts
+Imports system.ServiceModel
 Imports System.Windows.Forms
 
 Namespace UI.FormControls
@@ -31,7 +33,7 @@ Namespace UI.FormControls
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
                 subscriptions = EventHandler.GetSubscriptions()
-            Catch ex As Services.FaultContracts.TeamFoundationServerUnauthorizedException
+            Catch ex As FaultException(Of TeamFoundationServerUnauthorizedException)
                 AddError("TFS Denied", ex)
                 Me.ChangeStatus(Status.Faulted)
             Catch ex As ServiceModel.FaultException
