@@ -11,7 +11,6 @@ Namespace Services.FaultContracts
 
     <DataContract()> _
     Public Class InvalidEventHandlerAssembly
-        Inherits System.ServiceModel.FaultException
 
         Public Sub New()
 

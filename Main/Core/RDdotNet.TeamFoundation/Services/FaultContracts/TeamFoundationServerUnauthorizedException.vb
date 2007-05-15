@@ -11,10 +11,9 @@ Namespace Services.FaultContracts
 
     <DataContract()> _
     Public Class TeamFoundationServerUnauthorizedException
-        Inherits System.ServiceModel.FaultException
 
         Public Sub New()
-            MyBase.New("You do not have permission to perform this action")
+
         End Sub
 
     End Class

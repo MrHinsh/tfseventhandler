@@ -21,7 +21,7 @@ Namespace UI.FormControls
         End Sub
 
         Private Sub uxToolStripButtonAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-            Dim frmConnectTo As New frmConnectTo("TFS Event Handler Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=6661, ServerName:=My.Computer.Name)
+            Dim frmConnectTo As New frmConnectTo("TFS Event Handler Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=6661, ServerName:=System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)
             Dim DialogResult As DialogResult = frmConnectTo.ShowDialog(Me)
             If DialogResult = Windows.Forms.DialogResult.OK Then
                 '---------
