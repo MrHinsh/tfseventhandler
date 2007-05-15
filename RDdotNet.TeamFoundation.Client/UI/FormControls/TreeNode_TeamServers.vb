@@ -54,7 +54,7 @@ Namespace UI.FormControls
         End Sub
 
         Private Sub AddTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
-            Dim frmConnectTo As New frmConnectTo("Team Foundation Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=8080, ServerName:=My.Computer.Name)
+            Dim frmConnectTo As New frmConnectTo("Team Foundation Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=8080, ServerName:=System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)
             Dim DialogResult As DialogResult = frmConnectTo.ShowDialog()
             If DialogResult = Windows.Forms.DialogResult.OK Then
                 '---------

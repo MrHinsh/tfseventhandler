@@ -18,7 +18,7 @@ Namespace Clients
         Implements Contracts.IEvents
         Implements IDisposable
 
-        Private _Server As Uri = New Uri("http://localhost:6661")
+        Private _Server As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
 
         Public ReadOnly Property Server() As Uri
             Get
