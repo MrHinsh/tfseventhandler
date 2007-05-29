@@ -10,11 +10,17 @@ Public Class Form1
 
         Dim queueName As String = ".\private$\TFSEventHandler"
         ' Create the transacted MSMQ queue, if necessary.
-        If Not MessageQueue.Exists(queueName) Then
-            MessageQueue.Create(queueName, True)
-        End If
-        ButtonQHStart.PerformClick()
-        ButtonEHHStart.PerformClick()
+        Try
+            If Not MessageQueue.Exists(queueName) Then
+                MessageQueue.Create(queueName, True)
+            End If
+            ButtonQHStart.PerformClick()
+            ButtonEHHStart.PerformClick()
+        Catch ioe As InvalidOperationException
+            My.Application.Log.WriteException(ioe)
+        Catch ex As Exception
+            My.Application.Log.WriteException(ex)
+        End Try
     End Sub
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing

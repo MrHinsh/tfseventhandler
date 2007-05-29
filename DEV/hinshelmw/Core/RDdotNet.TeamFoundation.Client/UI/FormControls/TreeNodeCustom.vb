@@ -60,6 +60,9 @@ Namespace UI.FormControls
             _Delay = Delay
             _NodeName = NodeName
             Me.Text = NodeName
+            ' Add default Context Menu itesm
+            ContextMenuStrip.Items.Add(New ToolStripButton("Refresh", Nothing, AddressOf Refresh_Click))
+            ContextMenuStrip.Items.Add(New ToolStripSeparator())
         End Sub
 
         Public Sub Refresh()
@@ -67,7 +70,17 @@ Namespace UI.FormControls
             System.Threading.ThreadPool.QueueUserWorkItem(AddressOf GenerateChildren)
         End Sub
 
+        Private Sub WaitGenerateChildren(ByVal state As Object)
+            System.Threading.Thread.Sleep(500)
+            GenerateChildren(state)
+        End Sub
+
         Protected MustOverride Sub GenerateChildren(ByVal state As Object)
+
+        Private Sub Refresh_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Me.Refresh()
+        End Sub
+
 
 #Region " Thread Safe "
 
@@ -123,6 +136,9 @@ Namespace UI.FormControls
         End Sub
 
         Protected Sub ChangeStatus(ByVal Status As Status)
+            While Me.TreeView Is Nothing
+                System.Threading.Thread.Sleep(10)
+            End While
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New UpdateStatusDelegate(AddressOf ChangeStatus), Status)
                 System.Threading.Thread.Sleep(_Delay)
