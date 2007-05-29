@@ -41,7 +41,7 @@ Public Class frmConnectTo
         End Select
         ' Set Defaults for Port
         If _Port > 0 Then
-            Me.uxTextBoxPort.Text = _Port
+            Me.uxTextBoxPort.Text = CStr(_Port)
             Me.uxTextBoxPort.Enabled = False
         End If
         ' Set server name stuff
@@ -116,7 +116,7 @@ Public Class frmConnectTo
     Private Sub uxButtonConnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles uxButtonConnect.Click
         _ServerName = Me.uxTextBoxServerName.Text
         Try
-            _Port = Me.uxTextBoxPort.Text
+            _Port = CInt(Me.uxTextBoxPort.Text)
         Catch ex As Exception
             MsgBox("The port number you entered is not valid!", MsgBoxStyle.Critical, "Port Error")
             Me.uxButtonConnect.Enabled = False

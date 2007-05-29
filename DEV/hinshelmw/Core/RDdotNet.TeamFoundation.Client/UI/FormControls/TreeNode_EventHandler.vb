@@ -30,11 +30,11 @@ Namespace UI.FormControls
             Dim AddedNodeID As Integer = 0
             ' Add Team Servers
             AddedNodeID = Me.Nodes.Add(New TreeNode_TeamServers(EventHandler, 100))
-            _TeamServersNode = Me.Nodes(AddedNodeID)
+            _TeamServersNode = CType(Me.Nodes(AddedNodeID), TreeNode_TeamServers)
             AddedNodeID = Me.Nodes.Add(New TreeNode_EventHandlers(EventHandler, 100))
-            _EventHandlersNode = Me.Nodes(AddedNodeID)
+            _EventHandlersNode = CType(Me.Nodes(AddedNodeID), TreeNode_EventHandlers)
             AddedNodeID = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, 100))
-            _SubscriptionsNode = Me.Nodes(AddedNodeID)
+            _SubscriptionsNode = CType(Me.Nodes(AddedNodeID), TreeNode_Subscriptions)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
@@ -46,7 +46,9 @@ Namespace UI.FormControls
         End Property
 
         Private Sub Refresh_Click(ByVal sender As Object, ByVal e As EventArgs)
-
+            _TeamServersNode.Refresh()
+            _EventHandlersNode.Refresh()
+            _SubscriptionsNode.Refresh()
         End Sub
 
         Private Sub Remove_Click(ByVal sender As Object, ByVal e As EventArgs)
