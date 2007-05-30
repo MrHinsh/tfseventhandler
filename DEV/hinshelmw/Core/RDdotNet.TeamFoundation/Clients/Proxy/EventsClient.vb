@@ -1,6 +1,6 @@
 Namespace Clients.Proxy
 
-    Friend Class EventsClient
+    Public Class EventsClient
         Inherits System.ServiceModel.ClientBase(Of Services.Contracts.IEvents)
         Implements Services.Contracts.IEvents
 
