@@ -14,6 +14,8 @@ Namespace Services
 
 #Region " Bindings "
 
+
+
         Friend Shared Function GetSecureWSDualHttpBinding() As WSDualHttpBinding
             Dim Binding As New WSDualHttpBinding(WSDualHttpSecurityMode.Message)
             Binding.MaxReceivedMessageSize = 655360

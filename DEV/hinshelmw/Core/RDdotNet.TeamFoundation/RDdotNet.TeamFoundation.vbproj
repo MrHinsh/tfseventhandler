@@ -57,10 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyHelper.vb" />
+    <Compile Include="Clients\RDdotNetServerFactory.vb" />
+    <Compile Include="Clients\TFSEventHandlerServer.vb" />
+    <Compile Include="Clients\Services\WcfServiceBase.vb" />
+    <Compile Include="Clients\Services\EventsService.vb" />
     <Compile Include="Clients\Proxy\EventsClient.vb" />
     <Compile Include="Clients\Proxy\HandlersClient.vb" />
     <Compile Include="Clients\Proxy\TeamServersClient.vb" />
-    <Compile Include="Clients\TFSEventHandlerClient.vb" />
+    <Compile Include="Clients\Services\ServiceBase.vb" />
+    <Compile Include="Clients\RDdotNetServer.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\DebugItemElement.vb" />

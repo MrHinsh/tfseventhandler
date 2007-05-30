@@ -8,10 +8,10 @@ Namespace UI.FormControls
     Friend Class TreeNode_Subscription
         Inherits TreeNode
 
-        Private _EventHandler As TFSEventHandlerClient
+        Private _EventHandler As TFSEventHandlerServer
         Private _ContextMenuStrip As New ContextMenuStrip
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal Subscription As Subscription)
+        Public Sub New(ByVal EventHandler As TFSEventHandlerServer, ByVal Subscription As Subscription)
             Me.Text = String.Format("{0} {1} {2}", Subscription.ID, Subscription.EventType.ToString, Subscription.Address)
             '-----------------------
             ' Create Handler and attach Events
@@ -26,7 +26,7 @@ Namespace UI.FormControls
             Me.ExpandAll()
         End Sub
 
-        Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
+        Friend ReadOnly Property EventHandler() As TFSEventHandlerServer
             Get
                 Return _EventHandler
             End Get

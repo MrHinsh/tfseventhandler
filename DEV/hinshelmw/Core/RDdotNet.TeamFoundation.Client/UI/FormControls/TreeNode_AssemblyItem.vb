@@ -8,11 +8,11 @@ Namespace UI.FormControls
     Friend Class TreeNode_AssemblyItem
         Inherits TreeNode
 
-        Private _EventHandler As TFSEventHandlerClient
+        Private _EventHandler As TFSEventHandlerServer
         Private _AssemblyItem As AssemblyItem
         Private _ContextMenuStrip As New ContextMenuStrip
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal AssemblyItem As AssemblyItem)
+        Public Sub New(ByVal EventHandler As TFSEventHandlerServer, ByVal AssemblyItem As AssemblyItem)
             Me.Text = "Assembly: " & AssemblyItem.Name.FullName
             _AssemblyItem = AssemblyItem
             '-----------------------

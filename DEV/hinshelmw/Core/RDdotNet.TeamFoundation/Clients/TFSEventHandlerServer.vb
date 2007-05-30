@@ -8,7 +8,7 @@ Imports RDdotNet.TeamFoundation.Events
 
 Namespace Clients
 
-    Public Class TFSEventHandlerClient
+    Public Class TFSEventHandlerServer
         Implements Contracts.ISubscriptions
         Implements Contracts.ISubscriptionsCallback
         Implements Contracts.ITeamServers
@@ -19,6 +19,7 @@ Namespace Clients
         Implements IDisposable
 
         Private _Server As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
+        Private _ConnectedServices As New Collection
 
         Public ReadOnly Property Server() As Uri
             Get
@@ -30,6 +31,7 @@ Namespace Clients
             If Not Server Is Nothing Then
                 _Server = Server
             End If
+
         End Sub
 
         Public Sub Open()
@@ -194,7 +196,7 @@ Namespace Clients
         End Sub
 
         Public Function ServceUrl() As System.Uri Implements Services.Contracts.ITeamServers.ServceUrl
-            Return Nothing
+            Return TeamServersClient.ServceUrl()
         End Function
 
         Public Sub Updated(ByVal TeamServers() As String) Implements Services.Contracts.ITeamServersCallback.Updated
