@@ -239,12 +239,12 @@ Namespace Services
 
 #Region " INotification "
 
-        Private _EventHandlerClient As Clients.TFSEventHandlerClient
+        Private _EventHandlerClient As Clients.TFSEventHandlerServer
 
-        Public ReadOnly Property EventHandlerClient() As Clients.TFSEventHandlerClient
+        Public ReadOnly Property EventHandlerClient() As Clients.TFSEventHandlerServer
             Get
                 If _EventHandlerClient Is Nothing Then
-                    _EventHandlerClient = New Clients.TFSEventHandlerClient()
+                    _EventHandlerClient = New Clients.TFSEventHandlerServer()
                 End If
                 Return _EventHandlerClient
             End Get

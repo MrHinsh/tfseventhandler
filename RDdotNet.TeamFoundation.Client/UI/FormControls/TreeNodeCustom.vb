@@ -14,12 +14,12 @@ Namespace UI.FormControls
     Public MustInherit Class TreeNodeCustom(Of T As {TreeNode})
         Inherits TreeNode
 
-        Private _EventHandler As TFSEventHandlerClient
+        Private _EventHandler As TFSEventHandlerServer
         Private _Delay As Integer = 0
         Private _NodeName As String = "[Enter Node Name]"
         Private _Status As Status = Status.Normal
 
-        Public ReadOnly Property EventHandler() As TFSEventHandlerClient
+        Public ReadOnly Property EventHandler() As TFSEventHandlerServer
             Get
                 Return _EventHandler
             End Get
@@ -55,7 +55,7 @@ Namespace UI.FormControls
             End Set
         End Property
 
-        Public Sub New(ByVal NodeName As String, ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
+        Public Sub New(ByVal NodeName As String, ByVal EventHandler As TFSEventHandlerServer, Optional ByVal Delay As Integer = 0)
             _EventHandler = EventHandler
             _Delay = Delay
             _NodeName = NodeName
