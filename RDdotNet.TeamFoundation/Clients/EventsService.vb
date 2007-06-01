@@ -12,6 +12,7 @@ Namespace Clients
         Inherits WcfServiceBase(Of Proxy.EventsClient, WSDualHttpBinding)
         Implements Services.Contracts.IEvents
 
+
         Public Sub New(Optional ByVal Server As Uri = Nothing)
             MyBase.New(Server, "TFSEventHandler/EventHandling/Handlers")
         End Sub
@@ -43,6 +44,7 @@ Namespace Clients
         Friend Overrides Function GetClient() As Proxy.EventsClient
             Return New Proxy.EventsClient(GetBinding, Me.EndPoint)
         End Function
+
 
     End Class
 
