@@ -1,6 +1,6 @@
 Namespace Clients.Proxy
 
-    Friend Class HandlersClient
+    Public Class HandlersClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.IHandlers)
         Implements Services.Contracts.IHandlers
 

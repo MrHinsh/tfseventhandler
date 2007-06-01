@@ -30,13 +30,22 @@ Namespace Clients
 
 #End Region
 
-        Public ConnectedServers As New System.Collections.Generic.Dictionary(Of Uri, RDdotNetServer)
+        Private Servers As New System.Collections.Generic.Dictionary(Of Uri, RDdotNetServer)
 
         Public Shared Function GetServer(ByVal Server As Uri) As RDdotNetServer
-            If Not Instance.ConnectedServers.ContainsKey(Server) Then
-                Instance.ConnectedServers.Add(Server, New RDdotNetServer(Server))
+            If Not Instance.Servers.ContainsKey(Server) Then
+                Try
+                    Dim RDdotNetServer As New RDdotNetServer(Server)
+                    If RDdotNetServer.Authenticated Then
+                        Instance.Servers.Add(Server, RDdotNetServer)
+                    Else
+                        Throw New InvalidOperationException
+                    End If
+                Catch ex As Exception
+                    Throw New InvalidOperationException
+                End Try
             End If
-            Return Instance.ConnectedServers(Server)
+            Return Instance.Servers(Server)
         End Function
 
     End Class

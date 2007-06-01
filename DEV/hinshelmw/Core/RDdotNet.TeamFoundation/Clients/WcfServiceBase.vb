@@ -9,7 +9,13 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace Clients
 
     Public MustInherit Class WcfServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
-        Inherits ServiceBase
+        Implements IService
+
+        Public ReadOnly Property ServiceType() As ServiceTypes Implements IService.ServiceType
+            Get
+                Return ServiceTypes.Wcf
+            End Get
+        End Property
 
         Private _Server As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
         Private _Location As String = "WcfServiceBase"
@@ -46,6 +52,24 @@ Namespace Clients
         Friend MustOverride Function GetBinding() As TBinding
         Friend MustOverride Function GetClient() As TClient
 
+        Public ReadOnly Property Contracts() As System.Type() Implements IService.Contracts
+            Get
+                Dim a As New ArrayList
+                For Each t As Type In Me.GetType.GetInterfaces
+                    If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
+                        a.Add(t)
+                    End If
+                Next
+                Return a.ToArray(GetType(System.Type))
+            End Get
+        End Property
+
+        Public ReadOnly Property ServiceName() As String Implements IService.ServiceName
+            Get
+                Return Me.GetType.Name
+            End Get
+        End Property
+
         Public Sub New(ByVal Server As Uri, ByVal Location As String)
             If Not Server Is Nothing Then
                 _Server = Server
@@ -56,6 +80,11 @@ Namespace Clients
                 Throw New InvalidOperationException("You must provide a valid location")
             End If
         End Sub
+
+        Public Function Authenticated() As Boolean Implements IService.Authenticated
+            Throw New NotImplementedException
+        End Function
+
 
     End Class
 
