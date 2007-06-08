@@ -5,11 +5,11 @@ Imports System.Collections.ObjectModel
 Namespace Clients
 
     Public MustInherit Class WcfServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
-        Implements IService
+        Implements IClientService
 
-        Public ReadOnly Property ServiceType() As ServiceTypes Implements IService.ServiceType
+        Public ReadOnly Property ServiceType() As ClientServiceTypes Implements IClientService.ServiceType
             Get
-                Return ServiceTypes.Wcf
+                Return ClientServiceTypes.Wcf
             End Get
         End Property
 
@@ -48,7 +48,7 @@ Namespace Clients
         Protected MustOverride Function GetBinding() As TBinding
         Protected MustOverride Function GetClient() As TClient
 
-        Public ReadOnly Property Contracts() As System.Type() Implements IService.Contracts
+        Public ReadOnly Property Contracts() As System.Type() Implements IClientService.Contracts
             Get
                 Dim a As New ArrayList
                 For Each t As Type In Me.GetType.GetInterfaces
@@ -60,7 +60,7 @@ Namespace Clients
             End Get
         End Property
 
-        Public ReadOnly Property ServiceName() As String Implements IService.ServiceName
+        Public ReadOnly Property ServiceName() As String Implements IClientService.ServiceName
             Get
                 Return Me.GetType.Name
             End Get
@@ -77,11 +77,18 @@ Namespace Clients
             End If
         End Sub
 
-        Public Function Authenticated() As Boolean Implements IService.Authenticated
+        Public Function Authenticated() As Boolean Implements IClientService.Authenticated
             Throw New NotImplementedException
         End Function
 
 
+        Public Sub Start() Implements IClientService.Start
+
+        End Sub
+
+        Public Sub [Stop]() Implements IClientService.Stop
+
+        End Sub
     End Class
 
 End Namespace

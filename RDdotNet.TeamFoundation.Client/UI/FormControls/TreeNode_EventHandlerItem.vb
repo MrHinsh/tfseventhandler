@@ -8,11 +8,11 @@ Namespace UI.FormControls
     Friend Class TreeNode_EventHandlerItem
         Inherits TreeNode
 
-        Private _EventHandler As TFSEventHandlerServer
+        Private _EventHandler As Servers.TFSEventHandlerServer
         Private _EventHandlerItem As EventHandlerItem
         Private _ContextMenuStrip As New ContextMenuStrip
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerServer, ByVal EventHandlerItem As EventHandlerItem)
+        Public Sub New(ByVal EventHandler As Servers.TFSEventHandlerServer, ByVal EventHandlerItem As EventHandlerItem)
             Me.Text = String.Format("{0} ({1})", EventHandlerItem.HandlerType.FullName, EventHandlerItem.EventType.ToString)
             _EventHandlerItem = EventHandlerItem
             '-----------------------
