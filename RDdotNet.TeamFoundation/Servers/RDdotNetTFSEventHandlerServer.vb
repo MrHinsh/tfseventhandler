@@ -9,7 +9,8 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace Servers
 
     Public Class RDdotNetTFSEventHandlerServer
-        Inherits RDdotNet.Clients.RDdotNetServerBase
+        Inherits RDdotNet.Servers.RDdotNetServerBase
+
 
         Protected Overrides Sub OnServicesLoad(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
             ClientServices.Add(New TeamFoundation.Clients.EventsService(Me.Uri))
@@ -19,7 +20,6 @@ Namespace Servers
         Protected Overrides Sub OnServicesUnload(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
 
         End Sub
-
     End Class
 
 
