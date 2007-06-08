@@ -10,7 +10,7 @@ Namespace UI.FormControls
     Friend Class TreeNode_Subscriptions
         Inherits TreeNodeCustom(Of TreeNode_Subscription)
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerServer, Optional ByVal Delay As Integer = 0)
+        Public Sub New(ByVal EventHandler As Servers.TFSEventHandlerServer, Optional ByVal Delay As Integer = 0)
             MyBase.New("Subscriptions", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events

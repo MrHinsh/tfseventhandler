@@ -8,7 +8,7 @@ Namespace UI.FormControls
     Friend Class TreeNode_TeamServers
         Inherits TreeNodeCustom(Of TreeNode_TeamServer)
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerServer, Optional ByVal Delay As Integer = 0)
+        Public Sub New(ByVal EventHandler As Servers.TFSEventHandlerServer, Optional ByVal Delay As Integer = 0)
             MyBase.New("Team Servers", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
