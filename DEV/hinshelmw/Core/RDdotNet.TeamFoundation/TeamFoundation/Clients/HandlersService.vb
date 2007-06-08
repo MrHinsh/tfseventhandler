@@ -20,7 +20,7 @@ Namespace TeamFoundation.Clients
 #Region " WcfServiceBase "
 
         Public Sub New(Optional ByVal Server As Uri = Nothing)
-            MyBase.New(Server, "TFSEventHandler/EventHandling/Handlers")
+            MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
         End Sub
 
         Protected Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding

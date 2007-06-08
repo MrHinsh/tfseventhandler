@@ -37,7 +37,7 @@ Namespace UI.FormControls
             ' Get Selected Team Server
             Dim TeamServer As TreeNode_TeamServer = CType(Me.TreeView.SelectedNode, TreeNode_TeamServer)
             ' Call remove
-            _EventHandler.RemoveServer(TeamServer.Name)
+            _EventHandler.TeamServersService.RemoveServer(TeamServer.Name)
         End Sub
 
     End Class

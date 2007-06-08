@@ -8,18 +8,48 @@ Imports RDdotNet.TeamFoundation.Events
 
 Namespace Servers
 
-    Public Class RDdotNetTFSEventHandlerServer
+    Public Class TFSEventHandlerServer
         Inherits RDdotNet.Servers.RDdotNetServerBase
 
+        Public Sub New(Optional ByVal uri As System.Uri = Nothing)
+            MyBase.New(uri)
+        End Sub
 
         Protected Overrides Sub OnServicesLoad(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
-            ClientServices.Add(New TeamFoundation.Clients.EventsService(Me.Uri))
-            ClientServices.Add(New TeamFoundation.Clients.HandlersService(Me.Uri))
+            ClientServices.Add(New TeamFoundation.Clients.EventsService(Me.ServerUri))
+            ClientServices.Add(New TeamFoundation.Clients.HandlersService(Me.ServerUri))
+            ClientServices.Add(New TeamFoundation.Clients.TeamServersService(Me.ServerUri))
+            ClientServices.Add(New TeamFoundation.Clients.SubscriptionsService(Me.ServerUri))
         End Sub
 
         Protected Overrides Sub OnServicesUnload(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
 
         End Sub
+
+        Public ReadOnly Property EventsService() As TeamFoundation.Clients.EventsService
+            Get
+                Return Me.GetService(Of TeamFoundation.Clients.EventsService)()
+            End Get
+        End Property
+
+        Public ReadOnly Property HandlersService() As TeamFoundation.Clients.HandlersService
+            Get
+                Return Me.GetService(Of TeamFoundation.Clients.HandlersService)()
+            End Get
+        End Property
+
+        Public ReadOnly Property TeamServersService() As TeamFoundation.Clients.TeamServersService
+            Get
+                Return Me.GetService(Of TeamFoundation.Clients.TeamServersService)()
+            End Get
+        End Property
+
+        Public ReadOnly Property SubscriptionsService() As TeamFoundation.Clients.SubscriptionsService
+            Get
+                Return Me.GetService(Of TeamFoundation.Clients.SubscriptionsService)()
+            End Get
+        End Property
+
     End Class
 
 

@@ -12,7 +12,7 @@ Namespace UI.FormControls
             MyBase.New("Event Handlers", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
-            AddHandler EventHandler.HandlersUpdated, AddressOf OnHandlersUpdated
+            AddHandler EventHandler.HandlersService.HandlersUpdated, AddressOf OnHandlersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
             ContextMenuStrip.Items.Add(New ToolStripButton("Add Assembly")) 'TODO: , Nothing, AddressOf AddTeamServer_Click))
@@ -25,7 +25,7 @@ Namespace UI.FormControls
             Me.ChangeStatus(Status.Working)
             Dim AssemblyManaifest As AssemblyManaifest = Nothing
             Try
-                AssemblyManaifest = EventHandler.GetAssemblys()
+                AssemblyManaifest = EventHandler.HandlersService.GetAssemblys()
             Catch ex As Exception
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
