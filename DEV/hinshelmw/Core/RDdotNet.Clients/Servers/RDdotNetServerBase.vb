@@ -2,13 +2,13 @@ Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 
 
-Namespace Clients
+Namespace Servers
 
     Public MustInherit Class RDdotNetServerBase
         Implements IDisposable
 
         Private _Uri As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
-        Private _ClientServices As New Collection(Of IClientService)
+        Private _ClientServices As New Collection(Of Clients.IClientService)
         Private _ClientServicesLoaded As Boolean = False
 
         Public ReadOnly Property Uri() As Uri
@@ -33,7 +33,7 @@ Namespace Clients
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(Of TService As IClientService)() As TService
+        Public Function GetService(Of TService As Clients.IClientService)() As TService
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As TService In _ClientServices
                 Dim obj As Object = service
@@ -44,9 +44,9 @@ Namespace Clients
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(ByVal Name As String) As IClientService
+        Public Function GetService(ByVal Name As String) As Clients.IClientService
             If Not _ClientServicesLoaded Then LoadServices()
-            For Each service As IClientService In _ClientServices
+            For Each service As Clients.IClientService In _ClientServices
                 If service.ServiceName = Name Then
                     Return service
                 End If
@@ -60,14 +60,14 @@ Namespace Clients
             OnServicesPostLoad(_ClientServices)
         End Sub
 
-        Protected Overridable Sub OnServicesPreLoad(ByRef ClientServices As Collection(Of IClientService))
+        Protected Overridable Sub OnServicesPreLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
 
         End Sub
 
-        Protected MustOverride Sub OnServicesLoad(ByRef ClientServices As Collection(Of IClientService))
+        Protected MustOverride Sub OnServicesLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
 
-        Protected Overridable Sub OnServicesPostLoad(ByRef ClientServices As Collection(Of IClientService))
-            For Each ClientService As IClientService In ClientServices
+        Protected Overridable Sub OnServicesPostLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
+            For Each ClientService As Clients.IClientService In ClientServices
                 ClientService.Start()
             Next
         End Sub
@@ -76,7 +76,7 @@ Namespace Clients
             OnServicesUnload(_ClientServices)
         End Sub
 
-        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of IClientService))
+        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of Clients.IClientService))
 
 #Region " IDisposable "
 
