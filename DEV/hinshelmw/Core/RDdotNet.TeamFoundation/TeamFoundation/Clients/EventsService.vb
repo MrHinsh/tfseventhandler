@@ -14,7 +14,7 @@ Namespace TeamFoundation.Clients
         Implements Services.Contracts.IEvents
 
         Public Sub New(Optional ByVal Server As Uri = Nothing)
-            MyBase.New(Server, "TFSEventHandler/EventHandling/Handlers")
+            MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
         End Sub
 
         Friend Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseCheckinEvent

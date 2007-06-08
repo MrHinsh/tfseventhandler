@@ -12,7 +12,7 @@ Namespace UI.FormControls
             MyBase.New("Team Servers", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
-            AddHandler EventHandler.TeamServersUpdated, AddressOf OnTeamServersUpdated
+            AddHandler EventHandler.TeamServersService.TeamServersUpdated, AddressOf OnTeamServersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
             ContextMenuStrip.Items.Add(New ToolStripButton("Add Team Server", Nothing, AddressOf AddTeamServer_Click))
@@ -29,7 +29,7 @@ Namespace UI.FormControls
             Me.ChangeStatus(Status.Working)
             Dim TeamServers() As String = Nothing
             Try
-                TeamServers = EventHandler.GetServers()
+                TeamServers = EventHandler.TeamServersService.GetServers()
             Catch ex As Exception
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
@@ -62,7 +62,7 @@ Namespace UI.FormControls
                 frmConnectTo.Dispose()
                 '---------
                 Dim ServerUri As Uri = frmConnectTo.ServerUri
-                EventHandler.AddServer(ServerUri.ToString, ServerUri.ToString)
+                EventHandler.TeamServersService.AddServer(ServerUri.ToString, ServerUri.ToString)
             End If
         End Sub
 
