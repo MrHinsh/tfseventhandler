@@ -11,7 +11,7 @@ Namespace Clients
     Public Delegate Sub HandlersUpdated(ByVal AssemblyManaifest As Services.DataContracts.AssemblyManaifest)
 
     Public Class HandlersService
-        Inherits WcfServiceBase(Of Proxy.HandlersClient, WSDualHttpBinding)
+        Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.HandlersClient, WSDualHttpBinding)
         Implements Services.Contracts.IHandlers
         Implements Services.Contracts.IHandlersCallback
 
@@ -23,7 +23,7 @@ Namespace Clients
             MyBase.New(Server, "TFSEventHandler/EventHandling/Handlers")
         End Sub
 
-        Friend Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding
+        Protected Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding
             Dim Binding As New WSDualHttpBinding(WSDualHttpSecurityMode.Message)
             Binding.MaxReceivedMessageSize = 655360
             Binding.ReaderQuotas.MaxStringContentLength = 655360
@@ -35,8 +35,8 @@ Namespace Clients
             Return Binding
         End Function
 
-        Friend Overrides Function GetClient() As Proxy.HandlersClient
-            Return New Proxy.HandlersClient(New InstanceContext(Me), GetBinding, Me.EndPoint)
+        Protected Overrides Function GetClient() As Proxies.HandlersClient
+            Return New Proxies.HandlersClient(New InstanceContext(Me), GetBinding, Me.EndPoint)
         End Function
 
 #End Region

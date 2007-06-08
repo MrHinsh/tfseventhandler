@@ -36,7 +36,7 @@ Namespace Clients
 
         Private _Client As TClient
 
-        Friend ReadOnly Property Client() As TClient
+        Protected ReadOnly Property Client() As TClient
             Get
                 If _Client Is Nothing Then
                     _Client = GetClient()
@@ -45,8 +45,8 @@ Namespace Clients
             End Get
         End Property
 
-        Friend MustOverride Function GetBinding() As TBinding
-        Friend MustOverride Function GetClient() As TClient
+        Protected MustOverride Function GetBinding() As TBinding
+        Protected MustOverride Function GetClient() As TClient
 
         Public ReadOnly Property Contracts() As System.Type() Implements IService.Contracts
             Get
@@ -56,7 +56,7 @@ Namespace Clients
                         a.Add(t)
                     End If
                 Next
-                Return a.ToArray(GetType(System.Type))
+                Return CType(a.ToArray(GetType(System.Type)), Type())
             End Get
         End Property
 
