@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.ActiveDirectory</RootNamespace>
+    <RootNamespace>RDdotNet</RootNamespace>
     <AssemblyName>RDdotNet.ActiveDirectory</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
@@ -48,6 +48,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\ActiveDirectoryService.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -83,6 +84,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.Clients\RDdotNet.Clients.vbproj">
+      <Project>{6E8DAF71-8336-4F74-848B-048F0ED0109C}</Project>
+      <Name>RDdotNet.Clients</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
