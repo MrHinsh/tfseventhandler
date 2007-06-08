@@ -14,7 +14,7 @@ Namespace UI.FormControls
             MyBase.New("Subscriptions", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
-            AddHandler EventHandler.SubscriptionsUpdated, AddressOf OnSubscriptionsUpdated
+            AddHandler EventHandler.SubscriptionsService.SubscriptionsUpdated, AddressOf OnSubscriptionsUpdated
             '-----------------------
             ' Create Contect Menu as Add events
             For Each EventType As Events.EventTypes In [Enum].GetValues(GetType(Events.EventTypes))
@@ -39,7 +39,7 @@ Namespace UI.FormControls
             Me.ChangeStatus(Status.Working)
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
-                subscriptions = EventHandler.GetSubscriptions()
+                subscriptions = EventHandler.SubscriptionsService.GetSubscriptions()
             Catch ex As FaultException(Of TeamFoundationServerUnauthorizedException)
                 AddError("TFS Denied", ex)
                 Me.ChangeStatus(Status.Faulted)
@@ -76,9 +76,9 @@ Namespace UI.FormControls
             Dim eventtype As Events.EventTypes = CType(tsb.Tag, Events.EventTypes)
             Select Case tsb.CheckState
                 Case CheckState.Checked
-                    EventHandler.RemoveSubscriptions(EventHandler.ServceUrl.ToString)
+                    EventHandler.SubscriptionsService.RemoveSubscriptions(EventHandler.SubscriptionsService.EndPoint.ToString)
                 Case CheckState.Unchecked
-                    EventHandler.AddSubscriptions(EventHandler.ServceUrl.ToString, eventtype)
+                    EventHandler.SubscriptionsService.AddSubscriptions(EventHandler.SubscriptionsService.EndPoint.ToString, eventtype)
                 Case CheckState.Indeterminate
                     Me.Refresh()
             End Select

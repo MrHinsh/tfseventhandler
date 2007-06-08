@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Helpers\AssemblyHelper.vb" />
     <Compile Include="Servers\RDdotNetTFSEventHandlerServer.vb" />
+    <Compile Include="TeamFoundation\Clients\SubscriptionsService.vb" />
+    <Compile Include="TeamFoundation\Clients\TeamServersService.vb" />
     <Compile Include="TeamFoundation\Clients\HandlersService.vb" />
     <Compile Include="Servers\TFSEventHandlerServer.vb" />
     <Compile Include="TeamFoundation\Clients\EventsService.vb" />

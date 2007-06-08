@@ -15,7 +15,7 @@ Namespace UI.FormControls
         Private _ContextMenuStrip As New ContextMenuStrip
 
         Public Sub New(ByVal EventHandler As Servers.TFSEventHandlerServer)
-            Me.Text = EventHandler.Server.ToString
+            Me.Text = EventHandler.ServerUri.ToString
             '-----------------------
             ' Create Handler and attach Events
             _EventHandler = EventHandler

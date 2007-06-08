@@ -11,7 +11,7 @@ Namespace Servers
         Private _ClientServices As New Collection(Of Clients.IClientService)
         Private _ClientServicesLoaded As Boolean = False
 
-        Public ReadOnly Property Uri() As Uri
+        Public ReadOnly Property ServerUri() As Uri
             Get
                 Return _Uri
             End Get
