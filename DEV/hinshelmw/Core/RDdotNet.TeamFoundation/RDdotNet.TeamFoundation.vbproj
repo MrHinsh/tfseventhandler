@@ -144,6 +144,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.ActiveDiretory\RDdotNet.ActiveDirectory.vbproj">
+      <Project>{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}</Project>
+      <Name>RDdotNet.ActiveDirectory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.Clients\RDdotNet.Clients.vbproj">
       <Project>{6E8DAF71-8336-4F74-848B-048F0ED0109C}</Project>
       <Name>RDdotNet.Clients</Name>

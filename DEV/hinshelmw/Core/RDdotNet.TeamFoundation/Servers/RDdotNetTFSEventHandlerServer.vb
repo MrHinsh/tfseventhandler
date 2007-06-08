@@ -20,6 +20,7 @@ Namespace Servers
             ClientServices.Add(New TeamFoundation.Clients.HandlersService(Me.ServerUri))
             ClientServices.Add(New TeamFoundation.Clients.TeamServersService(Me.ServerUri))
             ClientServices.Add(New TeamFoundation.Clients.SubscriptionsService(Me.ServerUri))
+            ClientServices.Add(New ActiveDirectory.Clients.ActiveDirectoryService)
         End Sub
 
         Protected Overrides Sub OnServicesUnload(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
@@ -47,6 +48,12 @@ Namespace Servers
         Public ReadOnly Property SubscriptionsService() As TeamFoundation.Clients.SubscriptionsService
             Get
                 Return Me.GetService(Of TeamFoundation.Clients.SubscriptionsService)()
+            End Get
+        End Property
+
+        Public ReadOnly Property ActiveDirectoryService() As ActiveDirectory.Clients.ActiveDirectoryService
+            Get
+                Return Me.GetService(Of ActiveDirectory.Clients.ActiveDirectoryService)()
             End Get
         End Property
 

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\IClientService.vb" />
+    <Compile Include="Clients\WcfServiceBase.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\IConfigurationElement.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -74,7 +75,6 @@
     </Compile>
     <Compile Include="Servers\RDdotNetServerBase.vb" />
     <Compile Include="Clients\RDdotNetServiceContractAttribute.vb" />
-    <Compile Include="Clients\WcfServiceBase.vb" />
     <Compile Include="Proxies\IClientProxy.vb" />
     <Compile Include="Servers\RDdotNetServerFactory.vb" />
   </ItemGroup>
