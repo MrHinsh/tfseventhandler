@@ -1,6 +1,7 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
+Imports RDdotNet
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Services
 Imports RDdotNet.TeamFoundation.Config
@@ -9,7 +10,7 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace Clients
 
     Public Class EventsService
-        Inherits proxies.WcfServiceBase(Of Proxy.EventsClient, WSDualHttpBinding)
+        Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.EventsClient, WSDualHttpBinding)
         Implements Services.Contracts.IEvents
 
 
@@ -29,7 +30,7 @@ Namespace Clients
             Client.RaiseWorkItemChangedEvent([Event], EventIdentity, SubscriptionInfo)
         End Sub
 
-        Friend Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding
+        Protected Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding
             Dim Binding As New WSDualHttpBinding(WSDualHttpSecurityMode.Message)
             Binding.MaxReceivedMessageSize = 655360
             Binding.ReaderQuotas.MaxStringContentLength = 655360
@@ -41,8 +42,8 @@ Namespace Clients
             Return Binding
         End Function
 
-        Friend Overrides Function GetClient() As Proxy.EventsClient
-            Return New Proxy.EventsClient(GetBinding, Me.EndPoint)
+        Protected Overrides Function GetClient() As Proxies.EventsClient
+            Return New Proxies.EventsClient(GetBinding, Me.EndPoint)
         End Function
 
 
