@@ -1,4 +1,4 @@
-Namespace Clients.Proxy
+Namespace Proxies
 
     Friend Class TeamServersClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.ITeamServers)

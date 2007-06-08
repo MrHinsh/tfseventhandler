@@ -1,18 +1,15 @@
-Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Services
-Imports RDdotNet.TeamFoundation.Config
-Imports RDdotNet.TeamFoundation.Events
+
 
 Namespace Clients
 
-    Public Class RDdotNetServer
+    Public MustInherit Class RDdotNetServerBase
         Implements IDisposable
 
         Private _Uri As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
         Private _Services As New Collection(Of IService)
+        Private _ServicesLoaded As Boolean = False
 
         Public ReadOnly Property Uri() As Uri
             Get
@@ -24,8 +21,12 @@ Namespace Clients
             If Not Url Is Nothing Then
                 _Uri = Url
             End If
-            ' Load all teh services
-            LoadServices(_Services)
+        End Sub
+
+        Friend Sub SetUri(Optional ByVal Url As Uri = Nothing)
+            If Not Url Is Nothing Then
+                _Uri = Url
+            End If
         End Sub
 
         Public Function Authenticated() As Boolean
@@ -33,7 +34,8 @@ Namespace Clients
         End Function
 
         Public Function GetService(Of TService As IService)() As TService
-            For Each service As IService In _Services
+            If Not _ServicesLoaded Then LoadServices()
+            For Each service As TService In _Services
                 Dim obj As Object = service
                 If obj.GetType Is GetType(TService) Then
                     Return service
@@ -43,6 +45,7 @@ Namespace Clients
         End Function
 
         Public Function GetService(ByVal Name As String) As IService
+            If Not _ServicesLoaded Then LoadServices()
             For Each service As IService In _Services
                 If service.ServiceName = Name Then
                     Return service
@@ -51,10 +54,17 @@ Namespace Clients
             Throw New InvalidOperationException
         End Function
 
-        Protected Overridable Sub LoadServices(ByRef Services As Collection(Of IService))
-            Services.Add(New EventsService(Uri))
-            Services.Add(New HandlersService(Uri))
+        Private Sub LoadServices()
+            LoadServices(_Services)
         End Sub
+
+        Protected MustOverride Sub LoadServices(ByRef Services As Collection(Of IService))
+
+        Private Sub UnloadServices()
+            UnloadServices(_Services)
+        End Sub
+
+        Protected MustOverride Sub UnloadServices(ByRef Services As Collection(Of IService))
 
 #Region " IDisposable "
 
@@ -65,7 +75,7 @@ Namespace Clients
             If Not Me.disposedValue Then
                 If disposing Then
                     ' TODO: free managed resources when explicitly called
-
+                    UnloadServices()
                 End If
                 ' TODO: free shared unmanaged resources
             End If

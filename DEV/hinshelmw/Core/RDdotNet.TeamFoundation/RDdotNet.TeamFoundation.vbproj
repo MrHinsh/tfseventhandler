@@ -58,16 +58,12 @@
   <ItemGroup>
     <Compile Include="AssemblyHelper.vb" />
     <Compile Include="Clients\HandlersService.vb" />
-    <Compile Include="Clients\RDdotNetServerFactory.vb" />
     <Compile Include="Clients\TFSEventHandlerServer.vb" />
-    <Compile Include="Clients\WcfServiceBase.vb" />
     <Compile Include="Clients\EventsService.vb" />
-    <Compile Include="Clients\Proxy\EventsClient.vb" />
-    <Compile Include="Clients\Proxy\HandlersClient.vb" />
-    <Compile Include="Clients\Proxy\TeamServersClient.vb" />
-    <Compile Include="Clients\IService.vb" />
-    <Compile Include="Clients\RDdotNetServer.vb" />
-    <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
+    <Compile Include="Proxies\EventsClient.vb" />
+    <Compile Include="Proxies\HandlersClient.vb" />
+    <Compile Include="Proxies\TeamServersClient.vb" />
+    <Compile Include="Proxies\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
     <Compile Include="Config\HandlerCollection.vb" />
@@ -86,7 +82,6 @@
     <Compile Include="Events\EndpointBase.vb" />
     <Compile Include="Events\EventTypes.vb" />
     <Compile Include="Events\NotifyEventArgs.vb" />
-    <Compile Include="RDdotNetServiceContractAttribute.vb" />
     <Compile Include="Services\Adapters\DataContract.vb" />
     <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />
@@ -148,6 +143,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.Clients\RDdotNet.Clients.vbproj">
+      <Project>{6E8DAF71-8336-4F74-848B-048F0ED0109C}</Project>
+      <Name>RDdotNet.Clients</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
       <Project>{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}</Project>
       <Name>RDdotNet.TeamFoundation.EventResource</Name>
