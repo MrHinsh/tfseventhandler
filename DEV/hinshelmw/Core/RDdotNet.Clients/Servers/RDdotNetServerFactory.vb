@@ -2,7 +2,7 @@ Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports System.Collections.Generic
 
-Namespace Clients
+Namespace Servers
 
     Public Class RDdotNetServerFactory
 
