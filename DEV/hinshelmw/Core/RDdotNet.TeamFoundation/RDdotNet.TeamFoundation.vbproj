@@ -56,9 +56,9 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyHelper.vb" />
+    <Compile Include="Helpers\AssemblyHelper.vb" />
     <Compile Include="Clients\HandlersService.vb" />
-    <Compile Include="Clients\TFSEventHandlerServer.vb" />
+    <Compile Include="Servers\TFSEventHandlerServer.vb" />
     <Compile Include="Clients\EventsService.vb" />
     <Compile Include="Proxies\EventsClient.vb" />
     <Compile Include="Proxies\HandlersClient.vb" />
@@ -73,7 +73,7 @@
     <Compile Include="Config\RepositoryItemElement.vb" />
     <Compile Include="Config\ServiceItemElement.vb" />
     <Compile Include="Config\TeamFoundationSettingsSection.vb" />
-    <Compile Include="CustomXmlSerializer.vb" />
+    <Compile Include="Helpers\CustomXmlSerializer.vb" />
     <Compile Include="Events\Handlers\AEventHandler.vb" />
     <Compile Include="Events\Handlers\EventHandlerAttribute.vb" />
     <Compile Include="Events\Handlers\MailSettingsAttribute.vb" />
@@ -121,7 +121,7 @@
     <Compile Include="Services\FaultContract\SubscriptionFault.vb" />
     <Compile Include="Services\FaultContract\TeamServerFault.vb" />
     <Compile Include="Services\QueuerService.vb" />
-    <Compile Include="SubscriptionHelper.vb" />
+    <Compile Include="Helpers\SubscriptionHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
