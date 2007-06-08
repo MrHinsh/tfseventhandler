@@ -7,7 +7,7 @@ Namespace UI.FormControls
 
     Public Class TFSEventHandlerControl
 
-        Private _ConnectedEventHandler As New Collection(Of TFSEventHandlerServer)
+        Private _ConnectedEventHandler As New Collection(Of Servers.TFSEventHandlerServer)
 
         Private Sub TFSEventHandlerControl_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             '--------------------
@@ -29,7 +29,7 @@ Namespace UI.FormControls
                 frmConnectTo.Dispose()
                 '---------
                 Dim ServerUri As Uri = frmConnectTo.ServerUri
-                Dim EventHandler As New TFSEventHandlerServer(ServerUri)
+                Dim EventHandler As New Servers.TFSEventHandlerServer(ServerUri)
                 ' Start Services
                 _ConnectedEventHandler.Add(EventHandler)
                 RefershEventHandlers()
@@ -40,7 +40,7 @@ Namespace UI.FormControls
 
         Private Sub RefershEventHandlers()
             Me.uxTreeView.Nodes.Clear()
-            For Each EventHandler As TFSEventHandlerServer In _ConnectedEventHandler
+            For Each EventHandler As Servers.TFSEventHandlerServer In _ConnectedEventHandler
                 Me.uxTreeView.Nodes.Add(New TreeNode_EventHandler(EventHandler))
             Next
         End Sub

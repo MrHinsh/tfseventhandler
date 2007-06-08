@@ -8,8 +8,8 @@ Namespace Clients
         Implements IDisposable
 
         Private _Uri As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
-        Private _Services As New Collection(Of IService)
-        Private _ServicesLoaded As Boolean = False
+        Private _ClientServices As New Collection(Of IClientService)
+        Private _ClientServicesLoaded As Boolean = False
 
         Public ReadOnly Property Uri() As Uri
             Get
@@ -33,9 +33,9 @@ Namespace Clients
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(Of TService As IService)() As TService
-            If Not _ServicesLoaded Then LoadServices()
-            For Each service As TService In _Services
+        Public Function GetService(Of TService As IClientService)() As TService
+            If Not _ClientServicesLoaded Then LoadServices()
+            For Each service As TService In _ClientServices
                 Dim obj As Object = service
                 If obj.GetType Is GetType(TService) Then
                     Return service
@@ -44,9 +44,9 @@ Namespace Clients
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(ByVal Name As String) As IService
-            If Not _ServicesLoaded Then LoadServices()
-            For Each service As IService In _Services
+        Public Function GetService(ByVal Name As String) As IClientService
+            If Not _ClientServicesLoaded Then LoadServices()
+            For Each service As IClientService In _ClientServices
                 If service.ServiceName = Name Then
                     Return service
                 End If
@@ -55,16 +55,28 @@ Namespace Clients
         End Function
 
         Private Sub LoadServices()
-            LoadServices(_Services)
+            OnServicesPreLoad(_ClientServices)
+            OnServicesLoad(_ClientServices)
+            OnServicesPostLoad(_ClientServices)
         End Sub
 
-        Protected MustOverride Sub LoadServices(ByRef Services As Collection(Of IService))
+        Protected Overridable Sub OnServicesPreLoad(ByRef ClientServices As Collection(Of IClientService))
+
+        End Sub
+
+        Protected MustOverride Sub OnServicesLoad(ByRef ClientServices As Collection(Of IClientService))
+
+        Protected Overridable Sub OnServicesPostLoad(ByRef ClientServices As Collection(Of IClientService))
+            For Each ClientService As IClientService In ClientServices
+                ClientService.Start()
+            Next
+        End Sub
 
         Private Sub UnloadServices()
-            UnloadServices(_Services)
+            OnServicesUnload(_ClientServices)
         End Sub
 
-        Protected MustOverride Sub UnloadServices(ByRef Services As Collection(Of IService))
+        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of IClientService))
 
 #Region " IDisposable "
 
