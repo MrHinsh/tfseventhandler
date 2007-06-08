@@ -6,7 +6,7 @@ Imports RDdotNet.TeamFoundation.Services
 Imports RDdotNet.TeamFoundation.Config
 Imports RDdotNet.TeamFoundation.Events
 
-Namespace Clients
+Namespace Servers
 
     Public Class TFSEventHandlerServer
         Implements Contracts.ISubscriptions
