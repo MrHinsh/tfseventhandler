@@ -1,4 +1,4 @@
-Namespace Clients.Proxy
+Namespace Proxies
 
     Public Class EventsClient
         Inherits System.ServiceModel.ClientBase(Of Services.Contracts.IEvents)

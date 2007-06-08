@@ -9,7 +9,7 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace Clients
 
     Public Class EventsService
-        Inherits WcfServiceBase(Of Proxy.EventsClient, WSDualHttpBinding)
+        Inherits proxies.WcfServiceBase(Of Proxy.EventsClient, WSDualHttpBinding)
         Implements Services.Contracts.IEvents
 
 

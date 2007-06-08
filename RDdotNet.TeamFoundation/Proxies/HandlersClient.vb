@@ -1,4 +1,4 @@
-Namespace Clients.Proxy
+Namespace Proxies
 
     Public Class HandlersClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.IHandlers)

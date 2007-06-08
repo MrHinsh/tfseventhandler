@@ -1,11 +1,6 @@
-Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports System.Collections.Generic
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Services
-Imports RDdotNet.TeamFoundation.Config
-Imports RDdotNet.TeamFoundation.Events
 
 Namespace Clients
 
@@ -30,12 +25,13 @@ Namespace Clients
 
 #End Region
 
-        Private Servers As New System.Collections.Generic.Dictionary(Of Uri, RDdotNetServer)
+        Private Servers As New System.Collections.Generic.Dictionary(Of Uri, RDdotNetServerBase)
 
-        Public Shared Function GetServer(ByVal Server As Uri) As RDdotNetServer
+        Public Shared Function GetServer(Of TRDdotNetServer As {New, RDdotNetServerBase})(ByVal Server As Uri) As TRDdotNetServer
             If Not Instance.Servers.ContainsKey(Server) Then
                 Try
-                    Dim RDdotNetServer As New RDdotNetServer(Server)
+                    Dim RDdotNetServer As New TRDdotNetServer()
+                    RDdotNetServer.SetUri(Server)
                     If RDdotNetServer.Authenticated Then
                         Instance.Servers.Add(Server, RDdotNetServer)
                     Else
@@ -45,7 +41,7 @@ Namespace Clients
                     Throw New InvalidOperationException
                 End Try
             End If
-            Return Instance.Servers(Server)
+            Return CType(Instance.Servers(Server), TRDdotNetServer)
         End Function
 
     End Class

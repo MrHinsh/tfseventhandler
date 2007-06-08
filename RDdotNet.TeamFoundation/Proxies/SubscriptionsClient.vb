@@ -1,4 +1,4 @@
-Namespace Clients.Proxy
+Namespace Proxies
 
     Friend Class SubscriptionsClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.ISubscriptions)
