@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation</RootNamespace>
+    <RootNamespace>RDdotNet</RootNamespace>
     <AssemblyName>RDdotNet.TeamFoundation</AssemblyName>
     <MyType>Windows</MyType>
     <SccProjectName>SAK</SccProjectName>
