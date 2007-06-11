@@ -30,6 +30,7 @@ Namespace Servers
         Public Shared Function GetServer(Of TRDdotNetServer As {New, RDdotNetServerBase})(ByVal Server As Uri) As TRDdotNetServer
             If Not Instance.Servers.ContainsKey(Server) Then
                 Try
+
                     Dim RDdotNetServer As New TRDdotNetServer()
                     RDdotNetServer.SetUri(Server)
                     If RDdotNetServer.Authenticated Then

@@ -15,6 +15,12 @@ Namespace TeamFoundation.Services.Contracts
         <OperationContract(IsOneWay:=True)> _
       Sub Updated(ByVal TeamServers() As String)
 
+        <OperationContract(IsOneWay:=False)> _
+        Function GetCredentials(ByVal uri As System.Uri, ByVal failedCredentials As System.Net.ICredentials) As System.Net.ICredentials
+
+        <OperationContract(IsOneWay:=True)> _
+        Sub NotifyCredentialsAuthenticated(ByVal uri As System.Uri)
+
     End Interface
 
 End Namespace

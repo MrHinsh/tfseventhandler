@@ -84,12 +84,12 @@ Namespace TeamFoundation.Services
             For Each EventType As Events.EventTypes In [Enum].GetValues(GetType(Events.EventTypes))
                 sh.AddServiceEndpoint(GetType(Services.Contracts.INotification), GetSecureWSHttpBinding, "Notification/" & EventType.ToString)
             Next
-            sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding, "Subscriptions")
+            'sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding, "Subscriptions")
             sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding, "TeamServers")
             sh.AddServiceEndpoint(GetType(Description.IMetadataExchange), GetSecureWSHttpBinding, "mex")
             '----------------
             Return sh
-        End Function
+        End Function '
 
 #End Region
 

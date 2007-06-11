@@ -18,15 +18,15 @@ Namespace TeamFoundation.Services.Contracts
 
         <OperationContract(IsOneWay:=False)> _
         <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
-        Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes)
+        Sub AddSubscriptions(ByVal TeamServer As String, ByVal ServiceUrl As String)
 
         <OperationContract(IsOneWay:=False)> _
         <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
-        Sub RemoveSubscriptions(ByVal ServiceUrl As String)
+        Sub RemoveSubscriptions(ByVal TeamServer As String, ByVal ServiceUrl As String)
 
         <OperationContract(IsOneWay:=False)> _
         <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
-        Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
+        Function GetSubscriptions(ByVal TeamServer As String) As Collection(Of DataContracts.Subscription)
 
 
     End Interface
