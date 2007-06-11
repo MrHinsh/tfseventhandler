@@ -32,12 +32,22 @@ Namespace UI.FormControls
             Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer
             Me.uxToolStrip = New System.Windows.Forms.ToolStrip
             Me.uxToolStripButtonRefresh = New System.Windows.Forms.ToolStripButton
+            Me.uxToolStripButtonCredentialTest = New System.Windows.Forms.ToolStripButton
             uxToolStripButtonConnect = New System.Windows.Forms.ToolStripButton
             Me.ToolStripContainer1.ContentPanel.SuspendLayout()
             Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
             Me.ToolStripContainer1.SuspendLayout()
             Me.uxToolStrip.SuspendLayout()
             Me.SuspendLayout()
+            '
+            'uxToolStripButtonConnect
+            '
+            uxToolStripButtonConnect.Image = CType(resources.GetObject("uxToolStripButtonConnect.Image"), System.Drawing.Image)
+            uxToolStripButtonConnect.ImageTransparentColor = System.Drawing.Color.Magenta
+            uxToolStripButtonConnect.Name = "uxToolStripButtonConnect"
+            uxToolStripButtonConnect.Size = New System.Drawing.Size(67, 21)
+            uxToolStripButtonConnect.Text = "Connect"
+            AddHandler uxToolStripButtonConnect.Click, AddressOf Me.uxToolStripButtonAdd_Click
             '
             'uxTreeView
             '
@@ -71,7 +81,7 @@ Namespace UI.FormControls
             '
             Me.uxToolStrip.Dock = System.Windows.Forms.DockStyle.None
             Me.uxToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-            Me.uxToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {uxToolStripButtonConnect, Me.uxToolStripButtonRefresh})
+            Me.uxToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {uxToolStripButtonConnect, Me.uxToolStripButtonRefresh, Me.uxToolStripButtonCredentialTest})
             Me.uxToolStrip.Location = New System.Drawing.Point(0, 0)
             Me.uxToolStrip.Name = "uxToolStrip"
             Me.uxToolStrip.Padding = New System.Windows.Forms.Padding(0, 0, 0, 1)
@@ -79,22 +89,21 @@ Namespace UI.FormControls
             Me.uxToolStrip.Stretch = True
             Me.uxToolStrip.TabIndex = 0
             '
-            'uxToolStripButtonConnect
-            '
-            uxToolStripButtonConnect.Image = CType(resources.GetObject("uxToolStripButtonConnect.Image"), System.Drawing.Image)
-            uxToolStripButtonConnect.ImageTransparentColor = System.Drawing.Color.Magenta
-            uxToolStripButtonConnect.Name = "uxToolStripButtonConnect"
-            uxToolStripButtonConnect.Size = New System.Drawing.Size(72, 21)
-            uxToolStripButtonConnect.Text = "Connect"
-            AddHandler uxToolStripButtonConnect.Click, AddressOf Me.uxToolStripButtonAdd_Click
-            '
             'uxToolStripButtonRefresh
             '
             Me.uxToolStripButtonRefresh.Image = CType(resources.GetObject("uxToolStripButtonRefresh.Image"), System.Drawing.Image)
             Me.uxToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
             Me.uxToolStripButtonRefresh.Name = "uxToolStripButtonRefresh"
-            Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(66, 21)
+            Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(65, 21)
             Me.uxToolStripButtonRefresh.Text = "Refresh"
+            '
+            'uxToolStripButtonCredentialTest
+            '
+            Me.uxToolStripButtonCredentialTest.Image = CType(resources.GetObject("uxToolStripButtonCredentialTest.Image"), System.Drawing.Image)
+            Me.uxToolStripButtonCredentialTest.ImageTransparentColor = System.Drawing.Color.Magenta
+            Me.uxToolStripButtonCredentialTest.Name = "uxToolStripButtonCredentialTest"
+            Me.uxToolStripButtonCredentialTest.Size = New System.Drawing.Size(50, 21)
+            Me.uxToolStripButtonCredentialTest.Text = "Auth"
             '
             'TFSEventHandlerControl
             '
@@ -117,6 +126,7 @@ Namespace UI.FormControls
         Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
         Friend WithEvents uxToolStrip As System.Windows.Forms.ToolStrip
         Friend WithEvents uxToolStripButtonRefresh As System.Windows.Forms.ToolStripButton
+        Friend WithEvents uxToolStripButtonCredentialTest As System.Windows.Forms.ToolStripButton
 
     End Class
 

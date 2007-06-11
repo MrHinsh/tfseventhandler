@@ -21,6 +21,7 @@ Namespace TeamFoundation.Clients
 
         Public Sub New(Optional ByVal Server As Uri = Nothing)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/Queuer/TeamServers")
+            Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub
 
         Protected Overrides Function GetBinding() As System.ServiceModel.WSDualHttpBinding
@@ -70,8 +71,6 @@ Namespace TeamFoundation.Clients
 #End Region
 
 
-
-       
     End Class
 
 End Namespace

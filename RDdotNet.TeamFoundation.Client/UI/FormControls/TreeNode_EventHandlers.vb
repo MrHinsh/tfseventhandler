@@ -36,15 +36,19 @@ Namespace UI.FormControls
 
         Public Overloads Sub GenerateChildren(ByVal AssemblyManaifest As AssemblyManaifest)
             ClearNodes()
-            If Not AssemblyManaifest.Assemblys Is Nothing Then
-                For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
-                    AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
-                Next
+            If AssemblyManaifest Is Nothing Then
+                AddMessage("AssemblyManaifest not retrieved")
+            Else
+                If Not AssemblyManaifest.Assemblys Is Nothing Then
+                    For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
+                        AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
+                    Next
+                End If
+                If Me.Nodes.Count = 0 Then
+                    AddMessage("No Assemblies found")
+                End If
             End If
-            If Me.Nodes.Count = 0 Then
-                AddMessage("No Assemblies found")
-            End If
-            Me.ChangeStatus(Status.Normal)
+            Me.ChangeStatus(Status.Faulted)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub

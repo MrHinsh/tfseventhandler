@@ -13,6 +13,7 @@ Namespace TeamFoundation.Proxies
         End Sub
 
         Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
+            MsgBox(Me.ClientCredentials.UserName.UserName)
             Return MyBase.Channel.GetSubscriptions
         End Function
 
