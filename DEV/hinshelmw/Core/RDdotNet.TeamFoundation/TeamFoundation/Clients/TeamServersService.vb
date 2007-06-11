@@ -5,6 +5,7 @@ Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Services
 Imports RDdotNet.TeamFoundation.Config
 Imports RDdotNet.TeamFoundation.Events
+Imports Microsoft.TeamFoundation.Client
 
 Namespace TeamFoundation.Clients
 
@@ -68,9 +69,19 @@ Namespace TeamFoundation.Clients
             RaiseEvent TeamServersUpdated(TeamServers)
         End Sub
 
+        Public Function GetCredentials(ByVal uri As System.Uri, ByVal failedCredentials As System.Net.ICredentials) As System.Net.ICredentials Implements Services.Contracts.ITeamServersCallback.GetCredentials
+            Return New Net.NetworkCredential("hinshelwm", "3v4Ng3l1n4", "EMEA")
+
+        End Function
+
+        Public Sub NotifyCredentialsAuthenticated(ByVal uri As System.Uri) Implements Services.Contracts.ITeamServersCallback.NotifyCredentialsAuthenticated
+
+        End Sub
+
 #End Region
 
 
+   
     End Class
 
 End Namespace

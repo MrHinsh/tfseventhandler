@@ -19,7 +19,7 @@ Namespace Servers
             AddClientService(New TeamFoundation.Clients.EventsService(Me.ServerUri))
             AddClientService(New TeamFoundation.Clients.HandlersService(Me.ServerUri))
             AddClientService(New TeamFoundation.Clients.TeamServersService(Me.ServerUri))
-            AddClientService(New TeamFoundation.Clients.SubscriptionsService(Me.ServerUri))
+            AddClientService(New TeamFoundation.Clients.SubscriptionsService())
             AddClientService(New ActiveDirectory.Clients.ActiveDirectoryService)
         End Sub
 

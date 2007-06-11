@@ -10,7 +10,7 @@ Namespace UI.FormControls
 
         Private _EventHandler As Servers.TFSEventHandlerServer
         Private _TeamServersNode As TreeNode_TeamServers
-        Private _SubscriptionsNode As TreeNode_Subscriptions
+        'Private _SubscriptionsNode As TreeNode_Subscriptions
         Private _EventHandlersNode As TreeNode_EventHandlers
         Private _ContextMenuStrip As New ContextMenuStrip
 
@@ -33,8 +33,8 @@ Namespace UI.FormControls
             _TeamServersNode = CType(Me.Nodes(AddedNodeID), TreeNode_TeamServers)
             AddedNodeID = Me.Nodes.Add(New TreeNode_EventHandlers(EventHandler, 100))
             _EventHandlersNode = CType(Me.Nodes(AddedNodeID), TreeNode_EventHandlers)
-            AddedNodeID = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, 100))
-            _SubscriptionsNode = CType(Me.Nodes(AddedNodeID), TreeNode_Subscriptions)
+            'AddedNodeID = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, 100))
+            '_SubscriptionsNode = CType(Me.Nodes(AddedNodeID), TreeNode_Subscriptions)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
@@ -48,7 +48,7 @@ Namespace UI.FormControls
         Private Sub Refresh_Click(ByVal sender As Object, ByVal e As EventArgs)
             _TeamServersNode.Refresh()
             _EventHandlersNode.Refresh()
-            _SubscriptionsNode.Refresh()
+            '_SubscriptionsNode.Refresh()
         End Sub
 
         Private Sub Remove_Click(ByVal sender As Object, ByVal e As EventArgs)

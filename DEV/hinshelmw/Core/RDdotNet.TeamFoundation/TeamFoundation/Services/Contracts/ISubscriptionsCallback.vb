@@ -12,7 +12,7 @@ Namespace TeamFoundation.Services.Contracts
     Public Interface ISubscriptionsCallback
 
         <OperationContract(IsOneWay:=True)> _
-      Sub Updated(ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+      Sub Updated(ByVal TeamServer As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription))
 
     End Interface
 
