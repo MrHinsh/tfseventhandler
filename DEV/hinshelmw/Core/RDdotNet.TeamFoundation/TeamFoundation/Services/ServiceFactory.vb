@@ -53,7 +53,7 @@ Namespace TeamFoundation.Services
             '---------------
             Dim baseAddresses() As Uri = { _
                             New Uri(String.Format("net.msmq://{0}/private/TFSEventHandler", System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)), _
-                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/EventHandling", System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName, Port)) _
+                            New Uri(String.Format("http://{0}:{1}/RDdotNet/TFSEventHandler/EventHandling", System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName, Port)) _
                             }
             '---------------
             Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.EventHandlerService), baseAddresses)
@@ -72,7 +72,7 @@ Namespace TeamFoundation.Services
         Public Shared Function GetQueuerServiceHost(ByVal Port As Integer) As ServiceHost
             '---------------
             Dim baseAddresses() As Uri = { _
-                            New Uri(String.Format("http://{0}:{1}/TFSEventHandler/Queuer", My.Computer.Name, Port)) _
+                            New Uri(String.Format("http://{0}:{1}/RDdotNet/TFSEventHandler/Queuer", My.Computer.Name, Port)) _
                             }
             '---------------
             Dim sh As New System.ServiceModel.ServiceHost(GetType(Services.QueuerService), baseAddresses)
