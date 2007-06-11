@@ -43,14 +43,9 @@ Namespace TeamFoundation.Services
 
         Public Function GetTeamServer(ByVal TeamServerName As String) As TeamFoundationServer
             Dim tfs As TeamFoundationServer = Nothing
-            Try
-                Dim ui As ICredentialsProvider = New UICredentialsProvider
-
-                'Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
-                tfs = New TeamFoundationServer(TeamServerName, Net.CredentialCache.DefaultCredentials)
-            Catch ex As System.ServiceModel.FaultException
-                Throw ex
-            End Try
+            'Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
+            tfs = New TeamFoundationServer(TeamServerName, Net.CredentialCache.DefaultCredentials)
+            tfs.Authenticate()
             If tfs Is Nothing Then
                 Throw New System.ServiceModel.FaultException("Team Server not found")
             End If
