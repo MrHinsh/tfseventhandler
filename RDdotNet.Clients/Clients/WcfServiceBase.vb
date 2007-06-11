@@ -7,6 +7,7 @@ Namespace Clients
     Public MustInherit Class WcfServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
         Implements IClientService
 
+
         Public ReadOnly Property ServiceType() As ClientServiceTypes Implements IClientService.ServiceType
             Get
                 Return ClientServiceTypes.Wcf
@@ -48,15 +49,17 @@ Namespace Clients
         Protected MustOverride Function GetBinding() As TBinding
         Protected MustOverride Function GetClient() As TClient
 
-        Public ReadOnly Property Contracts() As System.Type() Implements IClientService.Contracts
+
+
+        Public ReadOnly Property Contracts() As System.Collections.ObjectModel.Collection(Of System.Type) Implements IClientService.Contracts
             Get
-                Dim a As New ArrayList
+                Dim ServiceContracts As New Collection(Of Type)
                 For Each t As Type In Me.GetType.GetInterfaces
                     If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
-                        a.Add(t)
+                        ServiceContracts.Add(t)
                     End If
                 Next
-                Return CType(a.ToArray(GetType(System.Type)), Type())
+                Return ServiceContracts
             End Get
         End Property
 
@@ -89,6 +92,8 @@ Namespace Clients
         Public Sub [Stop]() Implements IClientService.Stop
 
         End Sub
+
+   
     End Class
 
 End Namespace

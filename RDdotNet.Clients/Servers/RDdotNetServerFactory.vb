@@ -44,6 +44,13 @@ Namespace Servers
             Return CType(Instance.Servers(Server), TRDdotNetServer)
         End Function
 
+        Public Function GetService(ByVal Name As String) As Clients.IClientService
+            For Each server As RDdotNetServerBase In Instance.Servers.Values
+                ' TODO: Get first instance of service
+            Next
+            Throw New InvalidOperationException
+        End Function
+
     End Class
 
 
