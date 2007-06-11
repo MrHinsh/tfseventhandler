@@ -82,6 +82,7 @@
     <Compile Include="TeamFoundation\Events\EndpointBase.vb" />
     <Compile Include="TeamFoundation\Events\EventTypes.vb" />
     <Compile Include="TeamFoundation\Events\NotifyEventArgs.vb" />
+    <Compile Include="TeamFoundation\RemoteCredentialsProvider.vb" />
     <Compile Include="TeamFoundation\Services\Adapters\DataContract.vb" />
     <Compile Include="TeamFoundation\Services\Adapters\IAdapter.vb" />
     <Compile Include="TeamFoundation\Services\AEventService.vb" />
