@@ -15,6 +15,7 @@ Namespace TeamFoundation.Clients
 
         Public Sub New(Optional ByVal Server As Uri = Nothing)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
+            Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub
 
         Friend Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As Services.DataContracts.SubscriptionInfo) Implements Services.Contracts.IEvents.RaiseCheckinEvent

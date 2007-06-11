@@ -25,7 +25,6 @@ Namespace TeamFoundation.Services.Contracts
         <OperationContract(IsOneWay:=False)> _
         Function GetServers() As String()
 
-
     End Interface
 
 
