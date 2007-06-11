@@ -7,7 +7,7 @@ Namespace Clients
 
         ReadOnly Property ServiceType() As ClientServiceTypes
         ReadOnly Property ServiceName() As String
-        ReadOnly Property Contracts() As Type()
+        ReadOnly Property Contracts() As Collection(Of Type)
         Function Authenticated() As Boolean
         Sub Start()
         Sub [Stop]()

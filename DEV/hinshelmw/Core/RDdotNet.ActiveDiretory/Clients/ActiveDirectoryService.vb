@@ -11,15 +11,15 @@ Namespace ActiveDirectory.Clients
             Return True
         End Function
 
-        Public ReadOnly Property Contracts() As System.Type() Implements IClientService.Contracts
+        Public ReadOnly Property Contracts() As System.Collections.ObjectModel.Collection(Of System.Type) Implements IClientService.Contracts
             Get
-                Dim a As New ArrayList
+                Dim ServiceContracts As New Collection(Of Type)
                 For Each t As Type In Me.GetType.GetInterfaces
                     If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
-                        a.Add(t)
+                        ServiceContracts.Add(t)
                     End If
                 Next
-                Return CType(a.ToArray(GetType(System.Type)), Type())
+                Return ServiceContracts
             End Get
         End Property
 
@@ -62,6 +62,7 @@ Namespace ActiveDirectory.Clients
             Return values(0).ToString()
         End Function
 
+    
     End Class
 
 End Namespace

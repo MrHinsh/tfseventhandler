@@ -35,10 +35,10 @@ Namespace Servers
 
         Public Function GetService(Of TService As Clients.IClientService)() As TService
             If Not _ClientServicesLoaded Then LoadServices()
-            For Each service As TService In _ClientServices
+            For Each service As Clients.IClientService In _ClientServices
                 Dim obj As Object = service
                 If obj.GetType Is GetType(TService) Then
-                    Return service
+                    Return CType(service, TService)
                 End If
             Next
             Throw New NotImplementedException
@@ -54,20 +54,60 @@ Namespace Servers
             Throw New InvalidOperationException
         End Function
 
+        ''' <summary>
+        ''' Returns the service that implements a specific RDdotNet service Contract.
+        ''' </summary>
+        ''' <param name="ServiceContract">interface as type</param>
+        ''' <returns>Service that implements IClientService</returns>
+        ''' <remarks></remarks>
+        Public Function GetService(ByVal ServiceContract As Type) As Clients.IClientService
+            If ServiceContract.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
+            If Not _ClientServicesLoaded Then LoadServices()
+            For Each service As Clients.IClientService In _ClientServices
+                For Each contract As Type In service.Contracts
+                    If contract Is ServiceContract Then
+                        Return service
+                    End If
+                Next
+            Next
+            Throw New InvalidOperationException
+        End Function
+
+        Public Function GetServices() As Collection(Of Clients.IClientService)
+            Return _ClientServices
+        End Function
+
         Private Sub LoadServices()
-            OnServicesPreLoad(_ClientServices)
-            OnServicesLoad(_ClientServices)
-            OnServicesPostLoad(_ClientServices)
+            OnServicesPreLoad()
+            OnServicesLoad()
+            OnServicesPostLoad()
         End Sub
 
-        Protected Overridable Sub OnServicesPreLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
+        Protected Sub AddClientService(ByVal Service As Clients.IClientService)
+            If ValidateClientService(Service) Then
+                _ClientServices.Add(Service)
+            Else
+                Throw New InvalidConstraintException("You must pass in a valid client service.")
+            End If
+        End Sub
+
+        Public Function ValidateClientService(ByVal Service As Clients.IClientService) As Boolean
+            ValidateClientService = True
+            Dim o As Object = Service
+            'If o.GetType.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
+            'TODO: Validate services
+
+        End Function
+
+
+        Protected Overridable Sub OnServicesPreLoad()
 
         End Sub
 
-        Protected MustOverride Sub OnServicesLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
+        Protected MustOverride Sub OnServicesLoad()
 
-        Protected Overridable Sub OnServicesPostLoad(ByRef ClientServices As Collection(Of Clients.IClientService))
-            For Each ClientService As Clients.IClientService In ClientServices
+        Protected Overridable Sub OnServicesPostLoad()
+            For Each ClientService As Clients.IClientService In _ClientServices
                 ClientService.Start()
             Next
         End Sub
