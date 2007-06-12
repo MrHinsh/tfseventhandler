@@ -71,7 +71,7 @@ Namespace TeamFoundation.Clients
                         delivery.Type = Microsoft.TeamFoundation.Server.DeliveryType.Soap
                         delivery.Schedule = Microsoft.TeamFoundation.Server.DeliverySchedule.Immediate
                         delivery.Address = NotifyUrl
-                        Dim subId As Integer = EventService(TeamServer).SubscribeEvent("TFSEventHandler", EventType.ToString, "", delivery, "EventAdminService")
+                        Dim subId As Integer = EventService(TeamServer).SubscribeEvent("EMEA\srvteamservice", EventType.ToString, "", delivery, "TFSEventHandler")
                     End If
                 Next
                 Updated(TeamServer, GetSubscriptions(TeamServer))
