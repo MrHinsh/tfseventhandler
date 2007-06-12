@@ -22,6 +22,10 @@ Namespace TeamFoundation.Services.Contracts
 
         <OperationContract(IsOneWay:=False)> _
         <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
+        Sub IsSubscribed(ByVal TeamServer As String, ByVal ServiceUrl As String)
+
+        <OperationContract(IsOneWay:=False)> _
+        <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
         Sub RemoveSubscriptions(ByVal TeamServer As String, ByVal ServiceUrl As String)
 
         <OperationContract(IsOneWay:=False)> _

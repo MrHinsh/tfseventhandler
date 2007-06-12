@@ -5,7 +5,7 @@
 'Imports system.ServiceModel
 'Imports System.Windows.Forms
 
-'Namespace UI.FormControls
+'Namespace UI.FormControls.Tree
 
 '    Friend Class TreeNode_Subscriptions
 '        Inherits TreeNodeCustom(Of TreeNode_Subscription)
