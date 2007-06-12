@@ -81,6 +81,10 @@ Namespace TeamFoundation.Clients
             End Try
         End Sub
 
+        Public Sub IsSubscribed(ByVal TeamServer As String, ByVal ServiceUrl As String) Implements Services.Contracts.ISubscriptions.IsSubscribed
+
+        End Sub
+
         Public Function GetSubscriptions(ByVal TeamServer As String) As Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
             Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             Try
@@ -155,6 +159,7 @@ Namespace TeamFoundation.Clients
             End Get
         End Property
 
+      
     End Class
 
 End Namespace

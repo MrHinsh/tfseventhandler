@@ -78,21 +78,33 @@
     <Compile Include="UI\FormControls\ConnectTo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\FormControls\ExplorerAdmin.Designer.vb">
+      <DependentUpon>ExplorerAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormControls\ExplorerAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormControls\ExplorerAdminControl.Designer.vb">
+      <DependentUpon>ExplorerAdminControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormControls\ExplorerAdminControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UI\FormControls\ExplorerControl.Designer.vb">
       <DependentUpon>ExplorerControl.vb</DependentUpon>
     </Compile>
     <Compile Include="UI\FormControls\ExplorerControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\FormControls\TreeNodeCustom.vb" />
-    <Compile Include="UI\FormControls\TreeNode_AssemblyItem.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandler.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandlerItem.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandlers.vb" />
-    <Compile Include="UI\FormControls\TreeNode_Subscription.vb" />
-    <Compile Include="UI\FormControls\TreeNode_Subscriptions.vb" />
-    <Compile Include="UI\FormControls\TreeNode_TeamServer.vb" />
-    <Compile Include="UI\FormControls\TreeNode_TeamServers.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNodeCustom.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_AssemblyItem.vb" />
+    <Compile Include="UI\FormControls\Tree\ServerTreeNode.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_EventHandlerItem.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_EventHandlers.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_Subscription.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_Subscriptions.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_TeamServer.vb" />
+    <Compile Include="UI\FormControls\Tree\TreeNode_TeamServers.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -104,6 +116,14 @@
     <EmbeddedResource Include="UI\FormControls\ConnectTo.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ConnectTo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormControls\ExplorerAdmin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExplorerAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormControls\ExplorerAdminControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExplorerAdminControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormControls\ExplorerControl.resx">
       <DependentUpon>ExplorerControl.vb</DependentUpon>
@@ -136,8 +156,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Adapters\" />
-    <Folder Include="UI\FormControls\Tree\" />
     <Folder Include="UI\WebControls\" />
     <Folder Include="UI\WpfControls\" />
   </ItemGroup>

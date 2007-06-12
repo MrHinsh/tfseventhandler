@@ -3,6 +3,7 @@ Namespace TeamFoundation.Proxies
     Public Class SubscriptionsClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.ISubscriptions)
         Implements Services.Contracts.ISubscriptions
+
         Public Sub New(ByVal callbackInstance As System.ServiceModel.InstanceContext, ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(callbackInstance, binding, remoteAddress)
         End Sub
@@ -18,6 +19,10 @@ Namespace TeamFoundation.Proxies
 
         Public Sub AddSubscriptions(ByVal TeamServer As String, ByVal ServiceUrl As String) Implements Services.Contracts.ISubscriptions.AddSubscriptions
             MyBase.Channel.AddSubscriptions(TeamServer, ServiceUrl)
+        End Sub
+
+        Public Sub IsSubscribed(ByVal TeamServer As String, ByVal ServiceUrl As String) Implements Services.Contracts.ISubscriptions.IsSubscribed
+            MyBase.Channel.IsSubscribed(TeamServer, ServiceUrl)
         End Sub
 
     End Class

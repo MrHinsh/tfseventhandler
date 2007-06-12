@@ -3,7 +3,7 @@ Imports RDdotNet.TeamFoundation.Clients
 Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports System.Windows.Forms
 
-Namespace UI.FormControls
+Namespace UI.FormControls.Tree
 
     Friend Class TreeNode_TeamServers
         Inherits TreeNodeCustom(Of TreeNode_TeamServer)
