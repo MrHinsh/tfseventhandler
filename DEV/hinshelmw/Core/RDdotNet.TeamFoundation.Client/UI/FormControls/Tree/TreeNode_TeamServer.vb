@@ -5,7 +5,7 @@ Imports System.Windows.Forms
 Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 
-Namespace UI.FormControls
+Namespace UI.FormControls.Tree
 
     Friend Class TreeNode_TeamServer
         Inherits TreeNode
@@ -32,6 +32,7 @@ Namespace UI.FormControls
             ' Create Contect Menu as Add events
             _ContextMenuStrip = New ContextMenuStrip
             _ContextMenuStrip.Items.Add(New ToolStripButton("Remove", Nothing, AddressOf RemoveTeamServer_Click))
+            _ContextMenuStrip.Items.Add(New ToolStripSeparator())
             _ContextMenuStrip.Items.Add(New ToolStripButton("Subscribe", Nothing, AddressOf SubscribeTeamServer_Click))
             _ContextMenuStrip.Items.Add(New ToolStripButton("Unsubscribe", Nothing, AddressOf UnsubscribeTeamServer_Click))
             Me.ContextMenuStrip = _ContextMenuStrip

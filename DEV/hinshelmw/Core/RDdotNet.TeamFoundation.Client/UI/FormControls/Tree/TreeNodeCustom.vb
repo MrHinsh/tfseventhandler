@@ -3,7 +3,7 @@ Imports RDdotNet.TeamFoundation.Clients
 Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports System.Windows.Forms
 
-Namespace UI.FormControls
+Namespace UI.FormControls.Tree
 
     Public Enum Status
         Normal = 0
@@ -145,11 +145,11 @@ Namespace UI.FormControls
             Else
                 _Status = Status
                 Select Case Status
-                    Case FormControls.Status.Normal
+                    Case Tree.Status.Normal
                         Me.Text = Me.NodeName
-                    Case FormControls.Status.Working
+                    Case Tree.Status.Working
                         Me.Text = String.Format("{0} ({1}...)", Me.NodeName, Status.ToString)
-                    Case FormControls.Status.Faulted
+                    Case Tree.Status.Faulted
                         Me.Text = String.Format("{0} ({1})", Me.NodeName, Status.ToString)
                 End Select
             End If
@@ -158,7 +158,7 @@ Namespace UI.FormControls
 
 #End Region
 
-  
+
     End Class
 
 End Namespace

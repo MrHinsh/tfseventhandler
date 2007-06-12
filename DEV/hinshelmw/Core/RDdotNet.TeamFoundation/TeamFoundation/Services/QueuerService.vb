@@ -42,8 +42,8 @@ Namespace TeamFoundation.Services
 #Region " Team Server Bits "
 
         Public Function GetTeamServer(ByVal TeamServerName As String) As TeamFoundationServer
+            Dim tfs As TeamFoundationServer = Nothing
             Try
-                Dim tfs As TeamFoundationServer = Nothing
                 Dim account As Net.NetworkCredential = EventHandlerClient.TeamServersService.GetCredentials(Nothing, Nothing)
                 tfs = New TeamFoundationServer(TeamServerName, account)
                 tfs.Authenticate()
@@ -57,6 +57,7 @@ Namespace TeamFoundation.Services
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
                 Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
             End Try
+            Return tfs
         End Function
 
         Public Function GetTeamServer(ByVal TeamServerUri As Uri) As Microsoft.TeamFoundation.Client.TeamFoundationServer

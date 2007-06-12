@@ -20,7 +20,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.TFSEventHandlerControl = New RDdotNet.TeamFoundation.UI.FormControls.TFSEventHandlerControl
+        Me.TFSEventHandlerControl = New RDdotNet.TeamFoundation.UI.FormControls.ExplorerControl
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.uxToolStripButtonAuthCheck = New System.Windows.Forms.ToolStripButton
@@ -94,7 +94,7 @@ Partial Class Form1
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TFSEventHandlerControl As RDdotNet.TeamFoundation.UI.FormControls.TFSEventHandlerControl
+    Friend WithEvents TFSEventHandlerControl As RDdotNet.TeamFoundation.UI.FormControls.ExplorerControl
     Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents uxToolStripButtonAuthCheck As System.Windows.Forms.ToolStripButton
