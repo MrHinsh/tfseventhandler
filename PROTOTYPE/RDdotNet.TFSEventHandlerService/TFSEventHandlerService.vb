@@ -91,12 +91,12 @@ Public Class TFSEventHandlerService
 
 #Region " WorkItemChangedEventHandlerManager "
 
-    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer)
-    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
+    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer)
+    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
     Private Delegate Sub WorkItemChangedManager_InitiliseCompleteDelegate()
 
 
-    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles WorkItemChangedManager.Error
+    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles WorkItemChangedManager.Error
         Dim name As String = "Server"
         If Not ManagedType Is Nothing Then
             name = ManagedType.ItemElement.AssemblyFileName.ToString
@@ -104,7 +104,7 @@ Public Class TFSEventHandlerService
         My.Application.Log.WriteException(e, TraceEventType.Warning, String.Format("WorkItemChangedManager: There was an error with {0} in a status of {1}", name, Status.ToString))
     End Sub
 
-    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer) Handles WorkItemChangedManager.StatusChange
+    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer) Handles WorkItemChangedManager.StatusChange
         Dim name As String = "Server"
         If Not ManagedType Is Nothing Then
             name = ManagedType.ItemElement.AssemblyFileName.ToString
