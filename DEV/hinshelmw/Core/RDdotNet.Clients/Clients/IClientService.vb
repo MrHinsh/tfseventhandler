@@ -7,6 +7,7 @@ Namespace Clients
 
         ReadOnly Property ServiceType() As ClientServiceTypes
         ReadOnly Property ServiceName() As String
+        ReadOnly Property Server() As Servers.IServer
         ReadOnly Property Contracts() As Collection(Of Type)
         Function Authenticated() As Boolean
         Sub Start()
@@ -15,9 +16,8 @@ Namespace Clients
     End Interface
 
     Public Enum ClientServiceTypes
-        Wcf
-        Storage
-        Logic
+        Local
+        Remote
     End Enum
 
 End Namespace

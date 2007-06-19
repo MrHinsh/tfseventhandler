@@ -19,8 +19,19 @@ Namespace TeamFoundation.Clients
         Implements Services.Contracts.ISubscriptionsCallback
 
         Public Event SubscriptionsUpdated As SubscriptionsUpdated
+        Private _Server As Servers.IServer
+
+        Public Sub New(ByVal Server As Servers.IServer)
+            _Server = Server
+        End Sub
 
 #Region " IClientService "
+
+        Public ReadOnly Property Server() As Servers.IServer Implements RDdotNet.Clients.IClientService.Server
+            Get
+                Return Me._Server
+            End Get
+        End Property
 
         Public Function Authenticated() As Boolean Implements RDdotNet.Clients.IClientService.Authenticated
             Return True
@@ -46,7 +57,7 @@ Namespace TeamFoundation.Clients
 
         Public ReadOnly Property ServiceType() As RDdotNet.Clients.ClientServiceTypes Implements RDdotNet.Clients.IClientService.ServiceType
             Get
-                Return RDdotNet.Clients.ClientServiceTypes.Logic
+                Return RDdotNet.Clients.ClientServiceTypes.Local
             End Get
         End Property
 
@@ -159,7 +170,8 @@ Namespace TeamFoundation.Clients
             End Get
         End Property
 
-      
+
+    
     End Class
 
 End Namespace
