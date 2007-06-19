@@ -105,6 +105,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="TFSEventHandler.cd" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AEventHandlerConfig.vb" />
