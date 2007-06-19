@@ -11,7 +11,7 @@ Namespace TeamFoundation.Clients
     Public Delegate Sub HandlersUpdated(ByVal AssemblyManaifest As Services.DataContracts.AssemblyManaifest)
 
     Public Class HandlersService
-        Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.HandlersClient, WSDualHttpBinding)
+        Inherits RDdotNet.Clients.WcfClientServiceBase(Of Proxies.HandlersClient, WSDualHttpBinding)
         Implements Services.Contracts.IHandlers
         Implements Services.Contracts.IHandlersCallback
 
@@ -19,7 +19,7 @@ Namespace TeamFoundation.Clients
 
 #Region " WcfServiceBase "
 
-        Public Sub New(ByVal Server As Servers.IServer)
+        Public Sub New(ByVal Server As Servers.IClientServer)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
             Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub

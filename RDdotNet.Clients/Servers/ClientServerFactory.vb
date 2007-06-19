@@ -4,16 +4,16 @@ Imports System.Collections.Generic
 
 Namespace Servers
 
-    Public Class RDdotNetServerFactory
+    Public Class ClientServerFactory
 
 #Region " Singleton "
 
-        Private Shared _Instance As RDdotNetServerFactory
+        Private Shared _Instance As ClientServerFactory
 
-        Private Shared ReadOnly Property Instance() As RDdotNetServerFactory
+        Private Shared ReadOnly Property Instance() As ClientServerFactory
             Get
                 If _Instance Is Nothing Then
-                    _Instance = New RDdotNetServerFactory
+                    _Instance = New ClientServerFactory
                 End If
                 Return _Instance
             End Get
@@ -27,9 +27,9 @@ Namespace Servers
 
 #Region " Server Mangement "
 
-        Private Servers As New System.Collections.Generic.Dictionary(Of Uri, RDdotNetServerBase)
+        Private Servers As New System.Collections.Generic.Dictionary(Of Uri, ClientServerBase)
 
-        Public Shared Function GetServer(Of TRDdotNetServer As {New, RDdotNetServerBase})(ByVal Server As Uri) As TRDdotNetServer
+        Public Shared Function GetServer(Of TRDdotNetServer As {New, ClientServerBase})(ByVal Server As Uri) As TRDdotNetServer
             If Instance.Servers.ContainsKey(Server) Then
                 Return CType(Instance.Servers(Server), TRDdotNetServer)
             Else
@@ -89,7 +89,7 @@ Namespace Servers
 
         Public Shared Function GetServices(ByVal Name As String) As Collection(Of Clients.IClientService)
             Dim FoundServices As New Collection(Of Clients.IClientService)
-            For Each server As RDdotNetServerBase In Instance.Servers.Values
+            For Each server As ClientServerBase In Instance.Servers.Values
                 For Each service As Clients.IClientService In server.GetServices
                     If service.ServiceName = Name Then
                         FoundServices.Add(service)
@@ -101,7 +101,7 @@ Namespace Servers
 
         Public Shared Function GetServices(Of TClientService As Clients.IClientService)() As Collection(Of TClientService)
             Dim FoundServices As New Collection(Of TClientService)
-            For Each server As RDdotNetServerBase In Instance.Servers.Values
+            For Each server As ClientServerBase In Instance.Servers.Values
                 For Each service As TClientService In server.GetServices
                     If service.GetType Is GetType(TClientService) Then
                         FoundServices.Add(service)

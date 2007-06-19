@@ -4,12 +4,12 @@ Imports System.Collections.ObjectModel
 
 Namespace Clients
 
-    Public MustInherit Class WcfServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
+    Public MustInherit Class WcfClientServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
         Implements IClientService
 
-        Private _Server As Servers.IServer
+        Private _Server As Servers.IClientServer
 
-        Public Sub New(ByVal Server As Servers.IServer, ByVal Location As String)
+        Public Sub New(ByVal Server As Servers.IClientServer, ByVal Location As String)
             If Not Server Is Nothing Then
                 _Server = Server
             End If
@@ -20,7 +20,7 @@ Namespace Clients
             End If
         End Sub
 
-        Public ReadOnly Property Server() As Servers.IServer Implements IClientService.Server
+        Public ReadOnly Property Server() As Servers.IClientServer Implements IClientService.Server
             Get
                 Return Me._Server
             End Get
@@ -66,7 +66,7 @@ Namespace Clients
             Get
                 Dim ServiceContracts As New Collection(Of Type)
                 For Each t As Type In Me.GetType.GetInterfaces
-                    If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
+                    If t.IsInterface And t.GetCustomAttributes(GetType(ClientServiceContractAttribute), True).Length > 0 Then
                         ServiceContracts.Add(t)
                     End If
                 Next
@@ -80,7 +80,7 @@ Namespace Clients
             End Get
         End Property
 
-        
+
 
         Public Function Authenticated() As Boolean Implements IClientService.Authenticated
             Throw New NotImplementedException
@@ -95,7 +95,7 @@ Namespace Clients
 
         End Sub
 
-   
+
     End Class
 
 End Namespace

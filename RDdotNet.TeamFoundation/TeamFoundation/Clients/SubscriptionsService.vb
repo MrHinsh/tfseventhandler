@@ -19,15 +19,15 @@ Namespace TeamFoundation.Clients
         Implements Services.Contracts.ISubscriptionsCallback
 
         Public Event SubscriptionsUpdated As SubscriptionsUpdated
-        Private _Server As Servers.IServer
+        Private _Server As Servers.IClientServer
 
-        Public Sub New(ByVal Server As Servers.IServer)
+        Public Sub New(ByVal Server As Servers.IClientServer)
             _Server = Server
         End Sub
 
 #Region " IClientService "
 
-        Public ReadOnly Property Server() As Servers.IServer Implements RDdotNet.Clients.IClientService.Server
+        Public ReadOnly Property Server() As Servers.IClientServer Implements RDdotNet.Clients.IClientService.Server
             Get
                 Return Me._Server
             End Get
@@ -41,7 +41,7 @@ Namespace TeamFoundation.Clients
             Get
                 Dim ServiceContracts As New Collection(Of Type)
                 For Each t As Type In Me.GetType.GetInterfaces
-                    If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
+                    If t.IsInterface And t.GetCustomAttributes(GetType(ClientServiceContractAttribute), True).Length > 0 Then
                         ServiceContracts.Add(t)
                     End If
                 Next
