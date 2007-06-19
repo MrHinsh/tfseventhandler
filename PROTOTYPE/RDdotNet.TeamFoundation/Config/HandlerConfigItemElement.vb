@@ -23,16 +23,9 @@ Namespace Config
     ''' <summary>
     ''' Contains the definition of a visualization.
     ''' </summary>
-    Public Class HandlerItemCollection
-        Inherits ConfigurationElementCollection
+    Public Class HandlerConfigItemElement
+        Inherits ConfigurationElement
 
-        Protected Overloads Overrides Function CreateNewElement() As System.Configuration.ConfigurationElement
-            Return New HandlerItemElement(Of AEventHandlerConfig)
-        End Function
-
-        Protected Overrides Function GetElementKey(ByVal element As System.Configuration.ConfigurationElement) As Object
-            Return CType(element, HandlerItemElement(Of AEventHandlerConfig)).Type
-        End Function
 
     End Class
 

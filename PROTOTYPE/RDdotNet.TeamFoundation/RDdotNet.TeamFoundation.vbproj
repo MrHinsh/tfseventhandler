@@ -107,7 +107,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AEventHandlerConfig.vb" />
     <Compile Include="Config\BaseAddressItemElement.vb" />
+    <Compile Include="Config\HandlerConfigItemElement.vb" />
     <Compile Include="Config\UrlReplacementItemElement.vb" />
     <Compile Include="Config\UrlReplacementCollection.vb" />
     <Compile Include="Events\NotifyEventArgs.vb" />

@@ -11,7 +11,7 @@ Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
 Public Class AssignedToHandler
-    Inherits AEventHandler(Of WorkItemChangedEvent)
+    Inherits AEventHandler(Of WorkItemChangedEvent, AssignedToHandlerConfig)
 
 
     Public Enum EmailSendTypes
@@ -20,7 +20,7 @@ Public Class AssignedToHandler
     End Enum
 
 
-    Public Overrides Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent))
+    Public Overrides Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent))
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Running ")
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
             Return
@@ -59,7 +59,7 @@ Public Class AssignedToHandler
     '' <summary>
     '' Retrieves email body based on XSL transform of XML event
     '' </summary>
-    Public Function GetBody(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal EventObject As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) As String
+    Public Function GetBody(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal EventObject As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) As String
         Try
             Dim replacers As Hashtable = GetReplaceomatic(EventObject)
             Dim TemplatePath As String = System.IO.Path.Combine(EventHandlerItem.ItemElement.AssemblyFileLocation, "AssignedTo.htm")
@@ -112,7 +112,7 @@ Public Class AssignedToHandler
     '' <summary>
     '' Returns true if the event contains a new assignment to a user other than the assigner
     '' </summary>
-    Public Overrides Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Boolean
+    Public Overrides Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Boolean
         If e.Event Is Nothing Then
             Return False
         End If

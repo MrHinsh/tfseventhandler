@@ -4,10 +4,10 @@ Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Config
 
-Public Class EventHandlerItem(Of TEvent)
-    Inherits AItem(Of AEventHandler(Of TEvent), HandlerItemElement)
+Public Class EventHandlerItem(Of TEvent, THandlerConfig As AEventHandlerConfig)
+    Inherits AItem(Of AEventHandler(Of TEvent, THandlerConfig), HandlerItemElement(Of THandlerConfig))
 
-    Public Sub New(ByVal Subject As AEventHandler(Of TEvent), ByVal ItemElement As HandlerItemElement)
+    Public Sub New(ByVal Subject As AEventHandler(Of TEvent, THandlerConfig), ByVal ItemElement As HandlerItemElement(Of THandlerConfig))
         MyBase.New(Subject, ItemElement)
     End Sub
 

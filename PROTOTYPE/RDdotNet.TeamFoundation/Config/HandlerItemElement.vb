@@ -23,7 +23,7 @@ Namespace Config
     ''' <summary>
     ''' Contains the definition of a visualization.
     ''' </summary>
-    Public Class HandlerItemElement
+    Public Class HandlerItemElement(Of THandlerConfig)
         Inherits ConfigurationElement
 
         '<ConfigurationProperty("Name", IsRequired:=True, iskey:=True, DefaultValue:="No Name.")> _
@@ -76,6 +76,19 @@ Namespace Config
             End Get
             Set(ByVal value As String)
                 Me("assemblyFileLocation") = value
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' The type of the System to use.
+        ''' </summary>
+        <ConfigurationProperty("HandlerConfig", IsRequired:=False)> _
+        Public Property HandlerConfig() As THandlerConfig
+            Get
+                Return CType(Me("HandlerConfig"), THandlerConfig)
+            End Get
+            Set(ByVal value As THandlerConfig)
+                Me("HandlerConfig") = value
             End Set
         End Property
 
