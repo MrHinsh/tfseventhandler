@@ -7,21 +7,32 @@ Namespace Clients
     Public MustInherit Class WcfServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
         Implements IClientService
 
+        Private _Server As Servers.IServer
+
+        Public Sub New(ByVal Server As Servers.IServer, ByVal Location As String)
+            If Not Server Is Nothing Then
+                _Server = Server
+            End If
+            If Not Location = "" Then
+                _Location = Location
+            Else
+                Throw New InvalidOperationException("You must provide a valid location")
+            End If
+        End Sub
+
+        Public ReadOnly Property Server() As Servers.IServer Implements IClientService.Server
+            Get
+                Return Me._Server
+            End Get
+        End Property
 
         Public ReadOnly Property ServiceType() As ClientServiceTypes Implements IClientService.ServiceType
             Get
-                Return ClientServiceTypes.Wcf
+                Return ClientServiceTypes.Remote
             End Get
         End Property
 
-        Private _Server As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
         Private _Location As String = "WcfServiceBase"
-
-        Public ReadOnly Property Server() As Uri
-            Get
-                Return _Server
-            End Get
-        End Property
 
         Public ReadOnly Property Location() As String
             Get
@@ -31,7 +42,7 @@ Namespace Clients
 
         Public ReadOnly Property EndPoint() As EndpointAddress
             Get
-                Return New EndpointAddress(New Uri(_Server, _Location))
+                Return New EndpointAddress(New Uri(_Server.ServerUri, _Location))
             End Get
         End Property
 
@@ -69,16 +80,7 @@ Namespace Clients
             End Get
         End Property
 
-        Public Sub New(ByVal Server As Uri, ByVal Location As String)
-            If Not Server Is Nothing Then
-                _Server = Server
-            End If
-            If Not Location = "" Then
-                _Location = Location
-            Else
-                Throw New InvalidOperationException("You must provide a valid location")
-            End If
-        End Sub
+        
 
         Public Function Authenticated() As Boolean Implements IClientService.Authenticated
             Throw New NotImplementedException

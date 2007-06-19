@@ -11,16 +11,17 @@ Namespace Servers
     Public Class TFSEventHandlerServer
         Inherits RDdotNet.Servers.RDdotNetServerBase
 
+
         Public Sub New(Optional ByVal uri As System.Uri = Nothing)
             MyBase.New(uri)
         End Sub
 
         Protected Overrides Sub OnServicesLoad()
-            AddClientService(New TeamFoundation.Clients.EventsService(Me.ServerUri))
-            AddClientService(New TeamFoundation.Clients.HandlersService(Me.ServerUri))
-            AddClientService(New TeamFoundation.Clients.TeamServersService(Me.ServerUri))
-            AddClientService(New TeamFoundation.Clients.SubscriptionsService())
-            AddClientService(New ActiveDirectory.Clients.ActiveDirectoryService)
+            AddClientService(New TeamFoundation.Clients.EventsService(Me))
+            AddClientService(New TeamFoundation.Clients.HandlersService(Me))
+            AddClientService(New TeamFoundation.Clients.TeamServersService(Me))
+            AddClientService(New TeamFoundation.Clients.SubscriptionsService(Me))
+            AddClientService(New ActiveDirectory.Clients.ActiveDirectoryService(Me))
         End Sub
 
         Protected Overrides Sub OnServicesUnload(ByRef ClientServices As System.Collections.ObjectModel.Collection(Of Clients.IClientService))
@@ -57,6 +58,7 @@ Namespace Servers
             End Get
         End Property
 
+    
     End Class
 
 
