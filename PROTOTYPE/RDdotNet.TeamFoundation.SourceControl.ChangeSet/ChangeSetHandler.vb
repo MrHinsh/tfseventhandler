@@ -14,7 +14,7 @@ Imports Microsoft.TeamFoundation.Server
 Imports System.Collections.ObjectModel
 
 Public Class ChangeSetHandler
-    Inherits AEventHandler(Of CheckinEvent, ChangeSetHandlerConfig)
+    Implements IEventHandler(Of CheckinEvent, ChangeSetHandlerConfig)
 
 
 
@@ -24,7 +24,7 @@ Public Class ChangeSetHandler
     End Enum
 
 
-    Public Overloads Overrides Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent))
+    Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) Implements IEventHandler(Of CheckinEvent, RDdotNet.TeamFoundation.SourceControl.ChangeSetHandlerConfig).Run
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
             Return
         End If
@@ -123,7 +123,7 @@ Public Class ChangeSetHandler
     '' <summary>
     '' Returns true if the event contains a new assignment to a user other than the assigner
     '' </summary>
-    Public Overrides Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As Boolean
+    Public Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As Boolean Implements IEventHandler(Of CheckinEvent, RDdotNet.TeamFoundation.SourceControl.ChangeSetHandlerConfig).IsValid
         If e.Event Is Nothing Then
             Return False
         End If
