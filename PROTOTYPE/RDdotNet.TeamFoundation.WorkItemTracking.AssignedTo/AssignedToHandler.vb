@@ -11,16 +11,14 @@ Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
 Public Class AssignedToHandler
-    Inherits AEventHandler(Of WorkItemChangedEvent, AssignedToHandlerConfig)
-
+    Implements IEventHandler(Of WorkItemChangedEvent, AssignedToHandlerConfig)
 
     Public Enum EmailSendTypes
         AssignedTo
-
     End Enum
 
 
-    Public Overrides Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent))
+    Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) Implements IEventHandler(Of WorkItemChangedEvent, RDdotNet.TeamFoundation.WorkItemTracking.AssignedToHandlerConfig).Run
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Running ")
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
             Return
@@ -112,7 +110,7 @@ Public Class AssignedToHandler
     '' <summary>
     '' Returns true if the event contains a new assignment to a user other than the assigner
     '' </summary>
-    Public Overrides Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Boolean
+    Public Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent, AssignedToHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Boolean Implements IEventHandler(Of WorkItemChangedEvent, RDdotNet.TeamFoundation.WorkItemTracking.AssignedToHandlerConfig).IsValid
         If e.Event Is Nothing Then
             Return False
         End If

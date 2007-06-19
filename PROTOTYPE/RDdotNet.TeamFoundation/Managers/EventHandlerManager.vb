@@ -30,7 +30,7 @@ Public Class EventHandlersManager(Of TEvent)
                     Dim assFile As String = System.IO.Path.Combine(HandlerItem.AssemblyFileLocation, HandlerItem.AssemblyFileName)
                     If System.IO.File.Exists(assFile) Then
                         Try
-                            EventHandlerBit.Subject = CType(System.Activator.CreateInstanceFrom(assFile, HandlerItem.Type.ToString).Unwrap, AEventHandler(Of TEvent, AEventHandlerConfig))
+                            EventHandlerBit.Subject = CType(System.Activator.CreateInstanceFrom(assFile, HandlerItem.Type.ToString).Unwrap, IEventHandler(Of TEvent, AEventHandlerConfig))
                             _EventHandlers.Add(EventHandlerBit)
                             Me.OnStatusChange(EventHandlerBit, Status.ObjectCreated, _EventHandlers.Count)
                         Catch ex As Exception
