@@ -10,10 +10,10 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace TeamFoundation.Clients
 
     Public Class EventsService
-        Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.EventsClient, WSDualHttpBinding)
+        Inherits RDdotNet.Clients.WcfClientServiceBase(Of Proxies.EventsClient, WSDualHttpBinding)
         Implements Services.Contracts.IEvents
 
-        Public Sub New(ByVal Server As Servers.IServer)
+        Public Sub New(ByVal Server As Servers.IClientServer)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
             Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub

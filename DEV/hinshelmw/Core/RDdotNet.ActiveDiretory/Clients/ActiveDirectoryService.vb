@@ -7,13 +7,13 @@ Namespace ActiveDirectory.Clients
     Public Class ActiveDirectoryService
         Implements IClientService
 
-        Private _Server As Servers.IServer
+        Private _Server As Servers.IClientServer
 
-        Public Sub New(ByVal Server As Servers.IServer)
+        Public Sub New(ByVal Server As Servers.IClientServer)
             _Server = Server
         End Sub
 
-        Public ReadOnly Property Server() As Servers.IServer Implements IClientService.Server
+        Public ReadOnly Property Server() As Servers.IClientServer Implements IClientService.Server
             Get
                 Return Me._Server
             End Get
@@ -27,7 +27,7 @@ Namespace ActiveDirectory.Clients
             Get
                 Dim ServiceContracts As New Collection(Of Type)
                 For Each t As Type In Me.GetType.GetInterfaces
-                    If t.IsInterface And t.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length > 0 Then
+                    If t.IsInterface And t.GetCustomAttributes(GetType(ClientServiceContractAttribute), True).Length > 0 Then
                         ServiceContracts.Add(t)
                     End If
                 Next

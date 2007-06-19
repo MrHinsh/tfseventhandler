@@ -8,7 +8,7 @@ Namespace TeamFoundation.Services.Contracts
     ''' This is the service for hosting and manipulating the ML EventHandler applciation for team foundation server
     ''' </summary>
     ''' <remarks></remarks>
-    <RDdotNetServiceContract()> _
+    <ClientServiceContractAttribute()> _
     Public Interface ISubscriptionsCallback
 
         <OperationContract(IsOneWay:=True)> _

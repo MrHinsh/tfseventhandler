@@ -4,7 +4,7 @@ Imports System.Collections.ObjectModel
 
 Namespace Servers
 
-    Public Interface IServer
+    Public Interface IClientServer
 
         ReadOnly Property ServerUri() As Uri
         Function Authenticated() As Boolean
