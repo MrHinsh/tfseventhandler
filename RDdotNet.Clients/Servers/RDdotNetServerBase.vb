@@ -5,13 +5,14 @@ Imports System.Collections.ObjectModel
 Namespace Servers
 
     Public MustInherit Class RDdotNetServerBase
+        Implements IServer
         Implements IDisposable
 
         Private _Uri As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
         Private _ClientServices As New Collection(Of Clients.IClientService)
         Private _ClientServicesLoaded As Boolean = False
 
-        Public ReadOnly Property ServerUri() As Uri
+        Public ReadOnly Property ServerUri() As Uri Implements IServer.ServerUri
             Get
                 Return _Uri
             End Get
@@ -29,11 +30,11 @@ Namespace Servers
             End If
         End Sub
 
-        Public Function Authenticated() As Boolean
+        Public Function Authenticated() As Boolean Implements IServer.Authenticated
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(Of TService As Clients.IClientService)() As TService
+        Public Function GetService(Of TService As Clients.IClientService)() As TService Implements IServer.GetService
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
                 Dim obj As Object = service
@@ -44,7 +45,7 @@ Namespace Servers
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(ByVal Name As String) As Clients.IClientService
+        Public Function GetService(ByVal Name As String) As Clients.IClientService Implements IServer.GetService
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
                 If service.ServiceName = Name Then
@@ -60,7 +61,7 @@ Namespace Servers
         ''' <param name="ServiceContract">interface as type</param>
         ''' <returns>Service that implements IClientService</returns>
         ''' <remarks></remarks>
-        Public Function GetService(ByVal ServiceContract As Type) As Clients.IClientService
+        Public Function GetService(ByVal ServiceContract As Type) As Clients.IClientService Implements IServer.GetService
             If ServiceContract.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
@@ -73,17 +74,17 @@ Namespace Servers
             Throw New InvalidOperationException
         End Function
 
-        Public Function GetServices() As Collection(Of Clients.IClientService)
+        Public Function GetServices() As Collection(Of Clients.IClientService) Implements IServer.GetServices
             Return _ClientServices
         End Function
 
-        Private Sub LoadServices()
+        Private Sub LoadServices() Implements IServer.LoadServices
             OnServicesPreLoad()
             OnServicesLoad()
             OnServicesPostLoad()
         End Sub
 
-        Protected Sub AddClientService(ByVal Service As Clients.IClientService)
+        Protected Sub AddClientService(ByVal Service As Clients.IClientService) Implements IServer.AddClientService
             If ValidateClientService(Service) Then
                 _ClientServices.Add(Service)
             Else
@@ -91,7 +92,7 @@ Namespace Servers
             End If
         End Sub
 
-        Public Function ValidateClientService(ByVal Service As Clients.IClientService) As Boolean
+        Public Function ValidateClientService(ByVal Service As Clients.IClientService) As Boolean Implements IServer.ValidateClientService
             ValidateClientService = True
             Dim o As Object = Service
             'If o.GetType.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
@@ -100,23 +101,23 @@ Namespace Servers
         End Function
 
 
-        Protected Overridable Sub OnServicesPreLoad()
+        Protected Overridable Sub OnServicesPreLoad() Implements IServer.OnServicesPreLoad
 
         End Sub
 
-        Protected MustOverride Sub OnServicesLoad()
+        Protected MustOverride Sub OnServicesLoad() Implements IServer.OnServicesLoad
 
-        Protected Overridable Sub OnServicesPostLoad()
+        Protected Overridable Sub OnServicesPostLoad() Implements IServer.OnServicesPostLoad
             For Each ClientService As Clients.IClientService In _ClientServices
                 ClientService.Start()
             Next
         End Sub
 
-        Private Sub UnloadServices()
+        Private Sub UnloadServices() Implements IServer.UnloadServices
             OnServicesUnload(_ClientServices)
         End Sub
 
-        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of Clients.IClientService))
+        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of Clients.IClientService)) Implements IServer.OnServicesUnload
 
 #Region " IDisposable "
 

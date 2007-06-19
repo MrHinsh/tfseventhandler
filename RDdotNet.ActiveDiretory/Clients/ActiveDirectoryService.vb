@@ -7,6 +7,18 @@ Namespace ActiveDirectory.Clients
     Public Class ActiveDirectoryService
         Implements IClientService
 
+        Private _Server As Servers.IServer
+
+        Public Sub New(ByVal Server As Servers.IServer)
+            _Server = Server
+        End Sub
+
+        Public ReadOnly Property Server() As Servers.IServer Implements IClientService.Server
+            Get
+                Return Me._Server
+            End Get
+        End Property
+
         Public Function Authenticated() As Boolean Implements IClientService.Authenticated
             Return True
         End Function
@@ -31,7 +43,7 @@ Namespace ActiveDirectory.Clients
 
         Public ReadOnly Property ServiceType() As ClientServiceTypes Implements IClientService.ServiceType
             Get
-                Return ClientServiceTypes.Logic
+                Return ClientServiceTypes.Local
             End Get
         End Property
 
@@ -62,7 +74,8 @@ Namespace ActiveDirectory.Clients
             Return values(0).ToString()
         End Function
 
-    
+
+      
     End Class
 
 End Namespace

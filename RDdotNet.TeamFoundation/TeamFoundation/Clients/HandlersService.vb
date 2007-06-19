@@ -19,7 +19,7 @@ Namespace TeamFoundation.Clients
 
 #Region " WcfServiceBase "
 
-        Public Sub New(Optional ByVal Server As Uri = Nothing)
+        Public Sub New(ByVal Server As Servers.IServer)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
             Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub

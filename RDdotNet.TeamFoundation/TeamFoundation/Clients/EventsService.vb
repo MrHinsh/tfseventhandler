@@ -13,7 +13,7 @@ Namespace TeamFoundation.Clients
         Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.EventsClient, WSDualHttpBinding)
         Implements Services.Contracts.IEvents
 
-        Public Sub New(Optional ByVal Server As Uri = Nothing)
+        Public Sub New(ByVal Server As Servers.IServer)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/EventHandling/Handlers")
             Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub
