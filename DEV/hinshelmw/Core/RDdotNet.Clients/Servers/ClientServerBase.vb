@@ -4,15 +4,15 @@ Imports System.Collections.ObjectModel
 
 Namespace Servers
 
-    Public MustInherit Class RDdotNetServerBase
-        Implements IServer
+    Public MustInherit Class ClientServerBase
+        Implements IClientServer
         Implements IDisposable
 
         Private _Uri As Uri = New Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":6661")
         Private _ClientServices As New Collection(Of Clients.IClientService)
         Private _ClientServicesLoaded As Boolean = False
 
-        Public ReadOnly Property ServerUri() As Uri Implements IServer.ServerUri
+        Public ReadOnly Property ServerUri() As Uri Implements IClientServer.ServerUri
             Get
                 Return _Uri
             End Get
@@ -30,11 +30,11 @@ Namespace Servers
             End If
         End Sub
 
-        Public Function Authenticated() As Boolean Implements IServer.Authenticated
+        Public Function Authenticated() As Boolean Implements IClientServer.Authenticated
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(Of TService As Clients.IClientService)() As TService Implements IServer.GetService
+        Public Function GetService(Of TService As Clients.IClientService)() As TService Implements IClientServer.GetService
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
                 Dim obj As Object = service
@@ -45,7 +45,7 @@ Namespace Servers
             Throw New NotImplementedException
         End Function
 
-        Public Function GetService(ByVal Name As String) As Clients.IClientService Implements IServer.GetService
+        Public Function GetService(ByVal Name As String) As Clients.IClientService Implements IClientServer.GetService
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
                 If service.ServiceName = Name Then
@@ -61,8 +61,8 @@ Namespace Servers
         ''' <param name="ServiceContract">interface as type</param>
         ''' <returns>Service that implements IClientService</returns>
         ''' <remarks></remarks>
-        Public Function GetService(ByVal ServiceContract As Type) As Clients.IClientService Implements IServer.GetService
-            If ServiceContract.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
+        Public Function GetService(ByVal ServiceContract As Type) As Clients.IClientService Implements IClientServer.GetService
+            If ServiceContract.GetCustomAttributes(GetType(ClientServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
             If Not _ClientServicesLoaded Then LoadServices()
             For Each service As Clients.IClientService In _ClientServices
                 For Each contract As Type In service.Contracts
@@ -74,17 +74,17 @@ Namespace Servers
             Throw New InvalidOperationException
         End Function
 
-        Public Function GetServices() As Collection(Of Clients.IClientService) Implements IServer.GetServices
+        Public Function GetServices() As Collection(Of Clients.IClientService) Implements IClientServer.GetServices
             Return _ClientServices
         End Function
 
-        Private Sub LoadServices() Implements IServer.LoadServices
+        Private Sub LoadServices() Implements IClientServer.LoadServices
             OnServicesPreLoad()
             OnServicesLoad()
             OnServicesPostLoad()
         End Sub
 
-        Protected Sub AddClientService(ByVal Service As Clients.IClientService) Implements IServer.AddClientService
+        Protected Sub AddClientService(ByVal Service As Clients.IClientService) Implements IClientServer.AddClientService
             If ValidateClientService(Service) Then
                 _ClientServices.Add(Service)
             Else
@@ -92,7 +92,7 @@ Namespace Servers
             End If
         End Sub
 
-        Public Function ValidateClientService(ByVal Service As Clients.IClientService) As Boolean Implements IServer.ValidateClientService
+        Public Function ValidateClientService(ByVal Service As Clients.IClientService) As Boolean Implements IClientServer.ValidateClientService
             ValidateClientService = True
             Dim o As Object = Service
             'If o.GetType.GetCustomAttributes(GetType(RDdotNetServiceContractAttribute), True).Length = 0 Then Throw New InvalidOperationException("You must pass in a contract (interface) that is mapked with the RDdotNetServiceContractAttribute.")
@@ -101,23 +101,23 @@ Namespace Servers
         End Function
 
 
-        Protected Overridable Sub OnServicesPreLoad() Implements IServer.OnServicesPreLoad
+        Protected Overridable Sub OnServicesPreLoad() Implements IClientServer.OnServicesPreLoad
 
         End Sub
 
-        Protected MustOverride Sub OnServicesLoad() Implements IServer.OnServicesLoad
+        Protected MustOverride Sub OnServicesLoad() Implements IClientServer.OnServicesLoad
 
-        Protected Overridable Sub OnServicesPostLoad() Implements IServer.OnServicesPostLoad
+        Protected Overridable Sub OnServicesPostLoad() Implements IClientServer.OnServicesPostLoad
             For Each ClientService As Clients.IClientService In _ClientServices
                 ClientService.Start()
             Next
         End Sub
 
-        Private Sub UnloadServices() Implements IServer.UnloadServices
+        Private Sub UnloadServices() Implements IClientServer.UnloadServices
             OnServicesUnload(_ClientServices)
         End Sub
 
-        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of Clients.IClientService)) Implements IServer.OnServicesUnload
+        Protected MustOverride Sub OnServicesUnload(ByRef ClientServices As Collection(Of Clients.IClientService)) Implements IClientServer.OnServicesUnload
 
 #Region " IDisposable "
 

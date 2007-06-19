@@ -9,7 +9,7 @@ Imports RDdotNet.TeamFoundation.Events
 Namespace Servers
 
     Public Class TFSEventHandlerServer
-        Inherits RDdotNet.Servers.RDdotNetServerBase
+        Inherits RDdotNet.Servers.ClientServerBase
 
 
         Public Sub New(Optional ByVal uri As System.Uri = Nothing)

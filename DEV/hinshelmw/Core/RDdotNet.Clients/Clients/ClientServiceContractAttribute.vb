@@ -1,4 +1,4 @@
-Public Class RDdotNetServiceContractAttribute
+Public Class ClientServiceContractAttribute
     Inherits System.Attribute
 
 

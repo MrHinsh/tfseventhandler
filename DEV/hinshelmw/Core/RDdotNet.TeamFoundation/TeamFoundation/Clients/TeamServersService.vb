@@ -12,7 +12,7 @@ Namespace TeamFoundation.Clients
     Public Delegate Sub TeamServersUpdated(ByVal TeamServers() As String)
 
     Public Class TeamServersService
-        Inherits RDdotNet.Clients.WcfServiceBase(Of Proxies.TeamServersClient, WSDualHttpBinding)
+        Inherits RDdotNet.Clients.WcfClientServiceBase(Of Proxies.TeamServersClient, WSDualHttpBinding)
         Implements Services.Contracts.ITeamServers
         Implements Services.Contracts.ITeamServersCallback
 
@@ -20,7 +20,7 @@ Namespace TeamFoundation.Clients
 
 #Region " WcfServiceBase "
 
-        Public Sub New(ByVal Server As Servers.IServer)
+        Public Sub New(ByVal Server As Servers.IClientServer)
             MyBase.New(Server, "RDdotNet/TFSEventHandler/Queuer/TeamServers")
             Client.ChannelFactory.Credentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultCredentials
         End Sub

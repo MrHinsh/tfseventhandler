@@ -73,11 +73,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Servers\IServer.vb" />
-    <Compile Include="Servers\RDdotNetServerBase.vb" />
-    <Compile Include="Clients\RDdotNetServiceContractAttribute.vb" />
+    <Compile Include="Servers\IClientServer.vb" />
+    <Compile Include="Servers\ClientServerBase.vb" />
+    <Compile Include="Clients\ClientServiceContractAttribute.vb" />
     <Compile Include="Proxies\IClientProxy.vb" />
-    <Compile Include="Servers\RDdotNetServerFactory.vb" />
+    <Compile Include="Servers\ClientServerFactory.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

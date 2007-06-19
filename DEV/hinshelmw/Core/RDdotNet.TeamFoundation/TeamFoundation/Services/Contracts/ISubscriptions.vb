@@ -12,7 +12,7 @@ Namespace TeamFoundation.Services.Contracts
     ''' This is the seervice contract for integrating with the Team Foundation Server notification events.
     ''' </summary>
     ''' <remarks></remarks>
-    <RDdotNetServiceContract()> _
+    <ClientServiceContractAttribute()> _
     <ServiceContract(CallbackContract:=GetType(ISubscriptionsCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2005/06/Services/SubscriptionAdmin")> _
     Public Interface ISubscriptions
 
