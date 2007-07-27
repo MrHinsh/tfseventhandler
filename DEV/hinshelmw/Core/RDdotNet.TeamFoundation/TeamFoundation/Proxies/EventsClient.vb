@@ -2,6 +2,7 @@ Namespace TeamFoundation.Proxies
 
     Public Class EventsClient
         Inherits System.ServiceModel.ClientBase(Of Services.Contracts.IEvents)
+        Implements RDdotNet.Proxies.IClientProxy
         Implements Services.Contracts.IEvents
 
         Friend Sub New(ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
