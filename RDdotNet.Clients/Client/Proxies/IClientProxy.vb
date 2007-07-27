@@ -5,8 +5,7 @@ Namespace Proxies
 
     Public Interface IClientProxy
 
-        Sub Start()
-        Sub [Stop]()
+
 
     End Interface
 

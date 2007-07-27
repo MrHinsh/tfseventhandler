@@ -2,6 +2,7 @@ Namespace TeamFoundation.Proxies
 
     Public Class HandlersClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.IHandlers)
+        Implements RDdotNet.Proxies.IClientProxy
         Implements Services.Contracts.IHandlers
 
         Friend Sub New(ByVal callbackInstance As System.ServiceModel.InstanceContext, ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
