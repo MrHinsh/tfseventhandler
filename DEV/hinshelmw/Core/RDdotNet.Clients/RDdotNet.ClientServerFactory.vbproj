@@ -54,10 +54,10 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\IClientService.vb" />
-    <Compile Include="Clients\WcfServiceBase.vb" />
-    <Compile Include="Config\ConfigurationElementCollection.vb" />
-    <Compile Include="Config\IConfigurationElement.vb" />
+    <Compile Include="Client\Clients\IClientService.vb" />
+    <Compile Include="Client\Clients\WcfServiceBase.vb" />
+    <Compile Include="Client\Config\ConfigurationElementCollection.vb" />
+    <Compile Include="Client\Config\IConfigurationElement.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -73,11 +73,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Servers\IClientServer.vb" />
-    <Compile Include="Servers\ClientServerBase.vb" />
-    <Compile Include="Clients\ClientServiceContractAttribute.vb" />
-    <Compile Include="Proxies\IClientProxy.vb" />
-    <Compile Include="Servers\ClientServerFactory.vb" />
+    <Compile Include="Client\Servers\IClientServer.vb" />
+    <Compile Include="Client\Servers\ClientServerBase.vb" />
+    <Compile Include="Client\Clients\ClientServiceContractAttribute.vb" />
+    <Compile Include="Client\Proxies\IClientProxy.vb" />
+    <Compile Include="Client\Servers\ClientServerFactory.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

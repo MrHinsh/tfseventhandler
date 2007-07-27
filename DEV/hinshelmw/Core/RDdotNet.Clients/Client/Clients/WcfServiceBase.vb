@@ -4,7 +4,7 @@ Imports System.Collections.ObjectModel
 
 Namespace Clients
 
-    Public MustInherit Class WcfClientServiceBase(Of TClient As {Class}, TBinding As Channels.Binding)
+    Public MustInherit Class WcfClientServiceBase(Of TClient As Proxies.IClientProxy, TBinding As Channels.Binding)
         Implements IClientService
 
         Private _Server As Servers.IClientServer
