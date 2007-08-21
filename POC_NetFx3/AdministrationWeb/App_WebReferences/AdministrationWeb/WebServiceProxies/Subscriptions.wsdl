@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:i0="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" location="http://localhost:31614/NotificationService/Subscriptions.asmx?wsdl=wsdl1" />
+  <wsdl:types />
+  <wsdl:service name="Subscriptions">
+    <wsdl:port name="Subscriptions" binding="i0:Subscriptions">
+      <soap:address location="http://localhost:31614/NotificationService/Subscriptions.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Subscriptions1" binding="i0:Subscriptions1">
+      <soap12:address location="http://localhost:31614/NotificationService/Subscriptions.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
