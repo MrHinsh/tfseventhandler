@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:portType name="Eventhandler" />
+  <wsdl:portType name="Eventhandler1" />
+  <wsdl:binding name="Eventhandler" type="tns:Eventhandler">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  </wsdl:binding>
+  <wsdl:binding name="Eventhandler1" type="tns:Eventhandler1">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  </wsdl:binding>
+</wsdl:definitions>

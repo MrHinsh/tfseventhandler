@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:i0="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" location="http://localhost:31634/DecissionService/Eventhandler.asmx?wsdl=wsdl1" />
+  <wsdl:types />
+  <wsdl:service name="Eventhandler">
+    <wsdl:port name="Eventhandler" binding="i0:Eventhandler">
+      <soap:address location="http://localhost:31634/DecissionService/Eventhandler.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Eventhandler1" binding="i0:Eventhandler1">
+      <soap12:address location="http://localhost:31634/DecissionService/Eventhandler.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
