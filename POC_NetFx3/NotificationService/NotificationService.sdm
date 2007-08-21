@@ -13,138 +13,78 @@
       <ModelElement Id="517b34483922494d8be9f2a3206fb6df" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocument">
         <Property Name="Version" Value="1" />
         <Property Name="VSProjectId" Value="c42e3140-5a32-44f5-a6cc-c5451ed570c8" />
-        <Relationship Id="f9faea522e704d5f94d74587c791b100" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
-        <ModelElement Id="45b3e34c1b76497abbbea3db04d327f7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
+        <Relationship Id="ff8a367deb5a4a80b7a48400da2eb7d1" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
+        <ModelElement Id="1d852c4c7efd41fd8dfcb4cf0e70cf17" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
           <Property Name="Name" Value="NotificationService" />
           <Property Name="Guid" Value="c42e3140-5a32-44f5-a6cc-c5451ed570c8" />
           <Property Name="Location" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService" />
           <Property Name="IsSupportedWebProject" Value="true" />
-          <Property Name="Template" Value="ProjectTemplatesCache\Web\VisualBasic\1033\EmptyWeb.zip\EmptyWeb.vstemplate" />
           <Property Name="IsImplemented" Value="true" />
           <Property Name="ProjectType" Value="Web" />
-          <ModelElement Id="e208723a208e4f7b9cb789d2a23e9fa7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
+          <ModelElement Id="6936cf9ba3e04c529c2722cb425c1211" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
             <Property Name="Name" Value="EventReciever" />
             <Property Name="Definition" Value="http://localhost:31634/DecissionService/EventReciever.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31634/DecissionService/EventReciever.asmx" />
+            <Property Name="Location" Value="http://localhost:31634/DecissionService/v1.0/EventReciever.asmx" />
             <Property Name="ServiceName" Value="EventReciever" />
             <Property Name="Namespace" Value="NotificationService.WebServiceProxies" />
             <Property Name="BindingName" Value="EventReciever" />
             <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/EventReciever" />
-            <Property Name="ServiceProjectGuid" Value="33d7837c-701a-4366-bfcc-a8458378c007" />
             <Property Name="ConfigKey" Value="NotificationService.WebServiceProxies.EventReciever" />
             <Property Name="ServiceNamespace" Value="http://tempuri.org/" />
-            <Relationship Id="7896a7b8f2b245469f61e0d04400d16d" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
+            <Relationship Id="8b64de22ad3a4df386fa40b5ac701383" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
           </ModelElement>
-          <ModelElement Id="02d939050b8a488481466bd720ed98de" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
+          <ModelElement Id="78f2f3a3b0a0449ca65aed1da878447d" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
             <Property Name="TypeName" Value="NotificationService.CheckInEventNotification" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/CheckInEventNotification.asmx" />
-            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\checkineventnotification.asmx" />
-            <ModelElement Id="08eb5dc7939d4fb5a4071583f3fdeb61" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/CheckInEventNotification.asmx" />
+            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\v1.0\checkineventnotification.asmx" />
+            <ModelElement Id="408d1471986f455dbd823508969e20a5" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
               <Property Name="Value" Value="~/App_Code/CheckInEventNotification.vb" />
-              <Relationship Id="5fac9f56ad76455a94575acbbda1c1c8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@02d939050b8a488481466bd720ed98de" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
+              <Relationship Id="2aea302e14be4927a425dad926fce895" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@78f2f3a3b0a0449ca65aed1da878447d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
             </ModelElement>
-            <ModelElement Id="36471b7009074ef292ed5c69014f3356" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
+            <ModelElement Id="91f6c5fe5f91478da46fce8ea84073a2" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
               <Property Name="Value" Value="vb" />
-              <Relationship Id="401b9c0a9a67483eb487912465b8abf7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@02d939050b8a488481466bd720ed98de" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
+              <Relationship Id="f8c00424ec9e4b208c598b26146a6408" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@78f2f3a3b0a0449ca65aed1da878447d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
             </ModelElement>
-            <Relationship Id="14fee6d2c4d5441d87df190d97bdc5ac" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
+            <Relationship Id="b1c19fc4c9304b89882049aceaebea5b" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
           </ModelElement>
-          <ModelElement Id="25428016db64416a83101ba4d8de6046" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
-            <Property Name="TypeName" Value="NotificationService.WorkItemChangedEventNotification" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/WorkItemChangedEventNotification.asmx" />
-            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\workitemchangedeventnotification.asmx" />
-            <ModelElement Id="a9f827725998438bb5308f32fb325b0e" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
-              <Property Name="Value" Value="~/App_Code/WorkItemChangedEventNotification.vb" />
-              <Relationship Id="35c40c2903a141ac96591be7d38de549" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@25428016db64416a83101ba4d8de6046" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
-            </ModelElement>
-            <ModelElement Id="a2e66e2a6d674baaba712a39b66ab7b8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
-              <Property Name="Value" Value="vb" />
-              <Relationship Id="d02e7eb1cb5f43139fc5f04f63f77d04" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@25428016db64416a83101ba4d8de6046" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
-            </ModelElement>
-            <Relationship Id="7c56e012751b4669bf476519cce1527a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
-          </ModelElement>
-          <ModelElement Id="29f0ad0e48314e479d47575809526bd9" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
+          <ModelElement Id="4a960c0876ef4598a41d148d5f63cfb7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
             <Property Name="TypeName" Value="NotificationService.Subscriptions" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/Subscriptions.asmx" />
-            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\subscriptions.asmx" />
-            <ModelElement Id="d93959d1394945af9beae74a9c219d60" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/Subscriptions.asmx" />
+            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\v1.0\subscriptions.asmx" />
+            <ModelElement Id="52d00e0efdb24b7285d86d38a682a3da" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
               <Property Name="Value" Value="~/App_Code/Subscriptions.vb" />
-              <Relationship Id="8dca3911fa194e27a1c042ab0af6c4ab" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@29f0ad0e48314e479d47575809526bd9" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
+              <Relationship Id="849292239e7847b5989b5a4a040add5a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@4a960c0876ef4598a41d148d5f63cfb7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
             </ModelElement>
-            <ModelElement Id="0ee0cba0a4494115b18343f95cdf2b31" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
+            <ModelElement Id="60ffc27259c24ebf883e72dfa8f7d5bf" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
               <Property Name="Value" Value="vb" />
-              <Relationship Id="33bfc09ac7dd463382fd13329f7edce4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@29f0ad0e48314e479d47575809526bd9" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
+              <Relationship Id="88f9bb01dae44a45ab24505d92ab6e32" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@4a960c0876ef4598a41d148d5f63cfb7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
             </ModelElement>
-            <Relationship Id="ade159e4276f4790bba5e6c00511a97c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
+            <Relationship Id="85a0d35c07aa47f4ad06a3beebb11c7e" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
           </ModelElement>
-          <ModelElement Id="1e3ff6685ed749d2b3318e1c5b46450b" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
-            <ModelElement Id="ad613f6494724980baf750f2df0d9c72" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
+          <ModelElement Id="753c20afb1654d72aafd30e50e7a9dec" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebService">
+            <Property Name="TypeName" Value="NotificationService.WorkItemChangedEventNotification" />
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/WorkItemChangedEventNotification.asmx" />
+            <Property Name="FileName" Value="c:\tfs\workspaces\cptfs3\tfseventhandler\poc_netfx3\notificationservice\v1.0\workitemchangedeventnotification.asmx" />
+            <ModelElement Id="9b3e7c284e0340599f2f79236e1770bd" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceCodeBehind">
+              <Property Name="Value" Value="~/App_Code/WorkItemChangedEventNotification.vb" />
+              <Relationship Id="968b2603665244839fc1d04fefd211ef" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind" Role1="@753c20afb1654d72aafd30e50e7a9dec" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceCodeBehind.WebService" />
+            </ModelElement>
+            <ModelElement Id="96933cdcb4c74c08b92a25c9d2091189" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceLanguage">
+              <Property Name="Value" Value="vb" />
+              <Relationship Id="eb8e3e208fd344c8955ac79df53f69e8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage" Role1="@753c20afb1654d72aafd30e50e7a9dec" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.WebServiceContainsWebServiceLanguage.WebService" />
+            </ModelElement>
+            <Relationship Id="91cce37e80aa42b4a7577cff3308e439" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Asmx.VSProjectContainsWebServices.VSProject" />
+          </ModelElement>
+          <ModelElement Id="a6559ca754d2431c81beba3c0c22613a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
+            <ModelElement Id="53f83bc99efa4ab4b1bb98582083f916" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
               <Property Name="CustomAttributes" Value="" />
               <Property Name="LanguageType" Value="VisualBasic" />
-              <ModelElement Id="7bf52190262645eba6829861d23b9f26" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespace">
+              <ModelElement Id="9ff46d6ea8174091b584bf5ca522021d" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespace">
                 <Property Name="Name" Value="NotificationService" />
                 <Property Name="CustomAttributes" Value="" />
                 <Property Name="FullyQualifiedName" Value="NotificationService" />
                 <Property Name="LanguageType" Value="VisualBasic" />
-                <ModelElement Id="2b9772a14b5f473ab144324849f2b807" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
-                  <Property Name="Name" Value="CheckInEventNotification" />
-                  <Property Name="CustomAttributes" Value="&lt;System.Web.Services.WebServiceBinding(Name := &quot;CheckInEventNotification&quot;, ConformsTo := System.Web.Services.WsiProfiles.BasicProfile1_1, EmitConformanceClaims := True, Namespace := &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent&quot;)&gt;&#xD;&#xA;&lt;System.Web.Services.Protocols.SoapDocumentService()&gt;" />
-                  <Property Name="FullyQualifiedName" Value="NotificationService.CheckInEventNotification" />
-                  <Property Name="LanguageType" Value="VisualBasic" />
-                  <Property Name="TypeModifier" Value="Reference" />
-                  <Property Name="NewMemberLocationLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\CheckInEventNotification.vb" />
-                  <Property Name="NewMemberLocation" Value="App_Code\CheckInEventNotification.vb" />
-                  <Property Name="NewMemberDefinitionLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\CheckInEventNotification.vb" />
-                  <Property Name="NewMemberDefinition" Value="App_Code\CheckInEventNotification.vb" />
-                  <Property Name="PrimaryCodeFileName" Value="CheckInEventNotification.vb" />
-                  <ModelElement Id="945ed4c26a584a36af2aee2a9b513e08" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.InheritanceTypeRef">
-                    <Property Name="Name" Value="System.Web.Services.WebService" />
-                    <Property Name="CustomAttributes" Value="" />
-                    <Property Name="TypeArguments" Value="" />
-                    <Relationship Id="b4ef0a17c1ae49deb699974ee8ac4556" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType" Role1="@2b9772a14b5f473ab144324849f2b807" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType.SubType" />
-                  </ModelElement>
-                  <ModelElement Id="6d7a3965d5af4378a40ed4da31bd89f4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
-                    <Property Name="Name" Value="System.Web.Services.WebServiceBinding" />
-                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAABoiQ2hlY2tJbkV2ZW50Tm90aWZpY2F0aW9uIgYKAAAABE5hbWUBAAABBgAAAAUAAAAGCwAAAC9TeXN0ZW0uV2ViLlNlcnZpY2VzLldzaVByb2ZpbGVzLkJhc2ljUHJvZmlsZTFfMQYMAAAACkNvbmZvcm1zVG8BAAABBwAAAAUAAAAGDQAAAARUcnVlBg4AAAAVRW1pdENvbmZvcm1hbmNlQ2xhaW1zAQAAAQgAAAAFAAAABg8AAABBImh0dHA6Ly9zY2hlbWEucmRkb3RuZXQuY29tLzIwMDcvMDgvVEZTRXZlbnRIYW5kbGVyL0NoZWNrSW5FdmVudCIGEAAAAAlOYW1lc3BhY2UBAAAL" />
-                    <Relationship Id="0b38eda4cf004243a586221e4ecfdb46" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@2b9772a14b5f473ab144324849f2b807" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
-                  </ModelElement>
-                  <ModelElement Id="7a52c62b3a8a474d913ba3bc03004489" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
-                    <Property Name="Name" Value="System.Web.Services.Protocols.SoapDocumentService" />
-                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAAAAAAAAAAAAAHBAAAAAABAAAAAAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACw==" />
-                    <Relationship Id="73651c5c88c24704bc6d3a78e784c357" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@2b9772a14b5f473ab144324849f2b807" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
-                  </ModelElement>
-                  <Relationship Id="8b19348026dd47d38b9791c4dfe2caa8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@7bf52190262645eba6829861d23b9f26" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
-                </ModelElement>
-                <ModelElement Id="0b1c5428eee04882a1ede13e6ecb9d74" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
-                  <Property Name="Name" Value="WorkItemChangedEventNotification" />
-                  <Property Name="CustomAttributes" Value="&lt;System.Web.Services.WebServiceBinding(Name := &quot;WorkItemChangedEventNotification&quot;, ConformsTo := System.Web.Services.WsiProfiles.BasicProfile1_1, EmitConformanceClaims := True, Namespace := &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent&quot;)&gt;&#xD;&#xA;&lt;System.Web.Services.Protocols.SoapDocumentService()&gt;" />
-                  <Property Name="FullyQualifiedName" Value="NotificationService.WorkItemChangedEventNotification" />
-                  <Property Name="LanguageType" Value="VisualBasic" />
-                  <Property Name="TypeModifier" Value="Reference" />
-                  <Property Name="NewMemberLocationLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\WorkItemChangedEventNotification.vb" />
-                  <Property Name="NewMemberLocation" Value="App_Code\WorkItemChangedEventNotification.vb" />
-                  <Property Name="NewMemberDefinitionLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\WorkItemChangedEventNotification.vb" />
-                  <Property Name="NewMemberDefinition" Value="App_Code\WorkItemChangedEventNotification.vb" />
-                  <Property Name="PrimaryCodeFileName" Value="WorkItemChangedEventNotification.vb" />
-                  <ModelElement Id="489de4ad9dc345b78a3428c971111ac6" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.InheritanceTypeRef">
-                    <Property Name="Name" Value="System.Web.Services.WebService" />
-                    <Property Name="CustomAttributes" Value="" />
-                    <Property Name="TypeArguments" Value="" />
-                    <Relationship Id="80033812cec14c9e8beead3d05439b1a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType" Role1="@0b1c5428eee04882a1ede13e6ecb9d74" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType.SubType" />
-                  </ModelElement>
-                  <ModelElement Id="e95c60ece9a043e5bb57e6126ce819b0" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
-                    <Property Name="Name" Value="System.Web.Services.WebServiceBinding" />
-                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAACIiV29ya0l0ZW1DaGFuZ2VkRXZlbnROb3RpZmljYXRpb24iBgoAAAAETmFtZQEAAAEGAAAABQAAAAYLAAAAL1N5c3RlbS5XZWIuU2VydmljZXMuV3NpUHJvZmlsZXMuQmFzaWNQcm9maWxlMV8xBgwAAAAKQ29uZm9ybXNUbwEAAAEHAAAABQAAAAYNAAAABFRydWUGDgAAABVFbWl0Q29uZm9ybWFuY2VDbGFpbXMBAAABCAAAAAUAAAAGDwAAAEkiaHR0cDovL3NjaGVtYS5yZGRvdG5ldC5jb20vMjAwNy8wOC9URlNFdmVudEhhbmRsZXIvV29ya0l0ZW1DaGFuZ2VkRXZlbnQiBhAAAAAJTmFtZXNwYWNlAQAACw==" />
-                    <Relationship Id="a3232846fc3c47bba160e169792ccfb8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@0b1c5428eee04882a1ede13e6ecb9d74" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
-                  </ModelElement>
-                  <ModelElement Id="255f1f13dfb44fc584c32f6faf06ff56" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
-                    <Property Name="Name" Value="System.Web.Services.Protocols.SoapDocumentService" />
-                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAAAAAAAAAAAAAHBAAAAAABAAAAAAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACw==" />
-                    <Relationship Id="48c43d4869cc48f3b2f0acfb533f57c1" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@0b1c5428eee04882a1ede13e6ecb9d74" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
-                  </ModelElement>
-                  <Relationship Id="761a7551ef12472ca2ccd0dcd1cb934e" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@7bf52190262645eba6829861d23b9f26" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
-                </ModelElement>
-                <ModelElement Id="b9fbbe0681994f3488ce356abc98d1db" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
+                <ModelElement Id="2861abd0b8434b9293ca85a4069c954c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
                   <Property Name="Name" Value="Subscriptions" />
                   <Property Name="CustomAttributes" Value="&lt;System.Web.Services.WebServiceBinding(Name := &quot;Subscriptions&quot;, ConformsTo := System.Web.Services.WsiProfiles.BasicProfile1_1, EmitConformanceClaims := True, Namespace := &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions&quot;)&gt;&#xD;&#xA;&lt;System.Web.Services.Protocols.SoapDocumentService()&gt;" />
                   <Property Name="FullyQualifiedName" Value="NotificationService.Subscriptions" />
@@ -155,29 +95,69 @@
                   <Property Name="NewMemberDefinitionLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\Subscriptions.vb" />
                   <Property Name="NewMemberDefinition" Value="App_Code\Subscriptions.vb" />
                   <Property Name="PrimaryCodeFileName" Value="Subscriptions.vb" />
-                  <ModelElement Id="2110bec81d59414b9d2e7c8acfb289bf" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.InheritanceTypeRef">
-                    <Property Name="Name" Value="System.Web.Services.WebService" />
-                    <Property Name="CustomAttributes" Value="" />
-                    <Property Name="TypeArguments" Value="" />
-                    <Relationship Id="deeea435a2be4c9c86478ed1e7978581" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType" Role1="@b9fbbe0681994f3488ce356abc98d1db" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrTypeHasBaseClrType.SubType" />
-                  </ModelElement>
-                  <ModelElement Id="c40f6f333431411b8e75818b6a7a28b7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                  <ModelElement Id="a5dc2701375c40b4b757fb40a7f070f7" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
                     <Property Name="Name" Value="System.Web.Services.WebServiceBinding" />
-                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAAA8iU3Vic2NyaXB0aW9ucyIGCgAAAAROYW1lAQAAAQYAAAAFAAAABgsAAAAvU3lzdGVtLldlYi5TZXJ2aWNlcy5Xc2lQcm9maWxlcy5CYXNpY1Byb2ZpbGUxXzEGDAAAAApDb25mb3Jtc1RvAQAAAQcAAAAFAAAABg0AAAAEVHJ1ZQYOAAAAFUVtaXRDb25mb3JtYW5jZUNsYWltcwEAAAEIAAAABQAAAAYPAAAAQiJodHRwOi8vc2NoZW1hLnJkZG90bmV0LmNvbS8yMDA3LzA4L1RGU0V2ZW50SGFuZGxlci9TdWJzY3JpcHRpb25zIgYQAAAACU5hbWVzcGFjZQEAAAs=" />
-                    <Relationship Id="20ca494a056446d29332a8da30499d2a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@b9fbbe0681994f3488ce356abc98d1db" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAAA8iU3Vic2NyaXB0aW9ucyIGCgAAAAROYW1lAQABAQYAAAAFAAAABgsAAAAvU3lzdGVtLldlYi5TZXJ2aWNlcy5Xc2lQcm9maWxlcy5CYXNpY1Byb2ZpbGUxXzEGDAAAAApDb25mb3Jtc1RvAQAAAQcAAAAFAAAABg0AAAAEVHJ1ZQYOAAAAFUVtaXRDb25mb3JtYW5jZUNsYWltcwEAAAEIAAAABQAAAAYPAAAAQiJodHRwOi8vc2NoZW1hLnJkZG90bmV0LmNvbS8yMDA3LzA4L1RGU0V2ZW50SGFuZGxlci9TdWJzY3JpcHRpb25zIgYQAAAACU5hbWVzcGFjZQEAAQs=" />
+                    <Relationship Id="a1c5099f53ad43468e79b8dd3c0b278d" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@2861abd0b8434b9293ca85a4069c954c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
                   </ModelElement>
-                  <ModelElement Id="5b315465908e4c35bbf4c565cf9dbd2a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                  <ModelElement Id="cfddcc5811ba4aaab714b4a2fde5870c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
                     <Property Name="Name" Value="System.Web.Services.Protocols.SoapDocumentService" />
                     <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAAAAAAAAAAAAAHBAAAAAABAAAAAAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACw==" />
-                    <Relationship Id="353cbd89dbae4434bd7f5cf688cdba01" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@b9fbbe0681994f3488ce356abc98d1db" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                    <Relationship Id="83ee3204a53e42d89644c1cc33a942d2" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@2861abd0b8434b9293ca85a4069c954c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
                   </ModelElement>
-                  <Relationship Id="0175c68151e54fd88bc4c87052b69ac9" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@7bf52190262645eba6829861d23b9f26" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
+                  <Relationship Id="4fe79eb15da842f58e085fca163b9a16" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@9ff46d6ea8174091b584bf5ca522021d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
                 </ModelElement>
-                <Relationship Id="c8e81279ee1b48d2b5e873b3fd3e7524" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces" Role1="@ad613f6494724980baf750f2df0d9c72" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces.RootNamespace" />
+                <ModelElement Id="0332638fc786414da1e8f216734c4baf" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
+                  <Property Name="Name" Value="CheckInEventNotification" />
+                  <Property Name="CustomAttributes" Value="&lt;System.Web.Services.WebServiceBinding(Name := &quot;CheckInEventNotification&quot;, ConformsTo := System.Web.Services.WsiProfiles.BasicProfile1_1, EmitConformanceClaims := True, Namespace := &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent&quot;)&gt;&#xD;&#xA;&lt;System.Web.Services.Protocols.SoapDocumentService()&gt;" />
+                  <Property Name="FullyQualifiedName" Value="NotificationService.CheckInEventNotification" />
+                  <Property Name="LanguageType" Value="VisualBasic" />
+                  <Property Name="TypeModifier" Value="Reference" />
+                  <Property Name="NewMemberLocationLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\CheckInEventNotification.vb" />
+                  <Property Name="NewMemberLocation" Value="App_Code\CheckInEventNotification.vb" />
+                  <Property Name="NewMemberDefinitionLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\CheckInEventNotification.vb" />
+                  <Property Name="NewMemberDefinition" Value="App_Code\CheckInEventNotification.vb" />
+                  <Property Name="PrimaryCodeFileName" Value="CheckInEventNotification.vb" />
+                  <ModelElement Id="fdccbb067aec4c808ab54890cb57aa89" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                    <Property Name="Name" Value="System.Web.Services.WebServiceBinding" />
+                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAABoiQ2hlY2tJbkV2ZW50Tm90aWZpY2F0aW9uIgYKAAAABE5hbWUBAAEBBgAAAAUAAAAGCwAAAC9TeXN0ZW0uV2ViLlNlcnZpY2VzLldzaVByb2ZpbGVzLkJhc2ljUHJvZmlsZTFfMQYMAAAACkNvbmZvcm1zVG8BAAABBwAAAAUAAAAGDQAAAARUcnVlBg4AAAAVRW1pdENvbmZvcm1hbmNlQ2xhaW1zAQAAAQgAAAAFAAAABg8AAABBImh0dHA6Ly9zY2hlbWEucmRkb3RuZXQuY29tLzIwMDcvMDgvVEZTRXZlbnRIYW5kbGVyL0NoZWNrSW5FdmVudCIGEAAAAAlOYW1lc3BhY2UBAAEL" />
+                    <Relationship Id="2b7f432293f0473f9e09ddc1782d69d9" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@0332638fc786414da1e8f216734c4baf" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                  </ModelElement>
+                  <ModelElement Id="8ef8fdeeed804f42902df3c6dfa6bdf4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                    <Property Name="Name" Value="System.Web.Services.Protocols.SoapDocumentService" />
+                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAAAAAAAAAAAAAHBAAAAAABAAAAAAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACw==" />
+                    <Relationship Id="bab52efd71554fa5b3901dd3bad279ff" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@0332638fc786414da1e8f216734c4baf" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                  </ModelElement>
+                  <Relationship Id="0ec241750c31489c8c074244d49819ee" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@9ff46d6ea8174091b584bf5ca522021d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
+                </ModelElement>
+                <ModelElement Id="104f3b4869b74af3a974329f2560c804" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
+                  <Property Name="Name" Value="WorkItemChangedEventNotification" />
+                  <Property Name="CustomAttributes" Value="&lt;System.Web.Services.WebServiceBinding(Name := &quot;WorkItemChangedEventNotification&quot;, ConformsTo := System.Web.Services.WsiProfiles.BasicProfile1_1, EmitConformanceClaims := True, Namespace := &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent&quot;)&gt;&#xD;&#xA;&lt;System.Web.Services.Protocols.SoapDocumentService()&gt;" />
+                  <Property Name="FullyQualifiedName" Value="NotificationService.WorkItemChangedEventNotification" />
+                  <Property Name="LanguageType" Value="VisualBasic" />
+                  <Property Name="TypeModifier" Value="Reference" />
+                  <Property Name="NewMemberLocationLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\WorkItemChangedEventNotification.vb" />
+                  <Property Name="NewMemberLocation" Value="App_Code\WorkItemChangedEventNotification.vb" />
+                  <Property Name="NewMemberDefinitionLongName" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\NotificationService\App_Code\WorkItemChangedEventNotification.vb" />
+                  <Property Name="NewMemberDefinition" Value="App_Code\WorkItemChangedEventNotification.vb" />
+                  <Property Name="PrimaryCodeFileName" Value="WorkItemChangedEventNotification.vb" />
+                  <ModelElement Id="af087fd1ca314730a88912f261df7298" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                    <Property Name="Name" Value="System.Web.Services.WebServiceBinding" />
+                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAABAAAAAQAAAAHBAAAAAABAAAABAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACQUAAAAJBgAAAAkHAAAACQgAAAAFBQAAAEpNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudAUAAAAFdmFsdWUEbmFtZQppc1JlYWRvbmx5D2lzQ2FzZVNlbnNpdGl2ZQ9pc1N0cmluZ0xpdGVyYWwBAQAAAAEBAQIAAAAGCQAAACIiV29ya0l0ZW1DaGFuZ2VkRXZlbnROb3RpZmljYXRpb24iBgoAAAAETmFtZQEAAQEGAAAABQAAAAYLAAAAL1N5c3RlbS5XZWIuU2VydmljZXMuV3NpUHJvZmlsZXMuQmFzaWNQcm9maWxlMV8xBgwAAAAKQ29uZm9ybXNUbwEAAAEHAAAABQAAAAYNAAAABFRydWUGDgAAABVFbWl0Q29uZm9ybWFuY2VDbGFpbXMBAAABCAAAAAUAAAAGDwAAAEkiaHR0cDovL3NjaGVtYS5yZGRvdG5ldC5jb20vMjAwNy8wOC9URlNFdmVudEhhbmRsZXIvV29ya0l0ZW1DaGFuZ2VkRXZlbnQiBhAAAAAJTmFtZXNwYWNlAQABCw==" />
+                    <Relationship Id="85ec420e0ef34315b58731da85f56ab8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@104f3b4869b74af3a974329f2560c804" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                  </ModelElement>
+                  <ModelElement Id="ebea89eb4b1f44e78865dd36922dcca4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrAttributeInstance">
+                    <Property Name="Name" Value="System.Web.Services.Protocols.SoapDocumentService" />
+                    <Property Name="AttributeArguments" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHRNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAS01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50cwMAAAAKaXNSZWFkb25seQlhcmd1bWVudHMPaXNDYXNlU2Vuc2l0aXZlAAMAAeUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5BcnRpZmFjdE1vZGVsLkNsci5BdHRyaWJ1dGVBcmd1bWVudCwgTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuVHlwZVN5c3RlbSwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2FdXQECAAAAAQkDAAAAAAQDAAAA5QFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uRW50ZXJwcmlzZVRvb2xzLkFydGlmYWN0TW9kZWwuQ2xyLkF0dHJpYnV0ZUFyZ3VtZW50LCBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5UeXBlU3lzdGVtLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABMTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnRbXQIAAAAICAkEAAAAAAAAAAAAAAAHBAAAAAABAAAAAAAAAARKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuQXJ0aWZhY3RNb2RlbC5DbHIuQXR0cmlidXRlQXJndW1lbnQCAAAACw==" />
+                    <Relationship Id="2a3371a66abb424f8764ffffca50a5de" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances" Role1="@104f3b4869b74af3a974329f2560c804" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrElementHasClrAttributeInstances.ClrElement" />
+                  </ModelElement>
+                  <Relationship Id="c2fe8717da5a42038c575cbe76909f5b" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@9ff46d6ea8174091b584bf5ca522021d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
+                </ModelElement>
+                <Relationship Id="c22ff3dbbce74f62a7b4b263add9feb6" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces" Role1="@53f83bc99efa4ab4b1bb98582083f916" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces.RootNamespace" />
               </ModelElement>
-              <Relationship Id="b7b2c1fa904649f1b6984c074bf5f8c4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@1e3ff6685ed749d2b3318e1c5b46450b" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
+              <Relationship Id="a5b96bdd2ac046fc8b5bd1824578832b" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@a6559ca754d2431c81beba3c0c22613a" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
             </ModelElement>
-            <Relationship Id="603d5d05804e42689171b4f22ea9c9b1" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@45b3e34c1b76497abbbea3db04d327f7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
+            <Relationship Id="8cb041afff1c4169a601e10cd8f78319" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@1d852c4c7efd41fd8dfcb4cf0e70cf17" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
           </ModelElement>
         </ModelElement>
       </ModelElement>
@@ -189,6 +169,7 @@
         <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.AspComponentType">
           <Property Name="State" Value="Implemented" />
           <Property Name="Project" Value="NotificationService" />
+          <Property Name="CachedLanguage" Value="vb" />
           <Property Name="CachedTemplate" Value="EmptyWeb.vstemplate" />
           <Property Name="DefaultNamespace" Value="NotificationService" />
         </ModelElement>
@@ -196,7 +177,74 @@
     </DesignData>
     <ResourceDefinition Name="Directory" Extends="MicrosoftFileSystem:Directory">
       <ResourceDefinition Name="Configuration" Extends="MicrosoftConfiguration:Configuration">
+        <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
+        <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
         <ResourceDefinition Name="SystemWebSectionGroup" Extends="MicrosoftConfiguration:SystemWebSectionGroup">
+          <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
+          <ResourceDefinition Name="IdentitySection" Extends="MicrosoftConfiguration:IdentitySection">
+            <SettingValue Path="Impersonate" Fixed="false">false</SettingValue>
+            <SettingValue Path="UserName" Fixed="false" />
+          </ResourceDefinition>
+          <ResourceDefinition Name="RoleManagerSection" Extends="MicrosoftConfiguration:RoleManagerSection">
+            <SettingValue Path="Domain" Null="true" Fixed="false" />
+            <SettingValue Path="CookieName" Fixed="false">.ASPXROLES</SettingValue>
+            <SettingValue Path="CreatePersistentCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="MaxCachedResults" Fixed="false">25</SettingValue>
+            <SettingValue Path="CacheRolesInCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlRoleProvider</SettingValue>
+            <SettingValue Path="Enabled" Fixed="false">false</SettingValue>
+            <SettingValue Path="CookiePath" Fixed="false">/</SettingValue>
+            <SettingValue Path="CookieSlidingExpiration" Fixed="false">true</SettingValue>
+            <SettingValue Path="CookieTimeout" Fixed="false">00:30:00</SettingValue>
+            <SettingValue Path="CookieProtection" Fixed="false">All</SettingValue>
+            <SettingValue Path="CookieRequireSSL" Fixed="false">false</SettingValue>
+            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetSqlRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetWindowsTokenRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.WindowsTokenRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <Resource Name="ProviderSettings" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings" />
+            <Resource Name="ProviderSettings1" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
+          </ResourceDefinition>
           <ResourceDefinition Name="AuthenticationSection" Extends="MicrosoftConfiguration:AuthenticationSection">
             <SettingValue Path="Passport" Fixed="false">
               <RedirectUrl xmlns="http://Microsoft.Configuration">internal</RedirectUrl>
@@ -241,10 +289,6 @@
             </Resource>
             <Containment Name="FormsAuthenticationConfigurationContainment" Definition="MicrosoftConfiguration:AuthenticationSectionContainsFormsAuthenticationConfiguration" ChildMember="FormsAuthenticationConfiguration" />
             <Hosting Name="FormsAuthenticationConfigurationHostsFormsAuthenticationCredentials" Definition="MicrosoftConfiguration:FormsAuthenticationConfigurationHostsFormsAuthenticationCredentials" GuestMember="FormsAuthenticationConfiguration.FormsAuthenticationCredentials" HostMember="FormsAuthenticationConfiguration" />
-          </ResourceDefinition>
-          <ResourceDefinition Name="IdentitySection" Extends="MicrosoftConfiguration:IdentitySection">
-            <SettingValue Path="Impersonate" Fixed="false">false</SettingValue>
-            <SettingValue Path="UserName" Fixed="false" />
           </ResourceDefinition>
           <ResourceDefinition Name="MembershipSection" Extends="MicrosoftConfiguration:MembershipSection">
             <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlMembershipProvider</SettingValue>
@@ -317,66 +361,6 @@
             </Resource>
             <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:MembershipSectionContainsProviderSettings" ChildMember="ProviderSettings" />
           </ResourceDefinition>
-          <ResourceDefinition Name="RoleManagerSection" Extends="MicrosoftConfiguration:RoleManagerSection">
-            <SettingValue Path="Domain" Null="true" Fixed="false" />
-            <SettingValue Path="CookieName" Fixed="false">.ASPXROLES</SettingValue>
-            <SettingValue Path="CreatePersistentCookie" Fixed="false">false</SettingValue>
-            <SettingValue Path="MaxCachedResults" Fixed="false">25</SettingValue>
-            <SettingValue Path="CacheRolesInCookie" Fixed="false">false</SettingValue>
-            <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlRoleProvider</SettingValue>
-            <SettingValue Path="Enabled" Fixed="false">false</SettingValue>
-            <SettingValue Path="CookiePath" Fixed="false">/</SettingValue>
-            <SettingValue Path="CookieTimeout" Fixed="false">00:30:00</SettingValue>
-            <SettingValue Path="CookieSlidingExpiration" Fixed="false">true</SettingValue>
-            <SettingValue Path="CookieProtection" Fixed="false">All</SettingValue>
-            <SettingValue Path="CookieRequireSSL" Fixed="false">false</SettingValue>
-            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
-              <SettingValue Path="Name" Fixed="false">AspNetSqlRoleProvider</SettingValue>
-              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
-              <SettingValueList Path="Parameters" Fixed="false">
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
-                </Value>
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">/</Value>
-                </Value>
-              </SettingValueList>
-            </ResourceDefinition>
-            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
-              <SettingValue Path="Name" Fixed="false">AspNetWindowsTokenRoleProvider</SettingValue>
-              <SettingValue Path="Type" Fixed="false">System.Web.Security.WindowsTokenRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
-              <SettingValueList Path="Parameters" Fixed="false">
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">/</Value>
-                </Value>
-              </SettingValueList>
-            </ResourceDefinition>
-            <Resource Name="ProviderSettings" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
-              <DesignData>
-                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-                  <ModelElement>
-                    <Property Name="DisplayName" Value="ProviderSettings" />
-                    <Property Name="CreatedByUser" Value="true" />
-                  </ModelElement>
-                </VisualStudio>
-              </DesignData>
-            </Resource>
-            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings" />
-            <Resource Name="ProviderSettings1" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
-              <DesignData>
-                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-                  <ModelElement>
-                    <Property Name="DisplayName" Value="ProviderSettings" />
-                    <Property Name="CreatedByUser" Value="true" />
-                  </ModelElement>
-                </VisualStudio>
-              </DesignData>
-            </Resource>
-            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
-          </ResourceDefinition>
           <ResourceDefinition Name="SessionStateSection" Extends="MicrosoftConfiguration:SessionStateSection">
             <SettingValue Path="StateConnectionString" Fixed="false">tcpip=loopback:42424</SettingValue>
             <SettingValue Path="CookieName" Fixed="false">ASP.NET_SessionId</SettingValue>
@@ -385,29 +369,14 @@
             <SettingValue Path="StateNetworkTimeout" Fixed="false">00:00:10</SettingValue>
             <SettingValue Path="CustomProvider" Fixed="false" />
             <SettingValue Path="RegenerateExpiredSessionId" Fixed="false">true</SettingValue>
-            <SettingValue Path="SessionIDManagerType" Fixed="false" />
             <SettingValue Path="SqlConnectionString" Fixed="false">data source=localhost;Integrated Security=SSPI</SettingValue>
             <SettingValue Path="Mode" Fixed="false">InProc</SettingValue>
+            <SettingValue Path="Cookieless" Fixed="false">UseCookies</SettingValue>
             <SettingValue Path="AllowCustomSqlDatabase" Fixed="false">false</SettingValue>
             <SettingValue Path="PartitionResolverType" Fixed="false" />
-            <SettingValue Path="Cookieless" Fixed="false">UseCookies</SettingValue>
+            <SettingValue Path="SessionIDManagerType" Fixed="false" />
             <SettingValue Path="Timeout" Fixed="false">00:20:00</SettingValue>
           </ResourceDefinition>
-          <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
-          <Resource Name="AuthenticationSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.AuthenticationSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="AuthenticationSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsAuthenticationSection" ChildMember="AuthenticationSection" />
-          <Hosting Name="AuthenticationSectionHostsFormsAuthenticationConfiguration" Definition="MicrosoftConfiguration:AuthenticationSectionHostsFormsAuthenticationConfiguration" GuestMember="AuthenticationSection.FormsAuthenticationConfiguration" HostMember="AuthenticationSection" />
-          <Resource Name="IdentitySection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.IdentitySection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="IdentitySectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsIdentitySection" ChildMember="IdentitySection" />
-          <Resource Name="MembershipSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.MembershipSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="MembershipSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsMembershipSection" ChildMember="MembershipSection" />
-          <Hosting Name="MembershipSectionHostsProviderSettings" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings" HostMember="MembershipSection" />
-          <Resource Name="RoleManagerSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="RoleManagerSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsRoleManagerSection" ChildMember="RoleManagerSection" />
-          <Hosting Name="RoleManagerSectionHostsProviderSettings" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings" HostMember="RoleManagerSection" />
-          <Hosting Name="RoleManagerSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings1" HostMember="RoleManagerSection" />
-          <Resource Name="SessionStateSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.SessionStateSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="SessionStateSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSessionStateSection" ChildMember="SessionStateSection" />
           <Resource Name="SystemWebCachingSectionGroup" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.SystemWebCachingSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
             <DesignData>
               <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -419,9 +388,66 @@
             </DesignData>
           </Resource>
           <Containment Name="SystemWebCachingSectionGroupContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSystemWebCachingSectionGroup" ChildMember="SystemWebCachingSectionGroup" />
+          <Resource Name="IdentitySection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.IdentitySection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="IdentitySection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="IdentitySectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsIdentitySection" ChildMember="IdentitySection" />
+          <Resource Name="RoleManagerSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="RoleManagerSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="RoleManagerSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsRoleManagerSection" ChildMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings" HostMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings1" HostMember="RoleManagerSection" />
+          <Resource Name="AuthenticationSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.AuthenticationSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="AuthenticationSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="AuthenticationSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsAuthenticationSection" ChildMember="AuthenticationSection" />
+          <Hosting Name="AuthenticationSectionHostsFormsAuthenticationConfiguration" Definition="MicrosoftConfiguration:AuthenticationSectionHostsFormsAuthenticationConfiguration" GuestMember="AuthenticationSection.FormsAuthenticationConfiguration" HostMember="AuthenticationSection" />
+          <Resource Name="MembershipSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.MembershipSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="MembershipSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="MembershipSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsMembershipSection" ChildMember="MembershipSection" />
+          <Hosting Name="MembershipSectionHostsProviderSettings" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings" HostMember="MembershipSection" />
+          <Resource Name="SessionStateSection" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup.SessionStateSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="SessionStateSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="SessionStateSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSessionStateSection" ChildMember="SessionStateSection" />
         </ResourceDefinition>
-        <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
-        <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
         <ResourceDefinition Name="NetSectionGroup" Extends="MicrosoftConfiguration:NetSectionGroup">
           <ResourceDefinition Name="MailSettingsSectionGroup" Extends="MicrosoftConfiguration:MailSettingsSectionGroup" />
           <Resource Name="MailSettingsSectionGroup" Definition="NotificationService.Directory.Configuration.NetSectionGroup.MailSettingsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
@@ -440,19 +466,11 @@
           <SettingValueList Path="Settings" Fixed="false">
             <Value>
               <Key xmlns="http://Microsoft.Configuration">NotificationService.WebServiceProxies.EventReciever</Key>
-              <Value xmlns="http://Microsoft.Configuration">http://localhost:31634/DecissionService/EventReciever.asmx</Value>
+              <Value xmlns="http://Microsoft.Configuration">http://localhost:31634/DecissionService/v1.0/EventReciever.asmx</Value>
             </Value>
           </SettingValueList>
           <SettingValue Path="File" Fixed="false" />
         </ResourceDefinition>
-        <Resource Name="SystemWebSectionGroup" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false" />
-        <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsAuthenticationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsAuthenticationSection" GuestMember="SystemWebSectionGroup.AuthenticationSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsIdentitySection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsIdentitySection" GuestMember="SystemWebSectionGroup.IdentitySection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsMembershipSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsMembershipSection" GuestMember="SystemWebSectionGroup.MembershipSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsRoleManagerSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsRoleManagerSection" GuestMember="SystemWebSectionGroup.RoleManagerSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsSessionStateSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSessionStateSection" GuestMember="SystemWebSectionGroup.SessionStateSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
         <Resource Name="TransactionsSectionGroup" Definition="NotificationService.Directory.Configuration.TransactionsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
           <DesignData>
             <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -475,6 +493,23 @@
           </DesignData>
         </Resource>
         <Containment Name="SerializationSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSerializationSectionGroup" ChildMember="SerializationSectionGroup" />
+        <Resource Name="SystemWebSectionGroup" Definition="NotificationService.Directory.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="SystemWebSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsIdentitySection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsIdentitySection" GuestMember="SystemWebSectionGroup.IdentitySection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsRoleManagerSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsRoleManagerSection" GuestMember="SystemWebSectionGroup.RoleManagerSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsAuthenticationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsAuthenticationSection" GuestMember="SystemWebSectionGroup.AuthenticationSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsMembershipSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsMembershipSection" GuestMember="SystemWebSectionGroup.MembershipSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsSessionStateSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSessionStateSection" GuestMember="SystemWebSectionGroup.SessionStateSection" HostMember="SystemWebSectionGroup" />
         <Resource Name="NetSectionGroup" Definition="NotificationService.Directory.Configuration.NetSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
           <DesignData>
             <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -499,54 +534,121 @@
         </Resource>
         <Containment Name="AppSettingsSectionContainment" Definition="MicrosoftConfiguration:ConfigurationContainsAppSettingsSection" ChildMember="AppSettingsSection" />
       </ResourceDefinition>
+      <ResourceDefinition Name="DirectoryResource" Extends="MicrosoftFileSystem:Directory">
+        <SettingValue Path="Name" Fixed="false">V1.0</SettingValue>
+        <ResourceDefinition Name="Configuration" Extends="MicrosoftConfiguration:Configuration">
+          <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
+          <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
+          <ResourceDefinition Name="SystemWebSectionGroup" Extends="MicrosoftConfiguration:SystemWebSectionGroup">
+            <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
+            <Resource Name="SystemWebCachingSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.SystemWebSectionGroup.SystemWebCachingSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="SystemWebCachingSectionGroup" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="SystemWebCachingSectionGroupContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSystemWebCachingSectionGroup" ChildMember="SystemWebCachingSectionGroup" />
+          </ResourceDefinition>
+          <ResourceDefinition Name="NetSectionGroup" Extends="MicrosoftConfiguration:NetSectionGroup">
+            <ResourceDefinition Name="MailSettingsSectionGroup" Extends="MicrosoftConfiguration:MailSettingsSectionGroup" />
+            <Resource Name="MailSettingsSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.NetSectionGroup.MailSettingsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="MailSettingsSectionGroup" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="MailSettingsSectionGroupContainment" Definition="MicrosoftConfiguration:NetSectionGroupContainsMailSettingsSectionGroup" ChildMember="MailSettingsSectionGroup" />
+          </ResourceDefinition>
+          <Resource Name="TransactionsSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.TransactionsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="TransactionsSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="TransactionsSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsTransactionsSectionGroup" ChildMember="TransactionsSectionGroup" />
+          <Resource Name="SerializationSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.SerializationSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="SerializationSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="SerializationSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSerializationSectionGroup" ChildMember="SerializationSectionGroup" />
+          <Resource Name="SystemWebSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="SystemWebSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
+          <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
+          <Resource Name="NetSectionGroup" Definition="NotificationService.Directory.DirectoryResource.Configuration.NetSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="NetSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="NetSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsNetSectionGroup" ChildMember="NetSectionGroup" />
+          <Hosting Name="NetSectionGroupHostsMailSettingsSectionGroup" Definition="MicrosoftConfiguration:NetSectionGroupHostsMailSettingsSectionGroup" GuestMember="NetSectionGroup.MailSettingsSectionGroup" HostMember="NetSectionGroup" />
+        </ResourceDefinition>
+        <Resource Name="Configuration" Definition="NotificationService.Directory.DirectoryResource.Configuration" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="Configuration" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="ConfigurationContainment" Definition="MicrosoftFileSystem:DirectoryContainsFile" ChildMember="Configuration" />
+        <Hosting Name="ConfigurationHostsTransactionsSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsTransactionsSectionGroup" GuestMember="Configuration.TransactionsSectionGroup" HostMember="Configuration" />
+        <Hosting Name="ConfigurationHostsSerializationSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSerializationSectionGroup" GuestMember="Configuration.SerializationSectionGroup" HostMember="Configuration" />
+        <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
+        <Hosting Name="ConfigurationHostsNetSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsNetSectionGroup" GuestMember="Configuration.NetSectionGroup" HostMember="Configuration" />
+      </ResourceDefinition>
       <Resource Name="Configuration" Definition="NotificationService.Directory.Configuration" MinOccurs="1" MaxOccurs="1" Reference="false" />
       <Containment Name="ConfigurationContainment" Definition="MicrosoftFileSystem:DirectoryContainsFile" ChildMember="Configuration" />
-      <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsTransactionsSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsTransactionsSectionGroup" GuestMember="Configuration.TransactionsSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsSerializationSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSerializationSectionGroup" GuestMember="Configuration.SerializationSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsNetSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsNetSectionGroup" GuestMember="Configuration.NetSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsAppSettingsSection" Definition="MicrosoftConfiguration:ConfigurationHostsAppSettingsSection" GuestMember="Configuration.AppSettingsSection" HostMember="Configuration" />
+      <Resource Name="V10" Definition="NotificationService.Directory.DirectoryResource" MinOccurs="1" MaxOccurs="1" Reference="false">
+        <DesignData>
+          <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+            <ModelElement>
+              <Property Name="DisplayName" Value="V1.0" />
+            </ModelElement>
+          </VisualStudio>
+        </DesignData>
+      </Resource>
+      <Containment Name="V10Containment" Definition="MicrosoftFileSystem:DirectoryContainsDirectory" ChildMember="V10" />
+      <Hosting Name="V10HostsConfiguration" Definition="MicrosoftFileSystem:DirectoryHostsFile" GuestMember="V10.Configuration" HostMember="V10" />
     </ResourceDefinition>
-    <EndpointDefinition Name="WebService1" Extends="MicrosoftWeb:WebService">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
-            <ModelElement Id="3c0645d7261d4f63bf33fde94943118e" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
-              <Property Name="BindingName" Value="CheckInEventNotification" />
-              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent" />
-            </ModelElement>
-            <Relationship Id="df1079f9775840088492dbc7c7a9e4c7" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@3c0645d7261d4f63bf33fde94943118e" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-    </EndpointDefinition>
     <ResourceDefinition Name="WebApplication" Extends="MicrosoftInternetInformationServices:WebApplication" />
-    <EndpointDefinition Name="WebService2" Extends="MicrosoftWeb:WebService">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
-            <ModelElement Id="ab2ca83b20ff4cc881a7fa179993b8ff" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
-              <Property Name="BindingName" Value="WorkItemChangedEventNotification" />
-              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent" />
-            </ModelElement>
-            <Relationship Id="3f0a73748e6b4cd7b19675e366ea7593" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@ab2ca83b20ff4cc881a7fa179993b8ff" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-    </EndpointDefinition>
-    <EndpointDefinition Name="WebService3" Extends="MicrosoftWeb:WebService">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
-            <ModelElement Id="b571f6a343bb44bab1839b140b864f67" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
-              <Property Name="BindingName" Value="Subscriptions" />
-              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
-            </ModelElement>
-            <Relationship Id="9e80c04c4f7d47c5a1ab22a31f78e5f7" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@b571f6a343bb44bab1839b140b864f67" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-    </EndpointDefinition>
     <EndpointDefinition Name="WebServiceConsumer1" Extends="MicrosoftWeb:WebServiceClient">
       <DesignData>
         <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -560,80 +662,52 @@
         </VisualStudio>
       </DesignData>
     </EndpointDefinition>
+    <EndpointDefinition Name="WebService4" Extends="MicrosoftWeb:WebService">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
+            <ModelElement Id="3a38f5d8e7c140eebdc18e65c0015234" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
+              <Property Name="BindingName" Value="Subscriptions" />
+              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
+            </ModelElement>
+            <Relationship Id="23b284a4cd5d43ee89df115cc732f34d" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@3a38f5d8e7c140eebdc18e65c0015234" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+    </EndpointDefinition>
+    <EndpointDefinition Name="WebService5" Extends="MicrosoftWeb:WebService">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
+            <ModelElement Id="9d8a1b8e7b6d46a29fa5b0933a48f17c" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
+              <Property Name="BindingName" Value="CheckInEventNotification" />
+              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent" />
+            </ModelElement>
+            <Relationship Id="b13bdce862184fb8a5eb9f7c28d387ff" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@9d8a1b8e7b6d46a29fa5b0933a48f17c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+    </EndpointDefinition>
+    <EndpointDefinition Name="WebService6" Extends="MicrosoftWeb:WebService">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortType">
+            <ModelElement Id="b4d37be345c54b5f93bf42d4543c92be" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WsdlBehaviorType">
+              <Property Name="BindingName" Value="WorkItemChangedEventNotification" />
+              <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent" />
+            </ModelElement>
+            <Relationship Id="dfb392be7d444baba8f3503d6fe89bf4" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType" Role1="@b4d37be345c54b5f93bf42d4543c92be" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationPortTypeContainsPortBehaviorType.PortBehaviorTypes" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+    </EndpointDefinition>
     <Resource Name="Directory" Definition="NotificationService.Directory" MinOccurs="1" MaxOccurs="1" Reference="false" />
     <Containment Name="DirectoryContainment" Definition="MicrosoftWebApplication:WebAppContainsFilesystemDirectory" ChildMember="Directory" />
     <Hosting Name="DirectoryHostsConfiguration" Definition="MicrosoftFileSystem:DirectoryHostsFile" GuestMember="Directory.Configuration" HostMember="Directory" />
+    <Hosting Name="DirectoryHostsV10" Definition="MicrosoftFileSystem:DirectoryHostsDirectory" GuestMember="Directory.V10" HostMember="Directory" />
     <Resource Name="WebApplication" Definition="NotificationService.WebApplication" MinOccurs="1" MaxOccurs="1" Reference="false" />
     <Containment Name="WebApplicationContainment" Definition="MicrosoftWebApplication:WebAppContainsWebApplication" ChildMember="WebApplication" />
     <Reference Name="Reference1" Definition="MicrosoftInternetInformationServices:WebDirectoryReferencesDirectory" DependentMember="WebApplication" SourceMember="Directory" />
-    <Endpoint Name="CheckInEventNotification" Definition="NotificationService.WebService1" MinOccurs="1" MaxOccurs="1" Reference="false">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
-            <Property Name="State" Value="Implemented" />
-            <Property Name="Definition" Value="http://localhost:31614/NotificationService/CheckInEventNotification.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/CheckInEventNotification.asmx" />
-            <Property Name="ClassName" Value="NotificationService.CheckInEventNotification" />
-            <Property Name="AsmxRelativePath" Value="\checkineventnotification.asmx" />
-            <Property Name="WsdlServiceName" Value="CheckInEventNotification" />
-            <Property Name="BindingName" Value="CheckInEventNotification" />
-            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent" />
-            <Relationship Id="88f4e9bd91804f1295066dfb78a52ba0" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@2b9772a14b5f473ab144324849f2b807" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
-            <Relationship Id="5545560ed2fe4df59f1a3480a570e914" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@02d939050b8a488481466bd720ed98de" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-      <SettingValue Path="BindingName" Fixed="false">CheckInEventNotification</SettingValue>
-      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent</SettingValue>
-      <SettingValue Path="Uri" Fixed="false">/RDdotNet/TFSEventhandler/CheckIn</SettingValue>
-    </Endpoint>
-    <Containment Name="CheckInEventNotificationContainment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="CheckInEventNotification" />
-    <Endpoint Name="WorkItemChangedEventNotification" Definition="NotificationService.WebService2" MinOccurs="1" MaxOccurs="1" Reference="false">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
-            <Property Name="State" Value="Implemented" />
-            <Property Name="NeedsGeneration" Value="true" />
-            <Property Name="Definition" Value="http://localhost:31614/NotificationService/WorkItemChangedEventNotification.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/WorkItemChangedEventNotification.asmx" />
-            <Property Name="ClassName" Value="NotificationService.WorkItemChangedEventNotification" />
-            <Property Name="AsmxRelativePath" Value="\workitemchangedeventnotification.asmx" />
-            <Property Name="WsdlServiceName" Value="WorkItemChangedEventNotification" />
-            <Property Name="BindingName" Value="WorkItemChangedEventNotification" />
-            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent" />
-            <Relationship Id="239ea9b414a34a42a7a3a808953bfa9d" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@0b1c5428eee04882a1ede13e6ecb9d74" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
-            <Relationship Id="b9055b75d5654df882d55e56b4a0a216" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@25428016db64416a83101ba4d8de6046" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-      <SettingValue Path="BindingName" Fixed="false">WorkItemChangedEventNotification</SettingValue>
-      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent</SettingValue>
-      <SettingValue Path="Uri" Fixed="false">/RDdotNet/TFSEventhandler/WorkItemChanged</SettingValue>
-    </Endpoint>
-    <Containment Name="WorkItemChangedEventNotificationContainment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="WorkItemChangedEventNotification" />
-    <Endpoint Name="Subscriptions" Definition="NotificationService.WebService3" MinOccurs="1" MaxOccurs="1" Reference="false">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
-            <Property Name="State" Value="Implemented" />
-            <Property Name="NeedsGeneration" Value="true" />
-            <Property Name="Definition" Value="http://localhost:31614/NotificationService/Subscriptions.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/Subscriptions.asmx" />
-            <Property Name="ClassName" Value="NotificationService.Subscriptions" />
-            <Property Name="AsmxRelativePath" Value="\subscriptions.asmx" />
-            <Property Name="WsdlServiceName" Value="Subscriptions" />
-            <Property Name="BindingName" Value="Subscriptions" />
-            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
-            <Relationship Id="6b71b8e58b6b4ad3bf6c79e861d07688" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@b9fbbe0681994f3488ce356abc98d1db" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
-            <Relationship Id="f33495bf549448919f0240c86d16b55c" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@29f0ad0e48314e479d47575809526bd9" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-      <SettingValue Path="BindingName" Fixed="false">Subscriptions</SettingValue>
-      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions</SettingValue>
-      <SettingValue Path="Uri" Fixed="false">/RDdotNet/TFSEventhandler/Subscription</SettingValue>
-    </Endpoint>
-    <Containment Name="SubscriptionsContainment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="Subscriptions" />
     <Endpoint Name="EventReciever" Definition="NotificationService.WebServiceConsumer1" MinOccurs="1" MaxOccurs="1" Reference="false">
       <DesignData>
         <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -641,7 +715,7 @@
             <Property Name="State" Value="Implemented" />
             <Property Name="NeedsGeneration" Value="true" />
             <Property Name="Definition" Value="http://localhost:31634/DecissionService/EventReciever.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31634/DecissionService/EventReciever.asmx" />
+            <Property Name="Location" Value="http://localhost:31634/DecissionService/v1.0/EventReciever.asmx" />
             <Property Name="GeneratedName" Value="EventReciever" />
             <Property Name="ClassName" Value="NotificationService.WebServiceProxies.EventReciever" />
             <Property Name="ServiceName" Value="EventReciever" />
@@ -661,5 +735,68 @@
       <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/EventReciever</SettingValue>
     </Endpoint>
     <Containment Name="EventRecieverContainment" Definition="MicrosoftWebApplication:WebAppContainsWebServiceClient" ChildMember="EventReciever" />
+    <Endpoint Name="Subscriptions1" Definition="NotificationService.WebService4" MinOccurs="1" MaxOccurs="1" Reference="false">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
+            <Property Name="State" Value="Implemented" />
+            <Property Name="NeedsGeneration" Value="true" />
+            <Property Name="Definition" Value="http://localhost:31614/NotificationService/V1.0/Subscriptions.asmx?wsdl" />
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/Subscriptions.asmx" />
+            <Property Name="ClassName" Value="NotificationService.Subscriptions" />
+            <Property Name="AsmxRelativePath" Value="\v1.0\subscriptions.asmx" />
+            <Property Name="BindingName" Value="Subscriptions" />
+            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
+            <Relationship Id="1282bfd8f7cb41a3bec98a9e4c4df73a" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@4a960c0876ef4598a41d148d5f63cfb7" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
+            <Relationship Id="b73955b14e944a65ad6a553dfa0d0965" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@2861abd0b8434b9293ca85a4069c954c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+      <SettingValue Path="BindingName" Fixed="false">Subscriptions</SettingValue>
+      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions</SettingValue>
+    </Endpoint>
+    <Containment Name="Subscriptions1Containment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="Subscriptions1" />
+    <Endpoint Name="CheckInEventNotification1" Definition="NotificationService.WebService5" MinOccurs="1" MaxOccurs="1" Reference="false">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
+            <Property Name="State" Value="Implemented" />
+            <Property Name="NeedsGeneration" Value="true" />
+            <Property Name="Definition" Value="http://localhost:31614/NotificationService/V1.0/CheckInEventNotification.asmx?wsdl" />
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/CheckInEventNotification.asmx" />
+            <Property Name="ClassName" Value="NotificationService.CheckInEventNotification" />
+            <Property Name="AsmxRelativePath" Value="\v1.0\checkineventnotification.asmx" />
+            <Property Name="BindingName" Value="CheckInEventNotification" />
+            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent" />
+            <Relationship Id="9bff7755fc124e74bc5272015c3e911a" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@78f2f3a3b0a0449ca65aed1da878447d" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
+            <Relationship Id="98f0ad8bc3104d5b9636f1025cde8fd0" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@0332638fc786414da1e8f216734c4baf" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+      <SettingValue Path="BindingName" Fixed="false">CheckInEventNotification</SettingValue>
+      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/CheckInEvent</SettingValue>
+    </Endpoint>
+    <Containment Name="CheckInEventNotification1Containment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="CheckInEventNotification1" />
+    <Endpoint Name="WorkItemChangedEventNotification1" Definition="NotificationService.WebService6" MinOccurs="1" MaxOccurs="1" Reference="false">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPort">
+            <Property Name="State" Value="Implemented" />
+            <Property Name="NeedsGeneration" Value="true" />
+            <Property Name="Definition" Value="http://localhost:31614/NotificationService/V1.0/WorkItemChangedEventNotification.asmx?wsdl" />
+            <Property Name="Location" Value="http://localhost:31614/NotificationService/V1.0/WorkItemChangedEventNotification.asmx" />
+            <Property Name="ClassName" Value="NotificationService.WorkItemChangedEventNotification" />
+            <Property Name="AsmxRelativePath" Value="\v1.0\workitemchangedeventnotification.asmx" />
+            <Property Name="BindingName" Value="WorkItemChangedEventNotification" />
+            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent" />
+            <Relationship Id="0d01391b754c48b680e7c7effcdfe9ff" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService" Role1="@753c20afb1654d72aafd30e50e7a9dec" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderPortMapsToWebService.WebService" />
+            <Relationship Id="4737008452984d17a98985799c58daa3" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass" Role1="@104f3b4869b74af3a974329f2560c804" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.PortBackedByClass.ClrClass" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+      <SettingValue Path="BindingName" Fixed="false">WorkItemChangedEventNotification</SettingValue>
+      <SettingValue Path="BindingNamespace" Fixed="false">http://schema.rddotnet.com/2007/08/TFSEventHandler/WorkItemChangedEvent</SettingValue>
+    </Endpoint>
+    <Containment Name="WorkItemChangedEventNotification1Containment" Definition="MicrosoftWebApplication:WebAppContainsWebService" ChildMember="WorkItemChangedEventNotification1" />
   </SystemDefinition>
 </SystemDefinitionModel>

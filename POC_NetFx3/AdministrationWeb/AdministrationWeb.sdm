@@ -13,29 +13,15 @@
       <ModelElement Id="ee18370dd32b456bac06eeadc2a967ae" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocument">
         <Property Name="Version" Value="1" />
         <Property Name="VSProjectId" Value="5f366f0e-cd4f-481a-8937-277a8b2e16f2" />
-        <Relationship Id="f8cb9783fe5b4850b7fbbf614e43f094" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@ae4bbae827ab44139236b963b3142d75" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
-        <ModelElement Id="ae4bbae827ab44139236b963b3142d75" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
+        <Relationship Id="5cc66ad2eca543dd94b8b88a7e58c49d" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@a372becb797a4e5b87ea747df5e0918c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
+        <ModelElement Id="a372becb797a4e5b87ea747df5e0918c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
           <Property Name="Name" Value="AdministrationWeb" />
           <Property Name="Guid" Value="5f366f0e-cd4f-481a-8937-277a8b2e16f2" />
           <Property Name="Location" Value="C:\TFS\WorkSpaces\CPTFS3\TFSEventHandler\POC_NetFx3\AdministrationWeb" />
           <Property Name="IsSupportedWebProject" Value="true" />
-          <Property Name="Template" Value="ProjectTemplatesCache\Web\VisualBasic\1033\WebApplication.zip\WebApplication.vstemplate" />
           <Property Name="IsImplemented" Value="true" />
           <Property Name="ProjectType" Value="Web" />
-          <ModelElement Id="b7c56a3d13bb47b8a0964d01e2625caa" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
-            <Property Name="Name" Value="Subscriptions" />
-            <Property Name="Definition" Value="http://localhost:31614/NotificationService/Subscriptions.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/Subscriptions.asmx" />
-            <Property Name="ServiceName" Value="Subscriptions" />
-            <Property Name="Namespace" Value="AdministrationWeb.WebServiceProxies" />
-            <Property Name="BindingName" Value="Subscriptions" />
-            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
-            <Property Name="ServiceProjectGuid" Value="c42e3140-5a32-44f5-a6cc-c5451ed570c8" />
-            <Property Name="ConfigKey" Value="AdministrationWeb.WebServiceProxies.Subscriptions" />
-            <Property Name="ServiceNamespace" Value="http://tempuri.org/" />
-            <Relationship Id="a613435be2e64f4ca2dab2bf925ed772" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@ae4bbae827ab44139236b963b3142d75" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
-          </ModelElement>
-          <ModelElement Id="18a0f3652fde4dd1976a9de8a151094e" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
+          <ModelElement Id="150e0d2493db44fcb0ded6d77c0eb992" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
             <Property Name="Name" Value="Eventhandler" />
             <Property Name="Definition" Value="http://localhost:31634/DecissionService/Eventhandler.asmx?wsdl" />
             <Property Name="Location" Value="http://localhost:31634/DecissionService/Eventhandler.asmx" />
@@ -43,18 +29,61 @@
             <Property Name="Namespace" Value="AdministrationWeb.WebServiceProxies" />
             <Property Name="BindingName" Value="Eventhandler" />
             <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" />
-            <Property Name="ServiceProjectGuid" Value="33d7837c-701a-4366-bfcc-a8458378c007" />
             <Property Name="ConfigKey" Value="AdministrationWeb.WebServiceProxies.Eventhandler0" />
             <Property Name="ServiceNamespace" Value="http://tempuri.org/" />
-            <Relationship Id="4a6348a97c5646c8956ffc1666879f32" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@ae4bbae827ab44139236b963b3142d75" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
+            <Relationship Id="386fda9a36f34a7abd61d9ffaae086b2" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@a372becb797a4e5b87ea747df5e0918c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
           </ModelElement>
-          <ModelElement Id="5ae18485050141508de14406db7b3bfe" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
-            <ModelElement Id="558c9953d5e043cea5cb55447784678c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
+          <ModelElement Id="d93ae16e448041e8a407f38c33644711" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.WebReference">
+            <Property Name="Name" Value="Subscriptions" />
+            <Property Name="Definition" Value="http://localhost:31614/NotificationService/Subscriptions.asmx?wsdl" />
+            <Property Name="ServiceName" Value="Subscriptions" />
+            <Property Name="Namespace" Value="AdministrationWeb.WebServiceProxies" />
+            <Property Name="BindingName" Value="Subscriptions" />
+            <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
+            <Property Name="ConfigKey" Value="AdministrationWeb.WebServiceProxies.Subscriptions" />
+            <Property Name="ServiceNamespace" Value="http://tempuri.org/" />
+            <Relationship Id="cdd0c8355ade4f68963490487af1cfdc" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences" Role1="@a372becb797a4e5b87ea747df5e0918c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsWebReferences.VSProject" />
+          </ModelElement>
+          <ModelElement Id="50b02b73fea54a46a2e5e17f3df04fe4" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
+            <ModelElement Id="db778db8475947139bd9f496dc3cbb43" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
               <Property Name="CustomAttributes" Value="" />
               <Property Name="LanguageType" Value="VisualBasic" />
-              <Relationship Id="5ea8949cb3b048c28bb00b92302c2a26" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@5ae18485050141508de14406db7b3bfe" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
+              <ModelElement Id="09a9b98f3a3f41379521065bb8e3b181" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespace">
+                <Property Name="Name" Value="AdministrationWeb.WebServiceProxies" />
+                <Property Name="CustomAttributes" Value="" />
+                <Property Name="FullyQualifiedName" Value="AdministrationWeb.WebServiceProxies" />
+                <Property Name="LanguageType" Value="CSharp" />
+                <ModelElement Id="1ef4635f201542a0a476d9b48713e545" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
+                  <Property Name="Name" Value="Eventhandler" />
+                  <Property Name="CustomAttributes" Value="[System.CodeDom.Compiler.GeneratedCodeAttribute(&quot;System.Web.Services&quot;, &quot;2.0.50727.1378&quot;)]&#xD;&#xA;[System.Diagnostics.DebuggerStepThroughAttribute()]&#xD;&#xA;[System.ComponentModel.DesignerCategoryAttribute(&quot;code&quot;)]&#xD;&#xA;[System.Web.Services.WebServiceBindingAttribute(Name = &quot;Eventhandler&quot;, Namespace = &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler&quot;)]" />
+                  <Property Name="FullyQualifiedName" Value="AdministrationWeb.WebServiceProxies.Eventhandler" />
+                  <Property Name="LanguageType" Value="CSharp" />
+                  <Property Name="TypeModifier" Value="Reference" />
+                  <Property Name="NewMemberLocationLongName" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberLocation" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberDefinitionLongName" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberDefinition" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="PrimaryCodeFileName" Value="webserviceproxies.a53530b.cs" />
+                  <Relationship Id="7ad32c3f4d1e49f7bedbd9a85347be7e" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@09a9b98f3a3f41379521065bb8e3b181" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
+                </ModelElement>
+                <ModelElement Id="d60f98bd25674f37884bbbbe2d0805a6" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrClass">
+                  <Property Name="Name" Value="Subscriptions" />
+                  <Property Name="CustomAttributes" Value="[System.CodeDom.Compiler.GeneratedCodeAttribute(&quot;System.Web.Services&quot;, &quot;2.0.50727.1378&quot;)]&#xD;&#xA;[System.Diagnostics.DebuggerStepThroughAttribute()]&#xD;&#xA;[System.ComponentModel.DesignerCategoryAttribute(&quot;code&quot;)]&#xD;&#xA;[System.Web.Services.WebServiceBindingAttribute(Name = &quot;Subscriptions&quot;, Namespace = &quot;http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions&quot;)]" />
+                  <Property Name="FullyQualifiedName" Value="AdministrationWeb.WebServiceProxies.Subscriptions" />
+                  <Property Name="LanguageType" Value="CSharp" />
+                  <Property Name="TypeModifier" Value="Reference" />
+                  <Property Name="NewMemberLocationLongName" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberLocation" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberDefinitionLongName" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="NewMemberDefinition" Value="c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\administrationweb\517e0f38\70034ec9\Sources_App_WebReferences\webserviceproxies.a53530b.cs" />
+                  <Property Name="PrimaryCodeFileName" Value="webserviceproxies.a53530b.cs" />
+                  <Relationship Id="359059cc128f4345a76142412dc8ff3c" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes" Role1="@09a9b98f3a3f41379521065bb8e3b181" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ClrNamespaceContainsClrTypes.OwnerNamespace" />
+                </ModelElement>
+                <Relationship Id="34bdf72460c64ff9b3308fa6de6b3017" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces" Role1="@db778db8475947139bd9f496dc3cbb43" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespaceContainsClrNamespaces.RootNamespace" />
+              </ModelElement>
+              <Relationship Id="05d3b9f97c324545b4da9607c34bb010" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@50b02b73fea54a46a2e5e17f3df04fe4" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
             </ModelElement>
-            <Relationship Id="96cf16d319ff4174930382706c6f4463" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@ae4bbae827ab44139236b963b3142d75" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
+            <Relationship Id="61ba695f84ae44cba3b4f400dc987263" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@a372becb797a4e5b87ea747df5e0918c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
           </ModelElement>
         </ModelElement>
       </ModelElement>
@@ -73,7 +102,74 @@
     </DesignData>
     <ResourceDefinition Name="Directory" Extends="MicrosoftFileSystem:Directory">
       <ResourceDefinition Name="Configuration" Extends="MicrosoftConfiguration:Configuration">
+        <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
+        <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
         <ResourceDefinition Name="SystemWebSectionGroup" Extends="MicrosoftConfiguration:SystemWebSectionGroup">
+          <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
+          <ResourceDefinition Name="IdentitySection" Extends="MicrosoftConfiguration:IdentitySection">
+            <SettingValue Path="Impersonate" Fixed="false">false</SettingValue>
+            <SettingValue Path="UserName" Fixed="false" />
+          </ResourceDefinition>
+          <ResourceDefinition Name="RoleManagerSection" Extends="MicrosoftConfiguration:RoleManagerSection">
+            <SettingValue Path="Domain" Null="true" Fixed="false" />
+            <SettingValue Path="CookieName" Fixed="false">.ASPXROLES</SettingValue>
+            <SettingValue Path="CreatePersistentCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="MaxCachedResults" Fixed="false">25</SettingValue>
+            <SettingValue Path="CacheRolesInCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlRoleProvider</SettingValue>
+            <SettingValue Path="Enabled" Fixed="false">false</SettingValue>
+            <SettingValue Path="CookiePath" Fixed="false">/</SettingValue>
+            <SettingValue Path="CookieSlidingExpiration" Fixed="false">true</SettingValue>
+            <SettingValue Path="CookieTimeout" Fixed="false">00:30:00</SettingValue>
+            <SettingValue Path="CookieProtection" Fixed="false">All</SettingValue>
+            <SettingValue Path="CookieRequireSSL" Fixed="false">false</SettingValue>
+            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetSqlRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetWindowsTokenRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.WindowsTokenRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <Resource Name="ProviderSettings" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings" />
+            <Resource Name="ProviderSettings1" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
+          </ResourceDefinition>
           <ResourceDefinition Name="AuthenticationSection" Extends="MicrosoftConfiguration:AuthenticationSection">
             <SettingValue Path="Passport" Fixed="false">
               <RedirectUrl xmlns="http://Microsoft.Configuration">internal</RedirectUrl>
@@ -118,10 +214,6 @@
             </Resource>
             <Containment Name="FormsAuthenticationConfigurationContainment" Definition="MicrosoftConfiguration:AuthenticationSectionContainsFormsAuthenticationConfiguration" ChildMember="FormsAuthenticationConfiguration" />
             <Hosting Name="FormsAuthenticationConfigurationHostsFormsAuthenticationCredentials" Definition="MicrosoftConfiguration:FormsAuthenticationConfigurationHostsFormsAuthenticationCredentials" GuestMember="FormsAuthenticationConfiguration.FormsAuthenticationCredentials" HostMember="FormsAuthenticationConfiguration" />
-          </ResourceDefinition>
-          <ResourceDefinition Name="IdentitySection" Extends="MicrosoftConfiguration:IdentitySection">
-            <SettingValue Path="Impersonate" Fixed="false">false</SettingValue>
-            <SettingValue Path="UserName" Fixed="false" />
           </ResourceDefinition>
           <ResourceDefinition Name="MembershipSection" Extends="MicrosoftConfiguration:MembershipSection">
             <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlMembershipProvider</SettingValue>
@@ -194,83 +286,6 @@
             </Resource>
             <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:MembershipSectionContainsProviderSettings" ChildMember="ProviderSettings" />
           </ResourceDefinition>
-          <ResourceDefinition Name="RoleManagerSection" Extends="MicrosoftConfiguration:RoleManagerSection">
-            <SettingValue Path="Domain" Null="true" Fixed="false" />
-            <SettingValue Path="CookieName" Fixed="false">.ASPXROLES</SettingValue>
-            <SettingValue Path="CreatePersistentCookie" Fixed="false">false</SettingValue>
-            <SettingValue Path="MaxCachedResults" Fixed="false">25</SettingValue>
-            <SettingValue Path="CacheRolesInCookie" Fixed="false">false</SettingValue>
-            <SettingValue Path="DefaultProvider" Fixed="false">AspNetSqlRoleProvider</SettingValue>
-            <SettingValue Path="Enabled" Fixed="false">false</SettingValue>
-            <SettingValue Path="CookiePath" Fixed="false">/</SettingValue>
-            <SettingValue Path="CookieTimeout" Fixed="false">00:30:00</SettingValue>
-            <SettingValue Path="CookieSlidingExpiration" Fixed="false">true</SettingValue>
-            <SettingValue Path="CookieProtection" Fixed="false">All</SettingValue>
-            <SettingValue Path="CookieRequireSSL" Fixed="false">false</SettingValue>
-            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
-              <SettingValue Path="Name" Fixed="false">AspNetSqlRoleProvider</SettingValue>
-              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
-              <SettingValueList Path="Parameters" Fixed="false">
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
-                </Value>
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">/</Value>
-                </Value>
-              </SettingValueList>
-            </ResourceDefinition>
-            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
-              <SettingValue Path="Name" Fixed="false">AspNetWindowsTokenRoleProvider</SettingValue>
-              <SettingValue Path="Type" Fixed="false">System.Web.Security.WindowsTokenRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
-              <SettingValueList Path="Parameters" Fixed="false">
-                <Value>
-                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
-                  <Value xmlns="http://Microsoft.Configuration">/</Value>
-                </Value>
-              </SettingValueList>
-            </ResourceDefinition>
-            <Resource Name="ProviderSettings" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
-              <DesignData>
-                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-                  <ModelElement>
-                    <Property Name="DisplayName" Value="ProviderSettings" />
-                    <Property Name="CreatedByUser" Value="true" />
-                  </ModelElement>
-                </VisualStudio>
-              </DesignData>
-            </Resource>
-            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings" />
-            <Resource Name="ProviderSettings1" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
-              <DesignData>
-                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-                  <ModelElement>
-                    <Property Name="DisplayName" Value="ProviderSettings" />
-                    <Property Name="CreatedByUser" Value="true" />
-                  </ModelElement>
-                </VisualStudio>
-              </DesignData>
-            </Resource>
-            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
-          </ResourceDefinition>
-          <ResourceDefinition Name="SessionStateSection" Extends="MicrosoftConfiguration:SessionStateSection">
-            <SettingValue Path="StateConnectionString" Fixed="false">tcpip=loopback:42424</SettingValue>
-            <SettingValue Path="CookieName" Fixed="false">ASP.NET_SessionId</SettingValue>
-            <SettingValue Path="SqlCommandTimeout" Fixed="false">00:00:30</SettingValue>
-            <SettingValue Path="UseHostingIdentity" Fixed="false">true</SettingValue>
-            <SettingValue Path="StateNetworkTimeout" Fixed="false">00:00:10</SettingValue>
-            <SettingValue Path="CustomProvider" Fixed="false" />
-            <SettingValue Path="RegenerateExpiredSessionId" Fixed="false">true</SettingValue>
-            <SettingValue Path="SessionIDManagerType" Fixed="false" />
-            <SettingValue Path="SqlConnectionString" Fixed="false">data source=localhost;Integrated Security=SSPI</SettingValue>
-            <SettingValue Path="Mode" Fixed="false">InProc</SettingValue>
-            <SettingValue Path="AllowCustomSqlDatabase" Fixed="false">false</SettingValue>
-            <SettingValue Path="PartitionResolverType" Fixed="false" />
-            <SettingValue Path="Cookieless" Fixed="false">UseCookies</SettingValue>
-            <SettingValue Path="Timeout" Fixed="false">00:20:00</SettingValue>
-          </ResourceDefinition>
-          <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
           <ResourceDefinition Name="HttpHandlersSection" Extends="MicrosoftConfiguration:HttpHandlersSection">
             <SettingValueList Path="Handlers" Fixed="false">
               <Value>
@@ -899,20 +914,22 @@
               </Value>
             </SettingValueList>
           </ResourceDefinition>
-          <Resource Name="AuthenticationSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.AuthenticationSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="AuthenticationSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsAuthenticationSection" ChildMember="AuthenticationSection" />
-          <Hosting Name="AuthenticationSectionHostsFormsAuthenticationConfiguration" Definition="MicrosoftConfiguration:AuthenticationSectionHostsFormsAuthenticationConfiguration" GuestMember="AuthenticationSection.FormsAuthenticationConfiguration" HostMember="AuthenticationSection" />
-          <Resource Name="IdentitySection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.IdentitySection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="IdentitySectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsIdentitySection" ChildMember="IdentitySection" />
-          <Resource Name="MembershipSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.MembershipSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="MembershipSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsMembershipSection" ChildMember="MembershipSection" />
-          <Hosting Name="MembershipSectionHostsProviderSettings" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings" HostMember="MembershipSection" />
-          <Resource Name="RoleManagerSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="RoleManagerSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsRoleManagerSection" ChildMember="RoleManagerSection" />
-          <Hosting Name="RoleManagerSectionHostsProviderSettings" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings" HostMember="RoleManagerSection" />
-          <Hosting Name="RoleManagerSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings1" HostMember="RoleManagerSection" />
-          <Resource Name="SessionStateSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.SessionStateSection" MinOccurs="1" MaxOccurs="1" Reference="false" />
-          <Containment Name="SessionStateSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSessionStateSection" ChildMember="SessionStateSection" />
+          <ResourceDefinition Name="SessionStateSection" Extends="MicrosoftConfiguration:SessionStateSection">
+            <SettingValue Path="StateConnectionString" Fixed="false">tcpip=loopback:42424</SettingValue>
+            <SettingValue Path="CookieName" Fixed="false">ASP.NET_SessionId</SettingValue>
+            <SettingValue Path="SqlCommandTimeout" Fixed="false">00:00:30</SettingValue>
+            <SettingValue Path="UseHostingIdentity" Fixed="false">true</SettingValue>
+            <SettingValue Path="StateNetworkTimeout" Fixed="false">00:00:10</SettingValue>
+            <SettingValue Path="CustomProvider" Fixed="false" />
+            <SettingValue Path="RegenerateExpiredSessionId" Fixed="false">true</SettingValue>
+            <SettingValue Path="SqlConnectionString" Fixed="false">data source=localhost;Integrated Security=SSPI</SettingValue>
+            <SettingValue Path="Mode" Fixed="false">InProc</SettingValue>
+            <SettingValue Path="Cookieless" Fixed="false">UseCookies</SettingValue>
+            <SettingValue Path="AllowCustomSqlDatabase" Fixed="false">false</SettingValue>
+            <SettingValue Path="PartitionResolverType" Fixed="false" />
+            <SettingValue Path="SessionIDManagerType" Fixed="false" />
+            <SettingValue Path="Timeout" Fixed="false">00:20:00</SettingValue>
+          </ResourceDefinition>
           <Resource Name="SystemWebCachingSectionGroup" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.SystemWebCachingSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
             <DesignData>
               <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -924,6 +941,54 @@
             </DesignData>
           </Resource>
           <Containment Name="SystemWebCachingSectionGroupContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSystemWebCachingSectionGroup" ChildMember="SystemWebCachingSectionGroup" />
+          <Resource Name="IdentitySection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.IdentitySection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="IdentitySection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="IdentitySectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsIdentitySection" ChildMember="IdentitySection" />
+          <Resource Name="RoleManagerSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="RoleManagerSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="RoleManagerSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsRoleManagerSection" ChildMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings" HostMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings1" HostMember="RoleManagerSection" />
+          <Resource Name="AuthenticationSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.AuthenticationSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="AuthenticationSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="AuthenticationSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsAuthenticationSection" ChildMember="AuthenticationSection" />
+          <Hosting Name="AuthenticationSectionHostsFormsAuthenticationConfiguration" Definition="MicrosoftConfiguration:AuthenticationSectionHostsFormsAuthenticationConfiguration" GuestMember="AuthenticationSection.FormsAuthenticationConfiguration" HostMember="AuthenticationSection" />
+          <Resource Name="MembershipSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.MembershipSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="MembershipSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="MembershipSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsMembershipSection" ChildMember="MembershipSection" />
+          <Hosting Name="MembershipSectionHostsProviderSettings" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings" HostMember="MembershipSection" />
           <Resource Name="HttpHandlersSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.HttpHandlersSection" MinOccurs="1" MaxOccurs="1" Reference="false">
             <DesignData>
               <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -968,9 +1033,18 @@
             </DesignData>
           </Resource>
           <Containment Name="HttpModulesSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsHttpModulesSection" ChildMember="HttpModulesSection" />
+          <Resource Name="SessionStateSection" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup.SessionStateSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="SessionStateSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="SessionStateSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSessionStateSection" ChildMember="SessionStateSection" />
         </ResourceDefinition>
-        <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
-        <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
         <ResourceDefinition Name="NetSectionGroup" Extends="MicrosoftConfiguration:NetSectionGroup">
           <ResourceDefinition Name="MailSettingsSectionGroup" Extends="MicrosoftConfiguration:MailSettingsSectionGroup" />
           <Resource Name="MailSettingsSectionGroup" Definition="AdministrationWeb.Directory.Configuration.NetSectionGroup.MailSettingsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
@@ -989,7 +1063,8 @@
           <SettingValueList Path="Settings" Fixed="false">
             <Value>
               <Key xmlns="http://Microsoft.Configuration">AdministrationWeb.WebServiceProxies.Subscriptions</Key>
-              <Value xmlns="http://Microsoft.Configuration">http://localhost:31614/NotificationService/Subscriptions.asmx</Value>
+              <Value xmlns="http://Microsoft.Configuration">
+              </Value>
             </Value>
             <Value>
               <Key xmlns="http://Microsoft.Configuration">AdministrationWeb.WebServiceProxies.Eventhandler0</Key>
@@ -999,18 +1074,6 @@
           <SettingValue Path="File" Fixed="false" />
         </ResourceDefinition>
         <ResourceDefinition Name="ConnectionStringsSection" Extends="MicrosoftConfiguration:ConnectionStringsSection" />
-        <Resource Name="SystemWebSectionGroup" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false" />
-        <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsAuthenticationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsAuthenticationSection" GuestMember="SystemWebSectionGroup.AuthenticationSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsIdentitySection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsIdentitySection" GuestMember="SystemWebSectionGroup.IdentitySection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsMembershipSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsMembershipSection" GuestMember="SystemWebSectionGroup.MembershipSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsRoleManagerSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsRoleManagerSection" GuestMember="SystemWebSectionGroup.RoleManagerSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsSessionStateSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSessionStateSection" GuestMember="SystemWebSectionGroup.SessionStateSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsHttpHandlersSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsHttpHandlersSection" GuestMember="SystemWebSectionGroup.HttpHandlersSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsPagesSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsPagesSection" GuestMember="SystemWebSectionGroup.PagesSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsCompilationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsCompilationSection" GuestMember="SystemWebSectionGroup.CompilationSection" HostMember="SystemWebSectionGroup" />
-        <Hosting Name="SystemWebSectionGroupHostsHttpModulesSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsHttpModulesSection" GuestMember="SystemWebSectionGroup.HttpModulesSection" HostMember="SystemWebSectionGroup" />
         <Resource Name="TransactionsSectionGroup" Definition="AdministrationWeb.Directory.Configuration.TransactionsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
           <DesignData>
             <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -1033,6 +1096,27 @@
           </DesignData>
         </Resource>
         <Containment Name="SerializationSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSerializationSectionGroup" ChildMember="SerializationSectionGroup" />
+        <Resource Name="SystemWebSectionGroup" Definition="AdministrationWeb.Directory.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="SystemWebSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsIdentitySection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsIdentitySection" GuestMember="SystemWebSectionGroup.IdentitySection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsRoleManagerSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsRoleManagerSection" GuestMember="SystemWebSectionGroup.RoleManagerSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsAuthenticationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsAuthenticationSection" GuestMember="SystemWebSectionGroup.AuthenticationSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsMembershipSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsMembershipSection" GuestMember="SystemWebSectionGroup.MembershipSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsHttpHandlersSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsHttpHandlersSection" GuestMember="SystemWebSectionGroup.HttpHandlersSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsPagesSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsPagesSection" GuestMember="SystemWebSectionGroup.PagesSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsCompilationSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsCompilationSection" GuestMember="SystemWebSectionGroup.CompilationSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsHttpModulesSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsHttpModulesSection" GuestMember="SystemWebSectionGroup.HttpModulesSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsSessionStateSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSessionStateSection" GuestMember="SystemWebSectionGroup.SessionStateSection" HostMember="SystemWebSectionGroup" />
         <Resource Name="NetSectionGroup" Definition="AdministrationWeb.Directory.Configuration.NetSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
           <DesignData>
             <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -1070,9 +1154,9 @@
       </ResourceDefinition>
       <Resource Name="Configuration" Definition="AdministrationWeb.Directory.Configuration" MinOccurs="1" MaxOccurs="1" Reference="false" />
       <Containment Name="ConfigurationContainment" Definition="MicrosoftFileSystem:DirectoryContainsFile" ChildMember="Configuration" />
-      <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsTransactionsSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsTransactionsSectionGroup" GuestMember="Configuration.TransactionsSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsSerializationSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSerializationSectionGroup" GuestMember="Configuration.SerializationSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsNetSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsNetSectionGroup" GuestMember="Configuration.NetSectionGroup" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsAppSettingsSection" Definition="MicrosoftConfiguration:ConfigurationHostsAppSettingsSection" GuestMember="Configuration.AppSettingsSection" HostMember="Configuration" />
       <Hosting Name="ConfigurationHostsConnectionStringsSection" Definition="MicrosoftConfiguration:ConfigurationHostsConnectionStringsSection" GuestMember="Configuration.ConnectionStringsSection" HostMember="Configuration" />
@@ -1139,7 +1223,6 @@
             <Property Name="State" Value="Implemented" />
             <Property Name="NeedsGeneration" Value="true" />
             <Property Name="Definition" Value="http://localhost:31614/NotificationService/Subscriptions.asmx?wsdl" />
-            <Property Name="Location" Value="http://localhost:31614/NotificationService/Subscriptions.asmx" />
             <Property Name="GeneratedName" Value="Subscriptions" />
             <Property Name="ClassName" Value="AdministrationWeb.WebServiceProxies.Subscriptions" />
             <Property Name="ServiceName" Value="Subscriptions" />
@@ -1147,11 +1230,6 @@
             <Property Name="BindingName" Value="Subscriptions" />
             <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Subscriptions" />
             <Property Name="ProxyNamespace" Value="AdministrationWeb.WebServiceProxies" />
-            <ModelElement Id="4c6452973786419392d4e309cb4c36c3" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.DevConnection">
-              <Property Name="Name" Value="Connection3" />
-              <Property Name="ProviderPortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+Subscriptions" />
-            </ModelElement>
-            <Relationship Id="c5abbe9911e14b42bfbcf2420c719469" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ConsumerPortContainsDevConnection" Role1="@4c6452973786419392d4e309cb4c36c3" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ConsumerPortContainsDevConnection.DevConnection" />
           </ModelElement>
         </VisualStudio>
       </DesignData>
@@ -1184,11 +1262,6 @@
             <Property Name="BindingName" Value="Eventhandler" />
             <Property Name="BindingNamespace" Value="http://schema.rddotnet.com/2007/08/TFSEventHandler/Eventhandler" />
             <Property Name="ProxyNamespace" Value="AdministrationWeb.WebServiceProxies" />
-            <ModelElement Id="f3960822b200484d8bff267697b062b2" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.DevConnection">
-              <Property Name="Name" Value="Connection4" />
-              <Property Name="ProviderPortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler" />
-            </ModelElement>
-            <Relationship Id="63593f7207584ac09e3888f6084a2355" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ConsumerPortContainsDevConnection" Role1="@f3960822b200484d8bff267697b062b2" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ConsumerPortContainsDevConnection.DevConnection" />
           </ModelElement>
         </VisualStudio>
       </DesignData>

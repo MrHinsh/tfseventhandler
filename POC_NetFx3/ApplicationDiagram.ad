@@ -19,7 +19,7 @@
           <Property Name="BaseFontSize" Value="0.11458333581686" />
           <ModelElement Id="a1a07519f9b24641b42a77ed8057d77f" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.SoftwareComponentShape">
             <Property Name="IsExpanded" Value="true" />
-            <Property Name="AbsoluteBounds" Value="2.25, 0.5, 2.25, 1" />
+            <Property Name="AbsoluteBounds" Value="2.25, 0.5, 2.25, 1.75" />
             <Property Name="NameCache" Value="NotificationService" />
             <Property Name="AccessibleDescriptionCache" Value="ASP.NETWebApplication Shape" />
             <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
@@ -33,66 +33,9 @@
             <Property Name="ImageResourceLocator" Value="c:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\WebApplication.emf" />
             <Property Name="ErrorImageResourceLocator" Value="c:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\WebApplicationError.emf" />
             <Property Name="ShowGlyphBar" Value="true" />
-            <ModelElement Id="cb5a0e1293504a6cbf128ab08f9396a0" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
-              <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="2.16, 0.6875, 0.18, 0.18" />
-              <Property Name="NameCache" Value="CheckInEventNotification" />
-              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="ThemeColorCache" Value="145,137,213" />
-              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
-              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+CheckInEventNotification" />
-              <Property Name="GeometryCache" Value="WebService" />
-              <ModelElement Id="b0e05124ce60495d9f31b081eeb4052f" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
-                <Property Name="IsExpanded" Value="true" />
-                <Property Name="AbsoluteBounds" Value="0.78500000000000014, 0.5, 1.3390061855316162, 0.1526285707950592" />
-                <Property Name="Text" Value="CheckInEventNotification" />
-                <Relationship Id="77da466c5d4e45d3bd476334241be97c" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@cb5a0e1293504a6cbf128ab08f9396a0" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              </ModelElement>
-              <Relationship Id="8193fee5d0bd4f28839056daefdf2636" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="95a51f81b58c49ca85e30671e97d8662" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+CheckInEventNotification" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
-            </ModelElement>
-            <ModelElement Id="e7af114d892b486a8e8e0f7ba4a62347" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
-              <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="2.16, 0.9375, 0.18, 0.18" />
-              <Property Name="NameCache" Value="WorkItemChangedEventNotification" />
-              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="ThemeColorCache" Value="145,137,213" />
-              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
-              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+WorkItemChangedEventNotification" />
-              <Property Name="GeometryCache" Value="WebService" />
-              <ModelElement Id="9435a61fad1143ed927db404b600fbde" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
-                <Property Name="IsExpanded" Value="true" />
-                <Property Name="AbsoluteBounds" Value="0.22250000000000014, 0.75, 1.8907182216644287, 0.1526285707950592" />
-                <Property Name="Text" Value="WorkItemChangedEventNotification" />
-                <Relationship Id="85cd73d5f83e4c119d23ee0e14a77d2b" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@e7af114d892b486a8e8e0f7ba4a62347" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              </ModelElement>
-              <Relationship Id="eca151e51aad4397b1d9c28717004ecf" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="6032382fb1ec4f93936d2a61f780a978" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+WorkItemChangedEventNotification" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
-            </ModelElement>
-            <ModelElement Id="fc7c5e111d8a4927ab9c75ec167e0433" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
-              <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="2.16, 1.125, 0.18, 0.18" />
-              <Property Name="NameCache" Value="Subscriptions" />
-              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
-              <Property Name="ThemeColorCache" Value="145,137,213" />
-              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
-              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+Subscriptions" />
-              <Property Name="GeometryCache" Value="WebService" />
-              <ModelElement Id="84776e594308402fb2340f8a47878543" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
-                <Property Name="IsExpanded" Value="true" />
-                <Property Name="AbsoluteBounds" Value="1.4100000000000001, 0.9375, 0.72575032711029053, 0.1526285707950592" />
-                <Property Name="Text" Value="Subscriptions" />
-                <Relationship Id="90c61d4af5704e688225debc4b4bd9f1" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@fc7c5e111d8a4927ab9c75ec167e0433" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              </ModelElement>
-              <Relationship Id="6658ed0005dd46f6bc36fab09fa2d773" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="af4b021a9ad6475b9711dc36d89a8b83" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+Subscriptions" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
-            </ModelElement>
             <ModelElement Id="838d1c9084e840978d0da398c792dba6" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
               <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="4.125, 1.4100000000000001, 0.18, 0.18" />
+              <Property Name="AbsoluteBounds" Value="4.125, 2.16, 0.18, 0.18" />
               <Property Name="NameCache" Value="EventReciever" />
               <Property Name="AccessibleDescriptionCache" Value="Web Service Consumer Endpoint" />
               <Property Name="TypeNameCache" Value="Web Service Consumer Endpoint" />
@@ -105,12 +48,69 @@
               <Relationship Id="67fde1fc04524cf9ae53086073f5636c" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
               <Relationship Id="fdd2824164534db4af3a354e00ebc554" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+EventReciever" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
             </ModelElement>
+            <ModelElement Id="f703015eaee443aeba94a75625a4f3b4" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
+              <Property Name="IsExpanded" Value="true" />
+              <Property Name="AbsoluteBounds" Value="2.16, 1.4375, 0.18, 0.18" />
+              <Property Name="NameCache" Value="Subscriptions1" />
+              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="ThemeColorCache" Value="145,137,213" />
+              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
+              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+Subscriptions1" />
+              <Property Name="GeometryCache" Value="WebService" />
+              <ModelElement Id="b299afbcf8f74bc79e89cb6f8dbb204a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
+                <Property Name="IsExpanded" Value="true" />
+                <Property Name="AbsoluteBounds" Value="1.3475000000000001, 1.25, 0.79020345211029053, 0.1526285707950592" />
+                <Property Name="Text" Value="Subscriptions1" />
+                <Relationship Id="2aaa696fa9334e1cb7c76f9707925dc1" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@f703015eaee443aeba94a75625a4f3b4" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              </ModelElement>
+              <Relationship Id="fbac367671ab45b898206042215244ea" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              <Relationship Id="29245b522f05496db5e8070b019a9155" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+Subscriptions1" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            </ModelElement>
+            <ModelElement Id="3176a088b30e4adc9b53a930f52f294a" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
+              <Property Name="IsExpanded" Value="true" />
+              <Property Name="AbsoluteBounds" Value="2.16, 1.6875, 0.18, 0.18" />
+              <Property Name="NameCache" Value="CheckInEventNotification1" />
+              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="ThemeColorCache" Value="145,137,213" />
+              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
+              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+CheckInEventNotification1" />
+              <Property Name="GeometryCache" Value="WebService" />
+              <ModelElement Id="42b2cdf305444b15b89cfcecfb853db2" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
+                <Property Name="IsExpanded" Value="true" />
+                <Property Name="AbsoluteBounds" Value="0.72250000000000014, 1.5, 1.4034593105316162, 0.1526285707950592" />
+                <Property Name="Text" Value="CheckInEventNotification1" />
+                <Relationship Id="041de092a2534bb4b7724e97bd6de53c" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@3176a088b30e4adc9b53a930f52f294a" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              </ModelElement>
+              <Relationship Id="cceff7c8f72e49a5b38aaccfd906127e" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              <Relationship Id="23397c541b5948b783a9dfa354a27a54" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+CheckInEventNotification1" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            </ModelElement>
+            <ModelElement Id="1171770fabd5486892ddeddfab755a2b" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
+              <Property Name="IsExpanded" Value="true" />
+              <Property Name="AbsoluteBounds" Value="2.16, 1.875, 0.18, 0.18" />
+              <Property Name="NameCache" Value="WorkItemChangedEventNotification1" />
+              <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
+              <Property Name="ThemeColorCache" Value="145,137,213" />
+              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
+              <Property Name="OrphanedSubjectId" Value="NotificationService,1.0.0.0,en-US:NotificationService+WorkItemChangedEventNotification1" />
+              <Property Name="GeometryCache" Value="WebService" />
+              <ModelElement Id="e2f12562f8e641a6b62ae6d1e9ba0f63" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
+                <Property Name="IsExpanded" Value="true" />
+                <Property Name="AbsoluteBounds" Value="0.16000000000000014, 1.6875, 1.9551713466644287, 0.1526285707950592" />
+                <Property Name="Text" Value="WorkItemChangedEventNotification1" />
+                <Relationship Id="07a88e678a354c7184cfc44f5bd60b33" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@1171770fabd5486892ddeddfab755a2b" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              </ModelElement>
+              <Relationship Id="33c906fd8440440bba95a9e6e1df7a88" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@a1a07519f9b24641b42a77ed8057d77f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              <Relationship Id="3cf845c8a7234ee799b2e32ef4958249" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService+WorkItemChangedEventNotification1" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            </ModelElement>
             <Relationship Id="7b5a641747494e718aa95eb0bba2e3ae" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
             <Relationship Id="a239e31ea4f141bda1690627207de0fc" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication1:NotificationService" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
           </ModelElement>
           <ModelElement Id="faf0338d272c413d97ecb6a10c5cc886" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.SoftwareComponentShape">
             <Property Name="IsExpanded" Value="true" />
-            <Property Name="AbsoluteBounds" Value="4.5, 2.25, 2, 1.25" />
+            <Property Name="AbsoluteBounds" Value="3.25, 4.25, 2, 1.25" />
             <Property Name="NameCache" Value="DecissionService" />
             <Property Name="AccessibleDescriptionCache" Value="ASP.NETWebApplication Shape" />
             <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
@@ -126,7 +126,7 @@
             <Property Name="ShowGlyphBar" Value="true" />
             <ModelElement Id="fb5f9b4ad70c4b608246a0b56b689881" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
               <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="5.125, 2.16, 0.18, 0.18" />
+              <Property Name="AbsoluteBounds" Value="3.16, 4.4375, 0.18, 0.18" />
               <Property Name="NameCache" Value="EventReciever" />
               <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
               <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
@@ -136,16 +136,16 @@
               <Property Name="GeometryCache" Value="WebService" />
               <ModelElement Id="189d9e26064949fea1c40ca8ba163160" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
                 <Property Name="IsExpanded" Value="true" />
-                <Property Name="AbsoluteBounds" Value="5.375, 1.9725000000000001, 0.77285933494567871, 0.1526285707950592" />
+                <Property Name="AbsoluteBounds" Value="2.3475, 4.25, 0.77285933494567871, 0.1526285707950592" />
                 <Property Name="Text" Value="EventReciever" />
                 <Relationship Id="cdf1c6ac75ae4d7eb11c2d65c2ab247c" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@fb5f9b4ad70c4b608246a0b56b689881" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
               </ModelElement>
               <Relationship Id="0e2281a88e7349089e2604c9900f6142" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@faf0338d272c413d97ecb6a10c5cc886" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="479550494b5146bea3f26d24ea9a1e5f" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+EventReciever" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+              <Relationship Id="8b277aa524c2477cba8c709a5569224c" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+EventReciever" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
             </ModelElement>
             <ModelElement Id="2a0cbd115c4c44048eca74ebc8714899" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
               <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="4.41, 2.8125, 0.18, 0.18" />
+              <Property Name="AbsoluteBounds" Value="3.16, 4.6875, 0.18, 0.18" />
               <Property Name="NameCache" Value="Eventhandler" />
               <Property Name="AccessibleDescriptionCache" Value=".NET Web Service Provider Endpoint" />
               <Property Name="TypeNameCache" Value=".NET Web Service Provider Endpoint" />
@@ -155,16 +155,16 @@
               <Property Name="GeometryCache" Value="WebService" />
               <ModelElement Id="5e32da6ed6b0493cbb660e4bff8786a1" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
                 <Property Name="IsExpanded" Value="true" />
-                <Property Name="AbsoluteBounds" Value="3.66, 2.625, 0.72093874216079712, 0.1526285707950592" />
+                <Property Name="AbsoluteBounds" Value="2.41, 4.5, 0.72093874216079712, 0.1526285707950592" />
                 <Property Name="Text" Value="Eventhandler" />
                 <Relationship Id="2ffb4b3e201b48d89e49601d57ad597d" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@2a0cbd115c4c44048eca74ebc8714899" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
               </ModelElement>
               <Relationship Id="0c04341a714a4285aa92887922501e96" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@faf0338d272c413d97ecb6a10c5cc886" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="d608d586c0bc487ebe2dd454222e3a9d" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+Eventhandler" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+              <Relationship Id="bbc0299cf92b4fd89868915b0e089516" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+Eventhandler" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
             </ModelElement>
             <ModelElement Id="d9cd1a0be7b24b9ebfad970ee250aa27" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
               <Property Name="IsExpanded" Value="true" />
-              <Property Name="AbsoluteBounds" Value="4.6875, 2.16, 0.18, 0.18" />
+              <Property Name="AbsoluteBounds" Value="3.4375, 4.16, 0.18, 0.18" />
               <Property Name="NameCache" Value="Eventhandler2" />
               <Property Name="AccessibleDescriptionCache" Value="Web Service Consumer Endpoint" />
               <Property Name="TypeNameCache" Value="Web Service Consumer Endpoint" />
@@ -175,13 +175,27 @@
               <Property Name="ShowLabel" Value="false" />
               <Property Name="GeometryCache" Value="WebService" />
               <Relationship Id="af85aebf165747eb9583adb4b2279dcf" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@faf0338d272c413d97ecb6a10c5cc886" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
-              <Relationship Id="0b104efeb3234d10bd07ae8eb8897f1c" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+Eventhandler2" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            </ModelElement>
+            <ModelElement Id="072f15c6840a4dbbad36bc19a7e513f9" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
+              <Property Name="IsExpanded" Value="true" />
+              <Property Name="AbsoluteBounds" Value="3.16, 4.9375, 0.18, 0.18" />
+              <Property Name="NameCache" Value="Eventhandler1" />
+              <Property Name="AccessibleDescriptionCache" Value="Web Service Consumer Endpoint" />
+              <Property Name="TypeNameCache" Value="Web Service Consumer Endpoint" />
+              <Property Name="ThemeColorCache" Value="145,137,213" />
+              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
+              <Property Name="OrphanedSubjectId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler1" />
+              <Property Name="Direction" Value="Client" />
+              <Property Name="ShowLabel" Value="false" />
+              <Property Name="GeometryCache" Value="WebService" />
+              <Relationship Id="714b39e4de5e4999b5d5ed4f72526bf0" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@faf0338d272c413d97ecb6a10c5cc886" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+              <Relationship Id="cd9652c5363f4cdba3d89b2708806f2e" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService+Eventhandler1" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
             </ModelElement>
             <Relationship Id="cc5c179763b64cd39bde638a89ef48c5" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
-            <Relationship Id="3394cd891fd9432ab54f5d4b5f21bcd9" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            <Relationship Id="19a307c991774bc581f51fbc02ac04f4" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication11:DecissionService" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
           </ModelElement>
           <ModelElement Id="98c41bd8188d45b9b83823a3162bab81" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.ClientServerConnectionLine">
-            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAQAAAABAAAAEAMAAAAEAAAACQQAAAAJBQAAAAkGAAAACQcAAAAMCAAAAHdNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUEAAAAMk1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50AgAAAARmbGFnBXBvaW50BARATWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdC5WR1BvaW50VHlwZQgAAAAvTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAgAAAAX3////QE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QuVkdQb2ludFR5cGUBAAAAB3ZhbHVlX18ACAgAAAAAAAAABfb///8vTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAXgBeQAABgYCAAAAXI/C9SjcFEBI4XoUrkcBQAEFAAAABAAAAAH1////9////wAAAAAB9P////b///9cj8L1KNwUQJDC9Shcj/w/AQYAAAAEAAAAAfP////3////AAAAAAHy////9v///1yPwvUo3BBAkML1KFyP/D8BBwAAAAQAAAAB8f////f///8AAAAAAfD////2////XI/C9SjcEEByPQrXo3D5Pws=" />
+            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAcAAAABAAAAEAMAAAAHAAAACQQAAAAJBQAAAAkGAAAACQcAAAAJCAAAAAkJAAAACQoAAAAMCwAAAHdNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUEAAAAMk1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50AgAAAARmbGFnBXBvaW50BARATWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdC5WR1BvaW50VHlwZQsAAAAvTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAgAAAAX0////QE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QuVkdQb2ludFR5cGUBAAAAB3ZhbHVlX18ACAsAAAAAAAAABfP///8vTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAXgBeQAABgYCAAAASOF6FK5HCUBcj8L1KBwSQAEFAAAABAAAAAHy////9P///wAAAAAB8f////P///8AAAAAAAAIQFyPwvUoHBJAAQYAAAAEAAAAAfD////0////AAAAAAHv////8////wAAAAAAAAhAAAAAAAAAEEABBwAAAAQAAAAB7v////T///8BAAAAAe3////z////DXTaQKeNC0D///////8PQAEIAAAABAAAAAHs////9P///wMAAAAB6/////P///9jyS+W/OIMQAAAAAAAABBAAQkAAAAEAAAAAer////0////AAAAAAHp////8////1yPwvUo3BBAAAAAAAAAEEABCgAAAAQAAAAB6P////T///8AAAAAAef////z////XI/C9SjcEEC4HoXrUbgCQAs=" />
             <Property Name="FixedFrom" Value="Caller" />
             <Property Name="FixedTo" Value="Caller" />
             <Relationship Id="76958d0029c14799baf3e88021ff542e" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
@@ -190,13 +204,12 @@
             <Relationship Id="3d00e1a67b434ecaab391d1c46830533" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@777f71059bc6477ca365c178554c30ae" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
           </ModelElement>
           <ModelElement Id="f3b3780c97d14fac921cef1f29f3640a" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.ClientServerConnectionLine">
-            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAUAAAABAAAAEAMAAAAFAAAACQQAAAAJBQAAAAkGAAAACQcAAAAJCAAAAAwJAAAAd01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQQAAAAyTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5FZGdlUG9pbnQCAAAABGZsYWcFcG9pbnQEBEBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LlZHUG9pbnRUeXBlCQAAAC9NaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLlBvaW50RAIAAAACAAAABfb///9ATWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdC5WR1BvaW50VHlwZQEAAAAHdmFsdWVfXwAICQAAAAAAAAAF9f///y9NaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLlBvaW50RAIAAAABeAF5AAAGBgIAAACkcD0K16MRQLgehetROAdAAQUAAAAEAAAAAfT////2////AAAAAAHz////9f///6RwPQrXIxBAuB6F61E4B0ABBgAAAAQAAAAB8v////b///8AAAAAAfH////1////pHA9CtcjEECQwvUoXI/+PwEHAAAABAAAAAHw////9v///wAAAAAB7/////X///9cj8L1KBwTQJDC9Shcj/4/AQgAAAAEAAAAAe7////2////AAAAAAHt////9f///1yPwvUoHBNASOF6FK5HAUAL" />
+            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAUAAAABAAAAEAMAAAAFAAAACQQAAAAJBQAAAAkGAAAACQcAAAAJCAAAAAwJAAAAd01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQQAAAAyTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5FZGdlUG9pbnQCAAAABGZsYWcFcG9pbnQEBEBNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LlZHUG9pbnRUeXBlCQAAAC9NaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLlBvaW50RAIAAAACAAAABfb///9ATWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdC5WR1BvaW50VHlwZQEAAAAHdmFsdWVfXwAICQAAAAAAAAAF9f///y9NaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLlBvaW50RAIAAAABeAF5AAAGBgIAAABI4XoUrkcJQFyPwvUoHBNAAQUAAAAEAAAAAfT////2////AAAAAAHz////9f///0jhehSuRwZAXI/C9SgcE0ABBgAAAAQAAAAB8v////b///8AAAAAAfH////1////SOF6FK5HBkBI4XoUrkcOQAEHAAAABAAAAAHw////9v///wAAAAAB7/////X///+4HoXrUTgMQEjhehSuRw5AAQgAAAAEAAAAAe7////2////AAAAAAHt////9f///7gehetROAxApHA9CtejEEAL" />
             <Property Name="FixedFrom" Value="Caller" />
             <Property Name="FixedTo" Value="Caller" />
             <Relationship Id="3c504a067ec84fe586f5743f47cb18a8" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
             <Relationship Id="5aa54ad52019437bb8b9598570ca30c7" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@2a0cbd115c4c44048eca74ebc8714899" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
             <Relationship Id="cfaf534fcb16402c9a8613e362e90e5c" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@d9cd1a0be7b24b9ebfad970ee250aa27" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
-            <Relationship Id="a412ab7fb27b40f48fe7774a63206582" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@fb7457623e464d8e8e6fe7ba5d356e45" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
           </ModelElement>
           <ModelElement Id="eb70f9c760c74e24b2d3faca52b12efa" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.SoftwareComponentShape">
             <Property Name="IsExpanded" Value="true" />
@@ -285,24 +298,6 @@
             <Relationship Id="d0192e9303364abda9ee10ebc04a7530" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
             <Relationship Id="fd9b10d271ba45b788d0f60ded7936fa" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="WebApplication12:AdministrationWeb" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
           </ModelElement>
-          <ModelElement Id="537901d61a8e43bdafedb61aa4552708" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.ClientServerConnectionLine">
-            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAMAAAABAAAAEAMAAAADAAAACQQAAAAJBQAAAAkGAAAADAcAAAB3TWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdCwgVmVyc2lvbj05LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFBAAAADJNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkVkZ2VQb2ludAIAAAAEZmxhZwVwb2ludAQEQE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QuVkdQb2ludFR5cGUHAAAAL01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuUG9pbnREAgAAAAIAAAAF+P///0BNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LlZHUG9pbnRUeXBlAQAAAAd2YWx1ZV9fAAgHAAAAAAAAAAX3////L01pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuUG9pbnREAgAAAAF4AXkAAAYGAgAAAEjhehSuRwFAcT0K16Nw8z8BBQAAAAQAAAAB9v////j///8AAAAAAfX////3////4XoUrkfh7D9xPQrXo3DzPwEGAAAABAAAAAH0////+P///wAAAAAB8/////f////hehSuR+HsP0jhehSuRwNACw==" />
-            <Property Name="FixedFrom" Value="Caller" />
-            <Property Name="FixedTo" Value="Caller" />
-            <Relationship Id="d4a87d87f8c045a099c258e39a8eda20" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
-            <Relationship Id="5a772d27d7de4688bb8d9e8cc176bc0e" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@fc7c5e111d8a4927ab9c75ec167e0433" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
-            <Relationship Id="ef1a5e8a94964cabbf8959de8ac66dec" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@20f13dc7876e45f5a0285d75bae78e7e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
-            <Relationship Id="0b9c029004044a109dbadf9ecefdc8a6" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@4c6452973786419392d4e309cb4c36c3" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
-          </ModelElement>
-          <ModelElement Id="04d6d0cc3744473196450aae4f42a20a" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.ClientServerConnectionLine">
-            <Property Name="EdgePoints" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAGtNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUBAAAAPE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50Q29sbGVjdGlvbgQAAAAKaXNSZWFkT25seRBBcnJheUxpc3QrX2l0ZW1zD0FycmF5TGlzdCtfc2l6ZRJBcnJheUxpc3QrX3ZlcnNpb24ABQAAAQgIAgAAAAAJAwAAAAQAAAABAAAAEAMAAAAEAAAACQQAAAAJBQAAAAkGAAAACQcAAAAMCAAAAHdNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLk1vZGVsaW5nLkRpYWdyYW1zLkdyYXBoT2JqZWN0LCBWZXJzaW9uPTkuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQUEAAAAMk1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuRWRnZVBvaW50AgAAAARmbGFnBXBvaW50BARATWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5HcmFwaE9iamVjdC5WR1BvaW50VHlwZQgAAAAvTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAgAAAAX3////QE1pY3Jvc29mdC5WaXN1YWxTdHVkaW8uTW9kZWxpbmcuRGlhZ3JhbXMuR3JhcGhPYmplY3QuVkdQb2ludFR5cGUBAAAAB3ZhbHVlX18ACAgAAAAAAAAABfb///8vTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5Nb2RlbGluZy5EaWFncmFtcy5Qb2ludEQCAAAAAXgBeQAABgYCAAAApHA9CtejEUC4HoXrUTgHQAEFAAAABAAAAAH1////9////wAAAAAB9P////b///+kcD0K1yMQQLgehetROAdAAQYAAAAEAAAAAfP////3////AAAAAAHy////9v///6RwPQrXIxBAuB6F61E4CEABBwAAAAQAAAAB8f////f///8AAAAAAfD////2////uB6F61G4BEC4HoXrUTgIQAs=" />
-            <Property Name="FixedFrom" Value="Caller" />
-            <Property Name="FixedTo" Value="Caller" />
-            <Relationship Id="e5a90acb52bf47118e8e67b5cc412fe7" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@82c588a581c34603a36eb6a33b0e925e" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
-            <Relationship Id="1af8becd38544aafb02caca1f990edeb" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@2a0cbd115c4c44048eca74ebc8714899" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
-            <Relationship Id="571cbff47cf946b4a9ac9f57ad0b9fa9" Type="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode" Role1="@3f944b4f6d374d56931bf86c31e15649" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.LinkConnectsToNode.Nodes" />
-            <Relationship Id="70e7c0d8d6a7448c9b69bc717fb9a4e9" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@f3960822b200484d8bff267697b062b2" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
-          </ModelElement>
           <Relationship Id="7dbb3efca296423ebd975876797ae7e6" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@e2464a1d6d4b494e8f34226d5df94d8c" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
         </ModelElement>
       </ModelElement>
@@ -337,30 +332,6 @@
           <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.AspComponent">
             <Property Name="AbstractComponentTypeId" Value="Microsoft.WebApplication,1.0.60130.0:WebApplication" />
             <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
-            <ModelElement Id="232da95e544b4557a764c97df666daca" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
-              <Property Name="Name" Value="CheckInEventNotification" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
-              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+CheckInEventNotification" />
-              <ModelElement Id="174cf240557b4ab7a39d95d57a068eb7" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="d90aeefa66bb4ab7a7e30b45a37f291e" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@232da95e544b4557a764c97df666daca" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
-            <ModelElement Id="79660519a5de46bfbac0977e358c8cc4" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
-              <Property Name="Name" Value="WorkItemChangedEventNotification" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
-              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+WorkItemChangedEventNotification" />
-              <ModelElement Id="c21d80a164394c38b411dc0f08e21ac8" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="8223581634fd44dc9d28212bad5c2942" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@79660519a5de46bfbac0977e358c8cc4" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
-            <ModelElement Id="77a910114b7c4d48b19041a516ffc425" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
-              <Property Name="Name" Value="Subscriptions" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
-              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+Subscriptions" />
-              <ModelElement Id="9816580fd5a944d89e590fa2bca3acde" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="ab1d1de00dd047f6a9dee15d0a15699a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@77a910114b7c4d48b19041a516ffc425" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
             <ModelElement Id="f649ecdc5e474230914025dde699e408" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceConsumerComponentPort">
               <Property Name="Name" Value="EventReciever" />
               <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebServiceClient" />
@@ -369,53 +340,39 @@
                 <Relationship Id="de0970cb66a84bcf9d466dcf1f35ab39" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@f649ecdc5e474230914025dde699e408" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
               </ModelElement>
             </ModelElement>
-            <Relationship Id="e9454bb63c0647039f08582bc64f95c5" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@232da95e544b4557a764c97df666daca" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
-            <Relationship Id="7df500ee9f0c47408b89d66eed6fb405" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@79660519a5de46bfbac0977e358c8cc4" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
-            <Relationship Id="373ece20eecf47018770ebce33dd4a50" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@77a910114b7c4d48b19041a516ffc425" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <ModelElement Id="165a66de479547a3942916ad594ba7c1" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="Subscriptions1" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+Subscriptions1" />
+              <ModelElement Id="68ecd9557e2d440088a66271250252fd" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="9288d5a65c574381a1b3be9e2c735f6c" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@165a66de479547a3942916ad594ba7c1" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <ModelElement Id="20b3c4144bfc412191002bd87166ca42" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="CheckInEventNotification1" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+CheckInEventNotification1" />
+              <ModelElement Id="0d6d0f608c2146d3aaf1246f017a3eb5" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="f9fc0076a4294f5f8738f84c8472fb4c" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@20b3c4144bfc412191002bd87166ca42" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <ModelElement Id="6e43c12925d64cafae029ff6f9cf9d53" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="WorkItemChangedEventNotification1" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="NotificationService,1.0.0.0,en-US:NotificationService+WorkItemChangedEventNotification1" />
+              <ModelElement Id="f6ed290f1a8e40009ef8f0916f2be22a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="7132c0b3a3284981ba1c9dfefe2657b5" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@6e43c12925d64cafae029ff6f9cf9d53" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
             <Relationship Id="46634ec17c2d44ea932da0af66a50cd2" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@f649ecdc5e474230914025dde699e408" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <Relationship Id="1358b9284919441ea5d6c2cd01ed3145" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@165a66de479547a3942916ad594ba7c1" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <Relationship Id="c7741ca8e30f43c69a9a06205cc1955b" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@20b3c4144bfc412191002bd87166ca42" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <Relationship Id="b4f7398611b14aeea833aecd5048ed1f" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@6e43c12925d64cafae029ff6f9cf9d53" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
           </ModelElement>
         </VisualStudio>
       </DesignData>
     </Subsystem>
     <Containment Name="NotificationServiceContainment" Definition="MicrosoftWebApplication:DistributedApplicationContainsWebApplication" ChildMember="NotificationService" />
-    <Subsystem Name="DecissionService" Definition="WebApplication11:DecissionService" MinOccurs="1" MaxOccurs="1" Reference="true">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.AspComponent">
-            <Property Name="AbstractComponentTypeId" Value="Microsoft.WebApplication,1.0.60130.0:WebApplication" />
-            <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
-            <ModelElement Id="71bbad8bd7a4470aa736a92d62741fde" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
-              <Property Name="Name" Value="EventReciever" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
-              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+EventReciever" />
-              <ModelElement Id="2c4a516f5e464dcb8750f842d9ddb6f0" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="00bc1ae23c2f487e90676c2799c66af0" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@71bbad8bd7a4470aa736a92d62741fde" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
-            <ModelElement Id="e40498edf82a437c9c568901ac001712" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
-              <Property Name="Name" Value="Eventhandler" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
-              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler" />
-              <ModelElement Id="7a3a2515b51042f0ae6d3efbfb74af98" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="ecf2bcfa221243698ffc48107a851597" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@e40498edf82a437c9c568901ac001712" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
-            <ModelElement Id="f2f4f9a3a32d4e9ba4537f34874c873c" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceConsumerComponentPort">
-              <Property Name="Name" Value="Eventhandler2" />
-              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebServiceClient" />
-              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler2" />
-              <ModelElement Id="81910e6533c94d828d439b45ac14192d" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
-                <Relationship Id="93b97f0681d349da99a2f4f6d3b1ffad" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@f2f4f9a3a32d4e9ba4537f34874c873c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
-              </ModelElement>
-            </ModelElement>
-            <Relationship Id="078fc1836eaa4574bae8c24570360b25" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@71bbad8bd7a4470aa736a92d62741fde" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
-            <Relationship Id="aab39e7caa5e4fffa77101f75caeab82" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@e40498edf82a437c9c568901ac001712" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
-            <Relationship Id="d5778456f9244c5db0eef1a7e4ae084b" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@f2f4f9a3a32d4e9ba4537f34874c873c" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
-          </ModelElement>
-        </VisualStudio>
-      </DesignData>
-    </Subsystem>
-    <Containment Name="DecissionServiceContainment" Definition="MicrosoftWebApplication:DistributedApplicationContainsWebApplication" ChildMember="DecissionService" />
     <Subsystem Name="AdministrationWeb" Definition="WebApplication12:AdministrationWeb" MinOccurs="1" MaxOccurs="1" Reference="true">
       <DesignData>
         <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
@@ -463,28 +420,45 @@
       </DesignData>
     </Subsystem>
     <Containment Name="AdministrationWebContainment" Definition="MicrosoftWebApplication:DistributedApplicationContainsWebApplication" ChildMember="AdministrationWeb" />
-    <Connection Name="Wire1" Definition="MicrosoftWeb:WebServiceConnection" ClientMember="NotificationService.EventReciever" ServerMember="DecissionService.EventReciever">
+    <Subsystem Name="DecissionService2" Definition="WebApplication11:DecissionService" MinOccurs="1" MaxOccurs="1" Reference="true">
       <DesignData>
         <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Wire" />
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.AspComponent">
+            <Property Name="AbstractComponentTypeId" Value="Microsoft.WebApplication,1.0.60130.0:WebApplication" />
+            <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
+            <ModelElement Id="3b73f2c5dff741c6afb6b26e866359ce" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="EventReciever" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+EventReciever" />
+              <ModelElement Id="b25c4f1003834b0c90ef81d2db6d8379" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="9be2de36c30c4fba927101603ad6405a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@3b73f2c5dff741c6afb6b26e866359ce" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <ModelElement Id="d59933b9a43543c4b228021993ca3cbc" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="Eventhandler" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler" />
+              <ModelElement Id="1010ed4f57f5464a98c5300f837749c9" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="d16f0f7450a54b58a9c66dc8e5b5f26f" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@d59933b9a43543c4b228021993ca3cbc" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <ModelElement Id="478d3398fbab4fdb8da4afc6dca02e46" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceConsumerComponentPort">
+              <Property Name="Name" Value="Eventhandler1" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebServiceClient" />
+              <Property Name="PortId" Value="DecissionService,1.0.0.0,en-US:DecissionService+Eventhandler1" />
+              <ModelElement Id="14f7e2990c8b4c7c949c88a784247d26" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="54afae8370b343e2bfe95635d5df9804" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@478d3398fbab4fdb8da4afc6dca02e46" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <Relationship Id="5728d55160824e43be83356a3a0dce50" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@3b73f2c5dff741c6afb6b26e866359ce" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <Relationship Id="b830078e3a814f6198166a3d0b5c938a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@d59933b9a43543c4b228021993ca3cbc" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+            <Relationship Id="919029f26c8244e48edc0b0a8f7cc7dd" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@478d3398fbab4fdb8da4afc6dca02e46" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+          </ModelElement>
         </VisualStudio>
       </DesignData>
-    </Connection>
-    <Connection Name="Wire2" Definition="MicrosoftWeb:WebServiceConnection" ClientMember="DecissionService.Eventhandler2" ServerMember="DecissionService.Eventhandler">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Wire" />
-        </VisualStudio>
-      </DesignData>
-    </Connection>
-    <Connection Name="Wire3" Definition="MicrosoftWeb:WebServiceConnection" ClientMember="AdministrationWeb.Subscriptions" ServerMember="NotificationService.Subscriptions">
-      <DesignData>
-        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
-          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Wire" />
-        </VisualStudio>
-      </DesignData>
-    </Connection>
-    <Connection Name="Wire4" Definition="MicrosoftWeb:WebServiceConnection" ClientMember="AdministrationWeb.Eventhandler" ServerMember="DecissionService.Eventhandler">
+    </Subsystem>
+    <Containment Name="DecissionService2Containment" Definition="MicrosoftWebApplication:DistributedApplicationContainsWebApplication" ChildMember="DecissionService2" />
+    <Connection Name="Wire1" Definition="MicrosoftWeb:WebServiceConnection" ClientMember="NotificationService.EventReciever" ServerMember="DecissionService2.EventReciever">
       <DesignData>
         <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
           <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Wire" />

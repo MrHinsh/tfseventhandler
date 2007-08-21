@@ -1,135 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A961D60-2683-4356-A29E-553536325D48}"
-	ProjectSection(SolutionItems) = preProject
-		ApplicationDiagram.ad = ApplicationDiagram.ad
-		LogicalDatacenter.ldd = LogicalDatacenter.ldd
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Default System", "Default System", "{DDDA6A56-85D6-454B-814C-A5DA6DE19B55}"
-	ProjectSection(SolutionItems) = preProject
-		DefaultSystem1.dd = DefaultSystem1.dd
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System1", "System1", "{E12494D0-D8DC-4F25-ADB8-06DF96D3D48A}"
-	ProjectSection(SolutionItems) = preProject
-		CoreSystem.sd = CoreSystem.sd
-		FrontEndSystem.sd = FrontEndSystem.sd
-	EndProjectSection
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NotificationService", "NotificationService", "{C42E3140-5A32-44F5-A6CC-C5451ED570C8}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
-		TargetFramework = "3.5"
-		Debug.AspNetCompiler.VirtualPath = "/NotificationService"
-		Debug.AspNetCompiler.PhysicalPath = "NotificationService\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\NotificationService\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/NotificationService"
-		Release.AspNetCompiler.PhysicalPath = "NotificationService\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\NotificationService\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "31614"
-		DefaultWebSiteLanguage = "Visual Basic"
-	EndProjectSection
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DecissionService", "DecissionService", "{33D7837C-701A-4366-BFCC-A8458378C007}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
-		TargetFramework = "3.5"
-		Debug.AspNetCompiler.VirtualPath = "/DecissionService"
-		Debug.AspNetCompiler.PhysicalPath = "DecissionService\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\DecissionService\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/DecissionService"
-		Release.AspNetCompiler.PhysicalPath = "DecissionService\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\DecissionService\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "31634"
-		DefaultWebSiteLanguage = "Visual Basic"
-	EndProjectSection
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdministrationWeb", "AdministrationWeb", "{5F366F0E-CD4F-481A-8937-277A8B2E16F2}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
-		TargetFramework = "3.5"
-		Debug.AspNetCompiler.VirtualPath = "/AdministrationWeb"
-		Debug.AspNetCompiler.PhysicalPath = "AdministrationWeb\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AdministrationWeb\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AdministrationWeb"
-		Release.AspNetCompiler.PhysicalPath = "AdministrationWeb\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AdministrationWeb\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "31647"
-		DefaultWebSiteLanguage = "Visual Basic"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 1
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
-		SccWebProject1 = true
-		SccProjectUniqueName1 = NotificationService
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = NotificationService\\
-		SccProjectEnlistmentChoice1 = 2
-		SccWebProject2 = true
-		SccProjectUniqueName2 = DecissionService
-		SccLocalPath2 = .
-		SccProjectFilePathRelativizedFromConnection2 = DecissionService\\
-		SccProjectEnlistmentChoice2 = 2
-		SccWebProject3 = true
-		SccProjectUniqueName3 = AdministrationWeb
-		SccLocalPath3 = .
-		SccProjectFilePathRelativizedFromConnection3 = AdministrationWeb\\
-		SccProjectEnlistmentChoice3 = 2
-	EndGlobalSection
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|.NET = Debug|.NET
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C42E3140-5A32-44F5-A6CC-C5451ED570C8}.Debug|.NET.ActiveCfg = Debug|.NET
-		{C42E3140-5A32-44F5-A6CC-C5451ED570C8}.Debug|.NET.Build.0 = Debug|.NET
-		{33D7837C-701A-4366-BFCC-A8458378C007}.Debug|.NET.ActiveCfg = Debug|.NET
-		{33D7837C-701A-4366-BFCC-A8458378C007}.Debug|.NET.Build.0 = Debug|.NET
-		{5F366F0E-CD4F-481A-8937-277A8B2E16F2}.Debug|.NET.ActiveCfg = Debug|.NET
-		{5F366F0E-CD4F-481A-8937-277A8B2E16F2}.Debug|.NET.Build.0 = Debug|.NET
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E12494D0-D8DC-4F25-ADB8-06DF96D3D48A} = {0A961D60-2683-4356-A29E-553536325D48}
 	EndGlobalSection
 EndGlobal
