@@ -7,9 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{17913AED-BE6C-4ABA-91E5-70386FE7AA17}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>MerrillLynch.TFSEventHandler.TFSEventHandlerService</StartupObject>
-    <RootNamespace>MerrillLynch.TFSEventHandler</RootNamespace>
-    <AssemblyName>MerrillLynch.TFSEventHandler</AssemblyName>
+    <StartupObject>RDdotNet.TFSEventHandler.TFSEventHandlerService</StartupObject>
+    <RootNamespace>RDdotNet.TFSEventHandler</RootNamespace>
+    <AssemblyName>RDdotNet.TFSEventHandler</AssemblyName>
     <MyType>Console</MyType>
     <OptionStrict>On</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
