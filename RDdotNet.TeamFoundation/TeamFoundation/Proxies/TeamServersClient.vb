@@ -2,7 +2,6 @@ Namespace TeamFoundation.Proxies
 
     Public Class TeamServersClient
         Inherits System.ServiceModel.DuplexClientBase(Of Services.Contracts.ITeamServers)
-        Implements RDdotNet.Proxies.IClientProxy
         Implements Services.Contracts.ITeamServers
 
         Public Sub New(ByVal callbackInstance As System.ServiceModel.InstanceContext, ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
