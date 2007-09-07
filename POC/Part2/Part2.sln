@@ -1,12 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TFSEventHandler.NotificationHost", "RDdotNet.TFSEventHandler.NotificationHost\RDdotNet.TFSEventHandler.NotificationHost.vbproj", "{3F3FBB11-2122-4233-BF72-9B1567425A9A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 1
+		SccNumberOfProjects = 2
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
+		SccProjectUniqueName1 = RDdotNet.TFSEventHandler.NotificationHost\\RDdotNet.TFSEventHandler.NotificationHost.vbproj
+		SccProjectName1 = RDdotNet.TFSEventHandler.NotificationHost
+		SccLocalPath1 = RDdotNet.TFSEventHandler.NotificationHost
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F3FBB11-2122-4233-BF72-9B1567425A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3FBB11-2122-4233-BF72-9B1567425A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3FBB11-2122-4233-BF72-9B1567425A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3FBB11-2122-4233-BF72-9B1567425A9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

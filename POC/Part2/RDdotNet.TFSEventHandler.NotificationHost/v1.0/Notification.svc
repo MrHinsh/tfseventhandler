@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="RDdotNet.TFSEventHandler.NotificationHost.Notification" CodeBehind="Notification.svc.vb" %>
