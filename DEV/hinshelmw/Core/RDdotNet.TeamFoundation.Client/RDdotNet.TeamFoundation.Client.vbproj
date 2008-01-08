@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -150,7 +150,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.Clients\RDdotNet.Clients.vbproj">
+    <ProjectReference Include="..\RDdotNet.Clients\RDdotNet.ClientServerFactory.vbproj">
       <Project>{6E8DAF71-8336-4F74-848B-048F0ED0109C}</Project>
       <Name>RDdotNet.Clients</Name>
     </ProjectReference>
