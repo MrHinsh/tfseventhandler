@@ -56,6 +56,7 @@ Public Class Form1
             Me.Invoke(New TeamServerManager_ErrorDelegate(AddressOf TeamServerManager_Error), ManagedType, Status, Items, e)
         Else
             Me.uxListBoxTeamServer.Items.Add("Error: " & e.ToString)
+            MsgBox(e.ToString)
         End If
     End Sub
 
@@ -88,6 +89,7 @@ Public Class Form1
             Me.Invoke(New ServiceHostManager_ErrorDelegate(AddressOf ServiceHostManager_Error), ManagedType, Status, Items, e)
         Else
             Me.uxListBoxServiceHost.Items.Add("Error: " & Status.ToString & " " & e.ToString)
+            MsgBox(e.ToString)
         End If
     End Sub
 
@@ -152,6 +154,7 @@ Public Class Form1
             Me.Invoke(New WorkItemChangedManager_ErrorDelegate(AddressOf WorkItemChangedManager_Error), ManagedType, Status, Items, e)
         Else
             Me.uxListBoxWorkItemChanged.Items.Add("Error: " & e.ToString)
+            MsgBox(e.ToString)
         End If
     End Sub
 
