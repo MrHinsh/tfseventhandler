@@ -9,16 +9,15 @@ Imports System.Runtime.Serialization
 Namespace Services.FaultContracts
 
 
-    <DataContract()> _
-    Public Class TeamFoundationServerUnauthorizedException
-        Inherits FaultException
+    '<DataContract()> _
+    'Public Class TeamFoundationServerUnauthorizedException
 
-        Public Sub New()
-            MyBase.New("Unauthorized")
+    '    Public Sub New()
 
-        End Sub
 
-    End Class
+    '    End Sub
+
+    'End Class
 
 
 End Namespace

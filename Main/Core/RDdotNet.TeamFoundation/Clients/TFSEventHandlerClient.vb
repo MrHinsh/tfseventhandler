@@ -146,11 +146,7 @@ Namespace Clients
         End Sub
 
         Public Function GetSubscriptions() As Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
-            Try
-                Return SubscriptionsClient.GetSubscriptions()
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+            Return SubscriptionsClient.GetSubscriptions()
         End Function
 
         Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
