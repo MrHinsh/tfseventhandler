@@ -33,9 +33,6 @@ Namespace UI.FormControls
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
                 subscriptions = EventHandler.GetSubscriptions()
-            Catch ex As FaultException(Of TeamFoundationServerUnauthorizedException)
-                AddError("TFS Denied", ex)
-                Me.ChangeStatus(Status.Faulted)
             Catch ex As ServiceModel.FaultException
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
