@@ -11,8 +11,10 @@ Namespace Services.FaultContracts
 
     <DataContract()> _
     Public Class TeamFoundationServerUnauthorizedException
+        Inherits FaultException
 
         Public Sub New()
+            MyBase.New("Unauthorized")
 
         End Sub
 
