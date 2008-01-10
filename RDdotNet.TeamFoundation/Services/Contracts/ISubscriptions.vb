@@ -12,20 +12,17 @@ Namespace Services.Contracts
     ''' This is the seervice contract for integrating with the Team Foundation Server notification events.
     ''' </summary>
     ''' <remarks></remarks>
-    <ServiceContract(CallbackContract:=GetType(ISubscriptionsCallback), Namespace:="http://schemas.ml.com/TeamFoundation/2005/06/Services/SubscriptionAdmin")> _
+    <ServiceContract(CallbackContract:=GetType(ISubscriptionsCallback), Namespace:="http://schemas.rddotnet.com/TeamFoundation/2005/06/Services/SubscriptionAdmin")> _
     Public Interface ISubscriptions
 
-        <OperationContract(IsOneWay:=False)> _
-        <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
+        <OperationContract()> _
         Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes)
 
-        <OperationContract(IsOneWay:=False)> _
-        <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
+        <OperationContract()> _
         Sub RemoveSubscriptions(ByVal ServiceUrl As String)
 
-        <OperationContract(IsOneWay:=False)> _
-        <FaultContract(GetType(FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)))> _
-        Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
+        <OperationContract()> _
+    Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
 
 
     End Interface

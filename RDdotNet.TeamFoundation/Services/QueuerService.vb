@@ -190,8 +190,9 @@ Namespace Services
         End Sub
 
         Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
+            Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             Try
-                Dim Subscriptions As New Collection(Of DataContracts.Subscription)
+
                 For Each TeamServerName As String In Me.GetServers()
                     Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
                     For Each serverSub As Server.Subscription In ServerSubs
@@ -200,9 +201,12 @@ Namespace Services
                 Next
                 Return Subscriptions
             Catch ex As TeamFoundationServerUnauthorizedException
+                Return Subscriptions
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                Throw New FaultContracts.TeamFoundationServerUnauthorizedException
+                Throw New FaultException("FaultDemoFaultSimple()", New FaultCode("FDFS Fault Code"), "FDFS Action")
+                'Throw New FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)(New FaultContracts.TeamFoundationServerUnauthorizedException(), "Unauthorized")
             Catch ex As System.Exception
+                Return Subscriptions
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
                 Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
             End Try
