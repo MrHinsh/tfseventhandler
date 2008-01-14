@@ -71,15 +71,18 @@
     <Compile Include="Clients\Proxy\EventsClient.vb" />
     <Compile Include="Clients\Proxy\HandlersClient.vb" />
     <Compile Include="Clients\Proxy\TeamServersClient.vb" />
+    <Compile Include="Clients\TeamServerEventArgs.vb" />
     <Compile Include="Clients\TFSEventHandlerClient.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
+    <Compile Include="Config\CredentialsItemElement.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
     <Compile Include="Config\HandlerCollection.vb" />
     <Compile Include="Config\HandlerItemElement.vb" />
     <Compile Include="Config\IConfigurationElement.vb" />
     <Compile Include="Config\MailItemElement.vb" />
     <Compile Include="Config\RepositoryItemElement.vb" />
+    <Compile Include="Config\ServerItemElement.vb" />
     <Compile Include="Config\ServiceItemElement.vb" />
     <Compile Include="Config\TeamFoundationSettingsSection.vb" />
     <Compile Include="CustomXmlSerializer.vb" />
@@ -94,7 +97,10 @@
     <Compile Include="Services\Adapters\DataContract.vb" />
     <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />
+    <Compile Include="Services\DataContracts\TeamServerCredentials.vb" />
+    <Compile Include="Services\DataContracts\TeamServerItem.vb" />
     <Compile Include="Services\FaultContracts\TeamFoundationServerUnauthorizedException.vb" />
+    <Compile Include="Services\ServiceExtensionModule.vb" />
     <Compile Include="Services\ServiceFactory.vb" />
     <Compile Include="Services\Contracts\IEvents.vb" />
     <Compile Include="Services\Contracts\IHandlers.vb" />
@@ -141,6 +147,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="RDdotNet.TeamFoundation.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

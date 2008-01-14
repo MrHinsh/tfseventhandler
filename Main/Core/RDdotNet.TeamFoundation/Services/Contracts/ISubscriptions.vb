@@ -15,10 +15,10 @@ Namespace Services.Contracts
     <ServiceContract(CallbackContract:=GetType(ISubscriptionsCallback), Namespace:="http://schemas.rddotnet.com/TeamFoundation/2005/06/Services/SubscriptionAdmin")> _
     Public Interface ISubscriptions
 
-        <OperationContract()> _
+        <OperationContract(isOneWay:=True)> _
         Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes)
 
-        <OperationContract()> _
+        <OperationContract(isOneWay:=True)> _
         Sub RemoveSubscriptions(ByVal ServiceUrl As String)
 
         <OperationContract()> _

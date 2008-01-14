@@ -18,7 +18,7 @@ Namespace UI.FormControls
             AddHandler EventHandler.SubscriptionsUpdated, AddressOf OnSubscriptionsUpdated
             '-----------------------
             ' Create Contect Menu as Add events
-            ContextMenuStrip.Items.Add(New ToolStripButton("Add Subscription")) 'TODO:, Nothing, AddressOf AddTeamServer_Click))
+            ContextMenuStrip.Items.Add(New ToolStripButton("Add Subscription", Nothing, AddressOf AddSubScription_Click))
             '-----------------------
             ' Initilise team server List
             Refresh()
@@ -54,6 +54,19 @@ Namespace UI.FormControls
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
             Me.ChangeStatus(Status.Normal)
+        End Sub
+
+        Private Sub AddSubScription_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim frmConnectTo As New frmConnectTo("Team Foundation Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=8080, ServerName:=System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)
+            Dim DialogResult As DialogResult = frmConnectTo.ShowDialog()
+            If DialogResult = Windows.Forms.DialogResult.OK Then
+                '---------
+                frmConnectTo.Close()
+                frmConnectTo.Dispose()
+                '---------
+                Dim ServerUri As Uri = EventHandler.ServceUrl
+                EventHandler.AddSubscriptions("http://Moo", Events.EventTypes.WorkItemChangedEvent)
+            End If
         End Sub
 
     End Class
