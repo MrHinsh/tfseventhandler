@@ -11,11 +11,14 @@ Namespace UI.FormControls
     Friend Class TreeNode_Subscriptions
         Inherits TreeNodeCustom(Of TreeNode_Subscription)
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
+        Private m_TeamServer As TeamServerItem
+
+        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem, Optional ByVal Delay As Integer = 0)
             MyBase.New("Subscriptions", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
             AddHandler EventHandler.SubscriptionsUpdated, AddressOf OnSubscriptionsUpdated
+            m_TeamServer = TeamServer
             '-----------------------
             ' Create Contect Menu as Add events
             ContextMenuStrip.Items.Add(New ToolStripButton("Add Subscription", Nothing, AddressOf AddSubScription_Click))
@@ -65,7 +68,7 @@ Namespace UI.FormControls
                 frmConnectTo.Dispose()
                 '---------
                 Dim ServerUri As Uri = EventHandler.ServceUrl
-                EventHandler.AddSubscriptions("http://Moo", Events.EventTypes.WorkItemChangedEvent)
+                EventHandler.AddSubscriptions(ServerUri.ToString, Events.EventTypes.WorkItemChangedEvent)
             End If
         End Sub
 

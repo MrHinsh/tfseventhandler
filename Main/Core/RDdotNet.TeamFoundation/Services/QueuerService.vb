@@ -75,7 +75,7 @@ Namespace Services
         Public Function GetServerSubs(ByVal TeamServerName As String) As Server.Subscription()
             Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
             Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-            Return EventService.EventSubscriptions("TFSEventHandler", "EventAdminService")
+            Return EventService.EventSubscriptions("TFSEventHandler")
         End Function
 
         Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
@@ -151,6 +151,7 @@ Namespace Services
             ' Check for removed servers
             For Each TSI In Servers
                 Try
+                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheck, TSI)
                     TSI.TeamFoundationServer.Authenticate()
                     TSI.HasAuthenticated = True
                     TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAuthenticated, TSI)
@@ -181,8 +182,7 @@ Namespace Services
         Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
                 For Each TeamServer As TeamServerItem In Servers
-                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServer.Name)
-                    Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
+                    Dim EventService As IEventService = CType(TeamServer.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
                     Dim delivery As DeliveryPreference = New DeliveryPreference()
                     delivery.Type = DeliveryType.Soap
                     delivery.Schedule = DeliverySchedule.Immediate
