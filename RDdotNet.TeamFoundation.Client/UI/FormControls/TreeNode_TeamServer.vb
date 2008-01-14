@@ -12,6 +12,7 @@ Namespace UI.FormControls
         Private m_EventHandler As TFSEventHandlerClient
         Private m_TeamServer As TeamServerItem
         Private m_ContextMenuStrip As New ContextMenuStrip
+        Private _SubscriptionsNode As TreeNode_Subscriptions
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem)
             Me.Text = TeamServer.Name
@@ -51,6 +52,8 @@ Namespace UI.FormControls
             '---------------------
             If Not Me.TeamServer.IsValid Then
                 Me.ForeColor = Drawing.Color.Red
+            Else
+                Me.ForeColor = Drawing.Color.DarkGreen
             End If
             '---------------------
         End Sub
@@ -65,14 +68,27 @@ Namespace UI.FormControls
         Public Sub OnTeamServersUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
             ' Only run for own Team Serfver details
             Select Case e.ChangeType
-                Case StatusChangeTypeEnum.ServerChecked, StatusChangeTypeEnum.ServerAuthenticated, StatusChangeTypeEnum.ServerAuthenticationFailed
+                Case StatusChangeTypeEnum.ServerCheck, StatusChangeTypeEnum.ServerAuthenticated, StatusChangeTypeEnum.ServerAuthenticationFailed
                     If e.TeamServer.Uri.ToString = m_TeamServer.Uri.ToString Then
-                        m_TeamServer = TeamServer
+                        m_TeamServer = e.TeamServer
                         RunChecks()
                     End If
             End Select
-
+            If e.ChangeType = StatusChangeTypeEnum.ServerAuthenticated Then
+                StartSubscriptions()
+            End If
       
+        End Sub
+
+        Private Delegate Sub delStartSubscriptions()
+
+        Private Sub StartSubscriptions()
+            If Me.TreeView.InvokeRequired Then
+                Me.TreeView.Invoke(New delStartSubscriptions(AddressOf StartSubscriptions))
+            Else
+                Dim nodeID As Integer = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, TeamServer, 100))
+                _SubscriptionsNode = Me.Nodes(nodeID)
+            End If
         End Sub
 
     End Class

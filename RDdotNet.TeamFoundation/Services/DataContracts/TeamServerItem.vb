@@ -135,7 +135,7 @@ Public Property HasAuthenticated() As Boolean
         <EnumMember()> Unknown
         <EnumMember()> ServerAdded
         <EnumMember()> ServerRemoved
-        <EnumMember()> ServerChecked
+        <EnumMember()> ServerCheck
         <EnumMember()> ServerCheckStarted
         <EnumMember()> ServerCheckEnded
         <EnumMember()> ServerAuthenticated

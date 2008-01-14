@@ -39,10 +39,20 @@ Namespace UI.FormControls
             Me.uxToolStrip.SuspendLayout()
             Me.SuspendLayout()
             '
+            'uxToolStripButtonConnect
+            '
+            uxToolStripButtonConnect.Image = CType(resources.GetObject("uxToolStripButtonConnect.Image"), System.Drawing.Image)
+            uxToolStripButtonConnect.ImageTransparentColor = System.Drawing.Color.Magenta
+            uxToolStripButtonConnect.Name = "uxToolStripButtonConnect"
+            uxToolStripButtonConnect.Size = New System.Drawing.Size(67, 21)
+            uxToolStripButtonConnect.Text = "Connect"
+            AddHandler uxToolStripButtonConnect.Click, AddressOf Me.uxToolStripButtonAdd_Click
+            '
             'uxTreeView
             '
             Me.uxTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None
             Me.uxTreeView.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.uxTreeView.FullRowSelect = True
             Me.uxTreeView.Location = New System.Drawing.Point(0, 0)
             Me.uxTreeView.Name = "uxTreeView"
             Me.uxTreeView.Size = New System.Drawing.Size(255, 231)
@@ -79,21 +89,12 @@ Namespace UI.FormControls
             Me.uxToolStrip.Stretch = True
             Me.uxToolStrip.TabIndex = 0
             '
-            'uxToolStripButtonConnect
-            '
-            uxToolStripButtonConnect.Image = CType(resources.GetObject("uxToolStripButtonConnect.Image"), System.Drawing.Image)
-            uxToolStripButtonConnect.ImageTransparentColor = System.Drawing.Color.Magenta
-            uxToolStripButtonConnect.Name = "uxToolStripButtonConnect"
-            uxToolStripButtonConnect.Size = New System.Drawing.Size(72, 21)
-            uxToolStripButtonConnect.Text = "Connect"
-            AddHandler uxToolStripButtonConnect.Click, AddressOf Me.uxToolStripButtonAdd_Click
-            '
             'uxToolStripButtonRefresh
             '
             Me.uxToolStripButtonRefresh.Image = CType(resources.GetObject("uxToolStripButtonRefresh.Image"), System.Drawing.Image)
             Me.uxToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
             Me.uxToolStripButtonRefresh.Name = "uxToolStripButtonRefresh"
-            Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(66, 21)
+            Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(65, 21)
             Me.uxToolStripButtonRefresh.Text = "Refresh"
             '
             'TFSEventHandlerControl

@@ -10,7 +10,7 @@ Namespace UI.FormControls
 
         Private _EventHandler As TFSEventHandlerClient
         Private _TeamServersNode As TreeNode_TeamServers
-        Private _SubscriptionsNode As TreeNode_Subscriptions
+
         Private _EventHandlersNode As TreeNode_EventHandlers
         Private _ContextMenuStrip As New ContextMenuStrip
 
@@ -33,8 +33,6 @@ Namespace UI.FormControls
             _TeamServersNode = Me.Nodes(AddedNodeID)
             AddedNodeID = Me.Nodes.Add(New TreeNode_EventHandlers(EventHandler, 100))
             _EventHandlersNode = Me.Nodes(AddedNodeID)
-            AddedNodeID = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, 100))
-            _SubscriptionsNode = Me.Nodes(AddedNodeID)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
