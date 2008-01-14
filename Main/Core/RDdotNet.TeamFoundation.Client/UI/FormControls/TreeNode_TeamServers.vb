@@ -23,19 +23,24 @@ Namespace UI.FormControls
         End Sub
 
         Public Sub OnTeamServersUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
+            Me.ExpandAll()
             Select Case e.ChangeType
                 Case StatusChangeTypeEnum.ServerAdded
+
                     AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
                 Case StatusChangeTypeEnum.ServerRemoved
                     For Each n As TreeNode_TeamServer In Me.Nodes
                         If n.TeamServer.Uri.ToString = e.TeamServer.Uri.ToString Then
                             RemoveNode(n)
+
                         End If
                     Next
-                Case StatusChangeTypeEnum.ServerChecked
-                    If Not ContainsServer(e.TeamServer) Then
-                        AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
-                    End If
+                Case StatusChangeTypeEnum.ServerCheck
+                    SyncLock Me.Nodes
+                        If Not ContainsServer(e.TeamServer) Then
+                            AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
+                        End If
+                    End SyncLock
                 Case StatusChangeTypeEnum.ServerCheckEnded
                     CheckChildren()
             End Select

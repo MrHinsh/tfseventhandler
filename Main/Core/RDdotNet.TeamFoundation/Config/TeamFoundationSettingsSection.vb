@@ -96,9 +96,12 @@ Namespace Config
             For Each ServerItemElement As ServerItemElement In Servers
                 If ServerItemElement.Credentials Is Nothing Then
                     x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, Nothing))
-
                 Else
-                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, New TeamServerCredentials(ServerItemElement.Credentials.Username, ServerItemElement.Credentials.Password, ServerItemElement.Credentials.Domain)))
+                    Dim tsc As TeamServerCredentials = Nothing
+                    If ServerItemElement.Credentials.Username <> "" Then
+                        tsc = New TeamServerCredentials(ServerItemElement.Credentials.Username, ServerItemElement.Credentials.Password, ServerItemElement.Credentials.Domain)
+                    End If
+                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, tsc))
                 End If
             Next
             Return x
