@@ -7,6 +7,8 @@ Imports microsoft.TeamFoundation
 Imports microsoft.TeamFoundation.Client
 Imports microsoft.TeamFoundation.Server
 Imports RDdotNet.TeamFoundation.Events
+Imports RDdotNet.TeamFoundation.Services.DataContracts
+Imports System.Configuration
 
 Namespace Services
 
@@ -23,7 +25,7 @@ Namespace Services
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get
-                Return Config.SettingsSection.Instance.Services.Item(Me.GetType.Name)
+                Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
             End Get
         End Property
 
@@ -110,32 +112,56 @@ Namespace Services
             Return OperationContext.EndpointDispatcher.EndpointAddress.Uri
         End Function
 
-        Public Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String) Implements Contracts.ITeamServers.AddServer
+        Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.AddServer
             Try
-                If RegisteredServers.GetUriForServer(TeamServerName) = Nothing Then
-                    RegisteredServers.AddServer(TeamServerName, TeamServerUri)
-                End If
-                TeamServerAdminCallback.Updated(GetServers)
-                If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServerName)
+                Servers.Add(TeamServer)
+                TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAdded, TeamServer)
+                RefreshServers()
+                If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
-                Throw New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001"))
+                TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001")))
             End Try
         End Sub
 
-        Public Sub RemoveServer(ByVal TeamServerName As String) Implements Contracts.ITeamServers.RemoveServer
+        Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.RemoveServer
             Try
-                RegisteredServers.RemoveServer(TeamServerName)
-                TeamServerAdminCallback.Updated(GetServers)
+                Servers.Remove(TeamServer)
+                TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerRemoved, TeamServer)
+                RefreshServers()
             Catch ex As System.ServiceModel.FaultException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "disconnection to TFS server unsucessfull")
-                Throw ex
+                TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove team server", New FaultCode("TFS:EH:TS:0001")))
             End Try
         End Sub
 
-        Public Function GetServers() As String() Implements Contracts.ITeamServers.GetServers
-            Return RegisteredServers.GetServerNames
-        End Function
+        Private m_TeamServers As Collection(Of TeamServerItem)
+
+        Public ReadOnly Property Servers() As Collection(Of TeamServerItem)
+            Get
+                If m_TeamServers Is Nothing Then
+                    m_TeamServers = Config.TeamFoundationSettingsSection.Instance.LoadServers
+                End If
+                Return m_TeamServers
+            End Get
+        End Property
+
+        Public Sub RefreshServers() Implements Contracts.ITeamServers.RefreshServers
+            TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckStarted, Nothing)
+            ' Check for removed servers
+            For Each TSI In Servers
+                Try
+                    TSI.TeamFoundationServer.Authenticate()
+                    TSI.HasAuthenticated = True
+                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAuthenticated, TSI)
+                Catch ex As Exception
+                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAuthenticationFailed, TSI)
+                End Try
+            Next
+            TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckEnded, Nothing)
+            '-----------
+            TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+        End Sub
 
 #End Region
 
@@ -154,15 +180,15 @@ Namespace Services
 
         Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
-                For Each TeamServerName As String In Me.GetServers()
-                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
+                For Each TeamServer As TeamServerItem In Servers
+                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServer.Name)
                     Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
                     Dim delivery As DeliveryPreference = New DeliveryPreference()
                     delivery.Type = DeliveryType.Soap
                     delivery.Schedule = DeliverySchedule.Immediate
                     delivery.Address = ServiceUrl
                     Dim subId As Integer = EventService.SubscribeEvent("TFSEventHandler", EventType.ToString, "", delivery, "EventAdminService")
-                    If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Event Subscribed:" & TeamServerName)
+                    'If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Event Subscribed:" & TeamServerName)
                     SubscriptionAdminCallback.Updated(GetSubscriptions)
                 Next
             Catch ex As System.ServiceModel.FaultException
@@ -173,10 +199,10 @@ Namespace Services
 
         Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
             Try
-                For Each TeamServerName As String In Me.GetServers()
-                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
+                For Each TeamServer As TeamServerItem In Servers
+                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServer.Name)
                     Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-                    For Each SubScription As DataContracts.Subscription In GetServerSubscriptions(TeamServerName)
+                    For Each SubScription As DataContracts.Subscription In GetServerSubscriptions(TeamServer.Name)
                         If SubScription.Address = ServiceUrl Then
                             EventService.UnsubscribeEvent(SubScription.ID)
                             SubscriptionAdminCallback.Updated(GetSubscriptions)
@@ -193,8 +219,8 @@ Namespace Services
             Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             Try
 
-                For Each TeamServerName As String In Me.GetServers()
-                    Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
+                For Each TeamServer As TeamServerItem In Servers
+                    Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServer.Name)
                     For Each serverSub As Server.Subscription In ServerSubs
                         Subscriptions.Add(New DataContracts.Subscription(serverSub))
                     Next
@@ -254,7 +280,7 @@ Namespace Services
             End Get
         End Property
 
-        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.INotification.Notify
+        Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo) Implements Contracts.INotification.Notify
             Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
             '---------------
             Dim UriString As String = OperationContext.EndpointDispatcher.EndpointAddress.Uri.AbsoluteUri

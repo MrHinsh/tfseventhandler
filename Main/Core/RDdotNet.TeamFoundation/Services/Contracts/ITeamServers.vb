@@ -1,6 +1,8 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
+Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Services.Contracts
 
@@ -13,16 +15,16 @@ Namespace Services.Contracts
     Public Interface ITeamServers
 
         <OperationContract(IsOneWay:=True)> _
-        Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String)
+        Sub AddServer(ByVal TeamServer As TeamServerItem)
 
         <OperationContract(IsOneWay:=True)> _
-        Sub RemoveServer(ByVal TeamServerName As String)
+        Sub RemoveServer(ByVal TeamServer As TeamServerItem)
 
         <OperationContract(IsOneWay:=False)> _
         Function ServceUrl() As Uri
 
-        <OperationContract(IsOneWay:=False)> _
-        Function GetServers() As String()
+        <OperationContract(IsOneWay:=True)> _
+        Sub RefreshServers()
 
 
     End Interface

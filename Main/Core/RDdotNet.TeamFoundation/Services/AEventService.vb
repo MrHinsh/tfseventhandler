@@ -17,7 +17,7 @@ Namespace Services
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get
-                Return Config.SettingsSection.Instance.Services.Item(Me.GetType.Name)
+                Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
             End Get
         End Property
 

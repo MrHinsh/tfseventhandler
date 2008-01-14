@@ -5,6 +5,7 @@ Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Services
 Imports RDdotNet.TeamFoundation.Config
 Imports RDdotNet.TeamFoundation.Events
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Clients
 
@@ -13,6 +14,7 @@ Namespace Clients
         Implements Contracts.ISubscriptionsCallback
         Implements Contracts.ITeamServers
         Implements Contracts.ITeamServersCallback
+
         Implements Contracts.IHandlers
         Implements Contracts.IHandlersCallback
         Implements Contracts.IEvents
@@ -179,26 +181,30 @@ Namespace Clients
             End Get
         End Property
 
-        Public Event TeamServersUpdated(ByVal TeamServers() As String)
+        Public Event TeamServerUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
 
-        Public Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String) Implements Services.Contracts.ITeamServers.AddServer
-            TeamServersClient.AddServer(TeamServerName, TeamServerUri)
+        Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.AddServer
+            TeamServersClient.AddServer(TeamServer)
         End Sub
 
-        Public Function GetServers() As String() Implements Services.Contracts.ITeamServers.GetServers
-            Return TeamServersClient.GetServers()
-        End Function
+        Public Sub GetServers() Implements Services.Contracts.ITeamServers.RefreshServers
+            TeamServersClient.RefreshServers()
+        End Sub
 
-        Public Sub RemoveServer(ByVal TeamServerName As String) Implements Services.Contracts.ITeamServers.RemoveServer
-            TeamServersClient.RemoveServer(TeamServerName)
+        Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.RemoveServer
+            TeamServersClient.RemoveServer(TeamServer)
         End Sub
 
         Public Function ServceUrl() As System.Uri Implements Services.Contracts.ITeamServers.ServceUrl
-            Return Nothing
+            Return TeamServersClient.ServceUrl
         End Function
 
-        Public Sub Updated(ByVal TeamServers() As String) Implements Services.Contracts.ITeamServersCallback.Updated
-            RaiseEvent TeamServersUpdated(TeamServers)
+        Public Sub StatusChange(ByVal StatusChangeType As Services.DataContracts.StatusChangeTypeEnum, ByVal TeamServer As Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServersCallback.StatusChange
+            RaiseEvent TeamServerUpdated(Me, New TeamServerEventArgs(StatusChangeType, TeamServer))
+        End Sub
+
+        Public Sub ErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.ITeamServersCallback.ErrorOccured
+            'MsgBox(ex.ToString)
         End Sub
 
 #End Region
@@ -240,6 +246,11 @@ Namespace Clients
 #End Region
 
 #End Region
+
+
+
+
+
 
     End Class
 

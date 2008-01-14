@@ -2,6 +2,7 @@ Imports system.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Clients
 Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports System.Windows.Forms
+Imports RDdotNet.TeamFoundation.Config
 
 Namespace UI.FormControls
 
@@ -12,7 +13,7 @@ Namespace UI.FormControls
             MyBase.New("Team Servers", EventHandler, Delay)
             '-----------------------
             ' Create Handler and attach Events
-            AddHandler EventHandler.TeamServersUpdated, AddressOf OnTeamServersUpdated
+            AddHandler EventHandler.TeamServerUpdated, AddressOf OnTeamServersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
             ContextMenuStrip.Items.Add(New ToolStripButton("Add Team Server", Nothing, AddressOf AddTeamServer_Click))
@@ -21,32 +22,53 @@ Namespace UI.FormControls
             Refresh()
         End Sub
 
-        Public Sub OnTeamServersUpdated(ByVal TeamServers() As String)
-            GenerateChildren(TeamServers)
+        Public Sub OnTeamServersUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
+            Select Case e.ChangeType
+                Case StatusChangeTypeEnum.ServerAdded
+                    AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
+                Case StatusChangeTypeEnum.ServerRemoved
+                    For Each n As TreeNode_TeamServer In Me.Nodes
+                        If n.TeamServer.Uri.ToString = e.TeamServer.Uri.ToString Then
+                            RemoveNode(n)
+                        End If
+                    Next
+                Case StatusChangeTypeEnum.ServerChecked
+                    If Not ContainsServer(e.TeamServer) Then
+                        AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
+                    End If
+                Case StatusChangeTypeEnum.ServerCheckEnded
+                    CheckChildren()
+            End Select
         End Sub
+
+        Private Function ContainsServer(ByVal TeamServerItem As TeamServerItem) As Boolean
+            ContainsServer = False
+            For Each n As TreeNode_TeamServer In Me.Nodes
+                If n.TeamServer.Uri Is TeamServerItem.Uri Then
+                    ContainsServer = True
+                End If
+            Next
+        End Function
+
 
         Protected Overrides Sub GenerateChildren(ByVal state As Object)
             Me.ChangeStatus(Status.Working)
-            Dim TeamServers() As String = Nothing
+            Dim TeamServers As Collection(Of ServerItemElement) = Nothing
             Try
-                TeamServers = EventHandler.GetServers()
+                EventHandler.GetServers()
             Catch ex As Exception
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
             Finally
-                GenerateChildren(TeamServers)
+                'GenerateChildren(TeamServers)
             End Try
         End Sub
 
-        Public Overloads Sub GenerateChildren(ByVal TeamServers() As String)
-            ClearNodes()
-            If Not TeamServers Is Nothing Then
-                For Each s As String In TeamServers
-                    AddNode(New TreeNode_TeamServer(EventHandler, s))
-                Next
-            End If
+        Public Overloads Sub CheckChildren()
             If Me.Nodes.Count = 0 Then
-                AddMessage("No Servers Found")
+                'AddMessage("No Servers Found")
+            Else
+                'RemoveMessage("No Servers Found")
             End If
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
@@ -58,11 +80,12 @@ Namespace UI.FormControls
             Dim DialogResult As DialogResult = frmConnectTo.ShowDialog()
             If DialogResult = Windows.Forms.DialogResult.OK Then
                 '---------
+                Dim ServerUri As Uri = frmConnectTo.ServerUri
+                Dim ServerItemElement As New TeamServerItem(ServerUri.ToString, ServerUri)
+                EventHandler.AddServer(ServerItemElement)
+                '---------
                 frmConnectTo.Close()
                 frmConnectTo.Dispose()
-                '---------
-                Dim ServerUri As Uri = frmConnectTo.ServerUri
-                EventHandler.AddServer(ServerUri.ToString, ServerUri.ToString)
             End If
         End Sub
 
