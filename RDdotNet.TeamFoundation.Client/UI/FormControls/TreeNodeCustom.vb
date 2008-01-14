@@ -74,7 +74,7 @@ Namespace UI.FormControls
         Public Delegate Sub SimpleDelegate()
         Public Delegate Sub AddMessageDelegate(ByVal Message As String)
         Public Delegate Sub AddCatagoryErrorDelegate(ByVal Catagory As String, ByVal ex As Exception)
-        Public Delegate Sub AddNodeDelegate(ByVal TreeNode As T)
+        Public Delegate Sub ModifyNodeDelegate(ByVal TreeNode As T)
         Public Delegate Sub UpdateStatusDelegate(ByVal Status As Status)
 
         Protected Sub ClearNodes()
@@ -113,12 +113,30 @@ Namespace UI.FormControls
             End If
         End Sub
 
+        Protected Sub RemoveMessage(ByVal Message As String)
+            If Me.TreeView.InvokeRequired Then
+                Me.TreeView.Invoke(New AddMessageDelegate(AddressOf AddMessage), Message)
+                System.Threading.Thread.Sleep(_Delay)
+            Else
+                Me.Nodes.RemoveByKey(Message)
+            End If
+        End Sub
+
         Protected Sub AddNode(ByVal TreeNode As T)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New AddNodeDelegate(AddressOf AddNode), TreeNode)
+                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf AddNode), TreeNode)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(TreeNode)
+            End If
+        End Sub
+
+        Protected Sub RemoveNode(ByVal TreeNode As T)
+            If Me.TreeView.InvokeRequired Then
+                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf RemoveNode), TreeNode)
+                System.Threading.Thread.Sleep(_Delay)
+            Else
+                Me.Nodes.Remove(TreeNode)
             End If
         End Sub
 

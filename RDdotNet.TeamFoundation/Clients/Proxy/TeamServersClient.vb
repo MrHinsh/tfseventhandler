@@ -1,3 +1,8 @@
+Imports System.Collections.ObjectModel
+Imports RDdotNet.TeamFoundation.Services
+Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Services.DataContracts
+
 Namespace Clients.Proxy
 
     Friend Class TeamServersClient
@@ -8,16 +13,16 @@ Namespace Clients.Proxy
             MyBase.New(callbackInstance, binding, remoteAddress)
         End Sub
 
-        Friend Sub AddServer(ByVal TeamServerName As String, ByVal TeamServerUri As String) Implements Services.Contracts.ITeamServers.AddServer
-            MyBase.Channel.AddServer(TeamServerName, TeamServerUri)
+        Friend Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.AddServer
+            MyBase.Channel.AddServer(TeamServer)
         End Sub
 
-        Friend Function GetServers() As String() Implements Services.Contracts.ITeamServers.GetServers
-            Return MyBase.Channel.GetServers
-        End Function
+        Friend Sub RefreshServers() Implements Services.Contracts.ITeamServers.RefreshServers
+            MyBase.Channel.RefreshServers()
+        End Sub
 
-        Friend Sub RemoveServer(ByVal TeamServerName As String) Implements Services.Contracts.ITeamServers.RemoveServer
-            MyBase.Channel.RemoveServer(TeamServerName)
+        Friend Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.RemoveServer
+            MyBase.Channel.RemoveServer(TeamServer)
         End Sub
 
         Friend Function ServceUrl() As System.Uri Implements Services.Contracts.ITeamServers.ServceUrl

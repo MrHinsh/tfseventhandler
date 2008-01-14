@@ -17,13 +17,13 @@ Namespace Services
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get
-                Return Config.SettingsSection.Instance.Services.Item(Me.GetType.Name)
+                Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
             End Get
         End Property
 
         Public ReadOnly Property RepositorySettings() As Config.RepositoryItemElement
             Get
-                Return Config.SettingsSection.Instance.Repository
+                Return Config.TeamFoundationSettingsSection.Instance.Repository
             End Get
         End Property
 
@@ -132,7 +132,7 @@ Namespace Services
             Try
                 '------------------
                 Dim AssemblyItem As AssemblyItem = Nothing
-                AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.SettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
+                AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.TeamFoundationSettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
                 Return AssemblyItem
             Catch ex As Exception
                 Throw New System.ServiceModel.FaultException(Of Exception)(ex, "An error occurerd. That Assembly may not be of the correct type.")

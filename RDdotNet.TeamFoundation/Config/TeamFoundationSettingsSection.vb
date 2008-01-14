@@ -13,6 +13,8 @@
 Imports Microsoft.VisualBasic
 Imports System.Configuration
 Imports System.Runtime.Serialization
+Imports RDdotNet.TeamFoundation.Services.DataContracts
+Imports System.Collections.ObjectModel
 
 
 Namespace Config
@@ -21,38 +23,86 @@ Namespace Config
     ''' Definition of the configuration section for the block.
     ''' </summary>
     <DataContract()> _
-    Public Class SettingsSection
+    Public Class TeamFoundationSettingsSection
         Inherits ConfigurationSection
 
-        Private Shared innerConfiguration As SettingsSection
+#Region " Singleton "
 
-        Public Shared ReadOnly Property Instance() As SettingsSection
-            Get
-                If innerConfiguration Is Nothing Then
-                    innerConfiguration = LoadConfiguration()
-                End If
-                Return innerConfiguration
-            End Get
-        End Property
-
-        Private Shared Function LoadConfiguration() As SettingsSection
-            Dim section As Object = ConfigurationManager.GetSection(SettingsSection.SectionName)
-            Dim configSection As SettingsSection = TryCast(section, SettingsSection)
-
-            If Not section Is Nothing AndAlso configSection Is Nothing Then
-                Throw New ConfigurationErrorsException
-            End If
-
-            If configSection Is Nothing Then
-                configSection = New SettingsSection()
-            End If
-            Return configSection
-        End Function
+        Private Shared innerSection As TeamFoundationSettingsSection
+        Private Shared innerConfig As System.Configuration.Configuration
 
         ''' <summary>
         ''' The configuration section name for this section.
         ''' </summary>
         Public Const SectionName As String = "RDdotNet.TeamFoundation"
+
+        Public Shared ReadOnly Property Instance() As TeamFoundationSettingsSection
+            Get
+                If innerSection Is Nothing Then
+                    innerSection = LoadConfiguration()
+                End If
+                Return innerSection
+            End Get
+        End Property
+
+        Private Shared Function LoadConfiguration() As TeamFoundationSettingsSection
+            innerConfig = System.Configuration.ConfigurationManager.OpenExeConfiguration("RDdotNet.TeamFoundation.dll")
+            Dim section As Object = innerConfig.GetSection(TeamFoundationSettingsSection.SectionName)
+            Dim configSection As TeamFoundationSettingsSection = TryCast(section, TeamFoundationSettingsSection)
+            If Not section Is Nothing AndAlso configSection Is Nothing Then
+                Throw New ConfigurationErrorsException
+            End If
+            If configSection Is Nothing Then
+                configSection = New TeamFoundationSettingsSection()
+            End If
+            Return configSection
+        End Function
+
+        Public Shared Sub Save()
+            innerConfig.Save()
+        End Sub
+
+#End Region
+
+        ''' <summary>
+        ''' List of  services that will be initialized on the host.
+        ''' </summary>
+        <DataMember(), ConfigurationProperty("Servers", IsRequired:=True, IsDefaultCollection:=False), ConfigurationCollection(GetType(ConfigurationElementCollection(Of ServerItemElement)), AddItemName:="Server")> _
+        Public ReadOnly Property Servers() As ConfigurationElementCollection(Of ServerItemElement)
+            Get
+                Return CType(Me("Servers"), ConfigurationElementCollection(Of ServerItemElement))
+            End Get
+        End Property
+
+        Public Sub SaveChanges(ByVal x As Collection(Of TeamServerItem))
+            Servers.Clear()
+            For Each TeamServerItem As TeamServerItem In x
+                Dim NewItem As ServerItemElement = Servers.CreateNew()
+                NewItem.Name = TeamServerItem.Name
+                NewItem.Uri = TeamServerItem.Uri
+                If Not TeamServerItem.Credentials Is Nothing Then
+                    NewItem.Credentials = New CredentialsItemElement
+                    NewItem.Credentials.Username = TeamServerItem.Credentials.Username
+                    NewItem.Credentials.Password = TeamServerItem.Credentials.Password
+                    NewItem.Credentials.Domain = TeamServerItem.Credentials.Domain
+                End If
+                Servers.Add(NewItem)
+            Next
+            Save()
+        End Sub
+
+        Public Function LoadServers() As Collection(Of TeamServerItem)
+            Dim x As New Collection(Of TeamServerItem)
+            For Each ServerItemElement As ServerItemElement In Servers
+                If ServerItemElement.Credentials Is Nothing Then
+                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, Nothing))
+
+                Else
+                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, New TeamServerCredentials(ServerItemElement.Credentials.Username, ServerItemElement.Credentials.Password, ServerItemElement.Credentials.Domain)))
+                End If
+            Next
+            Return x
+        End Function
 
         ''' <summary>
         ''' List of  services that will be initialized on the host.

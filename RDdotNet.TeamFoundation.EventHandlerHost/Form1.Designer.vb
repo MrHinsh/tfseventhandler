@@ -54,7 +54,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(326, 124)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(334, 126)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'GroupBox1
@@ -63,7 +63,7 @@ Partial Class Form1
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 56)
+        Me.GroupBox1.Size = New System.Drawing.Size(328, 57)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Queuer Host"
@@ -83,7 +83,7 @@ Partial Class Form1
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(314, 37)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(322, 38)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'ButtonQHStart
@@ -91,7 +91,7 @@ Partial Class Form1
         Me.ButtonQHStart.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonQHStart.Location = New System.Drawing.Point(3, 3)
         Me.ButtonQHStart.Name = "ButtonQHStart"
-        Me.ButtonQHStart.Size = New System.Drawing.Size(98, 31)
+        Me.ButtonQHStart.Size = New System.Drawing.Size(101, 32)
         Me.ButtonQHStart.TabIndex = 0
         Me.ButtonQHStart.Text = "Start"
         Me.ButtonQHStart.UseVisualStyleBackColor = True
@@ -100,9 +100,9 @@ Partial Class Form1
         '
         Me.ButtonQHStop.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonQHStop.Enabled = False
-        Me.ButtonQHStop.Location = New System.Drawing.Point(107, 3)
+        Me.ButtonQHStop.Location = New System.Drawing.Point(110, 3)
         Me.ButtonQHStop.Name = "ButtonQHStop"
-        Me.ButtonQHStop.Size = New System.Drawing.Size(98, 31)
+        Me.ButtonQHStop.Size = New System.Drawing.Size(101, 32)
         Me.ButtonQHStop.TabIndex = 1
         Me.ButtonQHStop.Text = "Stop"
         Me.ButtonQHStop.UseVisualStyleBackColor = True
@@ -112,9 +112,9 @@ Partial Class Form1
         Me.CheckBoxQHEnabled.AutoSize = True
         Me.CheckBoxQHEnabled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CheckBoxQHEnabled.Enabled = False
-        Me.CheckBoxQHEnabled.Location = New System.Drawing.Point(211, 3)
+        Me.CheckBoxQHEnabled.Location = New System.Drawing.Point(217, 3)
         Me.CheckBoxQHEnabled.Name = "CheckBoxQHEnabled"
-        Me.CheckBoxQHEnabled.Size = New System.Drawing.Size(100, 31)
+        Me.CheckBoxQHEnabled.Size = New System.Drawing.Size(102, 32)
         Me.CheckBoxQHEnabled.TabIndex = 2
         Me.CheckBoxQHEnabled.Text = "Enabled"
         Me.CheckBoxQHEnabled.UseVisualStyleBackColor = True
@@ -123,9 +123,9 @@ Partial Class Form1
         '
         Me.GroupBox2.Controls.Add(Me.TableLayoutPanel3)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox2.Location = New System.Drawing.Point(3, 65)
+        Me.GroupBox2.Location = New System.Drawing.Point(3, 66)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(320, 56)
+        Me.GroupBox2.Size = New System.Drawing.Size(328, 57)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Event Handler Host"
@@ -145,7 +145,7 @@ Partial Class Form1
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(314, 37)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(322, 38)
         Me.TableLayoutPanel3.TabIndex = 0
         '
         'ButtonEHHStart
@@ -153,7 +153,7 @@ Partial Class Form1
         Me.ButtonEHHStart.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonEHHStart.Location = New System.Drawing.Point(3, 3)
         Me.ButtonEHHStart.Name = "ButtonEHHStart"
-        Me.ButtonEHHStart.Size = New System.Drawing.Size(98, 31)
+        Me.ButtonEHHStart.Size = New System.Drawing.Size(101, 32)
         Me.ButtonEHHStart.TabIndex = 0
         Me.ButtonEHHStart.Text = "Start"
         Me.ButtonEHHStart.UseVisualStyleBackColor = True
@@ -162,9 +162,9 @@ Partial Class Form1
         '
         Me.ButtonEHHStop.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonEHHStop.Enabled = False
-        Me.ButtonEHHStop.Location = New System.Drawing.Point(107, 3)
+        Me.ButtonEHHStop.Location = New System.Drawing.Point(110, 3)
         Me.ButtonEHHStop.Name = "ButtonEHHStop"
-        Me.ButtonEHHStop.Size = New System.Drawing.Size(98, 31)
+        Me.ButtonEHHStop.Size = New System.Drawing.Size(101, 32)
         Me.ButtonEHHStop.TabIndex = 1
         Me.ButtonEHHStop.Text = "Stop"
         Me.ButtonEHHStop.UseVisualStyleBackColor = True
@@ -174,9 +174,9 @@ Partial Class Form1
         Me.CheckBoxEHHEnabled.AutoSize = True
         Me.CheckBoxEHHEnabled.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CheckBoxEHHEnabled.Enabled = False
-        Me.CheckBoxEHHEnabled.Location = New System.Drawing.Point(211, 3)
+        Me.CheckBoxEHHEnabled.Location = New System.Drawing.Point(217, 3)
         Me.CheckBoxEHHEnabled.Name = "CheckBoxEHHEnabled"
-        Me.CheckBoxEHHEnabled.Size = New System.Drawing.Size(100, 31)
+        Me.CheckBoxEHHEnabled.Size = New System.Drawing.Size(102, 32)
         Me.CheckBoxEHHEnabled.TabIndex = 2
         Me.CheckBoxEHHEnabled.Text = "Enabled"
         Me.CheckBoxEHHEnabled.UseVisualStyleBackColor = True
@@ -185,17 +185,15 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(326, 124)
+        Me.ClientSize = New System.Drawing.Size(334, 126)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(342, 160)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(342, 160)
         Me.Name = "Form1"
         Me.Opacity = 0.7
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TFS Event Handlers"
-        Me.TopMost = True
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
