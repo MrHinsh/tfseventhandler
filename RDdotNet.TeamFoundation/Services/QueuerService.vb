@@ -99,6 +99,7 @@ Namespace Services
 
         Private _TeamServerAdminCallback As Contracts.ITeamServersCallback
 
+
         Public ReadOnly Property TeamServerAdminCallback() As Contracts.ITeamServersCallback
             Get
                 If _TeamServerAdminCallback Is Nothing Then
@@ -163,6 +164,8 @@ Namespace Services
             '-----------
             TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
         End Sub
+
+
 
 #End Region
 
