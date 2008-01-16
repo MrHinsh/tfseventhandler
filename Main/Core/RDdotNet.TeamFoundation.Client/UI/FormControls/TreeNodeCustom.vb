@@ -72,7 +72,7 @@ Namespace UI.FormControls
 #Region " Thread Safe "
 
         Public Delegate Sub SimpleDelegate()
-        Public Delegate Sub AddMessageDelegate(ByVal Message As String)
+        Public Delegate Sub MessageDelegate(ByVal Key As String, ByVal Message As String)
         Public Delegate Sub AddCatagoryErrorDelegate(ByVal Catagory As String, ByVal ex As Exception)
         Public Delegate Sub ModifyNodeDelegate(ByVal TreeNode As T)
         Public Delegate Sub UpdateStatusDelegate(ByVal Status As Status)
@@ -104,21 +104,40 @@ Namespace UI.FormControls
             End If
         End Sub
 
-        Protected Sub AddMessage(ByVal Message As String)
+        Protected Sub CheckEmpty(ByVal KeyMask As String, ByVal ItemTypeName As String)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New AddMessageDelegate(AddressOf AddMessage), Message)
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf CheckEmpty), KeyMask, ItemTypeName)
                 System.Threading.Thread.Sleep(_Delay)
             Else
-                Me.Nodes.Add(Message)
+                Dim key As String = String.Format(KeyMask, "NoItems")
+                Dim messagemask As String = "No {0} Found"
+
+                If Me.Nodes.Count > 0 Then
+                    Dim matches As TreeNode() = Me.Nodes.Find(key, False)
+                    If matches.Count > 0 Then
+                        Me.Nodes.RemoveByKey(key)
+                    End If
+                Else
+                    Me.Nodes.Add(key, String.Format(messagemask, ItemTypeName))
+                End If
             End If
         End Sub
 
-        Protected Sub RemoveMessage(ByVal Message As String)
+        Protected Sub AddMessage(ByVal Key As String, ByVal Message As String)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New AddMessageDelegate(AddressOf AddMessage), Message)
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf AddMessage), Key, Message)
                 System.Threading.Thread.Sleep(_Delay)
             Else
-                Me.Nodes.RemoveByKey(Message)
+                Me.Nodes.Add(Key, Message)
+            End If
+        End Sub
+
+        Protected Sub RemoveMessage(ByVal Key As String, ByVal Message As String)
+            If Me.TreeView.InvokeRequired Then
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf AddMessage), Key, Message)
+                System.Threading.Thread.Sleep(_Delay)
+            Else
+                Me.Nodes.RemoveByKey(Key)
             End If
         End Sub
 

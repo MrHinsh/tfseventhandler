@@ -9,9 +9,12 @@ Namespace UI.FormControls
     Friend Class TreeNode_TeamServers
         Inherits TreeNodeCustom(Of TreeNode_TeamServer)
 
+        Private SubNodeNameMap As String = "TeamServer:{0}"
+
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             MyBase.New("Team Servers", EventHandler, Delay)
             '-----------------------
+            Me.Name = "TreeNode_TeamServers"
             ' Create Handler and attach Events
             AddHandler EventHandler.TeamServerUpdated, AddressOf OnTeamServersUpdated
             '-----------------------
@@ -26,21 +29,15 @@ Namespace UI.FormControls
             Me.ExpandAll()
             Select Case e.ChangeType
                 Case StatusChangeTypeEnum.ServerAdded
-
-                    AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
+                    AddServer(e.TeamServer)
                 Case StatusChangeTypeEnum.ServerRemoved
                     For Each n As TreeNode_TeamServer In Me.Nodes
                         If n.TeamServer.Uri.ToString = e.TeamServer.Uri.ToString Then
                             RemoveNode(n)
-
                         End If
                     Next
                 Case StatusChangeTypeEnum.ServerCheck
-                    SyncLock Me.Nodes
-                        If Not ContainsServer(e.TeamServer) Then
-                            AddNode(New TreeNode_TeamServer(EventHandler, e.TeamServer))
-                        End If
-                    End SyncLock
+                    AddServer(e.TeamServer)
                 Case StatusChangeTypeEnum.ServerCheckEnded
                     CheckChildren()
             End Select
@@ -55,12 +52,14 @@ Namespace UI.FormControls
             Next
         End Function
 
-
         Protected Overrides Sub GenerateChildren(ByVal state As Object)
             Me.ChangeStatus(Status.Working)
-            Dim TeamServers As Collection(Of ServerItemElement) = Nothing
+            Dim TeamServers As Collection(Of TeamServerItem) = Nothing
             Try
-                EventHandler.GetServers()
+                TeamServers = EventHandler.GetServers()
+                For Each tsi As TeamServerItem In TeamServers
+                    AddServer(tsi)
+                Next
             Catch ex As Exception
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
@@ -70,11 +69,7 @@ Namespace UI.FormControls
         End Sub
 
         Public Overloads Sub CheckChildren()
-            If Me.Nodes.Count = 0 Then
-                'AddMessage("No Servers Found")
-            Else
-                'RemoveMessage("No Servers Found")
-            End If
+            CheckEmpty(SubNodeNameMap, "team Servers")
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
             Me.ChangeStatus(Status.Normal)
@@ -93,6 +88,24 @@ Namespace UI.FormControls
                 frmConnectTo.Dispose()
             End If
         End Sub
+
+        Private Sub AddServer(ByVal TeamServer As TeamServerItem)
+            Dim key As String = String.Format(SubNodeNameMap, TeamServer.Name)
+            SyncLock Me.Nodes
+                If Not ServerExists(TeamServer) Then
+                    ' Add Node
+                    AddNode(New TreeNode_TeamServer(key, EventHandler, TeamServer))
+                    EventHandler.RefreshServers()
+                End If
+            End SyncLock
+        End Sub
+
+        Private Function ServerExists(ByVal TeamServer As TeamServerItem) As Boolean
+            Dim key As String = String.Format(SubNodeNameMap, TeamServer.Name)
+            If Me.Nodes.Find(key, False).Count > 0 Then
+                Return True
+            End If
+        End Function
 
 
     End Class
