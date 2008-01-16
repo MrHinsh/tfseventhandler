@@ -115,10 +115,16 @@ Namespace Services
 
         Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.AddServer
             Try
-                Servers.Add(TeamServer)
-                TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
-                m_TeamServers = Nothing
-                TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAdded, TeamServer)
+                ' get existiong item
+                Dim exTSI = (From tsi As TeamServerItem In Servers Where tsi.Uri.ToString = TeamServer.Uri.ToString).SingleOrDefault
+                If exTSI Is Nothing Then
+                    Servers.Add(TeamServer)
+                    TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+                    m_TeamServers = Nothing
+                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAdded, TeamServer)
+                Else
+                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerExists, exTSI)
+                End If
                 If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
@@ -174,7 +180,7 @@ Namespace Services
 
 #End Region
 
-#Region " ISubscriptionAdmin"
+#Region " ISubscription "
 
         Private _SubscriptionAdminCallback As Contracts.ISubscriptionsCallback
 
@@ -228,10 +234,12 @@ Namespace Services
             Try
 
                 For Each TeamServer As TeamServerItem In Servers
-                    Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServer.Name)
-                    For Each serverSub As Server.Subscription In ServerSubs
-                        Subscriptions.Add(New DataContracts.Subscription(serverSub))
-                    Next
+                    If TeamServer.IsValid Then
+                        Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServer.Name)
+                        For Each serverSub As Server.Subscription In ServerSubs
+                            Subscriptions.Add(New DataContracts.Subscription(serverSub))
+                        Next
+                    End If
                 Next
                 Return Subscriptions
             Catch ex As TeamFoundationServerUnauthorizedException
