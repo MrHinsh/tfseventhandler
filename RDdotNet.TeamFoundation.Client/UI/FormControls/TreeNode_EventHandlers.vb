@@ -8,6 +8,8 @@ Namespace UI.FormControls
     Friend Class TreeNode_EventHandlers
         Inherits TreeNodeCustom(Of TreeNode_AssemblyItem)
 
+        Private SubNodeNameMap As String = "EventHandler:{0}"
+
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             MyBase.New("Event Handlers", EventHandler, Delay)
             '-----------------------
@@ -41,9 +43,7 @@ Namespace UI.FormControls
                     AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
                 Next
             End If
-            If Me.Nodes.Count = 0 Then
-                AddMessage("No Assemblies found")
-            End If
+            CheckEmpty(SubNodeNameMap, "Event Handlers")
             Me.ChangeStatus(Status.Normal)
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()

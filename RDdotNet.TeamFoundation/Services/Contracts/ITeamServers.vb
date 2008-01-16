@@ -26,6 +26,9 @@ Namespace Services.Contracts
         <OperationContract(IsOneWay:=True)> _
         Sub RefreshServers()
 
+        <OperationContract(IsOneWay:=False)> _
+        Function GetServers() As Collection(Of TeamServerItem)
+
 
     End Interface
 

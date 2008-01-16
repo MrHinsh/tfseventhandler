@@ -11,6 +11,8 @@ Namespace UI.FormControls
     Friend Class TreeNode_Subscriptions
         Inherits TreeNodeCustom(Of TreeNode_Subscription)
 
+        Private SubNodeNameMap As String = "Subscription:{0}"
+
         Private m_TeamServer As TeamServerItem
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem, Optional ByVal Delay As Integer = 0)
@@ -51,9 +53,7 @@ Namespace UI.FormControls
                     AddNode(New TreeNode_Subscription(EventHandler, s))
                 Next
             End If
-            If Me.Nodes.Count = 0 Then
-                AddMessage("No Subscriptions found")
-            End If
+            CheckEmpty(SubNodeNameMap, "Subscriptions")
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
             Me.ChangeStatus(Status.Normal)
