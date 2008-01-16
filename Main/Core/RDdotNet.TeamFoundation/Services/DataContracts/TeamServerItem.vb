@@ -134,6 +134,7 @@ Public Property HasAuthenticated() As Boolean
     Public Enum StatusChangeTypeEnum
         <EnumMember()> Unknown
         <EnumMember()> ServerAdded
+        <EnumMember()> ServerExists
         <EnumMember()> ServerRemoved
         <EnumMember()> ServerCheck
         <EnumMember()> ServerCheckStarted
