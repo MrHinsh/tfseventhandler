@@ -14,7 +14,6 @@ Namespace Clients
         Implements Contracts.ISubscriptionsCallback
         Implements Contracts.ITeamServers
         Implements Contracts.ITeamServersCallback
-
         Implements Contracts.IHandlers
         Implements Contracts.IHandlersCallback
         Implements Contracts.IEvents
@@ -187,9 +186,13 @@ Namespace Clients
             TeamServersClient.AddServer(TeamServer)
         End Sub
 
-        Public Sub GetServers() Implements Services.Contracts.ITeamServers.RefreshServers
+        Public Sub RefreshServers() Implements Services.Contracts.ITeamServers.RefreshServers
             TeamServersClient.RefreshServers()
         End Sub
+
+        Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
+            Return TeamServersClient.GetServers
+        End Function
 
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.RemoveServer
             TeamServersClient.RemoveServer(TeamServer)
@@ -247,10 +250,6 @@ Namespace Clients
 #End Region
 
 #End Region
-
-
-
-
 
 
     End Class

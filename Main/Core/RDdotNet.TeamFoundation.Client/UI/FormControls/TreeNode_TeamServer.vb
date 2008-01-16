@@ -14,8 +14,9 @@ Namespace UI.FormControls
         Private m_ContextMenuStrip As New ContextMenuStrip
         Private _SubscriptionsNode As TreeNode_Subscriptions
 
-        Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem)
+        Public Sub New(ByVal Key As String, ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem)
             Me.Text = TeamServer.Name
+            Me.Name = Key
             m_TeamServer = TeamServer
             '-----------------------
             ' Create Handler and attach Events
@@ -67,17 +68,16 @@ Namespace UI.FormControls
 
         Public Sub OnTeamServersUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
             ' Only run for own Team Serfver details
-            Select Case e.ChangeType
-                Case StatusChangeTypeEnum.ServerCheck, StatusChangeTypeEnum.ServerAuthenticated, StatusChangeTypeEnum.ServerAuthenticationFailed
-                    If e.TeamServer.Uri.ToString = m_TeamServer.Uri.ToString Then
+            If Not e.TeamServer Is Nothing AndAlso e.TeamServer.Uri.ToString = m_TeamServer.Uri.ToString Then
+                Select Case e.ChangeType
+                    Case StatusChangeTypeEnum.ServerCheck, StatusChangeTypeEnum.ServerAuthenticated, StatusChangeTypeEnum.ServerAuthenticationFailed, StatusChangeTypeEnum.ServerAdded
                         m_TeamServer = e.TeamServer
                         RunChecks()
-                    End If
-            End Select
-            If e.ChangeType = StatusChangeTypeEnum.ServerAuthenticated Then
-                StartSubscriptions()
+                End Select
+                If e.ChangeType = StatusChangeTypeEnum.ServerAuthenticated Then
+                    StartSubscriptions()
+                End If
             End If
-      
         End Sub
 
         Private Delegate Sub delStartSubscriptions()

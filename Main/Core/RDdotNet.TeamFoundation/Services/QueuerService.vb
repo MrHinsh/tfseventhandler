@@ -116,8 +116,9 @@ Namespace Services
         Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.AddServer
             Try
                 Servers.Add(TeamServer)
+                TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+                m_TeamServers = Nothing
                 TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAdded, TeamServer)
-                RefreshServers()
                 If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
             Catch ex As System.Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
@@ -128,8 +129,9 @@ Namespace Services
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.RemoveServer
             Try
                 Servers.Remove(TeamServer)
+                TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+                m_TeamServers = Nothing
                 TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerRemoved, TeamServer)
-                RefreshServers()
             Catch ex As System.ServiceModel.FaultException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "disconnection to TFS server unsucessfull")
                 TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove team server", New FaultCode("TFS:EH:TS:0001")))
@@ -147,6 +149,10 @@ Namespace Services
             End Get
         End Property
 
+        Public Function GetServers() As System.Collections.ObjectModel.Collection(Of DataContracts.TeamServerItem) Implements Contracts.ITeamServers.GetServers
+            Return Servers
+        End Function
+
         Public Sub RefreshServers() Implements Contracts.ITeamServers.RefreshServers
             TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckStarted, Nothing)
             ' Check for removed servers
@@ -162,7 +168,6 @@ Namespace Services
             Next
             TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckEnded, Nothing)
             '-----------
-            TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
         End Sub
 
 
@@ -305,6 +310,7 @@ Namespace Services
         End Sub
 
 #End Region
+
 
     End Class
 
