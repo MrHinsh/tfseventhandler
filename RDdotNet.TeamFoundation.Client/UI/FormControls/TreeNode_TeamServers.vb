@@ -13,6 +13,7 @@ Namespace UI.FormControls
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             MyBase.New("Team Servers", EventHandler, Delay)
+
             '-----------------------
             Me.Name = "TreeNode_TeamServers"
             ' Create Handler and attach Events
@@ -40,6 +41,9 @@ Namespace UI.FormControls
                     AddServer(e.TeamServer)
                 Case StatusChangeTypeEnum.ServerCheckEnded
                     CheckChildren()
+                Case StatusChangeTypeEnum.ServerExists
+                    Dim ServerExistsMessage As String = "The server {0} already exists and can not be added"
+                    MsgBox(String.Format(ServerExistsMessage, e.TeamServer.Name))
             End Select
         End Sub
 
@@ -65,6 +69,7 @@ Namespace UI.FormControls
                 Me.ChangeStatus(Status.Faulted)
             Finally
                 'GenerateChildren(TeamServers)
+                CheckChildren()
             End Try
         End Sub
 
