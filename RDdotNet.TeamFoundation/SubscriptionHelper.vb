@@ -22,6 +22,7 @@ Public Class SubscriptionHelper
     Public Shared Sub UnSubscribeEvent(ByRef tfs As TeamFoundationServer, ByVal subscriptionId As Integer)
         Dim eventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
         eventService.UnsubscribeEvent(subscriptionId)
+        '
     End Sub
 
 End Class
