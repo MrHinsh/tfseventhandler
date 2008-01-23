@@ -16,14 +16,16 @@ Namespace Services.Contracts
     Public Interface ISubscriptions
 
         <OperationContract(isOneWay:=True)> _
-        Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes)
+        Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As EventTypes)
 
         <OperationContract(isOneWay:=True)> _
-        Sub RemoveSubscriptions(ByVal ServiceUrl As String)
+        Sub RemoveSubscriptions(ByVal TeamServerName As String)
 
         <OperationContract()> _
-    Function GetSubscriptions() As Collection(Of DataContracts.Subscription)
+        Function GetSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
 
+        <OperationContract(IsOneWay:=False)> _
+      Function EventServiceUrl(ByVal EventType As EventTypes) As Uri
 
     End Interface
 

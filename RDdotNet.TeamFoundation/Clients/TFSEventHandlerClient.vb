@@ -118,6 +118,10 @@ Namespace Clients
             RaiseEvent HandlersUpdated(AssemblyManaifest)
         End Sub
 
+        Public Sub HandlersErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.IHandlersCallback.ErrorOccured
+            MsgBox(ex.ToString)
+        End Sub
+
 #End Region
 
 #Region " ISubscriptions  "
@@ -130,6 +134,11 @@ Namespace Clients
             End Get
         End Property
 
+
+        Public Function EventServiceUrl(ByVal EventType As Events.EventTypes) As System.Uri Implements Services.Contracts.ISubscriptions.EventServiceUrl
+            Return SubscriptionsClient.EventServiceUrl(EventType)
+        End Function
+
         Private ReadOnly Property SubscriptionsClient() As Proxy.SubscriptionsClient
             Get
                 If _SubscriptionsClient Is Nothing Then
@@ -140,22 +149,26 @@ Namespace Clients
             End Get
         End Property
 
-        Public Event SubscriptionsUpdated(ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+        Public Event SubscriptionsUpdated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription))
 
-        Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As Events.EventTypes) Implements Services.Contracts.ISubscriptions.AddSubscriptions
-            SubscriptionsClient.AddSubscriptions(ServiceUrl, EventType)
+        Public Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As Events.EventTypes) Implements Services.Contracts.ISubscriptions.AddSubscriptions
+            SubscriptionsClient.AddSubscriptions(TeamServerName, EventType)
         End Sub
 
-        Public Function GetSubscriptions() As Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
-            Return SubscriptionsClient.GetSubscriptions()
+        Public Function GetSubscriptions(ByVal TeamServerName As String) As Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
+            Return SubscriptionsClient.GetSubscriptions(TeamServerName)
         End Function
 
-        Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
-            SubscriptionsClient.RemoveSubscriptions(ServiceUrl)
+        Public Sub RemoveSubscriptions(ByVal TeamServerName As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
+            SubscriptionsClient.RemoveSubscriptions(TeamServerName)
         End Sub
 
-        Public Sub Updated(ByVal Subscriptions As Collection(Of DataContracts.Subscription)) Implements Services.Contracts.ISubscriptionsCallback.Updated
-            RaiseEvent SubscriptionsUpdated(Subscriptions)
+        Public Sub Updated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription)) Implements Services.Contracts.ISubscriptionsCallback.Updated
+            RaiseEvent SubscriptionsUpdated(TeamServerName, Subscriptions)
+        End Sub
+
+        Public Sub SubscriptionErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.ISubscriptionsCallback.ErrorOccured
+            MsgBox(ex.ToString)
         End Sub
 
 #End Region
@@ -252,6 +265,7 @@ Namespace Clients
 #End Region
 
 #End Region
+
 
 
     End Class
