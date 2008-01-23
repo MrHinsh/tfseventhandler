@@ -11,7 +11,9 @@ Namespace Services.Contracts
     Public Interface ISubscriptionsCallback
 
         <OperationContract(IsOneWay:=True)> _
-      Sub Updated(ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+      Sub Updated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+        <OperationContract(IsOneWay:=True)> _
+      Sub ErrorOccured(ByVal ex As Exception)
 
     End Interface
 

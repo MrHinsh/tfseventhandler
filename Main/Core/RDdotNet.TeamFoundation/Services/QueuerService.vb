@@ -41,60 +41,6 @@ Namespace Services
             End Get
         End Property
 
-#Region " Team Server Bits "
-
-        Public Function GetTeamServer(ByVal TeamServerName As String) As TeamFoundationServer
-            Dim tfs As TeamFoundationServer = Nothing
-            Try
-                Dim ui As ICredentialsProvider = New UICredentialsProvider
-
-                'Dim account As Net.NetworkCredential = New Net.NetworkCredential("xxhinshelmw_cp", "xxxxx", "snd")
-                tfs = New TeamFoundationServer(TeamServerName, ui)
-            Catch ex As System.ServiceModel.FaultException
-                Throw ex
-            End Try
-            If tfs Is Nothing Then
-                Throw New System.ServiceModel.FaultException("Team Server not found")
-            End If
-            Return tfs
-        End Function
-
-        Public Function GetTeamServer(ByVal TeamServerUri As Uri) As Microsoft.TeamFoundation.Client.TeamFoundationServer
-            Dim serverName As String = Nothing
-            Try
-                serverName = RegisteredServers.GetServerForUri(TeamServerUri)
-            Catch ex As System.ServiceModel.FaultException
-                Throw ex
-            End Try
-            If serverName Is Nothing Then
-                Throw New System.ServiceModel.FaultException("Team Server not found")
-            End If
-            Return GetTeamServer(serverName)
-        End Function
-
-        Public Function GetServerSubs(ByVal TeamServerName As String) As Server.Subscription()
-            Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServerName)
-            Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-            Return EventService.EventSubscriptions("TFSEventHandler")
-        End Function
-
-        Public Function GetServerSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
-            Try
-                Dim Subscriptions As New Collection(Of DataContracts.Subscription)
-                Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServerName)
-                For Each serverSub As Server.Subscription In ServerSubs
-                    Subscriptions.Add(New DataContracts.Subscription(serverSub))
-                Next
-                Return Subscriptions
-            Catch ex As System.ServiceModel.FaultException
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "GetSubscriptions for TFS server unsucessfull")
-                Throw ex
-            End Try
-        End Function
-
-
-#End Region
-
 #Region " ITeamServers "
 
         Private _TeamServerAdminCallback As Contracts.ITeamServersCallback
@@ -193,65 +139,90 @@ Namespace Services
             End Get
         End Property
 
-        Public Sub AddSubscriptions(ByVal ServiceUrl As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
+
+        Public Function EventServiceUrl(ByVal EventType As EventTypes) As System.Uri Implements Contracts.ISubscriptions.EventServiceUrl
+            Dim curernturi As Uri = OperationContext.EndpointDispatcher.EndpointAddress.Uri
+            Dim Port As Integer = curernturi.Port
+            Dim DnsAddress As String = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName
+            Dim eventString As String = EventType.ToString
+            If EventType = EventTypes.Unknown Then
+                eventString = ""
+            End If
+            Dim urlmap As String = "http://{0}:{1}/TFSEventHandler/Queuer/Notification/{2}"
+            Return New Uri(String.Format(urlmap, DnsAddress, Port, eventString))
+        End Function
+
+        Public Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
-                For Each TeamServer As TeamServerItem In Servers
-                    Dim EventService As IEventService = CType(TeamServer.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
-                    Dim delivery As DeliveryPreference = New DeliveryPreference()
-                    delivery.Type = DeliveryType.Soap
-                    delivery.Schedule = DeliverySchedule.Immediate
-                    delivery.Address = ServiceUrl
-                    Dim subId As Integer = EventService.SubscribeEvent("TFSEventHandler", EventType.ToString, "", delivery, "EventAdminService")
-                    'If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Event Subscribed:" & TeamServerName)
-                    SubscriptionAdminCallback.Updated(GetSubscriptions)
-                Next
-            Catch ex As System.ServiceModel.FaultException
+                ' Find Server
+                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+                If tsi Is Nothing Then
+                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
+                    Exit Sub
+                End If
+                ' With Server add subscritpions...
+                Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
+                Dim delivery As DeliveryPreference = New DeliveryPreference()
+                delivery.Type = DeliveryType.Soap
+                delivery.Schedule = DeliverySchedule.Immediate
+                delivery.Address = EventServiceUrl(EventType).ToString
+                Dim subId As Integer = EventService.SubscribeEvent(My.User.Name, EventType.ToString, "", delivery, "TFSEventHandler")
+                ' Calback with an updated subscription list.
+                SubscriptionAdminCallback.Updated(TeamServerName, GetSubscriptions(TeamServerName))
+            Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "AddSubscription to TFS server unsucessfull")
-                Throw ex
+                SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex, "AddSubscription Failed"))
             End Try
         End Sub
 
-        Public Sub RemoveSubscriptions(ByVal ServiceUrl As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
+        Public Sub RemoveSubscriptions(ByVal TeamServerName As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
             Try
-                For Each TeamServer As TeamServerItem In Servers
-                    Dim tfs As TeamFoundationServer = Me.GetTeamServer(TeamServer.Name)
-                    Dim EventService As IEventService = CType(tfs.GetService(GetType(IEventService)), IEventService)
-                    For Each SubScription As DataContracts.Subscription In GetServerSubscriptions(TeamServer.Name)
-                        If SubScription.Address = ServiceUrl Then
-                            EventService.UnsubscribeEvent(SubScription.ID)
-                            SubscriptionAdminCallback.Updated(GetSubscriptions)
-                        End If
-                    Next
+                ' Find Server
+                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+                If tsi Is Nothing Then
+                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
+                    Exit Sub
+                End If
+                ' Collect Eventing Bit
+                Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
+                For Each SubScription As DataContracts.Subscription In GetSubscriptions(tsi.Name)
+                    If SubScription.Address.Contains(EventServiceUrl(EventTypes.Unknown).ToString) Then
+                        EventService.UnsubscribeEvent(SubScription.ID)
+                        SubscriptionAdminCallback.Updated(tsi.Name, GetSubscriptions(tsi.Name))
+                    End If
                 Next
             Catch ex As System.ServiceModel.FaultException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "RemoveSubscription for TFS server unsucessfull")
-                Throw ex
+                SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex, "RemoveSubscription Failed"))
             End Try
         End Sub
 
-        Public Function GetSubscriptions() As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
+        Public Function GetSubscriptions(ByVal TeamServerName As String) As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
             Dim Subscriptions As New Collection(Of DataContracts.Subscription)
             Try
+                Dim RDSubs As New Collection(Of DataContracts.Subscription)
+                ' Find Server
+                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+                If tsi Is Nothing Then
+                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
+                Else
+                    ' Collect Eventing Bit
+                    Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
+                    ' Convert TFS Subscriptuions to RDdotNet Subscriptions
 
-                For Each TeamServer As TeamServerItem In Servers
-                    If TeamServer.IsValid Then
-                        Dim ServerSubs() As Server.Subscription = GetServerSubs(TeamServer.Name)
-                        For Each serverSub As Server.Subscription In ServerSubs
-                            Subscriptions.Add(New DataContracts.Subscription(serverSub))
-                        Next
-                    End If
-                Next
-                Return Subscriptions
+                    For Each serverSub As Server.Subscription In EventService.EventSubscriptions(My.User.Name, "TFSEventHandler")
+                        Subscriptions.Add(New DataContracts.Subscription(serverSub))
+                    Next
+                End If
             Catch ex As TeamFoundationServerUnauthorizedException
                 Return Subscriptions
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                Throw New FaultException("FaultDemoFaultSimple()", New FaultCode("FDFS Fault Code"), "FDFS Action")
-                'Throw New FaultException(Of FaultContracts.TeamFoundationServerUnauthorizedException)(New FaultContracts.TeamFoundationServerUnauthorizedException(), "Unauthorized")
+                SubscriptionAdminCallback.ErrorOccured(New FaultException("FaultDemoFaultSimple()", New FaultCode("FDFS Fault Code"), "FDFS Action"))
             Catch ex As System.Exception
-                Return Subscriptions
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
-                Throw New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001"))
+                SubscriptionAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001")))
             End Try
+            Return Subscriptions
         End Function
 
 #End Region
@@ -297,24 +268,24 @@ Namespace Services
         End Property
 
         Public Sub Notify(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As Microsoft.TeamFoundation.Server.SubscriptionInfo) Implements Contracts.INotification.Notify
-            Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
-            '---------------
-            Dim UriString As String = OperationContext.EndpointDispatcher.EndpointAddress.Uri.AbsoluteUri
-            Dim SlashIndex As Integer = UriString.LastIndexOf("/")
-            Dim EndieBit As String = UriString.Substring(SlashIndex, (UriString.Length - (UriString.Length - SlashIndex)))
-            Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), EndieBit), EventTypes)
-            '---------------
-            Select Case EventType
-                Case EventTypes.WorkItemChangedEvent
-                    Dim EventObject As WorkItemChangedEvent = EndpointBase.CreateInstance(Of WorkItemChangedEvent)(eventXml)
-                    EventHandlerClient.RaiseWorkItemChangedEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
-                Case EventTypes.CheckinEvent
-                    Dim EventObject As CheckinEvent = EndpointBase.CreateInstance(Of CheckinEvent)(eventXml)
-                    EventHandlerClient.RaiseCheckinEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
-                Case Else
-                    EventHandlerClient.RaiseUnknown(eventXml, tfsIdentityXml, New DataContracts.SubscriptionInfo(SubscriptionInfo))
-            End Select
-            '---------------
+            'Dim IdentityObject As TFSIdentity = EndpointBase.CreateInstance(Of TFSIdentity)(tfsIdentityXml)
+            ''---------------
+            'Dim UriString As String = OperationContext.EndpointDispatcher.EndpointAddress.Uri.AbsoluteUri
+            'Dim SlashIndex As Integer = UriString.LastIndexOf("/")
+            'Dim EndieBit As String = UriString.Substring(SlashIndex, (UriString.Length - (UriString.Length - SlashIndex)))
+            'Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), EndieBit), EventTypes)
+            ''---------------
+            'Select Case EventType
+            '    Case EventTypes.WorkItemChangedEvent
+            '        Dim EventObject As WorkItemChangedEvent = EndpointBase.CreateInstance(Of WorkItemChangedEvent)(eventXml)
+            '        EventHandlerClient.RaiseWorkItemChangedEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
+            '    Case EventTypes.CheckinEvent
+            '        Dim EventObject As CheckinEvent = EndpointBase.CreateInstance(Of CheckinEvent)(eventXml)
+            '        EventHandlerClient.RaiseCheckinEvent(EventObject, IdentityObject, New DataContracts.SubscriptionInfo(SubscriptionInfo))
+            '    Case Else
+            '        EventHandlerClient.RaiseUnknown(eventXml, tfsIdentityXml, New DataContracts.SubscriptionInfo(SubscriptionInfo))
+            'End Select
+            ''---------------
         End Sub
 
 #End Region

@@ -13,6 +13,8 @@ Namespace Services.Contracts
 
         <OperationContract(IsOneWay:=True)> _
       Sub Updated(ByVal AssemblyManaifest As AssemblyManaifest)
+        <OperationContract(IsOneWay:=True)> _
+      Sub ErrorOccured(ByVal ex As Exception)
 
     End Interface
 
