@@ -8,16 +8,20 @@ Namespace UI.FormControls
     Friend Class TreeNode_EventHandlers
         Inherits TreeNodeCustom(Of TreeNode_AssemblyItem)
 
+        Private m_Eventhandler As TFSEventHandlerClient
+
         Private SubNodeNameMap As String = "EventHandler:{0}"
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, Optional ByVal Delay As Integer = 0)
             MyBase.New("Event Handlers", EventHandler, Delay)
             '-----------------------
+            m_Eventhandler = EventHandler
+            '-----------------------
             ' Create Handler and attach Events
             AddHandler EventHandler.HandlersUpdated, AddressOf OnHandlersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
-            ContextMenuStrip.Items.Add(New ToolStripButton("Add Assembly")) 'TODO: , Nothing, AddressOf AddTeamServer_Click))
+            ContextMenuStrip.Items.Add(New ToolStripButton("Add Assembly", Nothing, AddressOf AddAssembly_Click))
             '-----------------------
             ' Initilise Assembly List
             Refresh()
@@ -51,6 +55,11 @@ Namespace UI.FormControls
 
         Public Sub OnHandlersUpdated(ByVal AssemblyManaifest As RDdotNet.TeamFoundation.Services.DataContracts.AssemblyManaifest)
             GenerateChildren(AssemblyManaifest)
+        End Sub
+
+        Public Sub AddAssembly_Click(ByVal source As Object, ByVal e As EventArgs)
+            Dim x As New FormLoadHandler(m_Eventhandler)
+            x.ShowDialog()
         End Sub
 
     End Class
