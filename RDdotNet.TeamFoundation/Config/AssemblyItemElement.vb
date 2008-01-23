@@ -23,7 +23,7 @@ Namespace Config
     ''' <summary>
     ''' Contains the definition of a visualization.
     ''' </summary>
-    Public Class HandlerItemElement
+    Public Class AssemblyItemElement
         Inherits ConfigurationElement
         Implements IConfigurationElement
 

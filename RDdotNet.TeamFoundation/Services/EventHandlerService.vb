@@ -15,6 +15,12 @@ Namespace Services
         Implements Contracts.IEvents
         Implements IDisposable
 
+        Private m_Handlers As String
+
+        Public Sub New()
+
+        End Sub
+
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
             Get
                 Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
