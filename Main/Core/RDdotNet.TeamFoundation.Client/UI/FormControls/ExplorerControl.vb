@@ -41,7 +41,7 @@ Namespace UI.FormControls
         Private Sub RefershEventHandlers()
             Me.uxTreeView.Nodes.Clear()
             For Each EventHandler As TFSEventHandlerClient In _ConnectedEventHandler
-                Me.uxTreeView.Nodes.Add(New TreeNode_EventHandler(EventHandler))
+                Me.uxTreeView.Nodes.Add(New TreeNode_TFSEventHandlerClient(EventHandler))
             Next
         End Sub
 

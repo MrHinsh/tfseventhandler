@@ -72,6 +72,7 @@
     <Compile Include="Clients\TFSEventHandlerClient.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
+    <Compile Include="Config\AssemblyItemElement.vb" />
     <Compile Include="Config\CredentialsItemElement.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
     <Compile Include="Config\HandlerCollection.vb" />

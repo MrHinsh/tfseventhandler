@@ -127,6 +127,16 @@ Namespace Config
             End Get
         End Property
 
+        ''' <summary>
+        ''' List of  services that will be initialized on the host.
+        ''' </summary>
+        <DataMember(), ConfigurationProperty("HandlerAssemblies", IsRequired:=True, IsDefaultCollection:=False), ConfigurationCollection(GetType(ConfigurationElementCollection(Of AssemblyItemElement)), AddItemName:="Assembly")> _
+        Public ReadOnly Property HandlerAssemblies() As ConfigurationElementCollection(Of AssemblyItemElement)
+            Get
+                Return CType(Me("HandlerAssemblies"), ConfigurationElementCollection(Of AssemblyItemElement))
+            End Get
+        End Property
+
     End Class
 
 
