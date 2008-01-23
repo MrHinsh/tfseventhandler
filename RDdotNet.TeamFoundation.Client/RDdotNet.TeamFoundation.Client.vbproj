@@ -89,9 +89,21 @@
     <Compile Include="UI\FormControls\ExplorerControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\FormControls\FormLoadHandler.Designer.vb">
+      <DependentUpon>FormLoadHandler.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormControls\FormLoadHandler.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormControls\FormServerSettings.Designer.vb">
+      <DependentUpon>FormServerSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormControls\FormServerSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\FormControls\TreeNodeCustom.vb" />
     <Compile Include="UI\FormControls\TreeNode_AssemblyItem.vb" />
-    <Compile Include="UI\FormControls\TreeNode_EventHandler.vb" />
+    <Compile Include="UI\FormControls\TreeNode_TFSEventHandlerClient.vb" />
     <Compile Include="UI\FormControls\TreeNode_EventHandlerItem.vb" />
     <Compile Include="UI\FormControls\TreeNode_EventHandlers.vb" />
     <Compile Include="UI\FormControls\TreeNode_Subscription.vb" />
@@ -112,6 +124,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormControls\ExplorerControl.resx">
       <DependentUpon>ExplorerControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormControls\FormLoadHandler.resx">
+      <DependentUpon>FormLoadHandler.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

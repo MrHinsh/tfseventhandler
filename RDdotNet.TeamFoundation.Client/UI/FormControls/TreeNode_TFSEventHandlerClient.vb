@@ -5,7 +5,7 @@ Imports System.Windows.Forms
 
 Namespace UI.FormControls
 
-    Friend Class TreeNode_EventHandler
+    Friend Class TreeNode_TFSEventHandlerClient
         Inherits TreeNode
 
         Private _EventHandler As TFSEventHandlerClient
@@ -25,6 +25,7 @@ Namespace UI.FormControls
             _ContextMenuStrip = New ContextMenuStrip
             _ContextMenuStrip.Items.Add(New ToolStripButton("Refresh", Nothing, AddressOf Refresh_Click))
             _ContextMenuStrip.Items.Add(New ToolStripButton("Remove", Nothing, AddressOf Remove_Click))
+            _ContextMenuStrip.Items.Add(New ToolStripButton("Server Settings", Nothing, AddressOf Settings_Click))
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             Dim AddedNodeID As Integer = 0
@@ -49,6 +50,10 @@ Namespace UI.FormControls
 
         Private Sub Remove_Click(ByVal sender As Object, ByVal e As EventArgs)
 
+        End Sub
+
+        Private Sub Settings_Click(ByVal sender As Object, ByVal e As EventArgs)
+            FormServerSettings.ShowSettings()
         End Sub
 
     End Class
