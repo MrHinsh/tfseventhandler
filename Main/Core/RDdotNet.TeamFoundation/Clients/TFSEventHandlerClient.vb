@@ -40,6 +40,8 @@ Namespace Clients
             TeamServersClient.Open()
         End Sub
 
+
+
 #Region " IEvents "
 
         Private _EventsClient As Proxy.EventsClient
@@ -47,8 +49,8 @@ Namespace Clients
         Private ReadOnly Property EventsClient() As Proxy.EventsClient
             Get
                 If _EventsClient Is Nothing Then
-                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Handlers"))
-                    _EventsClient = New Proxy.EventsClient(Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                    Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Events"))
+                    _EventsClient = New Proxy.EventsClient(Services.ServiceFactory.GetSecureWSHttpBinding, ep)
                 End If
                 Return _EventsClient
             End Get
