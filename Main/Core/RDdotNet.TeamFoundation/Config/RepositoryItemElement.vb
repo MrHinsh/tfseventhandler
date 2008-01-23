@@ -34,7 +34,12 @@ Namespace Config
         <DataMember(), ConfigurationProperty("localPath", IsRequired:=True)> _
         Public Property LocalPath() As String
             Get
-                Return CType(Me("localPath"), String)
+                Dim path As String = CType(Me("localPath"), String)
+                If path.StartsWith("~") Then
+                    path = path.Replace("~", "")
+                    path = System.IO.Path.Combine(My.Application.Info.DirectoryPath, path)
+                End If
+                Return path
             End Get
             Set(ByVal value As String)
                 Me("localPath") = value

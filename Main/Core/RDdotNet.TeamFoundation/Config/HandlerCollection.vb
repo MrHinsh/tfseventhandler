@@ -31,7 +31,7 @@ Namespace Config
         End Function
 
         Protected Overrides Function GetElementKey(ByVal element As System.Configuration.ConfigurationElement) As Object
-            Return CType(element, HandlerItemElement).Type
+            Return CType(element, HandlerItemElement).AssemblyFileName
         End Function
 
     End Class
