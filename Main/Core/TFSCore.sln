@@ -19,6 +19,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Host", "RDdotNet.TeamFounda
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Explorer", "RDdotNet.TeamFoundation.TestApp\Explorer.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4E1FBF8A-7413-4F3F-ABD8-DA209CE4F5F5}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 7

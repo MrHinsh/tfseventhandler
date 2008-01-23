@@ -4,6 +4,7 @@ Imports RDdotNet.TeamFoundation.Services.DataContracts
 Imports RDdotNet.TeamFoundation.Services.FaultContracts
 Imports system.ServiceModel
 Imports System.Windows.Forms
+Imports RDdotNet.TeamFoundation.Events
 
 Namespace UI.FormControls
 
@@ -21,15 +22,23 @@ Namespace UI.FormControls
             ' Create Handler and attach Events
             AddHandler EventHandler.SubscriptionsUpdated, AddressOf OnSubscriptionsUpdated
             m_TeamServer = TeamServer
+            '------------------------
             '-----------------------
+            Dim EvntSubNode As New ToolStripMenuItem("Add Event Type")
+            ContextMenuStrip.Items.Add(EvntSubNode)
             ' Create Contect Menu as Add events
-            ContextMenuStrip.Items.Add(New ToolStripButton("Add Subscription", Nothing, AddressOf AddSubScription_Click))
+            For Each EventType As EventTypes In [Enum].GetValues(GetType(EventTypes))
+                If Not EventType = EventTypes.Unknown Then
+                    Dim tsb As New ToolStripButton(EventType.ToString, Nothing, AddressOf AddSubScription_Click)
+                    EvntSubNode.DropDownItems.Add(tsb)
+                End If
+            Next
             '-----------------------
             ' Initilise team server List
             Refresh()
         End Sub
 
-        Public Sub OnSubscriptionsUpdated(ByVal subscriptions As Collection(Of Subscription))
+        Public Sub OnSubscriptionsUpdated(ByVal Name As String, ByVal subscriptions As Collection(Of Subscription))
             GenerateChildren(subscriptions)
         End Sub
 
@@ -37,7 +46,7 @@ Namespace UI.FormControls
             Me.ChangeStatus(Status.Working)
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
-                subscriptions = EventHandler.GetSubscriptions()
+                subscriptions = EventHandler.GetSubscriptions(m_TeamServer.Name)
             Catch ex As ServiceModel.FaultException
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
@@ -60,16 +69,11 @@ Namespace UI.FormControls
         End Sub
 
         Private Sub AddSubScription_Click(ByVal sender As Object, ByVal e As EventArgs)
-            Dim frmConnectTo As New frmConnectTo("Team Foundation Server", Protocol:=TeamFoundation.frmConnectTo.Protocol.HTTP, Port:=8080, ServerName:=System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName)
-            Dim DialogResult As DialogResult = frmConnectTo.ShowDialog()
-            If DialogResult = Windows.Forms.DialogResult.OK Then
-                '---------
-                frmConnectTo.Close()
-                frmConnectTo.Dispose()
-                '---------
-                Dim ServerUri As Uri = EventHandler.ServceUrl
-                EventHandler.AddSubscriptions(ServerUri.ToString, Events.EventTypes.WorkItemChangedEvent)
-            End If
+            Dim text As String = CType(sender, ToolStripButton).Text
+            Dim EventType As EventTypes = [Enum].Parse(GetType(EventTypes), text, True)
+            '---------
+            'Dim ServerUri As Uri = EventHandler.ServceUrl
+            EventHandler.AddSubscriptions(m_TeamServer.Name, EventType)
         End Sub
 
     End Class
