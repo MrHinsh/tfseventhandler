@@ -24,6 +24,7 @@ Namespace Config
     ''' <summary>
     ''' Contains the definition of a visualization.
     ''' </summary>
+    <DataContract()> _
     Public Class RepositoryItemElement
         Inherits ConfigurationElement
 
