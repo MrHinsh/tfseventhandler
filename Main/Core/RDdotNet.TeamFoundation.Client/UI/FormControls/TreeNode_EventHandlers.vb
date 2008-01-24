@@ -29,21 +29,21 @@ Namespace UI.FormControls
 
         Protected Overrides Sub GenerateChildren(ByVal state As Object)
             Me.ChangeStatus(Status.Working)
-            Dim AssemblyManaifest As AssemblyManaifest = Nothing
+            Dim AssemblyItems As Collection(Of AssemblyItem) = Nothing
             Try
-                AssemblyManaifest = EventHandler.GetAssemblys()
+                AssemblyItems = EventHandler.GetAssemblys()
             Catch ex As Exception
                 AddError("Error", ex)
                 Me.ChangeStatus(Status.Faulted)
             Finally
-                Me.GenerateChildren(AssemblyManaifest)
+                Me.GenerateChildren(AssemblyItems)
             End Try
         End Sub
 
-        Public Overloads Sub GenerateChildren(ByVal AssemblyManaifest As AssemblyManaifest)
+        Public Overloads Sub GenerateChildren(ByVal AssemblyItems As Collection(Of AssemblyItem))
             ClearNodes()
-            If Not AssemblyManaifest.Assemblys Is Nothing Then
-                For Each AI As AssemblyItem In AssemblyManaifest.Assemblys
+            If Not AssemblyItems Is Nothing Then
+                For Each AI As AssemblyItem In AssemblyItems
                     AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
                 Next
             End If

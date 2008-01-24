@@ -53,8 +53,8 @@ Namespace Config
         Public Property AssemblyFileLocation() As String
             Get
                 Dim path As String = CType(Me("assemblyFileLocation"), String)
-                If path.StartsWith("~") Then
-                    path = path.Replace("~", "")
+                If path.StartsWith("~\") Then
+                    path = path.Replace("~\", "")
                     path = System.IO.Path.Combine(TeamFoundationSettingsSection.Instance.Repository.LocalPath, path)
                 End If
                 Return path

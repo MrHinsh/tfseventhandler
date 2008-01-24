@@ -84,7 +84,7 @@ Namespace Clients
             Get
                 If _HandlersClient Is Nothing Then
                     Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/EventHandling/Handlers"))
-                    _HandlersClient = New Proxy.HandlersClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                    _HandlersClient = New Proxy.HandlersClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding("Handlers"), ep)
                 End If
                 Return _HandlersClient
             End Get
@@ -104,7 +104,7 @@ Namespace Clients
             Return HandlersClient.GetAssemblyItem(AssemblyBytes)
         End Function
 
-        Public Function GetAssemblys() As Services.DataContracts.AssemblyManaifest Implements Services.Contracts.IHandlers.GetAssemblys
+        Public Function GetAssemblys() As Collection(Of AssemblyItem) Implements Services.Contracts.IHandlers.GetAssemblys
             Return HandlersClient.GetAssemblys()
         End Function
 
@@ -145,7 +145,7 @@ Namespace Clients
             Get
                 If _SubscriptionsClient Is Nothing Then
                     Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/Queuer/Subscriptions"))
-                    _SubscriptionsClient = New Proxy.SubscriptionsClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                    _SubscriptionsClient = New Proxy.SubscriptionsClient(SubscriptionsCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding("Subscriptions"), ep)
                 End If
                 Return _SubscriptionsClient
             End Get
@@ -189,7 +189,7 @@ Namespace Clients
             Get
                 If _TeamServersClient Is Nothing Then
                     Dim ep As New EndpointAddress(New Uri(_Server, "TFSEventHandler/Queuer/TeamServers"))
-                    _TeamServersClient = New Proxy.TeamServersClient(TeamServersCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding, ep)
+                    _TeamServersClient = New Proxy.TeamServersClient(TeamServersCallback, Services.ServiceFactory.GetSecureWSDualHttpBinding("TeamServers"), ep)
                 End If
                 Return _TeamServersClient
             End Get

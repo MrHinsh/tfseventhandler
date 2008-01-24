@@ -13,7 +13,12 @@ Namespace UI.FormControls
         Private _ContextMenuStrip As New ContextMenuStrip
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal AssemblyItem As AssemblyItem)
-            Me.Text = "Assembly: " & AssemblyItem.Name.FullName
+            If AssemblyItem.State = AssemblyItemStates.NotFound Then
+                Me.Text = "Assembly NotFound: " & AssemblyItem.Location
+            Else
+                Me.Text = "Assembly: " & AssemblyItem.Name
+            End If
+
             _AssemblyItem = AssemblyItem
             '-----------------------
             ' Create Handler and attach Events
@@ -32,9 +37,12 @@ Namespace UI.FormControls
 
         Public Sub GenerateChildren(ByVal EventHandlers As Collection(Of EventHandlerItem))
             Me.Nodes.Clear()
-            For Each EHI As EventHandlerItem In EventHandlers
-                Me.Nodes.Add(New TreeNode_EventHandlerItem(_EventHandler, EHI))
-            Next
+            If Not EventHandlers Is Nothing Then
+                For Each EHI As EventHandlerItem In EventHandlers
+                    Me.Nodes.Add(New TreeNode_EventHandlerItem(_EventHandler, EHI))
+                Next
+            End If
+           
         End Sub
 
     End Class

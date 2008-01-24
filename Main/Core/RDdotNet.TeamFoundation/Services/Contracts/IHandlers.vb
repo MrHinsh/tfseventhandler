@@ -20,10 +20,10 @@ Namespace Services.Contracts
         Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte())
 
         <OperationContract(IsOneWay:=True)> _
-        Sub RemoveAssembly(ByVal ID As Integer)
+        Sub RemoveAssembly(ByVal AssemblyItem As AssemblyItem)
 
         <OperationContract(IsOneWay:=False)> _
-        Function GetAssemblys() As AssemblyManaifest
+        Function GetAssemblys() As Collection(Of AssemblyItem)
 
         <OperationContract(IsOneWay:=False)> _
         Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem

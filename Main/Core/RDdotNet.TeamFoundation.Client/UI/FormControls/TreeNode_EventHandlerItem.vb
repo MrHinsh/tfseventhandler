@@ -13,7 +13,7 @@ Namespace UI.FormControls
         Private _ContextMenuStrip As New ContextMenuStrip
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal EventHandlerItem As EventHandlerItem)
-            Me.Text = String.Format("{0} ({1})", EventHandlerItem.HandlerType.FullName, EventHandlerItem.EventType.ToString)
+            Me.Text = String.Format("{0} ({1})", EventHandlerItem.HandlerType, EventHandlerItem.EventType.ToString)
             _EventHandlerItem = EventHandlerItem
             '-----------------------
             ' Create Handler and attach Events
