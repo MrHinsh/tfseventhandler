@@ -27,8 +27,8 @@ Namespace Clients.Proxy
             Return MyBase.Channel.GetAssemblys()
         End Function
 
-        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Services.Contracts.IHandlers.RemoveAssembly
-            MyBase.Channel.RemoveAssembly(ID)
+        Public Sub RemoveAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) Implements Services.Contracts.IHandlers.RemoveAssembly
+            MyBase.Channel.RemoveAssembly(AssemblyItem)
         End Sub
 
         Public Function ValidateAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) As Boolean Implements Services.Contracts.IHandlers.ValidateAssembly

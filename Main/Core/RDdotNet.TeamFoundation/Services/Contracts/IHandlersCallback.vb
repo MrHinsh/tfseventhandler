@@ -16,8 +16,8 @@ Namespace Services.Contracts
         <OperationContract(IsOneWay:=True)> _
       Sub ErrorOccured(ByVal ex As Exception)
 
-        <OperationContract(IsOneWay:=True)> _
- Sub StatusChange(ByVal ex As Exception)
+        '       <OperationContract(IsOneWay:=True)> _
+        'Sub StatusChange(ByVal ex As Exception)
 
     End Interface
 
