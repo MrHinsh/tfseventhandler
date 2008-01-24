@@ -92,6 +92,7 @@
     <Compile Include="Events\EndpointBase.vb" />
     <Compile Include="Events\EventTypes.vb" />
     <Compile Include="Events\NotifyEventArgs.vb" />
+    <Compile Include="Services\Adapters\IConfigurationAdapter.vb" />
     <Compile Include="Services\Adapters\DataContract.vb" />
     <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />

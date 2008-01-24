@@ -35,8 +35,8 @@ Namespace Config
         Public Property LocalPath() As String
             Get
                 Dim path As String = CType(Me("localPath"), String)
-                If path.StartsWith("~") Then
-                    path = path.Replace("~", "")
+                If path.StartsWith("~\") Then
+                    path = path.Replace("~\", "")
                     path = System.IO.Path.Combine(My.Application.Info.DirectoryPath, path)
                 End If
                 Return path
