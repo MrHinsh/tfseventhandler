@@ -108,8 +108,8 @@ Namespace Clients
             Return HandlersClient.GetAssemblys()
         End Function
 
-        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Services.Contracts.IHandlers.RemoveAssembly
-            HandlersClient.RemoveAssembly(ID)
+        Public Sub RemoveAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) Implements Services.Contracts.IHandlers.RemoveAssembly
+            HandlersClient.RemoveAssembly(AssemblyItem)
         End Sub
 
         Public Function ValidateAssembly(ByVal AssemblyItem As Services.DataContracts.AssemblyItem) As Boolean Implements Services.Contracts.IHandlers.ValidateAssembly
@@ -267,7 +267,6 @@ Namespace Clients
 #End Region
 
 #End Region
-
 
 
     End Class
