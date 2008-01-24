@@ -12,6 +12,8 @@ Imports Microsoft.TeamFoundation.Common
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Events.Handlers
 
+<EventHandler(Events.EventTypes.CheckinEvent, "martin@hinshelwood.com")> _
+<MailSettings()> _
 Public Class ChangeSetHandler
     Inherits AEventHandler(Of CheckinEvent)
 
