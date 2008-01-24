@@ -34,7 +34,7 @@ Namespace Services
         Public MustOverride Sub OnStart()
         Public MustOverride Sub OnEnd()
         Public MustOverride Sub Run(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent))
-        Public MustOverride Sub IsValid(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent))
+        Public MustOverride Function IsValid(ByVal sender As Microsoft.TeamFoundation.Client.TeamFoundationServer, ByVal e As NotifyEventArgs(Of TEvent)) As Boolean
 
 #Region " IDisposable "
 

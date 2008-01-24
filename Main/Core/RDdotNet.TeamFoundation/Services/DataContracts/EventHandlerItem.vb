@@ -12,10 +12,20 @@ Namespace Services.DataContracts
     <DataContract(), Serializable()> _
     Public Class EventHandlerItem
 
+        Private _HandlerTypeName As String
         Private _HandlerType As System.Type
         Private _EventType As EventTypes
 
         <DataMember()> _
+        Public Property HandlerTypeName() As String
+            Get
+                Return _HandlerTypeName
+            End Get
+            Set(ByVal value As String)
+                _HandlerTypeName = value
+            End Set
+        End Property
+
         Public Property HandlerType() As System.Type
             Get
                 Return _HandlerType
@@ -41,6 +51,8 @@ Namespace Services.DataContracts
 
         Public Sub New(ByVal HandlerType As System.Type, ByVal EventType As EventTypes)
             _HandlerType = HandlerType
+            _HandlerTypeName = HandlerType.FullName
+            _EventType = EventType
         End Sub
 
 

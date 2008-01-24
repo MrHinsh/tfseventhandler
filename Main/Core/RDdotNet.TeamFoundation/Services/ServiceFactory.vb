@@ -14,14 +14,14 @@ Namespace Services
 
 #Region " Bindings "
 
-        Friend Shared Function GetSecureWSDualHttpBinding() As WSDualHttpBinding
+        Friend Shared Function GetSecureWSDualHttpBinding(ByVal ServiceName As String) As WSDualHttpBinding
             Dim Binding As New WSDualHttpBinding(WSDualHttpSecurityMode.Message)
             Binding.MaxReceivedMessageSize = 655360
             Binding.ReaderQuotas.MaxStringContentLength = 655360
             Binding.ReaderQuotas.MaxArrayLength = 655360
             Binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows
             Binding.Security.Message.NegotiateServiceCredential = True
-            Binding.ClientBaseAddress = New System.Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":660")
+            Binding.ClientBaseAddress = New System.Uri("http://" & System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName).HostName & ":660/" & ServiceName)
             Binding.BypassProxyOnLocal = True
             Return Binding
         End Function
@@ -71,7 +71,7 @@ Namespace Services
             SetServiceDebugBehavior(sh)
             '---------------
             sh.Description.Endpoints.Clear()
-            sh.AddServiceEndpoint(GetType(Services.Contracts.IHandlers), GetSecureWSDualHttpBinding, "Handlers")
+            sh.AddServiceEndpoint(GetType(Services.Contracts.IHandlers), GetSecureWSDualHttpBinding("Handlers"), "Handlers")
             sh.AddServiceEndpoint(GetType(Services.Contracts.IEvents), GetSecureWSHttpBinding, "Events")
             sh.AddServiceEndpoint(GetType(Description.IMetadataExchange), GetSecureWSHttpBinding, "mex")
             '----------------
@@ -93,8 +93,8 @@ Namespace Services
             For Each EventType As Events.EventTypes In [Enum].GetValues(GetType(Events.EventTypes))
                 sh.AddServiceEndpoint(GetType(Services.Contracts.INotification), GetBasicHttpBinding, "Notification/" & EventType.ToString)
             Next
-            sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding, "Subscriptions")
-            sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding, "TeamServers")
+            sh.AddServiceEndpoint(GetType(Services.Contracts.ISubscriptions), GetSecureWSDualHttpBinding("Subscriptions"), "Subscriptions")
+            sh.AddServiceEndpoint(GetType(Services.Contracts.ITeamServers), GetSecureWSDualHttpBinding("TeamServers"), "TeamServers")
             sh.AddServiceEndpoint(GetType(Description.IMetadataExchange), GetSecureWSHttpBinding, "mex")
             '----------------
             Return sh

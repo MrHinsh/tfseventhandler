@@ -1,3 +1,6 @@
+Imports RDdotNet.TeamFoundation.Services.DataContracts
+Imports System.Collections.ObjectModel
+
 Namespace Clients.Proxy
 
     Friend Class HandlersClient
@@ -20,7 +23,7 @@ Namespace Clients.Proxy
             Return MyBase.Channel.GetAssemblyItem(AssemblyBytes)
         End Function
 
-        Public Function GetAssemblys() As Services.DataContracts.AssemblyManaifest Implements Services.Contracts.IHandlers.GetAssemblys
+        Public Function GetAssemblys() As Collection(Of AssemblyItem) Implements Services.Contracts.IHandlers.GetAssemblys
             Return MyBase.Channel.GetAssemblys()
         End Function
 

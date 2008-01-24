@@ -3,6 +3,10 @@ Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Services.DataContracts
+Imports RDdotNet.TeamFoundation.Config
+Imports RDdotNet.TeamFoundation.Events.Handlers
+Imports RDdotNet.TeamFoundation.Events
+
 'Imports microsoft.TeamFoundation
 'Imports microsoft.TeamFoundation.Client
 'Imports microsoft.TeamFoundation.Server
@@ -15,29 +19,37 @@ Namespace Services
         Implements Contracts.IEvents
         Implements IDisposable
 
-        Private m_Handlers As String
-
         Public Sub New()
+            Initilise()
 
         End Sub
 
-        Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
-            Get
-                Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
-            End Get
-        End Property
+        'Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
+        '    Get
+        '        Return Config.TeamFoundationSettingsSection.Instance.Services.Item(Me.GetType.Name)
+        '    End Get
+        'End Property
 
-        Public ReadOnly Property RepositorySettings() As Config.RepositoryItemElement
-            Get
-                Return Config.TeamFoundationSettingsSection.Instance.Repository
-            End Get
-        End Property
+        'Public ReadOnly Property RepositorySettings() As Config.RepositoryItemElement
+        '    Get
+        '        Return Config.TeamFoundationSettingsSection.Instance.Repository
+        '    End Get
+        'End Property
 
         Public ReadOnly Property OperationContext() As OperationContext
             Get
                 Return OperationContext.Current
             End Get
         End Property
+
+        Public ReadOnly Property SettingsSection() As Config.TeamFoundationSettingsSection
+            Get
+                Return Config.TeamFoundationSettingsSection.Instance
+            End Get
+        End Property
+
+
+
 
 #Region " IDisposable "
 
@@ -66,39 +78,33 @@ Namespace Services
 
 #End Region
 
-#Region " IHandlerAdmin "
+#Region " Handler "
 
-#Region " Bits "
+#Region " Handler Processing "
 
-        Public Enum XmlFiles
-            Manifest
-        End Enum
+        Private m_AssemblyItems As New Collection(Of AssemblyItem)
 
-        Private Function GetObject(Of T As {New})(ByVal XmlFile As XmlFiles) As T
-            Dim XmlFileLocation As String = RepositorySettings.LocalPath
-            XmlFileLocation = System.IO.Path.Combine(XmlFileLocation, XmlFile.ToString & ".xml")
-            Dim x As New CustomXmlSerializer()
-            SyncLock x
-                GetObject = New T
-                If System.IO.File.Exists(XmlFileLocation) Then
-                    GetObject = CType(x.ReadXml(XmlFileLocation, GetObject), T)
-                Else
-                    x.WriteFile(GetObject, XmlFileLocation, True)
-                End If
-            End SyncLock
-            Return GetObject
-        End Function
+        Private Sub Initilise()
+           LoadFromConfig
+        End Sub
 
-        Private Sub SetObject(Of T)(ByVal XmlFile As XmlFiles, ByVal target As T)
-            Dim XmlFileLocation As String = RepositorySettings.LocalPath
-            XmlFileLocation = System.IO.Path.Combine(XmlFileLocation, XmlFile.ToString & ".xml")
-            Dim x As New CustomXmlSerializer()
-            SyncLock x
-                x.WriteFile(target, XmlFileLocation, True)
-            End SyncLock
+        Private Sub LoadFromConfig()
+            m_AssemblyItems.Clear()
+            For Each AIE As AssemblyItemElement In SettingsSection.HandlerAssemblies
+                Try
+                    Dim AssemblyItem As AssemblyItem = AssemblyHelper.GetAssemblyItem(AIE)
+                    If Not AssemblyItem Is Nothing Then
+                        m_AssemblyItems.Add(AssemblyItem)
+                    End If
+                Catch ex As Exception
+                    HandlerAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex))
+                End Try
+            Next
         End Sub
 
 #End Region
+
+#Region "  IHandlers  "
 
         Private _HandlerAdminCallback As Contracts.IHandlersCallback
 
@@ -112,37 +118,30 @@ Namespace Services
         End Property
 
         Public Sub AddAssembly(ByVal AssemblyItem As AssemblyItem) Implements Contracts.IHandlers.AddAssembly
-            If ValidateAssembly(AssemblyItem) Then
-                Dim AssemblyManaifest As AssemblyManaifest = Nothing
-                AssemblyManaifest = GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
-                AssemblyManaifest.Assemblys.Add(AssemblyItem)
-                AssemblyManaifest.Version = AssemblyManaifest.Version + 1
-                SetObject(Of AssemblyManaifest)(XmlFiles.Manifest, AssemblyManaifest)
-                HandlerAdminCallback.Updated(AssemblyManaifest)
-            End If
+
         End Sub
 
-        Public Function GetAssemblys() As AssemblyManaifest Implements Contracts.IHandlers.GetAssemblys
-            Return GetObject(Of AssemblyManaifest)(XmlFiles.Manifest)
+        Public Function GetAssemblys() As Collection(Of AssemblyItem) Implements Contracts.IHandlers.GetAssemblys
+            Return m_AssemblyItems
         End Function
 
-        Public Sub RemoveAssembly(ByVal ID As Integer) Implements Contracts.IHandlers.RemoveAssembly
+        Public Sub RemoveAssembly(ByVal AssemblyItem As AssemblyItem) Implements Contracts.IHandlers.RemoveAssembly
 
         End Sub
 
         Public Sub AddAssemblyDirect(ByVal AssemblyBytes As Byte()) Implements Contracts.IHandlers.AddAssemblyDirect
-            AddAssembly(GetAssemblyItem(AssemblyBytes))
+
         End Sub
 
         Public Function GetAssemblyItem(ByVal AssemblyBytes As Byte()) As AssemblyItem Implements Contracts.IHandlers.GetAssemblyItem
-            Try
-                '------------------
-                Dim AssemblyItem As AssemblyItem = Nothing
-                AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.TeamFoundationSettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
-                Return AssemblyItem
-            Catch ex As Exception
-                Throw New System.ServiceModel.FaultException(Of Exception)(ex, "An error occurerd. That Assembly may not be of the correct type.")
-            End Try
+            'Try
+            '    '------------------
+            '    Dim AssemblyItem As AssemblyItem = Nothing
+            '    AssemblyItem = AssemblyHelper.GetAssemblyItem(Config.TeamFoundationSettingsSection.Instance.Repository.LocalPath, AssemblyBytes)
+            '    Return AssemblyItem
+            'Catch ex As Exception
+            '    Throw New System.ServiceModel.FaultException(Of Exception)(ex, "An error occurerd. That Assembly may not be of the correct type.")
+            'End Try
         End Function
 
         Public Function ValidateAssembly(ByVal AssemblyItem As AssemblyItem) As Boolean Implements Contracts.IHandlers.ValidateAssembly
@@ -155,19 +154,45 @@ Namespace Services
 
 #End Region
 
-#Region " IEvent "
+#End Region
+
+#Region " Event Processing "
+
+        Friend Sub RunAllValidEventHandlers(Of TEventType As {New})(ByVal EventType As EventTypes, ByVal [Event] As TEventType, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo)
+            Dim NotifyEventArgs As New Events.NotifyEventArgs(Of TEventType)(EventType, [Event], EventIdentity, SubscriptionInfo)
+            For Each AssemblyItem As AssemblyItem In m_AssemblyItems
+                If AssemblyItem.State = AssemblyItemStates.Valid Then
+                    For Each EventHandler In AssemblyItem.EventHandlers
+                        If EventHandler.EventType = EventType Then
+                            Try
+                                Dim x As AEventHandler(Of TEventType) = Activator.CreateInstance(EventHandler.HandlerType)
+                                If x.IsValid(NotifyEventArgs) Then
+                                    x.Run(NotifyEventArgs)
+                                End If
+                            Catch ex As Exception
+                                'TODO: Some sort of error message
+                            End Try
+                        End If
+                    Next
+                End If
+            Next
+        End Sub
+
+#Region " IEvents "
 
         Public Sub RaiseCheckinEvent(ByVal [Event] As CheckinEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseCheckinEvent
-
+            RunAllValidEventHandlers(Of CheckinEvent)(Events.EventTypes.CheckinEvent, [Event], EventIdentity, SubscriptionInfo)
         End Sub
 
         Public Sub RaiseWorkItemChangedEvent(ByVal [Event] As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseWorkItemChangedEvent
-
+            RunAllValidEventHandlers(Of WorkItemChangedEvent)(Events.EventTypes.WorkItemChangedEvent, [Event], EventIdentity, SubscriptionInfo)
         End Sub
 
         Public Sub RaiseUnknown(ByVal eventXml As String, ByVal tfsIdentityXml As String, ByVal SubscriptionInfo As SubscriptionInfo) Implements Contracts.IEvents.RaiseUnknown
-
+            'TODO: Deal with unknown Events
         End Sub
+
+#End Region
 
 #End Region
 
