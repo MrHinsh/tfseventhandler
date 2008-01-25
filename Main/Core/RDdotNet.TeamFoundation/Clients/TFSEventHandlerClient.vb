@@ -116,10 +116,6 @@ Namespace Clients
             Return HandlersClient.ValidateAssembly(AssemblyItem)
         End Function
 
-        Public Sub Updated(ByVal AssemblyManaifest As Services.DataContracts.AssemblyManaifest) Implements Services.Contracts.IHandlersCallback.Updated
-            RaiseEvent HandlersUpdated(AssemblyManaifest)
-        End Sub
-
         Public Sub HandlersErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.IHandlersCallback.ErrorOccured
             MsgBox(ex.ToString)
         End Sub
@@ -195,7 +191,7 @@ Namespace Clients
             End Get
         End Property
 
-        Public Event TeamServerUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
+        Public Event TeamServerUpdated(ByVal source As TFSEventHandlerClient, ByVal e As StatusChangeEventArgs(Of TeamServerItem))
 
         Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.AddServer
             TeamServersClient.AddServer(TeamServer)
@@ -205,9 +201,9 @@ Namespace Clients
             TeamServersClient.RefreshServers()
         End Sub
 
-        Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
-            Return TeamServersClient.GetServers
-        End Function
+        'Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
+        '    Return TeamServersClient.GetServers
+        'End Function
 
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.RemoveServer
             TeamServersClient.RemoveServer(TeamServer)
@@ -218,7 +214,7 @@ Namespace Clients
         End Function
 
         Public Sub StatusChange(ByVal StatusChangeType As Services.DataContracts.StatusChangeTypeEnum, ByVal TeamServer As Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServersCallback.StatusChange
-            RaiseEvent TeamServerUpdated(Me, New TeamServerEventArgs(StatusChangeType, TeamServer))
+            RaiseEvent TeamServerUpdated(Me, New StatusChangeEventArgs(Of TeamServerItem)(StatusChangeType, TeamServer))
         End Sub
 
         Public Sub ErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.ITeamServersCallback.ErrorOccured

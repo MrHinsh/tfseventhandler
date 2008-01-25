@@ -30,6 +30,8 @@ Namespace UI.FormControls
                 '---------
                 Dim ServerUri As Uri = frmConnectTo.ServerUri
                 Dim EventHandler As New TFSEventHandlerClient(ServerUri)
+                FormLog.ShowLog(EventHandler)
+
                 ' Start Services
                 _ConnectedEventHandler.Add(EventHandler)
                 RefershEventHandlers()

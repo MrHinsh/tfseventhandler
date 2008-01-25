@@ -5,12 +5,6 @@ Imports System.Windows.Forms
 
 Namespace UI.FormControls
 
-    Public Enum Status
-        Normal = 0
-        Faulted = 1
-        Working = 2
-    End Enum
-
     Public MustInherit Class TreeNodeCustom(Of T As {TreeNode})
         Inherits TreeNode
 
@@ -77,36 +71,36 @@ Namespace UI.FormControls
         Public Delegate Sub ModifyNodeDelegate(ByVal TreeNode As T)
         Public Delegate Sub UpdateStatusDelegate(ByVal Status As Status)
 
-        Protected Sub ClearNodes()
+        Protected Sub TreeNode_Inner_ClearNodes()
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New SimpleDelegate(AddressOf ClearNodes))
+                Me.TreeView.Invoke(New SimpleDelegate(AddressOf TreeNode_Inner_ClearNodes))
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 MyBase.Nodes.Clear()
             End If
         End Sub
 
-        Protected Overloads Sub ExpandAll()
+        Protected Overloads Sub TreeNode_Inner_ExpandAll()
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New SimpleDelegate(AddressOf ExpandAll))
+                Me.TreeView.Invoke(New SimpleDelegate(AddressOf TreeNode_Inner_ExpandAll))
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 MyBase.ExpandAll()
             End If
         End Sub
 
-        Protected Sub AddError(ByVal Catagory As String, ByVal ex As Exception)
+        Protected Sub TreeNode_Inner_AddError(ByVal Catagory As String, ByVal ex As Exception)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New AddCatagoryErrorDelegate(AddressOf AddError), Catagory, ex)
+                Me.TreeView.Invoke(New AddCatagoryErrorDelegate(AddressOf TreeNode_Inner_AddError), Catagory, ex)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(Catagory & ": " & ex.ToString)
             End If
         End Sub
 
-        Protected Sub CheckEmpty(ByVal KeyMask As String, ByVal ItemTypeName As String)
+        Protected Sub TreeNode_Inner_CheckEmpty(ByVal KeyMask As String, ByVal ItemTypeName As String)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New MessageDelegate(AddressOf CheckEmpty), KeyMask, ItemTypeName)
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf TreeNode_Inner_CheckEmpty), KeyMask, ItemTypeName)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Dim key As String = String.Format(KeyMask, "NoItems")
@@ -123,55 +117,56 @@ Namespace UI.FormControls
             End If
         End Sub
 
-        Protected Sub AddMessage(ByVal Key As String, ByVal Message As String)
+        Protected Sub TreeNode_Inner_AddMessage(ByVal Key As String, ByVal Message As String)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New MessageDelegate(AddressOf AddMessage), Key, Message)
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf TreeNode_Inner_AddMessage), Key, Message)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(Key, Message)
             End If
         End Sub
 
-        Protected Sub RemoveMessage(ByVal Key As String, ByVal Message As String)
+        Protected Sub TreeNode_Inner_RemoveMessage(ByVal Key As String, ByVal Message As String)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New MessageDelegate(AddressOf AddMessage), Key, Message)
+                Me.TreeView.Invoke(New MessageDelegate(AddressOf TreeNode_Inner_AddMessage), Key, Message)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.RemoveByKey(Key)
             End If
         End Sub
 
-        Protected Sub AddNode(ByVal TreeNode As T)
+        Protected Sub TreeNode_Inner_AddNode(ByVal TreeNode As T)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf AddNode), TreeNode)
+                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf TreeNode_Inner_AddNode), TreeNode)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Add(TreeNode)
             End If
         End Sub
 
-        Protected Sub RemoveNode(ByVal TreeNode As T)
+        Protected Sub TreeNode_Inner_RemoveNode(ByVal TreeNode As T)
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf RemoveNode), TreeNode)
+                Me.TreeView.Invoke(New ModifyNodeDelegate(AddressOf TreeNode_Inner_RemoveNode), TreeNode)
                 System.Threading.Thread.Sleep(_Delay)
             Else
                 Me.Nodes.Remove(TreeNode)
             End If
         End Sub
 
-        Protected Sub ChangeStatus(ByVal Status As Status)
+        Protected Sub TreeNode_Inner_ChangeStatus(ByVal Status As Status, Optional ByVal Message As String = "")
             If Me.TreeView.InvokeRequired Then
-                Me.TreeView.Invoke(New UpdateStatusDelegate(AddressOf ChangeStatus), Status)
+                Me.TreeView.Invoke(New UpdateStatusDelegate(AddressOf TreeNode_Inner_ChangeStatus), Status)
                 System.Threading.Thread.Sleep(_Delay)
             Else
+                Dim MessageMask As String = "{0} ({1}{2}{3})"
+                Dim Spacer As String = ""
+                If Message <> "" Then Spacer = " - "
                 _Status = Status
                 Select Case Status
                     Case FormControls.Status.Normal
                         Me.Text = Me.NodeName
-                    Case FormControls.Status.Working
-                        Me.Text = String.Format("{0} ({1}...)", Me.NodeName, Status.ToString)
-                    Case FormControls.Status.Faulted
-                        Me.Text = String.Format("{0} ({1})", Me.NodeName, Status.ToString)
+                    Case FormControls.Status.Working, FormControls.Status.Faulted
+                        Me.Text = String.Format(MessageMask, Me.NodeName, Status.ToString, Spacer, Message)
                 End Select
             End If
         End Sub
@@ -179,7 +174,7 @@ Namespace UI.FormControls
 
 #End Region
 
-  
+
     End Class
 
 End Namespace

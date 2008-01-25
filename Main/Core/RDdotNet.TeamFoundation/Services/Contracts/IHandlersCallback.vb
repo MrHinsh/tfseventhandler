@@ -12,9 +12,8 @@ Namespace Services.Contracts
     Public Interface IHandlersCallback
 
         <OperationContract(IsOneWay:=True)> _
-      Sub Updated(ByVal AssemblyManaifest As AssemblyManaifest)
-        <OperationContract(IsOneWay:=True)> _
       Sub ErrorOccured(ByVal ex As Exception)
+
 
         '       <OperationContract(IsOneWay:=True)> _
         'Sub StatusChange(ByVal ex As Exception)

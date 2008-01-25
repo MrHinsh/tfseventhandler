@@ -19,8 +19,12 @@ Namespace Services
         Implements Contracts.INotification
         Implements IDisposable
 
-        Public Sub New()
+        Private m_TFSServerWidget As Widgets.TFSServerWidget
 
+        Public Sub New()
+            m_TFSServerWidget = New Widgets.TFSServerWidget
+            AddHandler m_TFSServerWidget.StatusChange, AddressOf OnTFSServerWidgetStatusChange
+            AddHandler m_TFSServerWidget.ErrorOccured, AddressOf OnTFSServerWidgetErrorOccured
         End Sub
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
@@ -43,83 +47,98 @@ Namespace Services
 
 #Region " ITeamServers "
 
-        Private _TeamServerAdminCallback As Contracts.ITeamServersCallback
+#Region " CallBack "
 
+        Private m_TeamServerAdminCallback As Contracts.ITeamServersCallback
 
         Public ReadOnly Property TeamServerAdminCallback() As Contracts.ITeamServersCallback
             Get
-                If _TeamServerAdminCallback Is Nothing Then
-                    _TeamServerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ITeamServersCallback)()
+                If m_TeamServerAdminCallback Is Nothing Then
+                    m_TeamServerAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ITeamServersCallback)()
                 End If
-                Return _TeamServerAdminCallback
+                Return m_TeamServerAdminCallback
             End Get
         End Property
+
+#End Region
+
+        Private Sub OnTFSServerWidgetStatusChange(ByVal Status As StatusChangeTypeEnum, ByVal TeamServerItem As TeamServerItem)
+            TeamServerAdminCallback.StatusChange(Status, TeamServerItem)
+        End Sub
+
+        Private Sub OnTFSServerWidgetErrorOccured(ByVal ex As Exception)
+            TeamServerAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex))
+        End Sub
 
         Public Function ServceUrl() As System.Uri Implements Contracts.ITeamServers.ServceUrl
             Return OperationContext.EndpointDispatcher.EndpointAddress.Uri
         End Function
 
         Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.AddServer
-            Try
-                ' get existiong item
-                Dim exTSI = (From tsi As TeamServerItem In Servers Where tsi.Uri.ToString = TeamServer.Uri.ToString).SingleOrDefault
-                If exTSI Is Nothing Then
-                    Servers.Add(TeamServer)
-                    TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
-                    m_TeamServers = Nothing
-                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAdded, TeamServer)
-                Else
-                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerExists, exTSI)
-                End If
-                If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
-            Catch ex As System.Exception
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
-                TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001")))
-            End Try
+            m_TFSServerWidget.Add(TeamServer)
+            'Try
+            '    ' get existiong item
+            '    Dim exTSI = (From tsi As TeamServerItem In Servers Where tsi.Uri.ToString = TeamServer.Uri.ToString).SingleOrDefault
+            '    If exTSI Is Nothing Then
+            '        Servers.Add(TeamServer)
+            '        TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+            '        m_TeamServers = Nothing
+            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Added, TeamServer)
+            '    Else
+            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Exists, exTSI)
+            '    End If
+            '    If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
+            'Catch ex As System.Exception
+            '    My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
+            '    TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001")))
+            'End Try
         End Sub
 
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.RemoveServer
-            Try
-                Servers.Remove(TeamServer)
-                TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
-                m_TeamServers = Nothing
-                TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerRemoved, TeamServer)
-            Catch ex As System.ServiceModel.FaultException
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "disconnection to TFS server unsucessfull")
-                TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove team server", New FaultCode("TFS:EH:TS:0001")))
-            End Try
+            m_TFSServerWidget.Remove(TeamServer)
+            'Try
+            '    Servers.Remove(TeamServer)
+            '    TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
+            '    m_TeamServers = Nothing
+            '    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Removed, TeamServer)
+            'Catch ex As System.ServiceModel.FaultException
+            '    My.Application.Log.WriteException(ex, TraceEventType.Error, "disconnection to TFS server unsucessfull")
+            '    TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove team server", New FaultCode("TFS:EH:TS:0001")))
+            'End Try
         End Sub
 
-        Private m_TeamServers As Collection(Of TeamServerItem)
+        'Private m_TeamServers As Collection(Of TeamServerItem)
 
-        Public ReadOnly Property Servers() As Collection(Of TeamServerItem)
-            Get
-                If m_TeamServers Is Nothing Then
-                    m_TeamServers = Config.TeamFoundationSettingsSection.Instance.LoadServers
-                End If
-                Return m_TeamServers
-            End Get
-        End Property
+        'Public ReadOnly Property Servers() As Collection(Of TeamServerItem)
+        '    Get
+        '        If m_TeamServers Is Nothing Then
+        '            m_TeamServers = Config.TeamFoundationSettingsSection.Instance.LoadServers
+        '        End If
+        '        Return m_TeamServers
+        '    End Get
+        'End Property
 
-        Public Function GetServers() As System.Collections.ObjectModel.Collection(Of DataContracts.TeamServerItem) Implements Contracts.ITeamServers.GetServers
-            Return Servers
-        End Function
+        'Public Function GetServers() As System.Collections.ObjectModel.Collection(Of DataContracts.TeamServerItem) Implements Contracts.ITeamServers.GetServers
+        '    Return m_TFSServerWidget.GetItems()
+        '    'Return Servers
+        'End Function
 
         Public Sub RefreshServers() Implements Contracts.ITeamServers.RefreshServers
-            TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckStarted, Nothing)
-            ' Check for removed servers
-            For Each TSI In Servers
-                Try
-                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheck, TSI)
-                    TSI.TeamFoundationServer.Authenticate()
-                    TSI.HasAuthenticated = True
-                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAuthenticated, TSI)
-                Catch ex As Exception
-                    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerAuthenticationFailed, TSI)
-                End Try
-            Next
-            TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.ServerCheckEnded, Nothing)
-            '-----------
+            m_TFSServerWidget.Refresh()
+            'TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_Started, Nothing)
+            '' Check for removed servers
+            'For Each TSI In Servers
+            '    Try
+            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check, TSI)
+            '        TSI.TeamFoundationServer.Authenticate()
+            '        TSI.HasAuthenticated = True
+            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_OK, TSI)
+            '    Catch ex As Exception
+            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_Failed, TSI)
+            '    End Try
+            'Next
+            'TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_CheckAll_Ended, Nothing)
+            ''-----------
         End Sub
 
 
@@ -155,7 +174,7 @@ Namespace Services
         Public Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
                 ' Find Server
-                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
                 If tsi Is Nothing Then
                     SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
                     Exit Sub
@@ -178,7 +197,7 @@ Namespace Services
         Public Sub RemoveSubscriptions(ByVal TeamServerName As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
             Try
                 ' Find Server
-                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
                 If tsi Is Nothing Then
                     SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
                     Exit Sub
@@ -202,7 +221,8 @@ Namespace Services
             Try
                 Dim RDSubs As New Collection(Of DataContracts.Subscription)
                 ' Find Server
-                Dim tsi = (From TeamServerItem In Servers Where TeamServerItem.Name = TeamServerName).SingleOrDefault
+
+                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
                 If tsi Is Nothing Then
                     SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
                 Else
