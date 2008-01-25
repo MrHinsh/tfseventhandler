@@ -10,11 +10,11 @@ Imports RDdotNet.TeamFoundation.Services.DataContracts
 Namespace Clients
 
 
-    Public Class TeamServerEventArgs
+    Public Class StatusChangeEventArgs(Of TItem)
         Inherits EventArgs
 
         Private m_ChangeType As Services.DataContracts.StatusChangeTypeEnum = StatusChangeTypeEnum.Unknown
-        Private m_TeamServer As TeamServerItem
+        Private m_Item As TItem
 
         Public ReadOnly Property ChangeType() As Services.DataContracts.StatusChangeTypeEnum
             Get
@@ -22,15 +22,15 @@ Namespace Clients
             End Get
         End Property
 
-        Public ReadOnly Property TeamServer() As TeamServerItem
+        Public ReadOnly Property Item() As TItem
             Get
-                Return m_TeamServer
+                Return m_Item
             End Get
         End Property
 
-        Public Sub New(ByVal ChangeType As Services.DataContracts.StatusChangeTypeEnum, ByVal TeamServer As TeamServerItem)
+        Public Sub New(ByVal ChangeType As Services.DataContracts.StatusChangeTypeEnum, ByVal Item As TItem)
             m_ChangeType = ChangeType
-            m_TeamServer = TeamServer
+            m_Item = Item
         End Sub
 
     End Class

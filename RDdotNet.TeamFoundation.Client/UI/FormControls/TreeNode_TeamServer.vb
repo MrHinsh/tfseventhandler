@@ -7,51 +7,33 @@ Imports RDdotNet.TeamFoundation.Config
 Namespace UI.FormControls
 
     Friend Class TreeNode_TeamServer
-        Inherits TreeNode
+        Inherits TreeNodeItem(Of TeamServerItem)
 
-        Private m_EventHandler As TFSEventHandlerClient
-        Private m_TeamServer As TeamServerItem
-        Private m_ContextMenuStrip As New ContextMenuStrip
         Private _SubscriptionsNode As TreeNode_Subscriptions
 
         Public Sub New(ByVal Key As String, ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem)
+            MyBase.New(Key, EventHandler, TeamServer)
             Me.Text = TeamServer.Name
-            Me.Name = Key
-            m_TeamServer = TeamServer
             '-----------------------
             ' Create Handler and attach Events
-            m_EventHandler = EventHandler
-            AddHandler m_EventHandler.TeamServerUpdated, AddressOf OnTeamServersUpdated
+            AddHandler EventHandler.TeamServerUpdated, AddressOf OnStatusUpdate
             '-----------------------
+            Me.ContextMenuStrip.Items.Add(New ToolStripButton("Remove Team Server", Nothing, AddressOf RemoveTeamServer_Click))
+
             RunChecks()
             '-----------------------
             ' Then make sure that all nodes are expanded
             Me.ExpandAll()
         End Sub
 
-        Friend ReadOnly Property EventHandler() As TFSEventHandlerClient
-            Get
-                Return m_EventHandler
-            End Get
-        End Property
-
-        Friend ReadOnly Property TeamServer() As TeamServerItem
-            Get
-                Return m_TeamServer
-            End Get
-        End Property
-
         Private Sub RunChecks()
             '------------------------
             ' Create Contect Menu as Add events
-            m_ContextMenuStrip = New ContextMenuStrip
-            m_ContextMenuStrip.Items.Add(New ToolStripButton("Remove Team Server", Nothing, AddressOf RemoveTeamServer_Click))
-            If Not Me.TeamServer.HasAuthenticated Then
-                m_ContextMenuStrip.Items.Add(New ToolStripButton("Authenticate Team Server", Nothing, AddressOf RemoveTeamServer_Click))
+            If Not Me.Item.HasAuthenticated Then
+                Me.ContextMenuStrip.Items.Add(New ToolStripButton("Authenticate Team Server", Nothing, AddressOf RemoveTeamServer_Click))
             End If
-            Me.ContextMenuStrip = m_ContextMenuStrip
             '---------------------
-            If Not Me.TeamServer.IsValid Then
+            If Not Me.Item.IsValid Then
                 Me.ForeColor = Drawing.Color.Red
             Else
                 Me.ForeColor = Drawing.Color.DarkGreen
@@ -61,24 +43,27 @@ Namespace UI.FormControls
 
         Private Sub RemoveTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
             ' Get Selected Team Server
-            Dim TeamServer As TreeNode_TeamServer = CType(Me.TreeView.SelectedNode, TreeNode_TeamServer)
+            'Dim TeamServer As TreeNode_TeamServer = CType(Me.TreeView.SelectedNode, TreeNode_TeamServer)
             ' Call remove
-            m_EventHandler.RemoveServer(m_TeamServer)
+            MyBase.EventHandler.RemoveServer(Me.Item)
         End Sub
 
-        Public Sub OnTeamServersUpdated(ByVal source As TFSEventHandlerClient, ByVal e As TeamServerEventArgs)
+        ' Edit this for functionality
+        Protected Overrides Sub OnStatusUpdate(ByVal source As Clients.TFSEventHandlerClient, ByVal e As Clients.StatusChangeEventArgs(Of Services.DataContracts.TeamServerItem))
             ' Only run for own Team Serfver details
-            If Not e.TeamServer Is Nothing AndAlso e.TeamServer.Uri.ToString = m_TeamServer.Uri.ToString Then
+            If Not e.Item Is Nothing AndAlso e.Item.Uri.ToString = e.Item.Uri.ToString Then
                 Select Case e.ChangeType
-                    Case StatusChangeTypeEnum.ServerCheck, StatusChangeTypeEnum.ServerAuthenticated, StatusChangeTypeEnum.ServerAuthenticationFailed, StatusChangeTypeEnum.ServerAdded
-                        m_TeamServer = e.TeamServer
+                    Case StatusChangeTypeEnum.Item_Check, StatusChangeTypeEnum.Item_Check_OK, StatusChangeTypeEnum.Item_Check_Failed, StatusChangeTypeEnum.Item_Added
+                        Item = e.Item
                         RunChecks()
                 End Select
-                If e.ChangeType = StatusChangeTypeEnum.ServerAuthenticated Then
+                If e.ChangeType = StatusChangeTypeEnum.Item_Check_OK Then
                     StartSubscriptions()
                 End If
             End If
         End Sub
+
+
 
         Private Delegate Sub delStartSubscriptions()
 
@@ -86,10 +71,11 @@ Namespace UI.FormControls
             If Me.TreeView.InvokeRequired Then
                 Me.TreeView.Invoke(New delStartSubscriptions(AddressOf StartSubscriptions))
             Else
-                Dim nodeID As Integer = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, TeamServer, 100))
+                Dim nodeID As Integer = Me.Nodes.Add(New TreeNode_Subscriptions(EventHandler, Item, 100))
                 _SubscriptionsNode = Me.Nodes(nodeID)
             End If
         End Sub
+
 
     End Class
 

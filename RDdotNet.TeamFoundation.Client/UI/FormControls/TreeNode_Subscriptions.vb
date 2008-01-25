@@ -43,29 +43,29 @@ Namespace UI.FormControls
         End Sub
 
         Protected Overrides Sub GenerateChildren(ByVal State As Object)
-            Me.ChangeStatus(Status.Working)
+            Me.TreeNode_Inner_ChangeStatus(Status.Working)
             Dim subscriptions As Collection(Of Subscription) = Nothing
             Try
                 subscriptions = EventHandler.GetSubscriptions(m_TeamServer.Name)
             Catch ex As ServiceModel.FaultException
-                AddError("Error", ex)
-                Me.ChangeStatus(Status.Faulted)
+                TreeNode_Inner_AddError("Error", ex)
+                Me.TreeNode_Inner_ChangeStatus(Status.Faulted)
             Finally
                 GenerateChildren(subscriptions)
             End Try
         End Sub
 
         Public Overloads Sub GenerateChildren(ByVal subscriptions As Collection(Of Subscription))
-            ClearNodes()
+            TreeNode_Inner_ClearNodes()
             If Not subscriptions Is Nothing Then
                 For Each s As Subscription In subscriptions
-                    AddNode(New TreeNode_Subscription(EventHandler, s))
+                    TreeNode_Inner_AddNode(New TreeNode_Subscription(EventHandler, s))
                 Next
             End If
-            CheckEmpty(SubNodeNameMap, "Subscriptions")
+            TreeNode_Inner_CheckEmpty(SubNodeNameMap, "Subscriptions")
             ' Then make sure that all nodes are expanded
-            Me.ExpandAll()
-            Me.ChangeStatus(Status.Normal)
+            Me.TreeNode_Inner_ExpandAll()
+            Me.TreeNode_Inner_ChangeStatus(Status.Normal)
         End Sub
 
         Private Sub AddSubScription_Click(ByVal sender As Object, ByVal e As EventArgs)

@@ -133,14 +133,17 @@ Public Property HasAuthenticated() As Boolean
     <DataContract(), Serializable()> _
     Public Enum StatusChangeTypeEnum
         <EnumMember()> Unknown
-        <EnumMember()> ServerAdded
-        <EnumMember()> ServerExists
-        <EnumMember()> ServerRemoved
-        <EnumMember()> ServerCheck
-        <EnumMember()> ServerCheckStarted
-        <EnumMember()> ServerCheckEnded
-        <EnumMember()> ServerAuthenticated
-        <EnumMember()> ServerAuthenticationFailed
+        <EnumMember()> Item_Added
+        <EnumMember()> Item_Exists
+        <EnumMember()> Item_NotExists
+        <EnumMember()> Item_Removed
+        <EnumMember()> Item_Check
+        <EnumMember()> Item_Check_Started
+        <EnumMember()> Item_Check_OK
+        <EnumMember()> Item_Check_Failed
+        <EnumMember()> Item_Check_Ended
+        <EnumMember()> Item_CheckAll_Started
+        <EnumMember()> Item_CheckAll_Ended
     End Enum
 
 End Namespace

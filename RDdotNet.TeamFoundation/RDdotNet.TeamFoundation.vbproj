@@ -68,7 +68,7 @@
     <Compile Include="Clients\Proxy\EventsClient.vb" />
     <Compile Include="Clients\Proxy\HandlersClient.vb" />
     <Compile Include="Clients\Proxy\TeamServersClient.vb" />
-    <Compile Include="Clients\TeamServerEventArgs.vb" />
+    <Compile Include="Clients\StatusChangeEventArgsEventArgs.vb" />
     <Compile Include="Clients\TFSEventHandlerClient.vb" />
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
@@ -135,6 +135,8 @@
     <Compile Include="Services\FaultContract\SubscriptionFault.vb" />
     <Compile Include="Services\FaultContract\TeamServerFault.vb" />
     <Compile Include="Services\QueuerService.vb" />
+    <Compile Include="Services\Widgets\ItemElementWidget.vb" />
+    <Compile Include="Services\Widgets\TFSServerWidget.vb" />
     <Compile Include="SubscriptionHelper.vb" />
   </ItemGroup>
   <ItemGroup>
