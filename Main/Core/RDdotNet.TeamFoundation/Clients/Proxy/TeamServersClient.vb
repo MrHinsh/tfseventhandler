@@ -29,9 +29,9 @@ Namespace Clients.Proxy
             Return MyBase.Channel.ServceUrl()
         End Function
 
-        Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
-            Return MyBase.Channel.GetServers()
-        End Function
+        'Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
+        '    Return MyBase.Channel.GetServers()
+        'End Function
 
     End Class
 

@@ -28,29 +28,29 @@ Namespace UI.FormControls
         End Sub
 
         Protected Overrides Sub GenerateChildren(ByVal state As Object)
-            Me.ChangeStatus(Status.Working)
+            Me.TreeNode_Inner_ChangeStatus(Status.Working)
             Dim AssemblyItems As Collection(Of AssemblyItem) = Nothing
             Try
                 AssemblyItems = EventHandler.GetAssemblys()
             Catch ex As Exception
-                AddError("Error", ex)
-                Me.ChangeStatus(Status.Faulted)
+                TreeNode_Inner_AddError("Error", ex)
+                Me.TreeNode_Inner_ChangeStatus(Status.Faulted)
             Finally
                 Me.GenerateChildren(AssemblyItems)
             End Try
         End Sub
 
         Public Overloads Sub GenerateChildren(ByVal AssemblyItems As Collection(Of AssemblyItem))
-            ClearNodes()
+            TreeNode_Inner_ClearNodes()
             If Not AssemblyItems Is Nothing Then
                 For Each AI As AssemblyItem In AssemblyItems
-                    AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
+                    TreeNode_Inner_AddNode(New TreeNode_AssemblyItem(EventHandler, AI))
                 Next
             End If
-            CheckEmpty(SubNodeNameMap, "Event Handlers")
-            Me.ChangeStatus(Status.Normal)
+            TreeNode_Inner_CheckEmpty(SubNodeNameMap, "Event Handlers")
+            Me.TreeNode_Inner_ChangeStatus(Status.Normal)
             ' Then make sure that all nodes are expanded
-            Me.ExpandAll()
+            Me.TreeNode_Inner_ExpandAll()
         End Sub
 
         Public Sub OnHandlersUpdated(ByVal AssemblyManaifest As RDdotNet.TeamFoundation.Services.DataContracts.AssemblyManaifest)
