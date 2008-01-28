@@ -13,7 +13,7 @@ Namespace UI.FormControls
         Inherits TreeNodeItems(Of TreeNode_Subscription, SubscriptionItem)
 
         Private SubNodeNameMap As String = "Subscription:{0}"
-
+        Private m_EventTypes As ToolStripMenuItem
         Private m_TeamServer As TeamServerItem
 
         Public Sub New(ByVal EventHandler As TFSEventHandlerClient, ByVal TeamServer As TeamServerItem, Optional ByVal Delay As Integer = 0)
@@ -24,15 +24,8 @@ Namespace UI.FormControls
             m_TeamServer = TeamServer
             '------------------------
             '-----------------------
-            Dim EvntSubNode As New ToolStripMenuItem("Add Event Type")
-            ContextMenuStrip.Items.Add(EvntSubNode)
-            ' Create Contect Menu as Add events
-            For Each EventType As EventTypes In [Enum].GetValues(GetType(EventTypes))
-                If Not EventType = EventTypes.Unknown Then
-                    Dim tsb As New ToolStripButton(EventType.ToString, Nothing, AddressOf AddSubScription_Click)
-                    EvntSubNode.DropDownItems.Add(tsb)
-                End If
-            Next
+            m_EventTypes = New ToolStripMenuItem("Add Event Type")
+            ContextMenuStrip.Items.Add(m_EventTypes)
             '-----------------------
             ' Initilise team server List
             Refresh()
@@ -44,10 +37,12 @@ Namespace UI.FormControls
                 Case StatusChangeTypeEnum.Item_Added
                     ' Fired when a new item is added on the server
                     TreeNode_ServerAdd(e.Item)
+                    RefreshContectMenu()
                 Case StatusChangeTypeEnum.Item_Removed
                     ' Fired when an Item is removed from the server
                     Dim x As TreeNode_Subscription = TreeNode_SubscriptionFind(e.Item)
                     If Not x Is Nothing Then UpdateInnerNode(NodeUpdateEnum.Delete, x)
+                    RefreshContectMenu()
                 Case StatusChangeTypeEnum.Item_CheckAll_Started
                     ' Fired when a Refresh All is started
                     Me.ChangeNodeStatus(Status.Working)
@@ -56,6 +51,7 @@ Namespace UI.FormControls
                     TreeNode_ServerAdd(e.Item)
                 Case StatusChangeTypeEnum.Item_Check_OK
                     ' Fired when a check suceeds
+                    RefreshContectMenu()
                 Case StatusChangeTypeEnum.Item_Check_Failed
                     ' Fired when a check fails
                 Case StatusChangeTypeEnum.Item_Check_Ended
@@ -65,6 +61,7 @@ Namespace UI.FormControls
                     ' Fired when a Refresh All is finished
                     Me.ChangeNodeStatus(Status.Normal)
                     CheckChildren()
+                    RefreshContectMenu()
                 Case StatusChangeTypeEnum.Item_Exists
                     ' Fired when an items is added that already exists
                     Dim ServerExistsMessage As String = "The server {0} already exists and can not be added"
@@ -123,14 +120,14 @@ Namespace UI.FormControls
         Private Sub TreeNode_ServerAdd(ByVal Subscription As SubscriptionItem)
             Dim key As String = String.Format(SubNodeNameMap, Subscription.ID)
             SyncLock Me.Nodes
-                If Not TreeNode_ServerExists(Subscription) Then
+                If Not TreeNode_SubscriptionExists(Subscription) Then
                     ' Add Node
                     UpdateInnerNode(NodeUpdateEnum.Add, New TreeNode_Subscription(key, EventHandler, m_TeamServer, Subscription))
                 End If
             End SyncLock
         End Sub
 
-        Private Function TreeNode_ServerExists(ByVal Subscription As SubscriptionItem) As Boolean
+        Private Function TreeNode_SubscriptionExists(ByVal Subscription As SubscriptionItem) As Boolean
             Dim key As String = String.Format(SubNodeNameMap, Subscription.ID)
             If Me.Nodes.Find(key, False).Count > 0 Then
                 Return True
@@ -145,6 +142,41 @@ Namespace UI.FormControls
             End If
             Return Nothing
         End Function
+
+        Private Function TreeNode_EventExists(ByVal EventType As EventTypes) As Boolean
+            For Each node As TreeNode In Me.Nodes
+                Try
+                    Dim tns As TreeNode_Subscription = node
+                    If tns.Item.EventType = EventType Then
+                        Return True
+                    End If
+                Catch ex As Exception
+
+                End Try
+            Next
+            Return False
+        End Function
+
+#End Region
+
+#Region " ContectMenu Manipulations "
+
+        Private Delegate Sub RefreshContectMenuDel()
+
+        Private Sub RefreshContectMenu()
+            If Me.TreeView.InvokeRequired Then
+                Me.TreeView.Invoke(New RefreshContectMenuDel(AddressOf RefreshContectMenu))
+            Else
+                m_EventTypes.DropDownItems.Clear()
+                ' Create Contect Menu as Add events
+                For Each EventType As EventTypes In [Enum].GetValues(GetType(EventTypes))
+                    If Not TreeNode_EventExists(EventType) Then
+                        Dim tsb As New ToolStripButton(EventType.ToString, Nothing, AddressOf AddSubScription_Click)
+                        m_EventTypes.DropDownItems.Add(tsb)
+                    End If
+                Next
+            End If
+        End Sub
 
 #End Region
 
