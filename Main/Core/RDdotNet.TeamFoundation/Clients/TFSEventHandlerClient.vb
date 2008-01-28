@@ -231,9 +231,7 @@ Namespace Clients
         End Sub
 
         Public Sub ErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.ITeamServersCallback.ErrorOccured
-            TeamServersClient.InnerChannel.Abort()
             MsgBox(ex.ToString)
-
         End Sub
 
 

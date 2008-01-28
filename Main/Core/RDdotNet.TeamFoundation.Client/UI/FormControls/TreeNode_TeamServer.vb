@@ -19,7 +19,6 @@ Namespace UI.FormControls
             AddHandler EventHandler.TeamServerUpdated, AddressOf OnStatusUpdate
             '-----------------------
             Me.ContextMenuStrip.Items.Add(New ToolStripButton("Remove Team Server", Nothing, AddressOf RemoveTeamServer_Click))
-            Me.ContextMenuStrip.Items.Add(New ToolStripButton("Show Log", Nothing, AddressOf ShowLog_Click))
             '-----------------------
             RunChecks()
             '-----------------------
@@ -31,9 +30,6 @@ Namespace UI.FormControls
         Private Sub RunChecks()
             '------------------------
             ' Create Contect Menu as Add events
-            If Not Me.Item.HasAuthenticated Then
-                Me.ContextMenuStrip.Items.Add(New ToolStripButton("Authenticate Team Server", Nothing, AddressOf RemoveTeamServer_Click))
-            End If
             '---------------------
             If Not Me.Item.IsValid Then
                 Me.ForeColor = Drawing.Color.Red
@@ -44,13 +40,6 @@ Namespace UI.FormControls
         End Sub
 
         Private Sub RemoveTeamServer_Click(ByVal sender As Object, ByVal e As EventArgs)
-            ' Get Selected Team Server
-            'Dim TeamServer As TreeNode_TeamServer = CType(Me.TreeView.SelectedNode, TreeNode_TeamServer)
-            ' Call remove
-            MyBase.EventHandler.RemoveServer(Me.Item)
-        End Sub
-
-        Private Sub ShowLog_Click(ByVal sender As Object, ByVal e As EventArgs)
             ' Get Selected Team Server
             'Dim TeamServer As TreeNode_TeamServer = CType(Me.TreeView.SelectedNode, TreeNode_TeamServer)
             ' Call remove

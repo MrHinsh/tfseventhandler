@@ -46,7 +46,20 @@ Namespace Config
         End Property
 
         Private Shared Function LoadConfiguration() As TeamFoundationSettingsSection
-            innerConfig = System.Configuration.ConfigurationManager.OpenExeConfiguration("RDdotNet.TeamFoundation.dll")
+            '---------------------
+            ' Get the application configuration file path.
+            'Dim exeFilePath As String = System.IO.Path.Combine(Environment.CurrentDirectory, "RDdotNet.TeamFoundation.dll.config")
+            Dim exeFilePath As String = System.IO.Path.Combine(My.Application.Info.DirectoryPath, "RDdotNet.TeamFoundation.dll.config")
+            ' Map to the application configuration file.
+            Dim configFile As New ExeConfigurationFileMap()
+            configFile.ExeConfigFilename = exeFilePath
+            innerConfig = ConfigurationManager.OpenMappedExeConfiguration(configFile, ConfigurationUserLevel.None)
+
+            My.Application.Log.WriteEntry("Loaded config from " & configFile.ExeConfigFilename, TraceEventType.Information, 1)
+            My.Application.Log.WriteEntry("Config " & (Not innerConfig Is Nothing).ToString, TraceEventType.Information, 1)
+            ' Causes error when running as a service
+            'innerConfig = System.Configuration.ConfigurationManager.OpenExeConfiguration("RDdotNet.TeamFoundation.dll")
+            '---------------------
             Dim section As Object = innerConfig.GetSection(TeamFoundationSettingsSection.SectionName)
             Dim configSection As TeamFoundationSettingsSection = TryCast(section, TeamFoundationSettingsSection)
             If Not section Is Nothing AndAlso configSection Is Nothing Then

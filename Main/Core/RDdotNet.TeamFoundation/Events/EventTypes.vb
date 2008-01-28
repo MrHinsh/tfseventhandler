@@ -6,7 +6,7 @@ Namespace Events
     Public Enum EventTypes
         <EnumMember()> Unknown
         <EnumMember()> AclChangedEven
-        <EnumMember()> Branchmovedevent
+        <EnumMember()> BranchMovedEvent
         <EnumMember()> BuildCompletionEvent
         <EnumMember()> BuildStatusChangeEvent
         <EnumMember()> CommonStructureChangedEvent
