@@ -219,6 +219,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9E9C18DE1BBF499894C183022C4ED450"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A197FE6711AD4E10ABCB61C02CEBD09F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1019,6 +1025,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9E9C18DE1BBF499894C183022C4ED450"
+            {
+            "SourcePath" = "8:..\\TFSEventHandlerExplorerSetup\\browser.ico"
+            "TargetName" = "8:browser.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A197FE6711AD4E10ABCB61C02CEBD09F"
             {
             "SourcePath" = "8:sharemanager.ico"
@@ -1421,7 +1447,7 @@
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_065414E24B104DC698AC1EF23C308A08"
                     {
                     "Name" = "8:EventHandlers"
-                    "AlwaysCreate" = "11:FALSE"
+                    "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_B8C87647E1B340E596F8B06E29C51F75"
@@ -1458,14 +1484,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TFS Event Handler Server"
-        "ProductCode" = "8:{C18E7D93-5163-4E57-A192-F8E5F2E0F377}"
-        "PackageCode" = "8:{DCBBD87F-F1FD-42F8-AF7E-6B1B707F62C9}"
+        "ProductCode" = "8:{E8335CCE-B03F-481B-B360-857025DD268B}"
+        "PackageCode" = "8:{D703092E-BC23-4CE8-B7DC-223E8E820698}"
         "UpgradeCode" = "8:{5D6020E5-123F-4611-8C58-ECF6147F1DA8}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.2.1"
+        "ProductVersion" = "8:0.2.2"
         "Manufacturer" = "8:RDdotNet"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.codeplex.com/tfseventhandler"
@@ -1589,7 +1615,7 @@
             "Target" = "8:_6DBF9279334D40AA873555FE98EF3447"
             "Folder" = "8:_4C2A48E7378449E98EDDDFF4CBA36F9D"
             "WorkingFolder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
-            "Icon" = "8:_A197FE6711AD4E10ABCB61C02CEBD09F"
+            "Icon" = "8:_9E9C18DE1BBF499894C183022C4ED450"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_72F0934F973045F491EBDDAC9F8A8239"
@@ -1601,20 +1627,6 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_43988F1801DC4624A05721C7CFF38350"
-            "Folder" = "8:_20E5DF1AB4C94AEBAF6CEE97BC72C6A5"
-            "WorkingFolder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
-            "Icon" = "8:_A197FE6711AD4E10ABCB61C02CEBD09F"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A8D2A0AB55984F5281EA24B6784A6E92"
-            {
-            "Name" = "8:TFS Event Handler Blog"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_5F89B23FD4EE4661891F7AF6A653B187"
             "Folder" = "8:_20E5DF1AB4C94AEBAF6CEE97BC72C6A5"
             "WorkingFolder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
             "Icon" = "8:_A197FE6711AD4E10ABCB61C02CEBD09F"
@@ -1632,6 +1644,20 @@
             "Folder" = "8:_20E5DF1AB4C94AEBAF6CEE97BC72C6A5"
             "WorkingFolder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
             "Icon" = "8:_58CA41B59EB84C27BA11A63A75F7D630"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CD9F5BEED55C4360A88C4B08F9E0B426"
+            {
+            "Name" = "8:EventHandlers Folder"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_065414E24B104DC698AC1EF23C308A08"
+            "Folder" = "8:_20E5DF1AB4C94AEBAF6CEE97BC72C6A5"
+            "WorkingFolder" = "8:_BEC9D82653FB48E4928CCF4430A0AD73"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }

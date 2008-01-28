@@ -23,8 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4E1FBF8A-7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{6CE11549-BE4A-41E8-A156-F73A7062724F}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TFSEventHandlerSetup", "TFSEventHandlerSetup\TFSEventHandlerSetup.vdproj", "{76BF8BBF-6A84-4521-B178-66196B52271D}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TFSEventHandlerExplorerSetup", "TFSEventHandlerExplorerSetup\TFSEventHandlerExplorerSetup.vdproj", "{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HostService", "RDdotNet.TeamFoundation.EventHandlerHostService\HostService.vbproj", "{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}"
@@ -33,7 +31,7 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TFSEventHandlerServerSetup"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 10
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -61,22 +59,18 @@ Global
 		SccProjectTopLevelParentUniqueName6 = TFSCore.sln
 		SccProjectName6 = RDdotNet.TeamFoundation.EventHandlerHost
 		SccLocalPath6 = RDdotNet.TeamFoundation.EventHandlerHost
-		SccProjectUniqueName7 = TFSEventHandlerSetup\\TFSEventHandlerSetup.vdproj
+		SccProjectUniqueName7 = TFSEventHandlerExplorerSetup\\TFSEventHandlerExplorerSetup.vdproj
 		SccProjectTopLevelParentUniqueName7 = TFSCore.sln
-		SccProjectName7 = TFSEventHandlerSetup
-		SccLocalPath7 = TFSEventHandlerSetup
-		SccProjectUniqueName8 = TFSEventHandlerExplorerSetup\\TFSEventHandlerExplorerSetup.vdproj
+		SccProjectName7 = TFSEventHandlerExplorerSetup
+		SccLocalPath7 = TFSEventHandlerExplorerSetup
+		SccProjectUniqueName8 = RDdotNet.TeamFoundation.EventHandlerHostService\\HostService.vbproj
 		SccProjectTopLevelParentUniqueName8 = TFSCore.sln
-		SccProjectName8 = TFSEventHandlerExplorerSetup
-		SccLocalPath8 = TFSEventHandlerExplorerSetup
-		SccProjectUniqueName9 = RDdotNet.TeamFoundation.EventHandlerHostService\\HostService.vbproj
+		SccProjectName8 = RDdotNet.TeamFoundation.EventHandlerHostService
+		SccLocalPath8 = RDdotNet.TeamFoundation.EventHandlerHostService
+		SccProjectUniqueName9 = TFSEventHandlerServerSetup\\TFSEventHandlerServerSetup.vdproj
 		SccProjectTopLevelParentUniqueName9 = TFSCore.sln
-		SccProjectName9 = RDdotNet.TeamFoundation.EventHandlerHostService
-		SccLocalPath9 = RDdotNet.TeamFoundation.EventHandlerHostService
-		SccProjectUniqueName10 = TFSEventHandlerServerSetup\\TFSEventHandlerServerSetup.vdproj
-		SccProjectTopLevelParentUniqueName10 = TFSCore.sln
-		SccProjectName10 = TFSEventHandlerServerSetup
-		SccLocalPath10 = TFSEventHandlerServerSetup
+		SccProjectName9 = TFSEventHandlerServerSetup
+		SccLocalPath9 = TFSEventHandlerServerSetup
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -147,12 +141,6 @@ Global
 		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Debug|.NET.ActiveCfg = Debug
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Debug|Any CPU.ActiveCfg = Debug
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Release|.NET.ActiveCfg = Release
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Release|Any CPU.ActiveCfg = Release
-		{76BF8BBF-6A84-4521-B178-66196B52271D}.Release|Mixed Platforms.ActiveCfg = Release
 		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|.NET.ActiveCfg = Debug
 		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|Any CPU.ActiveCfg = Debug
 		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|Mixed Platforms.ActiveCfg = Debug
@@ -189,7 +177,6 @@ Global
 		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
 		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
 		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
-		{76BF8BBF-6A84-4521-B178-66196B52271D} = {6CE11549-BE4A-41E8-A156-F73A7062724F}
 		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20} = {6CE11549-BE4A-41E8-A156-F73A7062724F}
 		{5E40AD55-3E23-40BA-9631-37EC50446874} = {6CE11549-BE4A-41E8-A156-F73A7062724F}
 	EndGlobalSection

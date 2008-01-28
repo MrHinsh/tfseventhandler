@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RDdotNet.TeamFoundation")> 
+<Assembly: AssemblyTitle("RDdotNet Team Foundation")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("RDdotNet")> 
 <Assembly: AssemblyProduct("TFS Event Handler")> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("2.0.0.0")> 
+<Assembly: AssemblyFileVersion("2.0.0.0")> 
