@@ -31,7 +31,6 @@ Namespace UI.FormControls
             Me.uxTreeView = New System.Windows.Forms.TreeView
             Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer
             Me.uxToolStrip = New System.Windows.Forms.ToolStrip
-            Me.uxToolStripButtonRefresh = New System.Windows.Forms.ToolStripButton
             uxToolStripButtonConnect = New System.Windows.Forms.ToolStripButton
             Me.ToolStripContainer1.ContentPanel.SuspendLayout()
             Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -81,21 +80,13 @@ Namespace UI.FormControls
             '
             Me.uxToolStrip.Dock = System.Windows.Forms.DockStyle.None
             Me.uxToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-            Me.uxToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {uxToolStripButtonConnect, Me.uxToolStripButtonRefresh})
+            Me.uxToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {uxToolStripButtonConnect})
             Me.uxToolStrip.Location = New System.Drawing.Point(0, 0)
             Me.uxToolStrip.Name = "uxToolStrip"
             Me.uxToolStrip.Padding = New System.Windows.Forms.Padding(0, 0, 0, 1)
             Me.uxToolStrip.Size = New System.Drawing.Size(255, 25)
             Me.uxToolStrip.Stretch = True
             Me.uxToolStrip.TabIndex = 0
-            '
-            'uxToolStripButtonRefresh
-            '
-            Me.uxToolStripButtonRefresh.Image = CType(resources.GetObject("uxToolStripButtonRefresh.Image"), System.Drawing.Image)
-            Me.uxToolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
-            Me.uxToolStripButtonRefresh.Name = "uxToolStripButtonRefresh"
-            Me.uxToolStripButtonRefresh.Size = New System.Drawing.Size(65, 21)
-            Me.uxToolStripButtonRefresh.Text = "Refresh"
             '
             'TFSEventHandlerControl
             '
@@ -117,7 +108,6 @@ Namespace UI.FormControls
         Friend WithEvents uxTreeView As System.Windows.Forms.TreeView
         Friend WithEvents ToolStripContainer1 As System.Windows.Forms.ToolStripContainer
         Friend WithEvents uxToolStrip As System.Windows.Forms.ToolStrip
-        Friend WithEvents uxToolStripButtonRefresh As System.Windows.Forms.ToolStripButton
 
     End Class
 

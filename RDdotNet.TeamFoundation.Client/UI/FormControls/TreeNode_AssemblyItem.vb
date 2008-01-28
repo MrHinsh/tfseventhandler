@@ -26,7 +26,7 @@ Namespace UI.FormControls
             '-----------------------
             ' Create Contect Menu as Add events
             _ContextMenuStrip = New ContextMenuStrip
-            _ContextMenuStrip.Items.Add(New ToolStripButton("Remove")) 'TODO: , Nothing, AddressOf AddTeamServer_Click))
+            '_ContextMenuStrip.Items.Add(New ToolStripButton("Remove")) 'TODO: , Nothing, AddressOf AddTeamServer_Click))
             Me.ContextMenuStrip = _ContextMenuStrip
             '-----------------------
             ' Initilise team server List

@@ -16,7 +16,7 @@ Namespace UI.FormControls
             '--------------------
         End Sub
 
-        Private Sub uxToolStripButtonRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles uxToolStripButtonRefresh.Click
+        Private Sub uxToolStripButtonRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
             RefershEventHandlers()
         End Sub
 
