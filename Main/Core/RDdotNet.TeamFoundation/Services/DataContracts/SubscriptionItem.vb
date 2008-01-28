@@ -128,7 +128,7 @@ Namespace Services.DataContracts
         Public Sub New(ByVal TeamServerItem As TeamServerItem, ByVal Subscription As Microsoft.TeamFoundation.Server.Subscription)
             Me.TeamServerItem = TeamServerItem
             Me.ID = Subscription.ID
-            Me.EventType = CType([Enum].Parse(GetType(EventTypes), Subscription.EventType), EventTypes)
+            Me.EventType = CType([Enum].Parse(GetType(EventTypes), Subscription.EventType, True), EventTypes)
             Me.ConditionString = Subscription.ConditionString
             Me.Device = Subscription.Device
             Me.Subscriber = Subscription.Subscriber

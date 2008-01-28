@@ -43,8 +43,8 @@ Namespace Services.Widgets
 
         Public Overrides Sub Remove(ByVal Subscription As SubscriptionItem)
             Try
-                InnerRemove(Subscription)
                 Me.TFSDeleteSubscribe(Subscription)
+                InnerRemove(Subscription)
             Catch ex As System.ServiceModel.FaultException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to remove subscription")
                 OnErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove subscription", New FaultCode("TFS:EH:TS:0003")))
@@ -65,8 +65,8 @@ Namespace Services.Widgets
 
         Public Overrides Sub Refresh()
             Try
-                InnerRefresh()
                 TFSSyncSubscriptions(m_TeamServerItem)
+                InnerRefresh()
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to refresh subscriptions")
                 OnErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to refresh subscriptions", New FaultCode("TFS:EH:TS:0002")))
@@ -75,8 +75,8 @@ Namespace Services.Widgets
 
         Public Overloads Overrides Sub Refresh(ByVal Item As DataContracts.SubscriptionItem)
             Try
-                InnerRefresh(Item)
                 TFSSyncSubscriptions(m_TeamServerItem)
+                InnerRefresh(Item)
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to refresh subscriptions")
                 OnErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to refresh subscriptions", New FaultCode("TFS:EH:TS:0002")))
@@ -100,7 +100,7 @@ Namespace Services.Widgets
             Dim DeliverySchedule As DeliverySchedule = CType([Enum].Parse(GetType(DeliverySchedule), source.DeliveryPreference.Schedule), DeliverySchedule)
             Dim DeliveryType As DeliveryType = CType([Enum].Parse(GetType(DeliveryType), source.DeliveryPreference.Type), DeliveryType)
             Dim dpi As New DeliveryPreferenceItem(source.DeliveryPreference.Address, DeliverySchedule, DeliveryType)
-            Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), source.EventType), EventTypes)
+            Dim EventType As EventTypes = CType([Enum].Parse(GetType(EventTypes), source.EventType, True), EventTypes)
             Return New SubscriptionItem(m_TeamServerItem, source.ID, EventType, source.ConditionString, source.Device, source.Subscriber, source.Tag, dpi)
         End Function
 
@@ -159,7 +159,8 @@ Namespace Services.Widgets
             ' Collect Eventing Bit
             Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
             ' Convert TFS Subscriptuions to RDdotNet Subscriptions
-            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(My.User.Name, "TFSEventHandler")
+            My.Application.Log.WriteEntry("Running under: " & Environment.UserName, TraceEventType.Information)
+            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(Environment.UserName, "TFSEventHandler")
                 Dim SubscriptionItem As New DataContracts.SubscriptionItem(m_TeamServerItem, serverSub)
                 If Not Me.Exists(SubscriptionItem) Then
                     Me.InnerAdd(SubscriptionItem)
