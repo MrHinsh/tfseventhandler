@@ -21,6 +21,7 @@
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OptionInfer>On</OptionInfer>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,7 +30,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>RDdotNet.TeamFoundation.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,7 +41,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>RDdotNet.TeamFoundation.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.TeamFoundation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -73,6 +78,8 @@
     <Compile Include="Clients\Proxy\SubscriptionsClient.vb" />
     <Compile Include="Config\ConfigurationElementCollection.vb" />
     <Compile Include="Config\AssemblyItemElement.vb" />
+    <Compile Include="Config\DeliveryPreferenceItemElement.vb" />
+    <Compile Include="Config\SubscriptionItemElement.vb" />
     <Compile Include="Config\CredentialsItemElement.vb" />
     <Compile Include="Config\DebugItemElement.vb" />
     <Compile Include="Config\HandlerCollection.vb" />
@@ -96,6 +103,7 @@
     <Compile Include="Services\Adapters\DataContract.vb" />
     <Compile Include="Services\Adapters\IAdapter.vb" />
     <Compile Include="Services\AEventService.vb" />
+    <Compile Include="Services\DataContracts\DeliveryPreferenceItem.vb" />
     <Compile Include="Services\DataContracts\TeamServerCredentials.vb" />
     <Compile Include="Services\DataContracts\TeamServerItem.vb" />
     <Compile Include="Services\FaultContracts\TeamFoundationServerUnauthorizedException.vb" />
@@ -113,7 +121,7 @@
     <Compile Include="Services\DataContracts\AssemblyManaifest.vb" />
     <Compile Include="Services\DataContracts\AssemblyValidationResult.vb" />
     <Compile Include="Services\DataContracts\EventHandlerItem.vb" />
-    <Compile Include="Services\DataContracts\Subscription.vb" />
+    <Compile Include="Services\DataContracts\SubscriptionItem.vb" />
     <Compile Include="Services\DataContracts\SubscriptionInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -135,8 +143,9 @@
     <Compile Include="Services\FaultContract\SubscriptionFault.vb" />
     <Compile Include="Services\FaultContract\TeamServerFault.vb" />
     <Compile Include="Services\QueuerService.vb" />
+    <Compile Include="Services\Widgets\SubscriptionWidget.vb" />
     <Compile Include="Services\Widgets\ItemElementWidget.vb" />
-    <Compile Include="Services\Widgets\TFSServerWidget.vb" />
+    <Compile Include="Services\Widgets\TeamServerWidget.vb" />
     <Compile Include="SubscriptionHelper.vb" />
   </ItemGroup>
   <ItemGroup>

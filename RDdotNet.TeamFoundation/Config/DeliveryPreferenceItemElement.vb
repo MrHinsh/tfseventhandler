@@ -24,7 +24,7 @@ Namespace Config
     ''' Contains the definition of a visualization.
     ''' </summary>
     <DataContract(), Serializable()> _
-    Public Class ServerItemElement
+    Public Class DeliveryPreferenceItemElement
         Inherits ConfigurationElement
         Implements IConfigurationElement
 
@@ -35,20 +35,20 @@ Namespace Config
 
         Public ReadOnly Property Key() As String Implements IConfigurationElement.Key
             Get
-                Return Me.Name
+                Return Me.Address
             End Get
         End Property
 
         ''' <summary>
         ''' The type of the System to use.
         ''' </summary>
-        <DataMember(), ConfigurationProperty("name", IsRequired:=True)> _
-        Public Property Name() As String
+        <DataMember(), ConfigurationProperty("address", IsRequired:=True)> _
+        Public Property Address() As String
             Get
-                Return CType(Me("name"), String)
+                Return CType(Me("address"), String)
             End Get
             Set(ByVal value As String)
-                Me("name") = value
+                Me("address") = value
             End Set
         End Property
 
@@ -56,37 +56,27 @@ Namespace Config
         ''' <summary>
         ''' The type of the System to use.
         ''' </summary>
-        <DataMember(), ConfigurationProperty("uri", IsRequired:=True)> _
-        Public Property Uri() As Uri
+        <DataMember(), ConfigurationProperty("schedule", IsRequired:=True)> _
+        Public Property Schedule() As String
             Get
-                Return CType(Me("uri"), Uri)
+                Return CType(Me("schedule"), String)
             End Get
-            Set(ByVal value As Uri)
-                Me("uri") = value
+            Set(ByVal value As String)
+                Me("schedule") = value
             End Set
         End Property
 
         ''' <summary>
-        ''' List of  services that will be initialized on the host.
+        ''' The type of the System to use.
         ''' </summary>
-        <DataMember(), ConfigurationProperty("Credentials", IsRequired:=False)> _
-        Public Property Credentials() As CredentialsItemElement
+        <DataMember(), ConfigurationProperty("type", IsRequired:=True)> _
+        Public Property Type() As String
             Get
-                Return CType(Me("Credentials"), CredentialsItemElement)
+                Return CType(Me("type"), String)
             End Get
-            Set(ByVal value As CredentialsItemElement)
-                Me("Credentials") = value
+            Set(ByVal value As String)
+                Me("type") = value
             End Set
-        End Property
-
-        ''' <summary>
-        ''' List of  services that will be initialized on the host.
-        ''' </summary>
-        <DataMember(), ConfigurationProperty("Subscriptions", IsRequired:=True, IsDefaultCollection:=False), ConfigurationCollection(GetType(ConfigurationElementCollection(Of SubscriptionItemElement)), AddItemName:="Subscription")> _
-        Public ReadOnly Property Subscriptions() As ConfigurationElementCollection(Of SubscriptionItemElement)
-            Get
-                Return CType(Me("Subscriptions"), ConfigurationElementCollection(Of SubscriptionItemElement))
-            End Get
         End Property
 
     End Class

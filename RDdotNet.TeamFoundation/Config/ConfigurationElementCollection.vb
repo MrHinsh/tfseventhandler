@@ -17,7 +17,7 @@ Public Class ConfigurationElementCollection(Of TConfigurationElement As {New, Sy
     End Property
 
     Public Function CreateNew() As TConfigurationElement
-        Return CreateNewElement()
+        Return CType(CreateNewElement(), TConfigurationElement)
     End Function
 
     Public Sub Add(ByVal ConfigurationElement As TConfigurationElement)
@@ -38,7 +38,7 @@ Public Class ConfigurationElementCollection(Of TConfigurationElement As {New, Sy
 
     Public Function Contains(ByVal element As TConfigurationElement) As Boolean
         For c As Integer = 0 To MyBase.Count
-            If element.Key = Me.BaseGetKey(c) Then
+            If element.Key Is Me.BaseGetKey(c) Then
                 Return True
             End If
         Next
@@ -47,7 +47,7 @@ Public Class ConfigurationElementCollection(Of TConfigurationElement As {New, Sy
 
     Public Function Contains(ByVal key As String) As Boolean
         For c As Integer = 0 To MyBase.Count
-            If key = Me.BaseGetKey(c) Then
+            If key Is Me.BaseGetKey(c) Then
                 Return True
             End If
         Next
