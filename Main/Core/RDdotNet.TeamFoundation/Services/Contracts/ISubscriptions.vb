@@ -3,6 +3,7 @@ Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation.Events
 Imports Microsoft.TeamFoundation
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Services.Contracts
 
@@ -16,13 +17,22 @@ Namespace Services.Contracts
     Public Interface ISubscriptions
 
         <OperationContract(isOneWay:=True)> _
-        Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As EventTypes)
+        Sub AddSubscriptions(ByVal TeamServer As TeamServerItem, ByVal EventType As EventTypes)
 
         <OperationContract(isOneWay:=True)> _
-        Sub RemoveSubscriptions(ByVal TeamServerName As String)
+        Sub RemoveSubscription(ByVal TeamServer As TeamServerItem, ByVal Subscription As SubscriptionItem)
 
-        <OperationContract()> _
-        Function GetSubscriptions(ByVal TeamServerName As String) As Collection(Of DataContracts.Subscription)
+        <OperationContract(isOneWay:=True)> _
+        Sub RemoveSubscriptions(ByVal TeamServer As TeamServerItem)
+
+        <OperationContract(IsOneWay:=True)> _
+        Sub RefreshSubscriptions()
+
+        <OperationContract(IsOneWay:=True)> _
+        Sub RefreshSubscription(ByVal TeamServer As TeamServerItem, ByVal Subscription As SubscriptionItem)
+
+        <OperationContract(IsOneWay:=True)> _
+        Sub RefreshServerSubscriptions(ByVal TeamServer As TeamServerItem)
 
         <OperationContract(IsOneWay:=False)> _
       Function EventServiceUrl(ByVal EventType As EventTypes) As Uri

@@ -165,7 +165,7 @@ Namespace Services
                     For Each EventHandler In AssemblyItem.EventHandlers
                         If EventHandler.EventType = EventType Then
                             Try
-                                Dim x As AEventHandler(Of TEventType) = Activator.CreateInstance(EventHandler.HandlerType)
+                                Dim x As AEventHandler(Of TEventType) = CType(Activator.CreateInstance(EventHandler.HandlerType), AEventHandler(Of TEventType))
                                 If x.IsValid(NotifyEventArgs) Then
                                     x.Run(NotifyEventArgs)
                                 End If

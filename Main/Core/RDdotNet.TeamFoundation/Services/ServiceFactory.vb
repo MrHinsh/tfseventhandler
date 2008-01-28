@@ -42,7 +42,7 @@ Namespace Services
             'Binding.MaxReceivedMessageSize = 655360
             'Binding.ReaderQuotas.MaxStringContentLength = 655360
             'Binding.ReaderQuotas.MaxArrayLength = 655360
-            Binding.Security.Message.ClientCredentialType = MessageCredentialType.None
+            'Binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName
             Binding.BypassProxyOnLocal = True
             Return Binding
         End Function

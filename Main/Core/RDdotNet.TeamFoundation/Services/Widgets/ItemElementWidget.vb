@@ -12,13 +12,13 @@ Namespace Services.Widgets
 
     Public MustInherit Class ItemElementWidget(Of TItem, TSearchTerm, TItemElement As {New, System.Configuration.ConfigurationElement, IConfigurationElement})
 
-        Public Sub New()
-            m_Items = LoadItemElements()
+        Public Sub New(Optional ByVal initilise As Object = Nothing)
+            m_Items = LoadItemElements(initilise)
         End Sub
 
         Private m_Items As New Collection(Of TItem)
 
-        Protected ReadOnly Property Items() As Collection(Of TItem)
+        Friend ReadOnly Property Items() As Collection(Of TItem)
             Get
                 Return m_Items
             End Get
@@ -109,9 +109,9 @@ Namespace Services.Widgets
         Protected MustOverride Function Convert(ByVal source As TItem) As TItemElement
         Protected MustOverride Function Convert(ByVal source As TItemElement) As TItem
 
-        Protected Function LoadItemElements() As Collection(Of TItem)
+        Protected Function LoadItemElements(Optional ByVal initilise As Object = Nothing) As Collection(Of TItem)
             Dim Items As New Collection(Of TItem)
-            For Each ServerItemElement As TItemElement In GetItemElements()
+            For Each ServerItemElement As TItemElement In GetItemElements(initilise)
                 Items.Add(Convert(ServerItemElement))
             Next
             Return Items
@@ -130,7 +130,7 @@ Namespace Services.Widgets
         ''' </summary>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Protected MustOverride Function GetItemElements() As Collection(Of TItemElement)
+        Protected MustOverride Function GetItemElements(Optional ByVal initilise As Object = Nothing) As Collection(Of TItemElement)
 
         ''' <summary>
         ''' Saves the Items to the data store. This is a Must Override function.
