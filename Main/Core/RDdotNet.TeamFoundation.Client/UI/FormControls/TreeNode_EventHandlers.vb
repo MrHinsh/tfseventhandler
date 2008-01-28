@@ -21,7 +21,7 @@ Namespace UI.FormControls
             AddHandler EventHandler.HandlersUpdated, AddressOf OnHandlersUpdated
             '-----------------------
             ' Create Contect Menu as Add events
-            ContextMenuStrip.Items.Add(New ToolStripButton("Add Assembly", Nothing, AddressOf AddAssembly_Click))
+            'ContextMenuStrip.Items.Add(New ToolStripButton("Add Assembly", Nothing, AddressOf AddAssembly_Click))
             '-----------------------
             ' Initilise Assembly List
             Refresh()
