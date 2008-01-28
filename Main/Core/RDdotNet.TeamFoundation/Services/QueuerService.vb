@@ -19,12 +19,23 @@ Namespace Services
         Implements Contracts.INotification
         Implements IDisposable
 
-        Private m_TFSServerWidget As Widgets.TFSServerWidget
+        Private m_TeamServerWidget As Widgets.TeamServerWidget
+        Private m_SubscriptionWidgets As New Dictionary(Of String, Widgets.SubscriptionWidget)
 
         Public Sub New()
-            m_TFSServerWidget = New Widgets.TFSServerWidget
-            AddHandler m_TFSServerWidget.StatusChange, AddressOf OnTFSServerWidgetStatusChange
-            AddHandler m_TFSServerWidget.ErrorOccured, AddressOf OnTFSServerWidgetErrorOccured
+            '-------------------
+            m_TeamServerWidget = New Widgets.TeamServerWidget
+            AddHandler m_TeamServerWidget.StatusChange, AddressOf OnTeamServerWidgetStatusChange
+            AddHandler m_TeamServerWidget.ErrorOccured, AddressOf OnTeamServerWidgetErrorOccured
+            '-------------------
+            For Each TSI As TeamServerItem In m_TeamServerWidget.Items
+                Dim SubscriptionWidget As New Widgets.SubscriptionWidget(TSI)
+                AddHandler SubscriptionWidget.StatusChange, AddressOf OnSubscriptionWidgetStatusChange
+                AddHandler SubscriptionWidget.ErrorOccured, AddressOf OnSubscriptionWidgetErrorOccured
+                ' Add to dictionary
+                m_SubscriptionWidgets.Add(TSI.Name, SubscriptionWidget)
+            Next
+            '-------------------
         End Sub
 
         Public ReadOnly Property ServiceSettings() As Config.ServiceItemElement
@@ -62,102 +73,82 @@ Namespace Services
 
 #End Region
 
-        Private Sub OnTFSServerWidgetStatusChange(ByVal Status As StatusChangeTypeEnum, ByVal TeamServerItem As TeamServerItem)
+#Region " Events  "
+
+        Private Sub OnTeamServerWidgetStatusChange(ByVal Status As StatusChangeTypeEnum, ByVal TeamServerItem As TeamServerItem)
+            ' Manage Subscription widgerts for each server
+            Select Case Status
+                Case StatusChangeTypeEnum.Item_Added
+                    Dim SubscriptionWidget As New Widgets.SubscriptionWidget(TeamServerItem)
+                    'AddHandler m_SubscriptionWidget.StatusChange, AddressOf OnTeamServerWidgetStatusChange
+                    'AddHandler m_SubscriptionWidget.ErrorOccured, AddressOf OnTeamServerWidgetErrorOccured
+                    ' Add to dictionary
+                    m_SubscriptionWidgets.Add(TeamServerItem.Name, SubscriptionWidget)
+                Case StatusChangeTypeEnum.Item_Removed
+                    m_SubscriptionWidgets.Remove(TeamServerItem.Name)
+            End Select
+            ' Finally send status change to clients
             TeamServerAdminCallback.StatusChange(Status, TeamServerItem)
         End Sub
 
-        Private Sub OnTFSServerWidgetErrorOccured(ByVal ex As Exception)
+        Private Sub OnTeamServerWidgetErrorOccured(ByVal ex As Exception)
             TeamServerAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex))
         End Sub
+
+#End Region
 
         Public Function ServceUrl() As System.Uri Implements Contracts.ITeamServers.ServceUrl
             Return OperationContext.EndpointDispatcher.EndpointAddress.Uri
         End Function
 
         Public Sub AddServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.AddServer
-            m_TFSServerWidget.Add(TeamServer)
-            'Try
-            '    ' get existiong item
-            '    Dim exTSI = (From tsi As TeamServerItem In Servers Where tsi.Uri.ToString = TeamServer.Uri.ToString).SingleOrDefault
-            '    If exTSI Is Nothing Then
-            '        Servers.Add(TeamServer)
-            '        TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
-            '        m_TeamServers = Nothing
-            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Added, TeamServer)
-            '    Else
-            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Exists, exTSI)
-            '    End If
-            '    If Me.ServiceSettings.Debug.Verbose Then My.Application.Log.WriteEntry("Team Server Connected:" & TeamServer.Name)
-            'Catch ex As System.Exception
-            '    My.Application.Log.WriteException(ex, TraceEventType.Error, "Connection to TFS server unsucessfull")
-            '    TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to add team server", New FaultCode("TFS:EH:TS:0001")))
-            'End Try
+            m_TeamServerWidget.Add(TeamServer)
         End Sub
 
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Contracts.ITeamServers.RemoveServer
-            m_TFSServerWidget.Remove(TeamServer)
-            'Try
-            '    Servers.Remove(TeamServer)
-            '    TeamFoundationSettingsSection.Instance.SaveChanges(m_TeamServers)
-            '    m_TeamServers = Nothing
-            '    TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Removed, TeamServer)
-            'Catch ex As System.ServiceModel.FaultException
-            '    My.Application.Log.WriteException(ex, TraceEventType.Error, "disconnection to TFS server unsucessfull")
-            '    TeamServerAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to remove team server", New FaultCode("TFS:EH:TS:0001")))
-            'End Try
+            m_TeamServerWidget.Remove(TeamServer)
         End Sub
-
-        'Private m_TeamServers As Collection(Of TeamServerItem)
-
-        'Public ReadOnly Property Servers() As Collection(Of TeamServerItem)
-        '    Get
-        '        If m_TeamServers Is Nothing Then
-        '            m_TeamServers = Config.TeamFoundationSettingsSection.Instance.LoadServers
-        '        End If
-        '        Return m_TeamServers
-        '    End Get
-        'End Property
-
-        'Public Function GetServers() As System.Collections.ObjectModel.Collection(Of DataContracts.TeamServerItem) Implements Contracts.ITeamServers.GetServers
-        '    Return m_TFSServerWidget.GetItems()
-        '    'Return Servers
-        'End Function
 
         Public Sub RefreshServers() Implements Contracts.ITeamServers.RefreshServers
-            m_TFSServerWidget.Refresh()
-            'TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_Started, Nothing)
-            '' Check for removed servers
-            'For Each TSI In Servers
-            '    Try
-            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check, TSI)
-            '        TSI.TeamFoundationServer.Authenticate()
-            '        TSI.HasAuthenticated = True
-            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_OK, TSI)
-            '    Catch ex As Exception
-            '        TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_Check_Failed, TSI)
-            '    End Try
-            'Next
-            'TeamServerAdminCallback.StatusChange(StatusChangeTypeEnum.Item_CheckAll_Ended, Nothing)
-            ''-----------
+            m_TeamServerWidget.Refresh()
         End Sub
 
-
+        Public Sub RefreshServer(ByVal TeamServer As DataContracts.TeamServerItem) Implements Contracts.ITeamServers.RefreshServer
+            m_TeamServerWidget.Refresh(TeamServer)
+        End Sub
 
 #End Region
 
 #Region " ISubscription "
 
-        Private _SubscriptionAdminCallback As Contracts.ISubscriptionsCallback
+#Region " Callback "
+
+        Private m_SubscriptionAdminCallback As Contracts.ISubscriptionsCallback
 
         Public ReadOnly Property SubscriptionAdminCallback() As Contracts.ISubscriptionsCallback
             Get
-                If _SubscriptionAdminCallback Is Nothing Then
-                    _SubscriptionAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ISubscriptionsCallback)()
+                If m_SubscriptionAdminCallback Is Nothing Then
+                    m_SubscriptionAdminCallback = OperationContext.GetCallbackChannel(Of Contracts.ISubscriptionsCallback)()
                 End If
-                Return _SubscriptionAdminCallback
+                Return m_SubscriptionAdminCallback
             End Get
         End Property
 
+#End Region
+
+#Region " Events  "
+
+        Private Sub OnSubscriptionWidgetStatusChange(ByVal Status As StatusChangeTypeEnum, ByVal SubscriptionItem As SubscriptionItem)
+            ' Manage Subscription widgerts for each server
+            ' Finally send status change to clients
+            SubscriptionAdminCallback.StatusChange(Status, SubscriptionItem)
+        End Sub
+
+        Private Sub OnSubscriptionWidgetErrorOccured(ByVal ex As Exception)
+            SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex))
+        End Sub
+
+#End Region
 
         Public Function EventServiceUrl(ByVal EventType As EventTypes) As System.Uri Implements Contracts.ISubscriptions.EventServiceUrl
             Dim curernturi As Uri = OperationContext.EndpointDispatcher.EndpointAddress.Uri
@@ -171,79 +162,57 @@ Namespace Services
             Return New Uri(String.Format(urlmap, DnsAddress, Port, eventString))
         End Function
 
-        Public Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
+        Public Sub AddSubscriptions(ByVal TeamServer As TeamServerItem, ByVal EventType As EventTypes) Implements Contracts.ISubscriptions.AddSubscriptions
             Try
                 ' Find Server
-                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
-                If tsi Is Nothing Then
-                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
-                    Exit Sub
-                End If
-                ' With Server add subscritpions...
-                Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
-                Dim delivery As DeliveryPreference = New DeliveryPreference()
-                delivery.Type = DeliveryType.Soap
-                delivery.Schedule = DeliverySchedule.Immediate
-                delivery.Address = EventServiceUrl(EventType).ToString
-                Dim subId As Integer = EventService.SubscribeEvent(My.User.Name, EventType.ToString, "", delivery, "TFSEventHandler")
-                ' Calback with an updated subscription list.
-                SubscriptionAdminCallback.Updated(TeamServerName, GetSubscriptions(TeamServerName))
+                Dim si = m_SubscriptionWidgets(TeamServer.Name)
+                Dim ds As New DeliveryPreferenceItem(EventServiceUrl(EventType).ToString, DeliverySchedule.Immediate, DeliveryType.Soap)
+                Dim subsct As New SubscriptionItem(TeamServer, 0, EventType, "", "", "", "TFSEventHandler", ds)
+                si.Add(subsct)
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "AddSubscription to TFS server unsucessfull")
                 SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex, "AddSubscription Failed"))
             End Try
         End Sub
 
-        Public Sub RemoveSubscriptions(ByVal TeamServerName As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
+        Public Sub RefreshSubscription(ByVal TeamServer As DataContracts.TeamServerItem, ByVal Subscription As SubscriptionItem) Implements Contracts.ISubscriptions.RefreshSubscription
+            ' Find Server
+            Dim si = m_SubscriptionWidgets(TeamServer.Name)
+            si.Refresh(Subscription)
+        End Sub
+
+        Public Sub RefreshServerSubscriptions(ByVal TeamServer As DataContracts.TeamServerItem) Implements Contracts.ISubscriptions.RefreshServerSubscriptions
+            ' Find Server
+            Dim si = m_SubscriptionWidgets(TeamServer.Name)
+            si.Refresh()
+        End Sub
+
+        Public Sub RefreshSubscriptions() Implements Contracts.ISubscriptions.RefreshSubscriptions
+            For Each subscriptionwidget In m_SubscriptionWidgets.ToList
+                subscriptionwidget.Value.Refresh()
+            Next
+        End Sub
+
+
+        Public Sub RemoveSubscriptions(ByVal TeamServer As DataContracts.TeamServerItem) Implements Contracts.ISubscriptions.RemoveSubscriptions
             Try
-                ' Find Server
-                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
-                If tsi Is Nothing Then
-                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
-                    Exit Sub
-                End If
-                ' Collect Eventing Bit
-                Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
-                For Each SubScription As DataContracts.Subscription In GetSubscriptions(tsi.Name)
-                    If SubScription.Address.Contains(EventServiceUrl(EventTypes.Unknown).ToString) Then
-                        EventService.UnsubscribeEvent(SubScription.ID)
-                        SubscriptionAdminCallback.Updated(tsi.Name, GetSubscriptions(tsi.Name))
-                    End If
-                Next
+                SubscriptionAdminCallback.ErrorOccured(New FaultException("Remove All not implemented"))
             Catch ex As System.ServiceModel.FaultException
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "RemoveSubscription for TFS server unsucessfull")
                 SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex, "RemoveSubscription Failed"))
             End Try
         End Sub
 
-        Public Function GetSubscriptions(ByVal TeamServerName As String) As System.Collections.ObjectModel.Collection(Of DataContracts.Subscription) Implements Contracts.ISubscriptions.GetSubscriptions
-            Dim Subscriptions As New Collection(Of DataContracts.Subscription)
+        Public Sub RemoveSubscription(ByVal TeamServer As TeamServerItem, ByVal Subscription As DataContracts.SubscriptionItem) Implements Contracts.ISubscriptions.RemoveSubscription
             Try
-                Dim RDSubs As New Collection(Of DataContracts.Subscription)
                 ' Find Server
-
-                Dim tsi = m_TFSServerWidget.Find(TeamServerName)
-                If tsi Is Nothing Then
-                    SubscriptionAdminCallback.ErrorOccured(New Exception("Team Server does not exist."))
-                Else
-                    ' Collect Eventing Bit
-                    Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
-                    ' Convert TFS Subscriptuions to RDdotNet Subscriptions
-
-                    For Each serverSub As Server.Subscription In EventService.EventSubscriptions(My.User.Name, "TFSEventHandler")
-                        Subscriptions.Add(New DataContracts.Subscription(serverSub))
-                    Next
-                End If
-            Catch ex As TeamFoundationServerUnauthorizedException
-                Return Subscriptions
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "Failed to get subscriptions")
-                SubscriptionAdminCallback.ErrorOccured(New FaultException("FaultDemoFaultSimple()", New FaultCode("FDFS Fault Code"), "FDFS Action"))
-            Catch ex As System.Exception
-                My.Application.Log.WriteException(ex, TraceEventType.Error, "GetServerSubs for TFS server unsucessfull")
-                SubscriptionAdminCallback.ErrorOccured(New FaultException(Of System.Exception)(ex, "Failed to get subscriptions", New FaultCode("TFS:EH:S:0001")))
+                Dim si = m_SubscriptionWidgets(TeamServer.Name)
+                si.Remove(Subscription)
+            Catch ex As System.ServiceModel.FaultException
+                My.Application.Log.WriteException(ex, TraceEventType.Error, "RemoveSubscription for TFS server unsucessfull")
+                SubscriptionAdminCallback.ErrorOccured(New FaultException(Of Exception)(ex, "RemoveSubscription Failed"))
             End Try
-            Return Subscriptions
-        End Function
+        End Sub
 
 #End Region
 

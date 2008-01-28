@@ -74,39 +74,6 @@ Namespace Config
             End Get
         End Property
 
-        Public Sub SaveChanges(ByVal x As Collection(Of TeamServerItem))
-            Servers.Clear()
-            For Each TeamServerItem As TeamServerItem In x
-                Dim NewItem As ServerItemElement = Servers.CreateNew()
-                NewItem.Name = TeamServerItem.Name
-                NewItem.Uri = TeamServerItem.Uri
-                If Not TeamServerItem.Credentials Is Nothing Then
-                    NewItem.Credentials = New CredentialsItemElement
-                    NewItem.Credentials.Username = TeamServerItem.Credentials.Username
-                    NewItem.Credentials.Password = TeamServerItem.Credentials.Password
-                    NewItem.Credentials.Domain = TeamServerItem.Credentials.Domain
-                End If
-                Servers.Add(NewItem)
-            Next
-            Save()
-        End Sub
-
-        Public Function LoadServers() As Collection(Of TeamServerItem)
-            Dim x As New Collection(Of TeamServerItem)
-            For Each ServerItemElement As ServerItemElement In Servers
-                If ServerItemElement.Credentials Is Nothing Then
-                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, Nothing))
-                Else
-                    Dim tsc As TeamServerCredentials = Nothing
-                    If ServerItemElement.Credentials.Username <> "" Then
-                        tsc = New TeamServerCredentials(ServerItemElement.Credentials.Username, ServerItemElement.Credentials.Password, ServerItemElement.Credentials.Domain)
-                    End If
-                    x.Add(New TeamServerItem(ServerItemElement.Name, ServerItemElement.Uri, tsc))
-                End If
-            Next
-            Return x
-        End Function
-
         ''' <summary>
         ''' List of  services that will be initialized on the host.
         ''' </summary>

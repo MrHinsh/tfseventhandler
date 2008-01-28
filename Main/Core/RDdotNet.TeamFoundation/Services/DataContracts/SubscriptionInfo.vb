@@ -15,7 +15,7 @@ Namespace Services.DataContracts
         ''' </summary>
         ''' <remarks></remarks>
         <DataMember()> _
-        Public ID As String
+        Public ID As Integer
 
         ''' <summary>
         ''' The SID of the subscriber

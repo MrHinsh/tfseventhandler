@@ -147,22 +147,35 @@ Namespace Clients
             End Get
         End Property
 
-        Public Event SubscriptionsUpdated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+        Public Event SubscriptionsStatusChange(ByVal source As TFSEventHandlerClient, ByVal e As StatusChangeEventArgs(Of SubscriptionItem))
 
-        Public Sub AddSubscriptions(ByVal TeamServerName As String, ByVal EventType As Events.EventTypes) Implements Services.Contracts.ISubscriptions.AddSubscriptions
-            SubscriptionsClient.AddSubscriptions(TeamServerName, EventType)
+
+        Public Sub AddSubscriptions(ByVal TeamServer As Services.DataContracts.TeamServerItem, ByVal EventType As Events.EventTypes) Implements Services.Contracts.ISubscriptions.AddSubscriptions
+            SubscriptionsClient.AddSubscriptions(TeamServer, EventType)
         End Sub
 
-        Public Function GetSubscriptions(ByVal TeamServerName As String) As Collection(Of Services.DataContracts.Subscription) Implements Services.Contracts.ISubscriptions.GetSubscriptions
-            Return SubscriptionsClient.GetSubscriptions(TeamServerName)
-        End Function
-
-        Public Sub RemoveSubscriptions(ByVal TeamServerName As String) Implements Contracts.ISubscriptions.RemoveSubscriptions
-            SubscriptionsClient.RemoveSubscriptions(TeamServerName)
+        Public Sub RefreshServerSubscriptions(ByVal TeamServer As Services.DataContracts.TeamServerItem) Implements Services.Contracts.ISubscriptions.RefreshServerSubscriptions
+            SubscriptionsClient.RefreshServerSubscriptions(TeamServer)
         End Sub
 
-        Public Sub Updated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription)) Implements Services.Contracts.ISubscriptionsCallback.Updated
-            RaiseEvent SubscriptionsUpdated(TeamServerName, Subscriptions)
+        Public Sub RefreshSubscription(ByVal TeamServer As Services.DataContracts.TeamServerItem, ByVal Subscription As Services.DataContracts.SubscriptionItem) Implements Services.Contracts.ISubscriptions.RefreshSubscription
+            SubscriptionsClient.RefreshSubscription(TeamServer, Subscription)
+        End Sub
+
+        Public Sub RefreshSubscriptions() Implements Services.Contracts.ISubscriptions.RefreshSubscriptions
+            SubscriptionsClient.RefreshSubscriptions()
+        End Sub
+
+        Public Sub RemoveSubscription(ByVal TeamServer As Services.DataContracts.TeamServerItem, ByVal Subscription As Services.DataContracts.SubscriptionItem) Implements Services.Contracts.ISubscriptions.RemoveSubscription
+            SubscriptionsClient.RemoveSubscription(TeamServer, Subscription)
+        End Sub
+
+        Public Sub RemoveSubscriptions(ByVal TeamServer As Services.DataContracts.TeamServerItem) Implements Services.Contracts.ISubscriptions.RemoveSubscriptions
+            SubscriptionsClient.RemoveSubscriptions(TeamServer)
+        End Sub
+
+        Public Sub StatusChange(ByVal StatusChangeType As Services.DataContracts.StatusChangeTypeEnum, ByVal SubscriptionItem As Services.DataContracts.SubscriptionItem) Implements Services.Contracts.ISubscriptionsCallback.StatusChange
+            RaiseEvent SubscriptionsStatusChange(Me, New StatusChangeEventArgs(Of SubscriptionItem)(StatusChangeType, SubscriptionItem))
         End Sub
 
         Public Sub SubscriptionErrorOccured(ByVal ex As System.Exception) Implements Services.Contracts.ISubscriptionsCallback.ErrorOccured
@@ -201,9 +214,9 @@ Namespace Clients
             TeamServersClient.RefreshServers()
         End Sub
 
-        'Public Function GetServers() As System.Collections.ObjectModel.Collection(Of Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.GetServers
-        '    Return TeamServersClient.GetServers
-        'End Function
+        Public Sub RefreshServer(ByVal TeamServer As Services.DataContracts.TeamServerItem) Implements Services.Contracts.ITeamServers.RefreshServer
+            TeamServersClient.RefreshServer(TeamServer)
+        End Sub
 
         Public Sub RemoveServer(ByVal TeamServer As TeamServerItem) Implements Services.Contracts.ITeamServers.RemoveServer
             TeamServersClient.RemoveServer(TeamServer)
@@ -263,6 +276,8 @@ Namespace Clients
 #End Region
 
 #End Region
+
+
 
 
     End Class

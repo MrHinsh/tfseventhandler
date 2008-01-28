@@ -1,6 +1,7 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
+Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Services.Contracts
 
@@ -11,9 +12,9 @@ Namespace Services.Contracts
     Public Interface ISubscriptionsCallback
 
         <OperationContract(IsOneWay:=True)> _
-      Sub Updated(ByVal TeamServerName As String, ByVal Subscriptions As Collection(Of DataContracts.Subscription))
+        Sub StatusChange(ByVal StatusChangeType As StatusChangeTypeEnum, ByVal SubscriptionItem As SubscriptionItem)
         <OperationContract(IsOneWay:=True)> _
-      Sub ErrorOccured(ByVal ex As Exception)
+        Sub ErrorOccured(ByVal ex As Exception)
 
     End Interface
 

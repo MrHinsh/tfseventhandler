@@ -9,9 +9,8 @@ Imports RDdotNet.TeamFoundation.Services.DataContracts
 
 Namespace Services.Widgets
 
-    Public Class TFSServerWidget
+    Public Class TeamServerWidget
         Inherits ItemElementWidget(Of TeamServerItem, String, Config.ServerItemElement)
-
 
 #Region " Public Overloads "
 
@@ -85,7 +84,7 @@ Namespace Services.Widgets
             Return NewItem
         End Function
 
-        Protected Overrides Function GetItemElements() As Collection(Of ServerItemElement)
+        Protected Overrides Function GetItemElements(Optional ByVal initilise As Object = Nothing) As Collection(Of ServerItemElement)
             Dim ServerItemElements As New Collection(Of Config.ServerItemElement)
             For Each ServerItemElement As ServerItemElement In Config.TeamFoundationSettingsSection.Instance.Servers
                 ServerItemElements.Add(ServerItemElement)
@@ -118,7 +117,7 @@ Namespace Services.Widgets
 
 
 
-  
+
     End Class
 
 End Namespace
