@@ -159,8 +159,8 @@ Namespace Services.Widgets
             ' Collect Eventing Bit
             Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
             ' Convert TFS Subscriptuions to RDdotNet Subscriptions
-            My.Application.Log.WriteEntry("Running under: " & Environment.UserName, TraceEventType.Information)
-            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(Environment.UserName, "TFSEventHandler")
+            My.Application.Log.WriteEntry("Running under: " & m_TeamServerItem.TeamFoundationServer.AuthenticatedUserName, TraceEventType.Information)
+            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(m_TeamServerItem.TeamFoundationServer.AuthenticatedUserName, "TFSEventHandler")
                 Dim SubscriptionItem As New DataContracts.SubscriptionItem(m_TeamServerItem, serverSub)
                 If Not Me.Exists(SubscriptionItem) Then
                     Me.InnerAdd(SubscriptionItem)
@@ -172,7 +172,7 @@ Namespace Services.Widgets
             ' Collect Eventing Bit
             Dim EventService As IEventService = CType(tsi.TeamFoundationServer.GetService(GetType(IEventService)), IEventService)
             ' Convert TFS Subscriptuions to RDdotNet Subscriptions
-            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(My.User.Name, "TFSEventHandler")
+            For Each serverSub As Server.Subscription In EventService.EventSubscriptions(m_TeamServerItem.TeamFoundationServer.AuthenticatedUserName, "TFSEventHandler")
                 Dim SubscriptionItem As New DataContracts.SubscriptionItem(m_TeamServerItem, serverSub)
                 If ID = SubscriptionItem.ID Then
                     Return SubscriptionItem
@@ -188,7 +188,7 @@ Namespace Services.Widgets
             delivery.Type = DeliveryType.Soap
             delivery.Schedule = DeliverySchedule.Immediate
             delivery.Address = Subscription.DeliveryPreference.Address
-            Dim subId As Integer = EventService.SubscribeEvent(My.User.Name, Subscription.EventType.ToString, "", delivery, "TFSEventHandler")
+            Dim subId As Integer = EventService.SubscribeEvent(m_TeamServerItem.TeamFoundationServer.AuthenticatedUserName, Subscription.EventType.ToString, "", delivery, "TFSEventHandler")
             ' Calback with an updated subscription list.
             Return subId
         End Function
