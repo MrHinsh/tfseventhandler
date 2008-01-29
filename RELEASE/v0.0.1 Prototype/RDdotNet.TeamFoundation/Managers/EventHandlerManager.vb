@@ -6,9 +6,9 @@ Imports Microsoft.TeamFoundation.Client
 Imports Microsoft.TeamFoundation
 
 Public Class EventHandlersManager(Of TEvent)
-    Inherits AManager(Of EventHandlerItem(Of TEvent, AEventHandlerConfig))
+    Inherits AManager(Of EventHandlerItem(Of TEvent))
 
-    Private _EventHandlers As New Collection(Of EventHandlerItem(Of TEvent, AEventHandlerConfig))
+    Private _EventHandlers As New Collection(Of EventHandlerItem(Of TEvent))
     Private _EventType As EventTypes
 
     Public Sub New(ByVal EventType As EventTypes, Optional ByVal Initialise As Boolean = True)
@@ -25,12 +25,12 @@ Public Class EventHandlersManager(Of TEvent)
         For Each EventItem As EventItemElement In Settings.EventItems
             If EventItem.EventType = _EventType Then
                 '------------------
-                For Each HandlerItem As HandlerItemElement(Of AEventHandlerConfig) In EventItem.HandlerItems
-                    Dim EventHandlerBit As New EventHandlerItem(Of TEvent, AEventHandlerConfig)(Nothing, HandlerItem)
+                For Each HandlerItem As HandlerItemElement In EventItem.HandlerItems
+                    Dim EventHandlerBit As New EventHandlerItem(Of TEvent)(Nothing, HandlerItem)
                     Dim assFile As String = System.IO.Path.Combine(HandlerItem.AssemblyFileLocation, HandlerItem.AssemblyFileName)
                     If System.IO.File.Exists(assFile) Then
                         Try
-                            EventHandlerBit.Subject = CType(System.Activator.CreateInstanceFrom(assFile, HandlerItem.Type.ToString).Unwrap, IEventHandler(Of TEvent, AEventHandlerConfig))
+                            EventHandlerBit.Subject = CType(System.Activator.CreateInstanceFrom(assFile, HandlerItem.Type.ToString).Unwrap, IEventHandler(Of TEvent))
                             _EventHandlers.Add(EventHandlerBit)
                             Me.OnStatusChange(EventHandlerBit, Status.ObjectCreated, _EventHandlers.Count)
                         Catch ex As Exception
@@ -55,15 +55,23 @@ Public Class EventHandlersManager(Of TEvent)
     Public Sub RunEventHandlers(ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of TEvent))
         '----------------
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running RunEventHandlers: " & e.EventType.ToString)
-        For Each EventHandlerItem As EventHandlerItem(Of TEvent, AEventHandlerConfig) In _EventHandlers
+        If TeamServer Is Nothing Then
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running RunEventHandlers: TeamServer Is Nothing")
+        Else
+            If TeamServer.ItemElement Is Nothing Then
+                If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running RunEventHandlers: TeamServer.ItemElement Is Nothing")
+            End If
+        End If
+
+        For Each EventHandlerItem As EventHandlerItem(Of TEvent) In _EventHandlers
             '----------------
-            If TeamServer.ItemElement.LogEvents Then If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName)
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName)
             Try
                 EventHandlerItem.Subject.Run(EventHandlerItem, ServiceHost, TeamServer, e)
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName)
             End Try
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Complete: " & EventHandlerItem.ItemElement.AssemblyFileName)
+            If Not TeamServer Is Nothing AndAlso TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Complete: " & EventHandlerItem.ItemElement.AssemblyFileName)
             '----------------
         Next
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Completed RunEventHandlers: " & e.EventType.ToString)

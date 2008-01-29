@@ -23,7 +23,7 @@ Namespace Config
     ''' <summary>
     ''' Contains the definition of a visualization.
     ''' </summary>
-    Public Class HandlerItemElement(Of THandlerConfig)
+    Public Class HandlerItemElement
         Inherits ConfigurationElement
 
         '<ConfigurationProperty("Name", IsRequired:=True, iskey:=True, DefaultValue:="No Name.")> _

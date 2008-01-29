@@ -83,20 +83,30 @@ Public Class TFSEventHandlerService
 
     Private Sub ServiceHostManager_WorkItemChangedEvent(ByVal ServiceHost As ServiceHostItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) Handles ServiceHostManager.WorkItemChangedEvent
         My.Application.Log.WriteEntry(String.Format("EventRecieved: a {0} event from {1} has been essigned the id {2}", ServiceHost.ItemElement.EventType.ToString, e.Identity.Url, e.EventID), TraceEventType.Information)
-        e.Event.DisplayUrl = EndpointBase.ReformatServerURL(EventTypes.WorkItemChangedEvent, e.Event.DisplayUrl)
-        WorkItemChangedManager.RunEventHandlers(ServiceHost, TeamServerManager.GetTeamServer(e.Identity), e)
+        Try
+            e.Event.DisplayUrl = EndpointBase.ReformatServerURL(EventTypes.WorkItemChangedEvent, e.Event.DisplayUrl)
+            Dim TeamServerItem As TeamServerItem = TeamServerManager.GetTeamServer(e.Identity)
+            If TeamServerItem Is Nothing Then
+                If TeamServerItem.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Cant find team server!", TraceEventType.Critical)
+                Exit Sub
+            End If
+            WorkItemChangedManager.RunEventHandlers(ServiceHost, TeamServerItem, e)
+
+        Catch ex As Exception
+            My.Application.Log.WriteEntry(ex.ToString, TraceEventType.Error)
+        End Try
     End Sub
 
 #End Region
 
 #Region " WorkItemChangedEventHandlerManager "
 
-    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer)
-    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
+    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer)
+    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
     Private Delegate Sub WorkItemChangedManager_InitiliseCompleteDelegate()
 
 
-    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles WorkItemChangedManager.Error
+    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles WorkItemChangedManager.Error
         Dim name As String = "Server"
         If Not ManagedType Is Nothing Then
             name = ManagedType.ItemElement.AssemblyFileName.ToString
@@ -104,7 +114,7 @@ Public Class TFSEventHandlerService
         My.Application.Log.WriteException(e, TraceEventType.Warning, String.Format("WorkItemChangedManager: There was an error with {0} in a status of {1}", name, Status.ToString))
     End Sub
 
-    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer) Handles WorkItemChangedManager.StatusChange
+    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer) Handles WorkItemChangedManager.StatusChange
         Dim name As String = "Server"
         If Not ManagedType Is Nothing Then
             name = ManagedType.ItemElement.AssemblyFileName.ToString

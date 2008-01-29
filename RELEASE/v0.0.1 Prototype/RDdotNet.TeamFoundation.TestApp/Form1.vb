@@ -144,12 +144,12 @@ Public Class Form1
 
 #Region " EventHandlerManager_WorkItemChanged "
 
-    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer)
-    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
+    Private Delegate Sub WorkItemChangedManager_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer)
+    Private Delegate Sub WorkItemChangedManager_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
     Private Delegate Sub WorkItemChangedManager_InitiliseCompleteDelegate()
 
 
-    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles EventHandlerManager_WorkItemChanged.Error
+    Private Sub WorkItemChangedManager_Error(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles EventHandlerManager_WorkItemChanged.Error
         If Me.InvokeRequired Then
             Me.Invoke(New WorkItemChangedManager_ErrorDelegate(AddressOf WorkItemChangedManager_Error), ManagedType, Status, Items, e)
         Else
@@ -158,7 +158,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer) Handles EventHandlerManager_WorkItemChanged.StatusChange
+    Private Sub WorkItemChangedManager_StatusChange(ByVal ManagedType As EventHandlerItem(Of WorkItemChangedEvent), ByVal Status As Status, ByVal Items As Integer) Handles EventHandlerManager_WorkItemChanged.StatusChange
         If Me.InvokeRequired Then
             Me.Invoke(New WorkItemChangedManager_StatusChangeDelegate(AddressOf WorkItemChangedManager_StatusChange), ManagedType, Status, Items)
         Else
@@ -171,11 +171,11 @@ Public Class Form1
 
 #Region " EventHandlerManager_CheckinEvent "
 
-    Private Delegate Sub EventHandlerManager_CheckinEvent_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of CheckinEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer)
-    Private Delegate Sub EventHandlerManager_CheckinEvent_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of CheckinEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
+    Private Delegate Sub EventHandlerManager_CheckinEvent_StatusChangeDelegate(ByVal ManagedType As EventHandlerItem(Of CheckinEvent), ByVal Status As Status, ByVal Items As Integer)
+    Private Delegate Sub EventHandlerManager_CheckinEvent_ErrorDelegate(ByVal ManagedType As EventHandlerItem(Of CheckinEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception)
 
 
-    Private Sub EventHandlerManager_CheckinEvent_Error(ByVal ManagedType As EventHandlerItem(Of CheckinEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles EventHandlerManager_CheckinEvent.Error
+    Private Sub EventHandlerManager_CheckinEvent_Error(ByVal ManagedType As EventHandlerItem(Of CheckinEvent), ByVal Status As Status, ByVal Items As Integer, ByVal e As System.Exception) Handles EventHandlerManager_CheckinEvent.Error
         If Me.InvokeRequired Then
             Me.Invoke(New EventHandlerManager_CheckinEvent_ErrorDelegate(AddressOf EventHandlerManager_CheckinEvent_Error), ManagedType, Status, Items, e)
         Else
@@ -183,7 +183,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub EventHandlerManager_CheckinEvent_StatusChange(ByVal ManagedType As EventHandlerItem(Of CheckinEvent, AEventHandlerConfig), ByVal Status As Status, ByVal Items As Integer) Handles EventHandlerManager_CheckinEvent.StatusChange
+    Private Sub EventHandlerManager_CheckinEvent_StatusChange(ByVal ManagedType As EventHandlerItem(Of CheckinEvent), ByVal Status As Status, ByVal Items As Integer) Handles EventHandlerManager_CheckinEvent.StatusChange
         If Me.InvokeRequired Then
             Me.Invoke(New EventHandlerManager_CheckinEvent_StatusChangeDelegate(AddressOf EventHandlerManager_CheckinEvent_StatusChange), ManagedType, Status, Items)
         Else
