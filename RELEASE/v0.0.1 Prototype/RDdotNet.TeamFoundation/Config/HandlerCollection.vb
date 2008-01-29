@@ -27,11 +27,11 @@ Namespace Config
         Inherits ConfigurationElementCollection
 
         Protected Overloads Overrides Function CreateNewElement() As System.Configuration.ConfigurationElement
-            Return New HandlerItemElement(Of AEventHandlerConfig)
+            Return New HandlerItemElement
         End Function
 
         Protected Overrides Function GetElementKey(ByVal element As System.Configuration.ConfigurationElement) As Object
-            Return CType(element, HandlerItemElement(Of AEventHandlerConfig)).Type
+            Return CType(element, HandlerItemElement).Type
         End Function
 
     End Class

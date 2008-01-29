@@ -14,7 +14,7 @@ Imports Microsoft.TeamFoundation.Server
 Imports System.Collections.ObjectModel
 
 Public Class ChangeSetHandler
-    Implements IEventHandler(Of CheckinEvent, ChangeSetHandlerConfig)
+    Implements IEventHandler(Of CheckinEvent)
 
 
 
@@ -24,7 +24,7 @@ Public Class ChangeSetHandler
     End Enum
 
 
-    Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) Implements IEventHandler(Of CheckinEvent, RDdotNet.TeamFoundation.SourceControl.ChangeSetHandlerConfig).Run
+    Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) Implements IEventHandler(Of CheckinEvent).Run
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
             Return
         End If
@@ -70,7 +70,7 @@ Public Class ChangeSetHandler
     '' <summary>
     '' Retrieves email body based on XSL transform of XML event
     '' </summary>
-    Public Function GetBody(ByVal eTemplate As EmailTeamplates, ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As String
+    Public Function GetBody(ByVal eTemplate As EmailTeamplates, ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As String
         Try
             Dim replacers As Hashtable = GetReplaceomatic(e.Event)
             Dim TemplatePath As String = System.IO.Path.Combine(EventHandlerItem.ItemElement.AssemblyFileLocation, eTemplate.ToString & ".htm")
@@ -123,7 +123,7 @@ Public Class ChangeSetHandler
     '' <summary>
     '' Returns true if the event contains a new assignment to a user other than the assigner
     '' </summary>
-    Public Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent, ChangeSetHandlerConfig), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As Boolean Implements IEventHandler(Of CheckinEvent, RDdotNet.TeamFoundation.SourceControl.ChangeSetHandlerConfig).IsValid
+    Public Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) As Boolean Implements IEventHandler(Of CheckinEvent).IsValid
         If e.Event Is Nothing Then
             Return False
         End If

@@ -69,11 +69,13 @@ Public Class TeamServerManager
     End Function
 
     Public Function GetTeamServer(ByVal EventIdentity As TFSIdentity) As TeamServerItem
+        Dim EventIdentityURI As New Uri(EventIdentity.Url)
         For Each TeamServerItem As TeamServerItem In TeamServers
-            If EventIdentity.Url.ToLower.IndexOf(TeamServerItem.Subject.Name.ToLower) > -1 Then
+            If TeamServerItem.Subject.Uri.ToString.ToLower.IndexOf(EventIdentityURI.Host.ToLower) > -1 Then
                 Return TeamServerItem
             End If
         Next
+        My.Application.Log.WriteEntry("Server mistmatch", TraceEventType.Error)
         Return Nothing
     End Function
 
