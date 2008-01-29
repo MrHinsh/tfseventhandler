@@ -470,6 +470,11 @@
                     "Name" = "8:.NET Framework 3.5"
                     "ProductCode" = "8:Microsoft.Net.Framework.3.5"
                     }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:{511DAC48-6CBB-43a3-A64D-0182F2A9EBC2}"
                     {
                     "Name" = "8:.NET Framework 3.0"
@@ -1164,7 +1169,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RDdotNet Team Server Event Handler (Prototype)"
         "ProductCode" = "8:{4BC06658-FBC1-46B2-ADCB-422F8196E776}"
-        "PackageCode" = "8:{1B374B5F-EF73-433F-8374-26074714334A}"
+        "PackageCode" = "8:{18CADD7C-F261-4194-91FE-83A9BFB9D026}"
         "UpgradeCode" = "8:{1AA38242-C4F3-4EAA-B59D-66903D82E51E}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
