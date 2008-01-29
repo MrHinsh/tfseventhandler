@@ -79,18 +79,18 @@ Namespace Config
             End Set
         End Property
 
-        ''' <summary>
-        ''' The type of the System to use.
-        ''' </summary>
-        <ConfigurationProperty("HandlerConfig", IsRequired:=False)> _
-        Public Property HandlerConfig() As THandlerConfig
-            Get
-                Return CType(Me("HandlerConfig"), THandlerConfig)
-            End Get
-            Set(ByVal value As THandlerConfig)
-                Me("HandlerConfig") = value
-            End Set
-        End Property
+        '''' <summary>
+        '''' The type of the System to use.
+        '''' </summary>
+        '<ConfigurationProperty("HandlerConfig", IsRequired:=False)> _
+        'Public Property HandlerConfig() As THandlerConfig
+        '    Get
+        '        Return CType(Me("HandlerConfig"), THandlerConfig)
+        '    End Get
+        '    Set(ByVal value As THandlerConfig)
+        '        Me("HandlerConfig") = value
+        '    End Set
+        'End Property
 
     End Class
 
