@@ -10,7 +10,7 @@ Imports Microsoft.TeamFoundation.Client
 Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
-Public Class AssignedToHandler
+Public Class AssignedFromHandler
     Implements IEventHandler(Of WorkItemChangedEvent)
 
 #Region " IEventHandler "
@@ -22,11 +22,11 @@ Public Class AssignedToHandler
         If e.Event Is Nothing Then
             Return False
         End If
-        Dim assignedName As String = WorkItemEventQuerys.GetAssignedToName(e.Event)
+        Dim assignedName As String = Querys.GetAssignedToName(e.Event).NewValue
         If String.IsNullOrEmpty(assignedName) Then
             Return False
         Else
-            Return Not assignedName = WorkItemEventQuerys.GetChangedByName(e.Event)
+            Return Not assignedName = Querys.GetAssignedToName(e.Event).OldValue
         End If
     End Function
 
@@ -35,7 +35,7 @@ Public Class AssignedToHandler
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
             Return
         End If
-        Dim toName As String = WorkItemEventQuerys.GetAssignedToName(e.Event)
+        Dim toName As String = Querys.GetAssignedToName(e.Event).OldValue
         Dim toAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(toName)
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
         Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(fromName)
@@ -47,7 +47,7 @@ Public Class AssignedToHandler
             If TeamServer.ItemElement.TestMode Then
                 [to] = New Net.Mail.MailAddress(TeamServer.ItemElement.TestEmail)
             End If
-            Dim Subject As String = e.Event.Title
+            Dim Subject As String = "Work Item {0} on the {1} project was reasigned to {2}"
             Dim Body As String = GetBody(EventHandlerItem, ServiceHost, TeamServer, e.Event, e.Identity, e.SubscriptionInfo)
             SendMail([to], from, Subject, Body, TeamServer)
         End If
@@ -78,7 +78,7 @@ Public Class AssignedToHandler
     Public Function GetBody(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal EventObject As WorkItemChangedEvent, ByVal EventIdentity As TFSIdentity, ByVal SubscriptionInfo As SubscriptionInfo) As String
         Try
             Dim replacers As Hashtable = GetReplaceomatic(EventObject)
-            Dim TemplatePath As String = System.IO.Path.Combine(EventHandlerItem.ItemElement.AssemblyFileLocation, "AssignedTo.htm")
+            Dim TemplatePath As String = System.IO.Path.Combine(EventHandlerItem.ItemElement.AssemblyFileLocation, "AssignedFrom.htm")
             Dim Template As String = System.IO.File.ReadAllText(TemplatePath)
             For Each x As String In replacers.Keys
                 Template = Template.Replace(x, CStr(replacers(x)))
