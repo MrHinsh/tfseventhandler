@@ -50,6 +50,18 @@
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="RDdotNet.ActiveDirectory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PrivateAssemblies\RDdotNet.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="RDdotNet.TeamFoundation, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="RDdotNet.TeamFoundation.EventResource, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.EventResource.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -105,20 +117,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.ActiveDirectory\RDdotNet.ActiveDirectory.vbproj">
-      <Project>{53C9381A-F6F5-4AB9-BE84-90600D7FC113}</Project>
-      <Name>RDdotNet.ActiveDirectory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
-      <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
-      <Project>{EACA87E1-E3D7-44FD-88C6-F797E3786323}</Project>
-      <Name>RDdotNet.TeamFoundation</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -128,7 +126,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y
+xcopy "$(TargetDir)*.htm" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
