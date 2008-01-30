@@ -13,10 +13,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDdotNet.TeamFoundation.EventResource", "RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj", "{0F4212BE-70A6-4773-9B92-9376B203CEAA}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.SourceControl.ChangeSet", "RDdotNet.TeamFoundation.SourceControl.ChangeSet\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj", "{0C7686BB-523D-4EA3-9B39-23BD60254C13}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo", "RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo\RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo.vbproj", "{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.ActiveDirectory", "RDdotNet.ActiveDirectory\RDdotNet.ActiveDirectory.vbproj", "{53C9381A-F6F5-4AB9-BE84-90600D7FC113}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TFSEventHandlerService", "RDdotNet.TFSEventHandlerService\RDdotNet.TFSEventHandlerService.vbproj", "{17913AED-BE6C-4ABA-91E5-70386FE7AA17}"
@@ -25,7 +21,7 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RDdotNet.TFSEventHandlerSet
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -37,29 +33,21 @@ Global
 		SccProjectTopLevelParentUniqueName2 = TFSEventHandler\u0020Prototype.sln
 		SccProjectName2 = RDdotNet.TeamFoundation.EventResource
 		SccLocalPath2 = RDdotNet.TeamFoundation.EventResource
-		SccProjectUniqueName3 = RDdotNet.TeamFoundation.SourceControl.ChangeSet\\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj
+		SccProjectUniqueName3 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.TestApp.vbproj
 		SccProjectTopLevelParentUniqueName3 = TFSEventHandler\u0020Prototype.sln
-		SccProjectName3 = RDdotNet.TeamFoundation.SourceControl.ChangeSet
-		SccLocalPath3 = RDdotNet.TeamFoundation.SourceControl.ChangeSet
-		SccProjectUniqueName4 = RDdotNet.TeamFoundation.TestApp\\RDdotNet.TeamFoundation.TestApp.vbproj
+		SccProjectName3 = RDdotNet.TeamFoundation.TestApp
+		SccLocalPath3 = RDdotNet.TeamFoundation.TestApp
+		SccProjectUniqueName4 = RDdotNet.TeamFoundation\\RDdotNet.TeamFoundation.vbproj
 		SccProjectTopLevelParentUniqueName4 = TFSEventHandler\u0020Prototype.sln
-		SccProjectName4 = RDdotNet.TeamFoundation.TestApp
-		SccLocalPath4 = RDdotNet.TeamFoundation.TestApp
-		SccProjectUniqueName5 = RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo\\RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo.vbproj
+		SccProjectName4 = RDdotNet.TeamFoundation
+		SccLocalPath4 = RDdotNet.TeamFoundation
+		SccProjectUniqueName5 = RDdotNet.TFSEventHandlerService\\RDdotNet.TFSEventHandlerService.vbproj
 		SccProjectTopLevelParentUniqueName5 = TFSEventHandler\u0020Prototype.sln
-		SccProjectName5 = RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo
-		SccLocalPath5 = RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo
-		SccProjectUniqueName6 = RDdotNet.TeamFoundation\\RDdotNet.TeamFoundation.vbproj
-		SccProjectTopLevelParentUniqueName6 = TFSEventHandler\u0020Prototype.sln
-		SccProjectName6 = RDdotNet.TeamFoundation
-		SccLocalPath6 = RDdotNet.TeamFoundation
-		SccProjectUniqueName7 = RDdotNet.TFSEventHandlerService\\RDdotNet.TFSEventHandlerService.vbproj
-		SccProjectTopLevelParentUniqueName7 = TFSEventHandler\u0020Prototype.sln
-		SccProjectName7 = RDdotNet.TFSEventHandlerService
-		SccLocalPath7 = RDdotNet.TFSEventHandlerService
-		SccProjectUniqueName8 = RDdotNet.TFSEventHandlerSetup\\TFSEventHandlerSetup.vdproj
-		SccProjectName8 = RDdotNet.TFSEventHandlerSetup
-		SccLocalPath8 = RDdotNet.TFSEventHandlerSetup
+		SccProjectName5 = RDdotNet.TFSEventHandlerService
+		SccLocalPath5 = RDdotNet.TFSEventHandlerService
+		SccProjectUniqueName6 = RDdotNet.TFSEventHandlerSetup\\TFSEventHandlerSetup.vdproj
+		SccProjectName6 = RDdotNet.TFSEventHandlerSetup
+		SccLocalPath6 = RDdotNet.TFSEventHandlerSetup
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -100,26 +88,6 @@ Global
 		{0F4212BE-70A6-4773-9B92-9376B203CEAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F4212BE-70A6-4773-9B92-9376B203CEAA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0F4212BE-70A6-4773-9B92-9376B203CEAA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Release|.NET.ActiveCfg = Release|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Release|.NET.ActiveCfg = Release|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{53C9381A-F6F5-4AB9-BE84-90600D7FC113}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{53C9381A-F6F5-4AB9-BE84-90600D7FC113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53C9381A-F6F5-4AB9-BE84-90600D7FC113}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -158,8 +126,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5844BC8E-7516-492F-8DA4-EB35FC4C89D3} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
-		{0C7686BB-523D-4EA3-9B39-23BD60254C13} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
-		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
 		{17913AED-BE6C-4ABA-91E5-70386FE7AA17} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
 		{96EDA3A2-D48F-4773-84EF-38979EAF3419} = {01563050-09C4-496D-9CD9-7457D4ED197A}
 		{EACA87E1-E3D7-44FD-88C6-F797E3786323} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
