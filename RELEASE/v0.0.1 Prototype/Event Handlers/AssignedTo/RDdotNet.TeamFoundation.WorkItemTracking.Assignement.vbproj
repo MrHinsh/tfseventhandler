@@ -76,6 +76,7 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignedFromHandler.vb" />
     <Compile Include="Helpers\Mail.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -117,6 +118,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AssignedFrom.htm" />
     <Content Include="AssignedTo.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
