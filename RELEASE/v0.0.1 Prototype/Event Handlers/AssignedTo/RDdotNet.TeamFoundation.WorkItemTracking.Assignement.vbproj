@@ -8,7 +8,7 @@
     <ProjectGuid>{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RDdotNet.TeamFoundation.WorkItemTracking</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo</AssemblyName>
+    <AssemblyName>RDdotNet.TeamFoundation.WorkItemTracking.Assignement</AssemblyName>
     <MyType>Windows</MyType>
     <OptionStrict>On</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
@@ -76,7 +76,7 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignedFromHandler.vb" />
+    <Compile Include="Helpers\Mail.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="AssignedToHandler.vb" />
     <Compile Include="Queries.vb" />
+    <Compile Include="ReAssignedHandler.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -119,7 +120,7 @@
     <Content Include="AssignedTo.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AssignedFrom.htm">
+    <Content Include="ReAssigned.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
