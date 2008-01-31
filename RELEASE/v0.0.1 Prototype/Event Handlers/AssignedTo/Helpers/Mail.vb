@@ -24,6 +24,7 @@ Public Class Mail
         replacers.Add("##WorkItemTitle##", m_NotifyEvent.Event.WorkItemTitle)
         replacers.Add("##DisplayURL##", m_NotifyEvent.Event.DisplayUrl)
         replacers.Add("##WorkItemDescription##", m_NotifyEvent.Event.CoreFields.StringFields.Find(New Predicate(Of StringField)(AddressOf FindDescription)))
+        replacers.Add("##AssignedToName##", WorkItemEventQuerys.GetAssignedToName(m_NotifyEvent.Event))
         '---------------------------
         replacers.Add("##TFSURL##", m_TeamServer.Subject.Uri.ToString)
         replacers.Add("##TFSName##", m_TeamServer.Subject.Name)
@@ -86,7 +87,7 @@ Public Class Mail
         'Logger.Log("sending mail..")
         '-----------------
         If m_TeamServer.ItemElement.LogEvents Then
-            Dim PathSafeSubhject As String = mail.Subject & ".htm"
+            Dim PathSafeSubhject As String = Now.Ticks & "-" & mail.Subject & ".htm"
             For Each x As Char In System.IO.Path.GetInvalidPathChars
                 PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
             Next
