@@ -28,7 +28,7 @@ Public Class ReAssignedHandler
         If String.IsNullOrEmpty(NewAssignedName) Or String.IsNullOrEmpty(OldAssignedName) Then
             Return False
         Else
-            Return Not NewAssignedName = OldAssignedName And Not NewAssignedName = ChangedByName
+            Return Not NewAssignedName = OldAssignedName And Not ChangedByName = OldAssignedName
         End If
     End Function
 
