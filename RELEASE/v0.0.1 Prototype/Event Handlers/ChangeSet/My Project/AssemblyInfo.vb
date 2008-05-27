@@ -14,7 +14,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyProduct("RDdotNet.TeamFoundation.SourceControl.ChangeSet")> 
 <Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
 <Assembly: AssemblyTrademark("")> 
-
+<Assembly: Security.AllowPartiallyTrustedCallers()> 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM

@@ -22,6 +22,8 @@
     </UpgradeBackupLocation>
     <OptionInfer>On</OptionInfer>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>TFSEventHandler_Assignement.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,9 +118,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="TFSEventHandler_Assignement.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssignedFrom.htm" />
+    <Content Include="AssignedFrom.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="AssignedTo.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -135,7 +140,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y
-xcopy "$(TargetDir)*.htm" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e
+xcopy "$(TargetDir)$*.htm" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>
