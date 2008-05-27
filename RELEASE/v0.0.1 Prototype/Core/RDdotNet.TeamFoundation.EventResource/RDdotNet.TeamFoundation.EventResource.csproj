@@ -18,6 +18,8 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>RDdotNet.TeamFoundation.EventResource.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +64,9 @@
     <Compile Include="TfsIdentity.cs" />
     <Compile Include="WorkItemChangedEvent.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RDdotNet.TeamFoundation.EventResource.snk" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -71,6 +76,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>

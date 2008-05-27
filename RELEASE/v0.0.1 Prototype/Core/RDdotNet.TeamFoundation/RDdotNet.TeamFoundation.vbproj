@@ -21,6 +21,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OptionInfer>On</OptionInfer>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>RDdotNet.TeamFoundation.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -115,6 +117,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="RDdotNet.TeamFoundation.snk" />
     <None Include="TFSEventHandler.cd" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +163,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>
