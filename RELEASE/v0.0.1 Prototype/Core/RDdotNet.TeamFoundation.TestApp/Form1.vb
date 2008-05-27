@@ -101,10 +101,12 @@ Public Class Form1
             Select Case Status
                 Case TeamFoundation.Status.Closed
                     'MsgBox("ServiceHostManager_ServiceHostClosed: " & ManagedType.EventType.ToString & ":" & ManagedType.BaseAddress.ToString)
+                    Me.ux_ListBoxEndPoints.Items.Remove(ManagedType.BaseAddress.ToString)
                     TeamServerManager.UnregisterEvent(ManagedType.EventType)
                 Case TeamFoundation.Status.Connected
                     'MsgBox("ServiceHostManager_ServiceHostCreated: " & ManagedType.EventType.ToString & ":" & ManagedType.BaseAddress.ToString)
                     TeamServerManager.RegisterEvent(ManagedType.EventType, ManagedType.BaseAddress)
+                    Me.ux_ListBoxEndPoints.Items.Add(ManagedType.BaseAddress.ToString)
                 Case TeamFoundation.Status.InitializationComplete
                     EventHandlerManager_WorkItemChanged.Initilise()
                     EventHandlerManager_CheckinEvent.Initilise()
@@ -204,9 +206,11 @@ Public Class Form1
 
 #End Region
 
+    Private Sub ux_ListBoxEndPoints_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles ux_ListBoxEndPoints.MouseDoubleClick
+        Dim url As String = CStr(ux_ListBoxEndPoints.SelectedItem)
+        If Not String.IsNullOrEmpty(url) Then
+            System.Diagnostics.Process.Start(CStr(ux_ListBoxEndPoints.SelectedItem))
+        End If
+    End Sub
 
-
-
-
- 
 End Class

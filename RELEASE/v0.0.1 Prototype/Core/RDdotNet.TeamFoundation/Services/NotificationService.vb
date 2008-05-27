@@ -4,7 +4,7 @@ Imports System.Collections.ObjectModel
 Imports RDdotNet.TeamFoundation
 Imports RDdotNet.TeamFoundation.Config
 
-<ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single)> _
+<ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single, AddressFilterMode:=AddressFilterMode.Any)> _
 Public Class NotificationService(Of TEvent As {New})
     Implements RDdotNet.TeamFoundation.INotification
     Implements IDisposable
