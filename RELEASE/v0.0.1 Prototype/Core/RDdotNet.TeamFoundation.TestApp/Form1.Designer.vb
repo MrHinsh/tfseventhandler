@@ -26,6 +26,8 @@ Partial Class Form1
         Me.ButtonStart = New System.Windows.Forms.Button
         Me.ButtonEnd = New System.Windows.Forms.Button
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.uxListBoxWorkItemChanged = New System.Windows.Forms.ListBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.uxGroupBoxTeamServer = New System.Windows.Forms.GroupBox
         Me.uxListBoxTeamServer = New System.Windows.Forms.ListBox
@@ -34,17 +36,18 @@ Partial Class Form1
         Me.uxGroupBoxCheckinHandlers = New System.Windows.Forms.GroupBox
         Me.uxListBoxCheckIn = New System.Windows.Forms.ListBox
         Me.uxGroupBoxEvents = New System.Windows.Forms.GroupBox
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.uxListBoxWorkItemChanged = New System.Windows.Forms.ListBox
+        Me.EndPointsGroupBox = New System.Windows.Forms.GroupBox
+        Me.ux_ListBoxEndPoints = New System.Windows.Forms.ListBox
         uxListBoxEventing = New System.Windows.Forms.ListBox
         Me.uxContextMenuStripDetails.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.uxGroupBoxTeamServer.SuspendLayout()
         Me.uxGroupBoxServiceHost.SuspendLayout()
         Me.uxGroupBoxCheckinHandlers.SuspendLayout()
         Me.uxGroupBoxEvents.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.EndPointsGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'uxListBoxEventing
@@ -64,12 +67,12 @@ Partial Class Form1
         '
         Me.uxContextMenuStripDetails.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.uxToolStripMenuItemViewasText})
         Me.uxContextMenuStripDetails.Name = "uxContextMenuStripDetails"
-        Me.uxContextMenuStripDetails.Size = New System.Drawing.Size(136, 26)
+        Me.uxContextMenuStripDetails.Size = New System.Drawing.Size(147, 26)
         '
         'uxToolStripMenuItemViewasText
         '
         Me.uxToolStripMenuItemViewasText.Name = "uxToolStripMenuItemViewasText"
-        Me.uxToolStripMenuItemViewasText.Size = New System.Drawing.Size(135, 22)
+        Me.uxToolStripMenuItemViewasText.Size = New System.Drawing.Size(146, 22)
         Me.uxToolStripMenuItemViewasText.Text = "View as Text"
         '
         'ButtonStart
@@ -102,6 +105,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.Controls.Add(Me.uxGroupBoxServiceHost, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.uxGroupBoxCheckinHandlers, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.uxGroupBoxEvents, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.EndPointsGroupBox, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -141,6 +145,33 @@ Partial Class Form1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(554, 421)
         Me.TableLayoutPanel1.TabIndex = 2
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.uxListBoxWorkItemChanged)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 315)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(0)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(277, 106)
+        Me.GroupBox2.TabIndex = 11
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Handlers: WorkItemChanged"
+        Me.GroupBox2.UseWaitCursor = True
+        '
+        'uxListBoxWorkItemChanged
+        '
+        Me.uxListBoxWorkItemChanged.BackColor = System.Drawing.SystemColors.Control
+        Me.uxListBoxWorkItemChanged.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.uxListBoxWorkItemChanged.ContextMenuStrip = Me.uxContextMenuStripDetails
+        Me.uxListBoxWorkItemChanged.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.uxListBoxWorkItemChanged.FormattingEnabled = True
+        Me.uxListBoxWorkItemChanged.HorizontalScrollbar = True
+        Me.uxListBoxWorkItemChanged.Location = New System.Drawing.Point(3, 16)
+        Me.uxListBoxWorkItemChanged.Name = "uxListBoxWorkItemChanged"
+        Me.uxListBoxWorkItemChanged.Size = New System.Drawing.Size(271, 78)
+        Me.uxListBoxWorkItemChanged.TabIndex = 5
+        Me.uxListBoxWorkItemChanged.UseWaitCursor = True
         '
         'GroupBox1
         '
@@ -245,32 +276,27 @@ Partial Class Form1
         Me.uxGroupBoxEvents.TabStop = False
         Me.uxGroupBoxEvents.Text = "Eventing"
         '
-        'GroupBox2
+        'EndPointsGroupBox
         '
-        Me.GroupBox2.Controls.Add(Me.uxListBoxWorkItemChanged)
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 315)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(0)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(277, 106)
-        Me.GroupBox2.TabIndex = 11
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Handlers: WorkItemChanged"
-        Me.GroupBox2.UseWaitCursor = True
+        Me.EndPointsGroupBox.Controls.Add(Me.ux_ListBoxEndPoints)
+        Me.EndPointsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.EndPointsGroupBox.Location = New System.Drawing.Point(280, 3)
+        Me.EndPointsGroupBox.Name = "EndPointsGroupBox"
+        Me.EndPointsGroupBox.Size = New System.Drawing.Size(271, 99)
+        Me.EndPointsGroupBox.TabIndex = 12
+        Me.EndPointsGroupBox.TabStop = False
+        Me.EndPointsGroupBox.Text = "End Points"
         '
-        'uxListBoxWorkItemChanged
+        'ux_ListBoxEndPoints
         '
-        Me.uxListBoxWorkItemChanged.BackColor = System.Drawing.SystemColors.Control
-        Me.uxListBoxWorkItemChanged.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.uxListBoxWorkItemChanged.ContextMenuStrip = Me.uxContextMenuStripDetails
-        Me.uxListBoxWorkItemChanged.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.uxListBoxWorkItemChanged.FormattingEnabled = True
-        Me.uxListBoxWorkItemChanged.HorizontalScrollbar = True
-        Me.uxListBoxWorkItemChanged.Location = New System.Drawing.Point(3, 16)
-        Me.uxListBoxWorkItemChanged.Name = "uxListBoxWorkItemChanged"
-        Me.uxListBoxWorkItemChanged.Size = New System.Drawing.Size(271, 78)
-        Me.uxListBoxWorkItemChanged.TabIndex = 5
-        Me.uxListBoxWorkItemChanged.UseWaitCursor = True
+        Me.ux_ListBoxEndPoints.BackColor = System.Drawing.SystemColors.Control
+        Me.ux_ListBoxEndPoints.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ux_ListBoxEndPoints.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ux_ListBoxEndPoints.FormattingEnabled = True
+        Me.ux_ListBoxEndPoints.Location = New System.Drawing.Point(3, 16)
+        Me.ux_ListBoxEndPoints.Name = "ux_ListBoxEndPoints"
+        Me.ux_ListBoxEndPoints.Size = New System.Drawing.Size(265, 78)
+        Me.ux_ListBoxEndPoints.TabIndex = 0
         '
         'Form1
         '
@@ -282,12 +308,13 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.uxContextMenuStripDetails.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.uxGroupBoxTeamServer.ResumeLayout(False)
         Me.uxGroupBoxServiceHost.ResumeLayout(False)
         Me.uxGroupBoxCheckinHandlers.ResumeLayout(False)
         Me.uxGroupBoxEvents.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
+        Me.EndPointsGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -306,6 +333,8 @@ Partial Class Form1
     Friend WithEvents uxGroupBoxEvents As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents uxListBoxWorkItemChanged As System.Windows.Forms.ListBox
+    Friend WithEvents EndPointsGroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents ux_ListBoxEndPoints As System.Windows.Forms.ListBox
 
 
 End Class

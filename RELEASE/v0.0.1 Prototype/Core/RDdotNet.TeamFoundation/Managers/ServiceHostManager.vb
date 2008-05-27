@@ -98,8 +98,8 @@ Public Class ServiceHostManager
 
     Private Function GetBaseAddress(ByVal EventType As EventTypes) As Uri
         Dim BaseAddressString As String = Settings.BaseAddress.Url
-        If Not BaseAddressString.EndsWith("\") Then
-            BaseAddressString = BaseAddressString & "\"
+        If Not BaseAddressString.EndsWith("/") Then
+            BaseAddressString = BaseAddressString & "/"
         End If
         BaseAddressString = BaseAddressString & EventType.ToString
         Return New System.Uri(BaseAddressString)

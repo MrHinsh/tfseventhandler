@@ -131,7 +131,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>devenv /Build debug "$(SolutionDir)..\Event Handlers\Event Handlers.sln"
+    <PostBuildEvent>"C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\devenv" /Build debug "$(SolutionDir)..\Event Handlers\Event Handlers.sln"
 MD "$(TargetDir)EventHandlers\"
 xcopy "$(SolutionDir)..\PrivateAssemblies\EventHandlers\*" "$(TargetDir)EventHandlers\*" /y /e
 </PostBuildEvent>
