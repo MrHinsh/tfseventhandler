@@ -140,8 +140,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
-xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e
-xcopy "$(TargetDir)*.htm" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\EventHandlers\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\EventHandlers\" /y /e
+xcopy "$(TargetDir)*.htm" "$(SolutionDir)..\PrivateAssemblies\EventHandlers\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>
