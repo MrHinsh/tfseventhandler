@@ -13,6 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCompany("RDdotNet")> 
 <Assembly: AssemblyProduct("RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo")> 
 <Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
+<Assembly: Security.AllowPartiallyTrustedCallers()> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
