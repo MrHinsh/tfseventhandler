@@ -21,6 +21,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OptionInfer>On</OptionInfer>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>RDdotNet.ActiveDirectory.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +92,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="RDdotNet.ActiveDirectory.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -100,6 +103,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\..\PrivateAssemblies\" /y</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>

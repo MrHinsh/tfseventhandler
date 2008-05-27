@@ -14,6 +14,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyProduct("RDdotNet.ActiveDirectory")> 
 <Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
 <Assembly: AssemblyTrademark("")> 
+<Assembly: Security.AllowPartiallyTrustedCallers()> 
 
 <Assembly: ComVisible(False)>
 
