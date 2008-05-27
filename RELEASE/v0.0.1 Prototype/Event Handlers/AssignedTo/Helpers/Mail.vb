@@ -29,6 +29,8 @@ Public Class Mail
         replacers.Add("##TFSURL##", m_TeamServer.Subject.Uri.ToString)
         replacers.Add("##TFSName##", m_TeamServer.Subject.Name)
         '---------------------------
+        replacers.Add("##RDdotNetStart##", "2007")
+        replacers.Add("##RDdotNetEnd##", Now.Year.ToString)
         '---------------------------
         '---------------------------
         Return replacers
@@ -105,6 +107,7 @@ Public Class Mail
     Public Enum EmailTypes
         AssignedTo
         ReAssigned
+        NotifyCreator
     End Enum
 
 End Class

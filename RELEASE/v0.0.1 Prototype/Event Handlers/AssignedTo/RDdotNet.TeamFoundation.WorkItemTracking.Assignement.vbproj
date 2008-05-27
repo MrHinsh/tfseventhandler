@@ -78,7 +78,7 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignedFromHandler.vb" />
+    <Compile Include="NotifyCreatorHandler.vb" />
     <Compile Include="Helpers\Mail.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -96,7 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="AssignedToHandler.vb" />
-    <Compile Include="Queries.vb" />
+    <Compile Include="Helpers\Queries.vb" />
     <Compile Include="ReAssignedHandler.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -121,10 +121,10 @@
     <None Include="TFSEventHandler_Assignement.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssignedFrom.htm">
+    <Content Include="AssignedTo.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AssignedTo.htm">
+    <Content Include="NotifyCreator.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReAssigned.htm">

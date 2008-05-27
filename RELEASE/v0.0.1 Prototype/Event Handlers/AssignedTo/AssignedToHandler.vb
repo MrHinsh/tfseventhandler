@@ -10,23 +10,32 @@ Imports Microsoft.TeamFoundation.Client
 Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
+''' <summary>
+''' Send an email to a user who is assigned an email unless they are the one that assigned it to themselves
+''' </summary>
+''' <remarks></remarks>
 Public Class AssignedToHandler
     Implements IEventHandler(Of WorkItemChangedEvent)
 
 #Region " IEventHandler "
 
     '' <summary>
-    '' Returns true if the event contains a new assignment to a user other than the assigner
+    '' Returns true if the event contains a assignment to a user other than the assigner
+    '' but not if the changer and the assignee are the sdame person,
+    '' and not if the old assignee and new assignee are the same.
     '' </summary>
     Public Function IsValid(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Boolean Implements IEventHandler(Of WorkItemChangedEvent).IsValid
         If e.Event Is Nothing Then
             Return False
         End If
         Dim assignedName As String = WorkItemEventQuerys.GetAssignedToName(e.Event)
+        Dim ChangedByName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
         If String.IsNullOrEmpty(assignedName) Then
             Return False
         Else
-            Return Not assignedName = WorkItemEventQuerys.GetChangedByName(e.Event)
+            Return Not assignedName = WorkItemEventQuerys.GetChangedByName(e.Event) _
+                    And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue _
+                    And Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
         End If
     End Function
 
