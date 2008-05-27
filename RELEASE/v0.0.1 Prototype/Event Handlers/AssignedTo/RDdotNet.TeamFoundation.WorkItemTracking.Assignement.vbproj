@@ -22,7 +22,7 @@
     </UpgradeBackupLocation>
     <OptionInfer>On</OptionInfer>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>TFSEventHandler_Assignement.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -142,6 +142,6 @@
   <PropertyGroup>
     <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
 xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e
-xcopy "$(TargetDir)$*.htm" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
+xcopy "$(TargetDir)*.htm" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>

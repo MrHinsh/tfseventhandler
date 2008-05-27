@@ -16,13 +16,10 @@ Imports System.Collections.ObjectModel
 Public Class ChangeSetHandler
     Implements IEventHandler(Of CheckinEvent)
 
-
-
     Public Enum EmailTeamplates
         ChangeSet
         PolicyFailerOverride
     End Enum
-
 
     Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of CheckinEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of CheckinEvent)) Implements IEventHandler(Of CheckinEvent).Run
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
