@@ -49,6 +49,17 @@ Public Class Querys
     End Function
 
     '' <summary>
+    '' Returns created by user name for this Team Foundation event
+    '' </summary>
+    Public Shared Function GetCreatedByName(ByVal eventData As WorkItemChangedEvent) As StringField
+        Return eventData.CoreFields.StringFields.Find(New Predicate(Of StringField)(AddressOf FindCreatedBy))
+    End Function
+
+    Public Shared Function FindCreatedBy(ByVal obj As StringField) As Boolean
+        If obj.ReferenceName = "System.CreatedBy" Then Return True
+    End Function
+
+    '' <summary>
     '' Returns assigned to name for this Team Foundation event
     '' </summary>
     Public Shared Function GetAssignedToName(ByVal eventData As WorkItemChangedEvent) As StringField
