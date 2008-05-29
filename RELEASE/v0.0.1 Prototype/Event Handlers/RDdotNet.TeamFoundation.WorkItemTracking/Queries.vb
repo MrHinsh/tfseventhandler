@@ -49,6 +49,17 @@ Public Class Querys
     End Function
 
     '' <summary>
+    '' Returns changed by user name for this Team Foundation event
+    '' </summary>
+    Public Shared Function GetHeatReference(ByVal eventData As WorkItemChangedEvent) As StringField
+        Return eventData.CoreFields.StringFields.Find(New Predicate(Of StringField)(AddressOf FindHeatReference))
+    End Function
+
+    Public Shared Function FindHeatReference(ByVal obj As StringField) As Boolean
+        If obj.ReferenceName = "Aggreko.Heat.Reference" Then Return True
+    End Function
+
+    '' <summary>
     '' Returns created by user name for this Team Foundation event
     '' </summary>
     Public Shared Function GetCreatedByName(ByVal eventData As WorkItemChangedEvent) As StringField

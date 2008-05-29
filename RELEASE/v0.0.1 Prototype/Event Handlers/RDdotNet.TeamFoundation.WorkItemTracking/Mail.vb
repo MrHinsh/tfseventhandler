@@ -40,7 +40,7 @@ Public Class Mail
         If obj.ReferenceName = "System.Description" Then Return True
     End Function
 
-    Private Function PerformReplace(ByVal Source As String) As String
+    Public Function PerformReplace(ByVal Source As String) As String
         Try
             Dim replacers As Hashtable = GetReplaceomatic()
             For Each x As String In replacers.Keys
@@ -71,9 +71,20 @@ Public Class Mail
     '' Sends email to assignee with details of the work item they've been assigned
     '' </summary>
     Public Sub SendMail(ByVal EmailType As EmailTypes, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String)
+        SendMail(EmailType.ToString, [to], from, Subject, False)
+    End Sub
+
+    '' <summary>
+    '' Sends email to assignee with details of the work item they've been assigned
+    '' </summary>
+    Public Sub SendMail(ByVal EmailType As String, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String, ByVal TypeIsBody As Boolean)
         'Logger.Log("entering SendMail")
         Dim mail As Net.Mail.MailMessage = New Net.Mail.MailMessage(New MailAddress(m_TeamServer.ItemElement.MailAddressFrom, m_TeamServer.ItemElement.MailFromName), [to])
-        mail.Body = GetBody(EmailType)
+        If TypeIsBody Then
+            mail.Body = EmailType
+        Else
+            mail.Body = GetBody(EmailType)
+        End If
         mail.IsBodyHtml = True
         ''Logger.Log(body)
         If Not String.IsNullOrEmpty(from.Address) Then
