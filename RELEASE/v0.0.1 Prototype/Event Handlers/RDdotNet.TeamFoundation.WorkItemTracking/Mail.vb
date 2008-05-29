@@ -57,6 +57,26 @@ Public Class Mail
     '' Retrieves email body based on XSL transform of XML event
     '' </summary>
     Public Function GetBody(ByVal EmailType As EmailTypes) As String
+        Return GetBody(EmailType.ToString)
+    End Function
+
+    '' <summary>
+    '' Retrieves email body based on XSL transform of XML event
+    '' </summary>
+    Public Function GetInnerBody(ByVal EmailType As String) As String
+        Try
+            Dim x As New System.Text.RegularExpressions.Regex("<body\b[^>]*>(.*?)</body>", Text.RegularExpressions.RegexOptions.IgnoreCase)
+            Return x.Match(GetBody(EmailType)).Value
+        Catch ex As Exception
+            My.Application.Log.WriteException(ex, TraceEventType.Critical, "GetInnerBody")
+            Return ex.ToString
+        End Try
+    End Function
+
+    '' <summary>
+    '' Retrieves email body based on XSL transform of XML event
+    '' </summary>
+    Public Function GetBody(ByVal EmailType As String) As String
         Try
             Dim TemplatePath As String = System.IO.Path.Combine(m_EventHandlerItem.ItemElement.AssemblyFileLocation, EmailType.ToString & ".htm")
             Dim Template As String = System.IO.File.ReadAllText(TemplatePath)

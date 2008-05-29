@@ -15,6 +15,21 @@ Public Class Querys
 
     End Sub
 
+    'Microsoft.VSTS.CMMI.Estimate
+    'Microsoft.VSTS.Scheduling.RemainingWork
+    'Microsoft.VSTS.Scheduling.CompletedWork
+    Public Shared Function GetTextField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As TextField
+        Return (From f In Value.TextFields Where f.ReferenceName = ReferenceName).SingleOrDefault
+    End Function
+
+    Public Shared Function GetCoreStringField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As StringField
+        Return (From f In Value.CoreFields.StringFields Where f.ReferenceName = ReferenceName).SingleOrDefault
+    End Function
+
+    Public Shared Function GetCoreIntegerField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As IntegerField
+        Return (From f In Value.CoreFields.IntegerFields Where f.ReferenceName = ReferenceName).SingleOrDefault
+    End Function
+
     '' <summary>
     '' Returns work item type of this event
     '' </summary>
