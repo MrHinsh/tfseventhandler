@@ -71,30 +71,20 @@ Public Class HeatJournalUpdateHandler
         'Microsoft.VSTS.Scheduling.RemainingWork
         'Microsoft.VSTS.Scheduling.CompletedWork
         Dim objMail As New Mail(EventHandlerItem, TeamServer, e)
-        Dim message As String = "From TFS:" & vbCrLf & objMail.GetInnerBody("HeatJournalUpdate")
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: message:" & message)
+
+        Dim message As New System.Text.StringBuilder
+
+        message.AppendFormat("Updated by {0} in Team Foundation Server", ChangedByName)
+        message.AppendLine()
+        message.AppendFormat("View the changes at {0}", e.Event.DisplayUrl)
+
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: message:" & message.ToString)
         Try
             Dim dc As New DataAccess.HeatDataContext
             If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Updating Database:")
-            dc.UpdateJournal(HeatRef, message, UserName, Duration)
+            dc.UpdateJournal(HeatRef, message.ToString, UserName, Duration)
         Catch ex As Exception
-            My.Application.Log.WriteException(ex, TraceEventType.Critical, "HeatJournalUpdateHandler: Complete ")
-            Dim toName As String = "Dev Dude" 'WorkItemEventQuerys.GetAssignedToName(e.Event)
-            Dim toAddress As String = "Martin.hinshelwood@aggreko.co.uk" 'RDdotNet.ActiveDirectory.Querys.GetEmailAddress(toName)
-            Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-            Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(fromName)
-            If String.IsNullOrEmpty(toAddress) Then
-                'Logger.Log("Can't send email because no email address was found for " + toName)
-            Else
-                Dim [to] As New MailAddress(toAddress, toName)
-                Dim from As New MailAddress(fromAddress, fromName)
-                If TeamServer.ItemElement.TestMode Then
-                    [to] = New Net.Mail.MailAddress(TeamServer.ItemElement.TestEmail)
-                End If
-                Dim Subject As String = "##PortfolioProject##:##WorkItemType## Heat Journal Update - ##WorkItemID##: ##WorkItemTitle##"
-                Dim x As New Mail(EventHandlerItem, TeamServer, e)
-                x.SendMail("HeatJournalUpdate", [to], from, Subject, False)
-            End If
+            My.Application.Log.WriteException(ex, TraceEventType.Critical, "HeatJournalUpdateHandler: Failed ")
         End Try
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Complete ")
     End Sub
