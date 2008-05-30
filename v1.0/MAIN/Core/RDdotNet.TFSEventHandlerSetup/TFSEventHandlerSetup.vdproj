@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4CFC355018927AB4E45844A8D0CFF7D1"
+        "OwnerKey" = "8:_E525394D5DE75348BD0E0D2906458A1D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4DD0628CBF581E0B346075053CD2018E"
         "OwnerKey" = "8:_8E72DC8216BA44D09FCFD5AEABADF7B6"
         "MsmSig" = "8:_UNDEFINED"
@@ -95,6 +101,12 @@
         {
         "MsmKey" = "8:_7FD1FAED39FFA2E94B73EEA5C903EC7D"
         "OwnerKey" = "8:_2DCC0A5501F1748F17321486BA04E305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7FD1FAED39FFA2E94B73EEA5C903EC7D"
+        "OwnerKey" = "8:_E525394D5DE75348BD0E0D2906458A1D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,6 +189,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BEA916C3773293C8AF98ABAEC6E20351"
+        "OwnerKey" = "8:_8E72DC8216BA44D09FCFD5AEABADF7B6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CC4C9438D408722DC86794A0E888C7E8"
         "OwnerKey" = "8:_8E72DC8216BA44D09FCFD5AEABADF7B6"
         "MsmSig" = "8:_UNDEFINED"
@@ -189,8 +207,44 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D32B8C2703151DCC4E25D6085923247D"
+        "OwnerKey" = "8:_8E72DC8216BA44D09FCFD5AEABADF7B6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D32B8C2703151DCC4E25D6085923247D"
+        "OwnerKey" = "8:_E525394D5DE75348BD0E0D2906458A1D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E525394D5DE75348BD0E0D2906458A1D"
+        "OwnerKey" = "8:_8E72DC8216BA44D09FCFD5AEABADF7B6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3C3FAA1002A3D51846FC9EBF66A1B79F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E525394D5DE75348BD0E0D2906458A1D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D32B8C2703151DCC4E25D6085923247D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BEA916C3773293C8AF98ABAEC6E20351"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -279,7 +333,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\TFSEventHandlerPrototypeSetup.msi"
+        "OutputFilename" = "8:Debug\\TFS Event Handler Server v1.0.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -804,6 +858,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BEA916C3773293C8AF98ABAEC6E20351"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RDdotNet.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e7ba4c22f957562e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BEA916C3773293C8AF98ABAEC6E20351"
+                    {
+                    "Name" = "8:RDdotNet.ActiveDirectory.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RDdotNet.ActiveDirectory.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_176966B6677745FAA7223511A866E521"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CC4C9438D408722DC86794A0E888C7E8"
             {
             "AssemblyRegister" = "3:1"
@@ -818,6 +903,68 @@
                     }
                 }
             "SourcePath" = "8:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_176966B6677745FAA7223511A866E521"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D32B8C2703151DCC4E25D6085923247D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RDdotNet.TeamFoundation.EventResource, Version=2.0.0.0, Culture=neutral, PublicKeyToken=76229487cf4572aa, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D32B8C2703151DCC4E25D6085923247D"
+                    {
+                    "Name" = "8:RDdotNet.TeamFoundation.EventResource.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RDdotNet.TeamFoundation.EventResource.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_176966B6677745FAA7223511A866E521"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E525394D5DE75348BD0E0D2906458A1D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RDdotNet.TeamFoundation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=121ac25d20c8868d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E525394D5DE75348BD0E0D2906458A1D"
+                    {
+                    "Name" = "8:RDdotNet.TeamFoundation.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RDdotNet.TeamFoundation.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_176966B6677745FAA7223511A866E521"
@@ -914,7 +1061,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TFS Event Handler Server"
         "ProductCode" = "8:{CFB00FAC-95FC-4566-8778-9D8C6F919DBA}"
-        "PackageCode" = "8:{E6EDF246-DCD9-4AC2-AA36-AEC8F54A2553}"
+        "PackageCode" = "8:{5791528F-11F7-44C7-A3C8-F861BE0FF5DA}"
         "UpgradeCode" = "8:{1AA38242-C4F3-4EAA-B59D-66903D82E51E}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
