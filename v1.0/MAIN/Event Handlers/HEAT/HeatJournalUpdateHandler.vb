@@ -34,15 +34,16 @@ Public Class HeatJournalUpdateHandler
             Return False
         End If
         If TeamServer.ItemElement.LogEvents Then WriteOutEvent(EventHandlerItem, ServiceHost, TeamServer, e)
-        Dim HeatRef As Integer = GetHeatRef(EventHandlerItem, ServiceHost, TeamServer, e)
+        Dim wi As WorkItem = GetHeatWorkItem(EventHandlerItem, ServiceHost, TeamServer, e)
+        Dim HeatRef As Field = GetField(wi, "Aggreko.Heat.Reference", TeamServer)
         ' If there is no heat value then exit
-        If HeatRef > 0 Then
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Has Ref 2")
-            Return True
+        If HeatRef Is Nothing OrElse HeatRef.Value = Nothing Then
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Heatref nor present")
+            Return False
         End If
 
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: No Ref 2")
-        Return False
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Has Heat Ref")
+        Return True
 
     End Function
 
@@ -52,20 +53,31 @@ Public Class HeatJournalUpdateHandler
             Return
         End If
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Running")
+        Dim wi As WorkItem = GetHeatWorkItem(EventHandlerItem, ServiceHost, TeamServer, e)
         ' Get Heat field value
-        Dim HeatRef As Integer = GetHeatRef(EventHandlerItem, ServiceHost, TeamServer, e)
-
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: HeatRef:" & HeatRef)
+        Dim HeatRef As Field = GetField(wi, "Aggreko.Heat.Reference", TeamServer)
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: HeatRef:" & HeatRef.Value)
         Dim ChangedByName As StringField = Querys.GetChangedByName(e.Event)
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: ChangedByName:" & ChangedByName.NewValue)
         Dim UserName As String = RDdotNet.ActiveDirectory.Querys.GetUsername(ChangedByName.NewValue)
         If String.IsNullOrEmpty(UserName) Then UserName = "svc_TFSServices"
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: UserName:" & UserName)
         Dim Duration As Integer = 1
-        Dim CompleatedWork As IntegerField = Querys.GetCoreIntegerField(e.Event, "Microsoft.VSTS.Scheduling.CompletedWork")
-        If Not CompleatedWork Is Nothing AndAlso CompleatedWork.NewValue > CompleatedWork.OldValue Then
-            Duration = (CompleatedWork.NewValue - CompleatedWork.OldValue) * 60
-        End If
+        Try
+            Dim CompleatedWork As StringField = Querys.GetChangedStringField(e.Event, "Microsoft.VSTS.Scheduling.CompletedWork")
+            If Not CompleatedWork Is Nothing AndAlso CInt(CompleatedWork.NewValue) > CInt(CompleatedWork.OldValue) Then
+                Duration = (CInt(CompleatedWork.NewValue) - CInt(CompleatedWork.OldValue)) * 60
+            End If
+            If CompleatedWork Is Nothing Then
+                If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: CompleatedWork is nothing")
+            Else
+                If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: CompleatedWork:NewValue" & CompleatedWork.NewValue)
+                If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: CompleatedWork:OldValue" & CompleatedWork.OldValue)
+            End If
+        Catch ex As Exception
+            My.Application.Log.WriteException(ex, TraceEventType.Critical, "HeatJournalUpdateHandler: CompleatedWork Failed ")
+        End Try
+        
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Duration:" & Duration)
         'Microsoft.VSTS.CMMI.Estimate
         'Microsoft.VSTS.Scheduling.RemainingWork
@@ -74,15 +86,17 @@ Public Class HeatJournalUpdateHandler
 
         Dim message As New System.Text.StringBuilder
 
-        message.AppendFormat("Updated by {0} in Team Foundation Server", ChangedByName)
+        message.AppendFormat("Updated by {0} in Team Foundation Server", ChangedByName.NewValue)
         message.AppendLine()
         message.AppendFormat("View the changes at {0}", e.Event.DisplayUrl)
+        message.AppendLine()
+        message.AppendFormat("Work Item: <a href='{0}'>View {1}</a>", e.Event.DisplayUrl, e.Event.WorkItemTitle)
 
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: message:" & message.ToString)
         Try
             Dim dc As New DataAccess.HeatDataContext
             If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Updating Database:")
-            dc.UpdateJournal(HeatRef, message.ToString, UserName, Duration)
+            dc.UpdateJournal(HeatRef.Value, message.ToString, UserName, Duration)
         Catch ex As Exception
             My.Application.Log.WriteException(ex, TraceEventType.Critical, "HeatJournalUpdateHandler: Failed ")
         End Try
@@ -92,33 +106,25 @@ Public Class HeatJournalUpdateHandler
 
 #End Region
 
-    Private Function GetHeatRef(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As Integer
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatRef: ")
+    Private Function GetHeatWorkItem(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) As WorkItem
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatWorkItem: ")
 
         Dim witID As IntegerField = Querys.GetWorkItemID(e.Event)
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatRef: witID: " & witID.NewValue)
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatWorkItem: witID: " & witID.NewValue)
         If Not m_WorkItemStore.ContainsKey(e.Identity.Url) Then
             m_WorkItemStore.Add(e.Identity.Url, DirectCast(TeamServer.Subject.GetService(GetType(WorkItemStore)), WorkItemStore))
         End If
         If m_WorkItemStore Is Nothing Then
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatRef: m_WorkItemStore is nothihng ")
-            Return 0
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatWorkItem: m_WorkItemStore is nothihng ")
+            Return Nothing
         End If
         ' Get Heat field value
         Dim wi As WorkItem = m_WorkItemStore(e.Identity.Url).GetWorkItem(witID.NewValue)
-        Dim HeatReference = (From f As Field In wi.Fields Where f.ReferenceName = "Aggreko.Heat.Reference").SingleOrDefault
-        ' If there is no field then return false
-        If HeatReference Is Nothing Then
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatRef: Heat ref field not loaded")
-            Return 0
-        End If
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: GetHeatRef: Heat ref field loaded")
-        Dim HeatRef As Integer = HeatReference.Value
-        ' If there is no heat value then exit
-        If HeatRef > 0 Then
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Returning heat ref: " & HeatRef)
-            Return HeatRef
-        End If
+        Return wi
+    End Function
+
+    Private Function GetField(ByVal wi As WorkItem, ByVal ReferenceName As String, ByVal TeamServer As TeamServerItem) As Field
+        Return (From f As Field In wi.Fields Where f.ReferenceName = ReferenceName).SingleOrDefault
     End Function
 
     Private Sub WriteOutEvent(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent))
