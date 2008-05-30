@@ -44,7 +44,7 @@ Public Class Querys
         If results.Count = 0 Then
             Return String.Empty
         End If
-        Dim values As DirectoryServices.ResultPropertyValueCollection = results(0).Properties("samAccountName")
+        Dim values As DirectoryServices.ResultPropertyValueCollection = results(0).Properties("sAMAccountName")
         If values.Count = 0 Then
             Return String.Empty
         End If
