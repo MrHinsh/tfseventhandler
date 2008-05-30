@@ -13,7 +13,7 @@ Imports RDdotNet.TeamFoundation
 Imports System.Xml.Serialization
 
 ''' <summary>
-''' Send an email to a user who is assigned an email unless they are the one that assigned it to themselves
+''' Updates a Heat Journal Entry with the duration of work and a not with a link to the TFS Artifact
 ''' </summary>
 ''' <remarks></remarks>
 Public Class HeatJournalUpdateHandler
@@ -35,7 +35,7 @@ Public Class HeatJournalUpdateHandler
         End If
         If TeamServer.ItemElement.LogEvents Then WriteOutEvent(EventHandlerItem, ServiceHost, TeamServer, e)
         Dim wi As WorkItem = GetHeatWorkItem(EventHandlerItem, ServiceHost, TeamServer, e)
-        Dim HeatRef As Field = GetField(wi, "Aggreko.Heat.Reference", TeamServer)
+        Dim HeatRef As Field = GetField(wi, My.Settings.HeatFieldFef, TeamServer)
         ' If there is no heat value then exit
         If HeatRef Is Nothing OrElse HeatRef.Value = Nothing Then
             If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Heatref nor present")
@@ -55,12 +55,12 @@ Public Class HeatJournalUpdateHandler
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: Running")
         Dim wi As WorkItem = GetHeatWorkItem(EventHandlerItem, ServiceHost, TeamServer, e)
         ' Get Heat field value
-        Dim HeatRef As Field = GetField(wi, "Aggreko.Heat.Reference", TeamServer)
+        Dim HeatRef As Field = GetField(wi, My.Settings.HeatFieldFef, TeamServer)
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: HeatRef:" & HeatRef.Value)
         Dim ChangedByName As StringField = Querys.GetChangedByName(e.Event)
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: ChangedByName:" & ChangedByName.NewValue)
         Dim UserName As String = RDdotNet.ActiveDirectory.Querys.GetUsername(ChangedByName.NewValue)
-        If String.IsNullOrEmpty(UserName) Then UserName = "svc_TFSServices"
+        If String.IsNullOrEmpty(UserName) Then UserName = My.User.Name
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: UserName:" & UserName)
         Dim Duration As Integer = 1
         Try

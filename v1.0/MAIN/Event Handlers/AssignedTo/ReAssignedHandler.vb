@@ -11,7 +11,7 @@ Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
 ''' <summary>
-''' Send an email to a user when a work item that they are assigned is re assigend to someone else.
+''' Send an email to a user when a work item that they are assigned is re assigend to someone else unless they are the one that made the change.
 ''' </summary>
 ''' <remarks></remarks>
 Public Class ReAssignedHandler

@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=GLA1SQ96;Initial Catalog=Heat;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="HeatFieldFef" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Aggreko.Heat.Reference</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

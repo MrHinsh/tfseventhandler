@@ -12,7 +12,7 @@ Imports RDdotNet.TeamFoundation
 
 
 ''' <summary>
-''' Sends an email to the Owner of a Work Item when it is changed
+''' Sends an email to the Owner of a Work Item when it is changed unless they are the one that changed it
 ''' </summary>
 ''' <remarks></remarks>
 Public Class NotifyCreatorHandler

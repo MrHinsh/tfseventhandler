@@ -63,6 +63,15 @@ Namespace My
                 Return CType(Me("HeatConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Aggreko.Heat.Reference")>  _
+        Public ReadOnly Property HeatFieldFef() As String
+            Get
+                Return CType(Me("HeatFieldFef"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
