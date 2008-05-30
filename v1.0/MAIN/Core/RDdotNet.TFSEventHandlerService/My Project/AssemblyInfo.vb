@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RDdotNet.TFSEventHandler")> 
+<Assembly: AssemblyTitle("RDdotNet TFS Event Handler Server")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("RDdotNet")> 
-<Assembly: AssemblyProduct("RDdotNet.TFSEventHandler")> 
+<Assembly: AssemblyProduct("TFS Event Handler Server")> 
 <Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
 <Assembly: AssemblyTrademark("")> 
 
