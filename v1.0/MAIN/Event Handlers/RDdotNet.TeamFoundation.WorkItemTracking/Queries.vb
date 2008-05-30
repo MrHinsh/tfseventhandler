@@ -30,6 +30,14 @@ Public Class Querys
         Return (From f In Value.CoreFields.IntegerFields Where f.ReferenceName = ReferenceName).SingleOrDefault
     End Function
 
+    Public Shared Function GetChangedIntegerField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As IntegerField
+        Return (From f In Value.ChangedFields.IntegerFields Where f.ReferenceName = ReferenceName).SingleOrDefault
+    End Function
+
+    Public Shared Function GetChangedStringField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As StringField
+        Return (From f In Value.ChangedFields.StringFields Where f.ReferenceName = ReferenceName).SingleOrDefault
+    End Function
+
     '' <summary>
     '' Returns work item type of this event
     '' </summary>
