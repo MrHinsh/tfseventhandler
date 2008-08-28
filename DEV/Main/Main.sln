@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hinshelwood.TFSEventHandler
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshelwood.TFSEventHandler.Server", "Hinshelwood.TFSEventHandler.Server\Hinshelwood.TFSEventHandler.Server.vbproj", "{82C33680-76C9-42D5-8464-600ABF584363}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{3D543A0C-8796-48E2-A9FE-21457C9D1C32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{EADAEC56-3288-4030-8345-DAAA86AE146A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 3
@@ -12,9 +16,11 @@ Global
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Hinshelwood.TFSEventHandler.TeamSystemEvents\\Hinshelwood.TFSEventHandler.TeamSystemEvents.csproj
+		SccProjectTopLevelParentUniqueName1 = Main.sln
 		SccProjectName1 = Hinshelwood.TFSEventHandler.TeamSystemEvents
 		SccLocalPath1 = Hinshelwood.TFSEventHandler.TeamSystemEvents
 		SccProjectUniqueName2 = Hinshelwood.TFSEventHandler.Server\\Hinshelwood.TFSEventHandler.Server.vbproj
+		SccProjectTopLevelParentUniqueName2 = Main.sln
 		SccProjectName2 = Hinshelwood.TFSEventHandler.Server
 		SccLocalPath2 = Hinshelwood.TFSEventHandler.Server
 	EndGlobalSection
@@ -34,5 +40,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82C33680-76C9-42D5-8464-600ABF584363} = {3D543A0C-8796-48E2-A9FE-21457C9D1C32}
+		{BCAD71BF-86CA-469E-A42E-9F12024A08BC} = {EADAEC56-3288-4030-8345-DAAA86AE146A}
 	EndGlobalSection
 EndGlobal
