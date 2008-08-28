@@ -1,0 +1,183 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CD068EB5-5622-4195-A40F-9C1CF3A0FC25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D3680108-98DE-4832-AB93-B06B11CCA50D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{CEB795EC-A667-4A15-84ED-1E4672DFFD27}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation", "RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj", "{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDdotNet.TeamFoundation.EventResource", "RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj", "{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.ActiveDirectory", "RDdotNet.ActiveDiretory\RDdotNet.ActiveDirectory.vbproj", "{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.Client", "RDdotNet.TeamFoundation.Client\RDdotNet.TeamFoundation.Client.vbproj", "{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Host", "RDdotNet.TeamFoundation.EventHandlerHost\Host.vbproj", "{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Explorer", "RDdotNet.TeamFoundation.TestApp\Explorer.vbproj", "{D772B4DC-4A41-464C-99C5-9554524D4369}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4E1FBF8A-7413-4F3F-ABD8-DA209CE4F5F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{6CE11549-BE4A-41E8-A156-F73A7062724F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TFSEventHandlerExplorerSetup", "TFSEventHandlerExplorerSetup\TFSEventHandlerExplorerSetup.vdproj", "{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HostService", "RDdotNet.TeamFoundation.EventHandlerHostService\HostService.vbproj", "{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TFSEventHandlerServerSetup", "TFSEventHandlerServerSetup\TFSEventHandlerServerSetup.vdproj", "{5E40AD55-3E23-40BA-9631-37EC50446874}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = RDdotNet.TeamFoundation\\RDdotNet.TeamFoundation.vbproj
+		SccProjectTopLevelParentUniqueName1 = TFSCore.sln
+		SccProjectName1 = RDdotNet.TeamFoundation
+		SccLocalPath1 = RDdotNet.TeamFoundation
+		SccProjectUniqueName2 = RDdotNet.TeamFoundation.EventResource\\RDdotNet.TeamFoundation.EventResource.csproj
+		SccProjectTopLevelParentUniqueName2 = TFSCore.sln
+		SccProjectName2 = RDdotNet.TeamFoundation.EventResource
+		SccLocalPath2 = RDdotNet.TeamFoundation.EventResource
+		SccProjectUniqueName3 = RDdotNet.ActiveDiretory\\RDdotNet.ActiveDirectory.vbproj
+		SccProjectTopLevelParentUniqueName3 = TFSCore.sln
+		SccProjectName3 = RDdotNet.ActiveDiretory
+		SccLocalPath3 = RDdotNet.ActiveDiretory
+		SccProjectUniqueName4 = RDdotNet.TeamFoundation.Client\\RDdotNet.TeamFoundation.Client.vbproj
+		SccProjectTopLevelParentUniqueName4 = TFSCore.sln
+		SccProjectName4 = RDdotNet.TeamFoundation.Client
+		SccLocalPath4 = RDdotNet.TeamFoundation.Client
+		SccProjectUniqueName5 = RDdotNet.TeamFoundation.TestApp\\Explorer.vbproj
+		SccProjectTopLevelParentUniqueName5 = TFSCore.sln
+		SccProjectName5 = RDdotNet.TeamFoundation.TestApp
+		SccLocalPath5 = RDdotNet.TeamFoundation.TestApp
+		SccProjectUniqueName6 = RDdotNet.TeamFoundation.EventHandlerHost\\Host.vbproj
+		SccProjectTopLevelParentUniqueName6 = TFSCore.sln
+		SccProjectName6 = RDdotNet.TeamFoundation.EventHandlerHost
+		SccLocalPath6 = RDdotNet.TeamFoundation.EventHandlerHost
+		SccProjectUniqueName7 = TFSEventHandlerExplorerSetup\\TFSEventHandlerExplorerSetup.vdproj
+		SccProjectTopLevelParentUniqueName7 = TFSCore.sln
+		SccProjectName7 = TFSEventHandlerExplorerSetup
+		SccLocalPath7 = TFSEventHandlerExplorerSetup
+		SccProjectUniqueName8 = RDdotNet.TeamFoundation.EventHandlerHostService\\HostService.vbproj
+		SccProjectTopLevelParentUniqueName8 = TFSCore.sln
+		SccProjectName8 = RDdotNet.TeamFoundation.EventHandlerHostService
+		SccLocalPath8 = RDdotNet.TeamFoundation.EventHandlerHostService
+		SccProjectUniqueName9 = TFSEventHandlerServerSetup\\TFSEventHandlerServerSetup.vdproj
+		SccProjectTopLevelParentUniqueName9 = TFSCore.sln
+		SccProjectName9 = TFSEventHandlerServerSetup
+		SccLocalPath9 = TFSEventHandlerServerSetup
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Release|.NET.ActiveCfg = Release|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|.NET.ActiveCfg = Release|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|.NET.ActiveCfg = Release|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D772B4DC-4A41-464C-99C5-9554524D4369}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|.NET.ActiveCfg = Debug
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|Any CPU.ActiveCfg = Debug
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Release|.NET.ActiveCfg = Release
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Release|Any CPU.ActiveCfg = Release
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20}.Release|Mixed Platforms.ActiveCfg = Release
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Release|.NET.ActiveCfg = Release|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Debug|.NET.ActiveCfg = Debug
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Debug|Any CPU.ActiveCfg = Debug
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Release|.NET.ActiveCfg = Release
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Release|Any CPU.ActiveCfg = Release
+		{5E40AD55-3E23-40BA-9631-37EC50446874}.Release|Mixed Platforms.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3680108-98DE-4832-AB93-B06B11CCA50D} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{B5DA9AAA-2706-4159-9FBD-DA5469634FBF} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{D772B4DC-4A41-464C-99C5-9554524D4369} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{75C4F7A8-FCF0-4DB3-B297-98EB0B3235E4} = {CD068EB5-5622-4195-A40F-9C1CF3A0FC25}
+		{CEB795EC-A667-4A15-84ED-1E4672DFFD27} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{84B6ED4E-FAC1-45F9-BF4C-68C57C592A8C} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{13EA0D39-696E-48B1-8C6E-695C82C8C7EF} = {D3680108-98DE-4832-AB93-B06B11CCA50D}
+		{B2077C2A-A341-450E-8B8B-4DD836ADEFBA} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
+		{9BA6FE9F-82CB-40F7-B9BF-4456647D667D} = {CEB795EC-A667-4A15-84ED-1E4672DFFD27}
+		{9B5A45A6-A592-4D89-B92B-3984BB7C6C20} = {6CE11549-BE4A-41E8-A156-F73A7062724F}
+		{5E40AD55-3E23-40BA-9631-37EC50446874} = {6CE11549-BE4A-41E8-A156-F73A7062724F}
+	EndGlobalSection
+EndGlobal
