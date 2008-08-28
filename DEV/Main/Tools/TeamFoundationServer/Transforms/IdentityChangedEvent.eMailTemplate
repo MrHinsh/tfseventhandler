@@ -1,0 +1,8 @@
+<html>
+ <head><title>TFS Security Subsystem Notification</title></head>
+ <body style="font-family:courier new; font-size:12px;">
+  <div>An identity has been changed.</div>
+  <br />
+  <div>&nbsp;&nbsp;SID: <variable name="Sid" /></div>
+ </body>
+</html>
