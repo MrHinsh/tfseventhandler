@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hinshelwood.TFSEventHandler.TeamSystemEvents", "Hinshelwood.TFSEventHandler.TeamSystemEvents\Hinshelwood.TFSEventHandler.TeamSystemEvents.csproj", "{BCAD71BF-86CA-469E-A42E-9F12024A08BC}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshelwood.TFSEventHandler.Server", "Hinshelwood.TFSEventHandler.Server\Hinshelwood.TFSEventHandler.Server.vbproj", "{82C33680-76C9-42D5-8464-600ABF584363}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Hinshelwood.TFSEventHandler.TeamSystemEvents\\Hinshelwood.TFSEventHandler.TeamSystemEvents.csproj
 		SccProjectName1 = Hinshelwood.TFSEventHandler.TeamSystemEvents
 		SccLocalPath1 = Hinshelwood.TFSEventHandler.TeamSystemEvents
+		SccProjectUniqueName2 = Hinshelwood.TFSEventHandler.Server\\Hinshelwood.TFSEventHandler.Server.vbproj
+		SccProjectName2 = Hinshelwood.TFSEventHandler.Server
+		SccLocalPath2 = Hinshelwood.TFSEventHandler.Server
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +27,10 @@ Global
 		{BCAD71BF-86CA-469E-A42E-9F12024A08BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCAD71BF-86CA-469E-A42E-9F12024A08BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCAD71BF-86CA-469E-A42E-9F12024A08BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C33680-76C9-42D5-8464-600ABF584363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C33680-76C9-42D5-8464-600ABF584363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C33680-76C9-42D5-8464-600ABF584363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C33680-76C9-42D5-8464-600ABF584363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
