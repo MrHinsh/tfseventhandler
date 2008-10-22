@@ -32,14 +32,14 @@ Public Class NotifyCreatorHandler
         If String.IsNullOrEmpty(createdName) Then
             Return False
         Else
-            Return Not createdName = ChangedByName _
-                And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue
+            Return Not createdName = ChangedByName And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue
         End If
     End Function
 
     Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) Implements IEventHandler(Of WorkItemChangedEvent).Run
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Running ")
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("NotifyCreatorHandler: Running ")
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("NotifyCreatorHandler: Is not valid ", TraceEventType.Warning)
             Return
         End If
         Dim toName As String = Querys.GetCreatedByName(e.Event).OldValue
@@ -56,9 +56,9 @@ Public Class NotifyCreatorHandler
             End If
             Dim Subject As String = "##PortfolioProject##:##WorkItemType## Owner Notification - ##WorkItemID##: ##WorkItemTitle##"
             Dim x As New Mail(EventHandlerItem, TeamServer, e)
-            x.SendMail(Mail.EmailTypes.NotifyCreator, [to], from, Subject)
+            x.SendMail("NotifyCreator", [to], from, Subject)
         End If
-        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("CreatedByHandler: Complete ")
+        If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("NotifyCreatorHandler: Complete ")
     End Sub
 
 
