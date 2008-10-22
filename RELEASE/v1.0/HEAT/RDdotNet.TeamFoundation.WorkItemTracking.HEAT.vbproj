@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -42,19 +42,13 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="RDdotNet.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e7ba4c22f957562e, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PrivateAssemblies\RDdotNet.ActiveDirectory.dll</HintPath>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
-    <Reference Include="RDdotNet.TeamFoundation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=121ac25d20c8868d, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="RDdotNet.TeamFoundation.EventResource, Version=2.0.0.0, Culture=neutral, PublicKeyToken=76229487cf4572aa, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PrivateAssemblies\RDdotNet.TeamFoundation.EventResource.dll</HintPath>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,18 +135,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.WorkItemTracking\RDdotNet.TeamFoundation.WorkItemTracking.vbproj">
-      <Project>{5E630CFE-7565-490B-B682-7C438F9A929F}</Project>
-      <Name>RDdotNet.TeamFoundation.WorkItemTracking</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="HeatJournalUpdate.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.ActiveDirectory\RDdotNet.ActiveDirectory.vbproj">
+      <Project>{53C9381A-F6F5-4AB9-BE84-90600D7FC113}</Project>
+      <Name>RDdotNet.ActiveDirectory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+      <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
+      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.WorkItemTracking\RDdotNet.TeamFoundation.WorkItemTracking.vbproj">
+      <Project>{5E630CFE-7565-490B-B682-7C438F9A929F}</Project>
+      <Name>RDdotNet.TeamFoundation.WorkItemTracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+      <Project>{EACA87E1-E3D7-44FD-88C6-F797E3786323}</Project>
+      <Name>RDdotNet.TeamFoundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
