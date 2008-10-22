@@ -1,5 +1,6 @@
 ﻿Imports System.Net.Mail
 Imports RDdotNet.TeamFoundation.Helpers
+Imports System.Text.RegularExpressions
 
 Public Class Mail
 
@@ -36,28 +37,31 @@ Public Class Mail
         Return replacers
     End Function
 
+    Private m_replacers As New Hashtable
+
     Private Function FindDescription(ByVal obj As StringField) As Boolean
         If obj.ReferenceName = "System.Description" Then Return True
     End Function
 
     Public Function PerformReplace(ByVal Source As String) As String
         Try
-            Dim replacers As Hashtable = GetReplaceomatic()
-            For Each x As String In replacers.Keys
-                Source = Source.Replace(x, CStr(replacers(x)))
+            If m_replacers Is Nothing Then
+                m_replacers = GetReplaceomatic()
+            End If
+            Dim x As New System.Text.RegularExpressions.Regex("##(.*?)##")
+            For Each y As Match In x.Matches(Source)
+                If m_replacers.ContainsKey(y.Value) Then
+                    Source = Source.Replace(y.Value, m_replacers(y.Value).ToString)
+                Else
+                    ' Not yet implemented
+                    Source = Source.Replace(y.Value, String.Format("?{0} is not implemented?", y.Value))
+                End If
             Next
             Return Source
         Catch ex As Exception
             My.Application.Log.WriteException(ex, TraceEventType.Critical, "XSL Issues")
             Return ex.ToString
         End Try
-    End Function
-
-    '' <summary>
-    '' Retrieves email body based on XSL transform of XML event
-    '' </summary>
-    Public Function GetBody(ByVal EmailType As EmailTypes) As String
-        Return GetBody(EmailType.ToString)
     End Function
 
     '' <summary>
@@ -90,7 +94,7 @@ Public Class Mail
     '' <summary>
     '' Sends email to assignee with details of the work item they've been assigned
     '' </summary>
-    Public Sub SendMail(ByVal EmailType As EmailTypes, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String)
+    Public Sub SendMail(ByVal EmailType As String, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String)
         SendMail(EmailType.ToString, [to], from, Subject, False)
     End Sub
 
@@ -108,7 +112,7 @@ Public Class Mail
         mail.IsBodyHtml = True
         ''Logger.Log(body)
         If Not String.IsNullOrEmpty(from.Address) Then
-            mail.ReplyTo = from
+            mail.ReplyTo = [from]
         End If
         mail.Subject = PerformReplace(Subject)
         '-----------------
@@ -134,11 +138,5 @@ Public Class Mail
         End If
         smtp.Send(mail)
     End Sub
-
-    Public Enum EmailTypes
-        AssignedTo
-        ReAssigned
-        NotifyCreator
-    End Enum
 
 End Class

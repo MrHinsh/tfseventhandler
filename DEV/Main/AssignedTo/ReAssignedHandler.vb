@@ -32,13 +32,14 @@ Public Class ReAssignedHandler
         If String.IsNullOrEmpty(NewAssignedName) Or String.IsNullOrEmpty(OldAssignedName) Then
             Return False
         Else
-            Return Not NewAssignedName = OldAssignedName
+            Return Not NewAssignedName = OldAssignedName And Not OldAssignedName = ChangedByName
         End If
     End Function
 
     Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) Implements IEventHandler(Of WorkItemChangedEvent).Run
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("ReAssignedHandler: Running ")
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("ReAssignedHandler: Is not valid ", TraceEventType.Warning)
             Return
         End If
         Dim toName As String = Querys.GetAssignedToName(e.Event).OldValue
@@ -55,7 +56,7 @@ Public Class ReAssignedHandler
             End If
             Dim Subject As String = "##PortfolioProject##:##WorkItemType## Re-Assigned - ##WorkItemID##: ##WorkItemTitle##"
             Dim x As New Mail(EventHandlerItem, TeamServer, e)
-            x.SendMail(Mail.EmailTypes.ReAssigned, [to], from, Subject)
+            x.SendMail("ReAssigned", [to], from, Subject)
         End If
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("ReAssignedHandler: Complete ")
     End Sub

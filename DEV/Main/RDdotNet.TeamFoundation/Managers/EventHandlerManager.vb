@@ -65,13 +65,13 @@ Public Class EventHandlersManager(Of TEvent)
 
         For Each EventHandlerItem As EventHandlerItem(Of TEvent) In _EventHandlers
             '----------------
-            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName)
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName & ":" & EventHandlerItem.ItemElement.Type)
             Try
                 EventHandlerItem.Subject.Run(EventHandlerItem, ServiceHost, TeamServer, e)
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Error, "Event Handler: Running: " & EventHandlerItem.ItemElement.AssemblyFileName)
             End Try
-            If Not TeamServer Is Nothing AndAlso TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Complete: " & EventHandlerItem.ItemElement.AssemblyFileName)
+            If Not TeamServer Is Nothing AndAlso TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Complete: " & EventHandlerItem.ItemElement.AssemblyFileName & ":" & EventHandlerItem.ItemElement.Type)
             '----------------
         Next
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("Event Handler: Completed RunEventHandlers: " & e.EventType.ToString)

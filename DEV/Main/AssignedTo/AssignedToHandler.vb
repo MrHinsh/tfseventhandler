@@ -11,7 +11,7 @@ Imports RDdotNet.TeamFoundation.Helpers
 Imports RDdotNet.TeamFoundation
 
 ''' <summary>
-''' Send an email to a user who is assigned an email unless they are the one that assigned it to themselves
+''' Send an email to a user who is assigned a work item unless they are the one that assigned it to themselves
 ''' </summary>
 ''' <remarks></remarks>
 Public Class AssignedToHandler
@@ -33,7 +33,7 @@ Public Class AssignedToHandler
         If String.IsNullOrEmpty(assignedName) Then
             Return False
         Else
-            Return Not assignedName = WorkItemEventQuerys.GetChangedByName(e.Event) _
+            Return Not assignedName = ChangedByName _
                     And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue _
                     And Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
         End If
@@ -42,6 +42,7 @@ Public Class AssignedToHandler
     Public Sub Run(ByVal EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent), ByVal ServiceHost As ServiceHostItem, ByVal TeamServer As TeamServerItem, ByVal e As NotifyEventArgs(Of WorkItemChangedEvent)) Implements IEventHandler(Of WorkItemChangedEvent).Run
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Running ")
         If Not IsValid(EventHandlerItem, ServiceHost, TeamServer, e) Then
+            If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Is Not Valid ", TraceEventType.Warning)
             Return
         End If
 
@@ -59,7 +60,7 @@ Public Class AssignedToHandler
             End If
             Dim Subject As String = "##PortfolioProject##:##WorkItemType## Assigned - ##WorkItemID##: ##WorkItemTitle##"
             Dim x As New Mail(EventHandlerItem, TeamServer, e)
-            x.SendMail(Mail.EmailTypes.AssignedTo, [to], from, Subject)
+            x.SendMail("AssignedTo", [to], from, Subject)
         End If
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Complete ")
     End Sub
