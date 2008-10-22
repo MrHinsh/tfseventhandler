@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/VSET/WorkItemTracking/2004/01/mtservices/workItemChangedEvent" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/VSET/WorkItemTracking/2004/01/mtservices/workItemChangedEvent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="WorkItemChangedEvent" type="tns:WorkItemChangedEvent" />
+
+    <xs:complexType name="WorkItemChangedEvent">
+       <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="PortfolioProject" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ProjectNodeId" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="AreaPath" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="Title" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="WorkItemTitle" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="Subscriber" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ChangerSid" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="DisplayUrl" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="TimeZone" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="TimeZoneOffset" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ChangeType" type="tns:ChangeTypes" />
+            <xs:element minOccurs="1" maxOccurs="1" name="CoreFields" type="tns:CoreFieldsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="TextFields" type="tns:TextFieldsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ChangedFields" type="tns:ChangedFieldsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="AddedFiles" type="tns:AddedFilesType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="DeletedFiles" type="tns:DeletedFilesType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="AddedResourceLinks" type="tns:AddedResourceLinksType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="DeletedResourceLinks" type="tns:DeletedResourceLinksType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ChangedResourceLinks" type="tns:ChangedResourceLinksType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="AddedRelations" type="tns:AddedRelationsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="DeletedRelations" type="tns:DeletedRelationsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="ChangedRelations" type="tns:ChangedRelationsType" />
+       </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ChangeTypes">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="New" />
+            <xs:enumeration value="Change" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ChangedFieldsType">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="IntegerFields" type="tns:IntegerFieldsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="StringFields" type="tns:StringFieldsType" />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="CoreFieldsType">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="IntegerFields" type="tns:IntegerFieldsType" />
+            <xs:element minOccurs="1" maxOccurs="1" name="StringFields" type="tns:StringFieldsType" />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="TextFieldsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="tns:TextField" />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="AddedFilesType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Name" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="DeletedFilesType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="FileId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="AddedResourceLinksType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="DeletedResourceLinksType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="LinkId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="ChangedResourceLinksType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="LinkId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="AddedRelationsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkItemId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="DeletedRelationsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkItemId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="ChangedRelationsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkItemId" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="IntegerFieldsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="tns:IntegerField" />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="StringFieldsType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="tns:StringField" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="IntegerField">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="ReferenceName" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="OldValue" type="xs:int"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="NewValue" type="xs:int"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="StringField">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="ReferenceName" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="OldValue" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="NewValue" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+
+    <xs:complexType name="TextField">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="ReferenceName" type="xs:string"  />
+            <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:string"  />
+        </xs:sequence>
+     </xs:complexType>
+</xs:schema>
