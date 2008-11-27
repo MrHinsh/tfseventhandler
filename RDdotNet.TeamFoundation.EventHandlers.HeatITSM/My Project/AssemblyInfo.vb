@@ -8,8 +8,9 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Team Foundation WorkItem Tracking")> 
+<Assembly: AssemblyTitle("Heat ITSM Event Handler")> 
+
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("c19682a1-05b4-4240-8742-3cd83a9a5236")> 
+<Assembly: Guid("a13bf88e-5a80-4948-948b-d34e0cb74def")> 
 

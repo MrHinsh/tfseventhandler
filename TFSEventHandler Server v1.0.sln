@@ -21,13 +21,13 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RDdotNet.TFSEventHandlerSet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handlers", "Handlers", "{BDC1CC8A-816F-484C-A136-B36084E69AB0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking.Assignement", "AssignedTo\RDdotNet.TeamFoundation.WorkItemTracking.Assignement.vbproj", "{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.SourceControl.ChangeSet", "ChangeSet\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj", "{0C7686BB-523D-4EA3-9B39-23BD60254C13}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking.HEAT", "HEAT\RDdotNet.TeamFoundation.WorkItemTracking.HEAT.vbproj", "{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking", "RDdotNet.TeamFoundation.WorkItemTracking\RDdotNet.TeamFoundation.WorkItemTracking.vbproj", "{5E630CFE-7565-490B-B682-7C438F9A929F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking.Assignement", "RDdotNet.TeamFoundation.EventHandlers.AssignedTo\RDdotNet.TeamFoundation.WorkItemTracking.Assignement.vbproj", "{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.SourceControl.ChangeSet", "RDdotNet.TeamFoundation.EventHandlers.ChangeSet\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj", "{0C7686BB-523D-4EA3-9B39-23BD60254C13}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RDdotNet.TeamFoundation.WorkItemTracking.HEAT", "RDdotNet.TeamFoundation.EventHandlers.HeatITSM\RDdotNet.TeamFoundation.WorkItemTracking.HEAT.vbproj", "{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -58,22 +58,22 @@ Global
 		SccProjectUniqueName6 = RDdotNet.TFSEventHandlerSetup\\TFSEventHandlerSetup.vdproj
 		SccProjectName6 = RDdotNet.TFSEventHandlerSetup
 		SccLocalPath6 = RDdotNet.TFSEventHandlerSetup
-		SccProjectUniqueName7 = AssignedTo\\RDdotNet.TeamFoundation.WorkItemTracking.Assignement.vbproj
+		SccProjectUniqueName7 = RDdotNet.TeamFoundation.WorkItemTracking\\RDdotNet.TeamFoundation.WorkItemTracking.vbproj
 		SccProjectTopLevelParentUniqueName7 = TFSEventHandler\u0020Server\u0020v1.0.sln
-		SccProjectName7 = AssignedTo
-		SccLocalPath7 = AssignedTo
-		SccProjectUniqueName8 = ChangeSet\\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj
+		SccProjectName7 = RDdotNet.TeamFoundation.WorkItemTracking
+		SccLocalPath7 = RDdotNet.TeamFoundation.WorkItemTracking
+		SccProjectUniqueName8 = RDdotNet.TeamFoundation.EventHandlers.AssignedTo\\RDdotNet.TeamFoundation.WorkItemTracking.Assignement.vbproj
 		SccProjectTopLevelParentUniqueName8 = TFSEventHandler\u0020Server\u0020v1.0.sln
-		SccProjectName8 = ChangeSet
-		SccLocalPath8 = ChangeSet
-		SccProjectUniqueName9 = HEAT\\RDdotNet.TeamFoundation.WorkItemTracking.HEAT.vbproj
+		SccProjectName8 = RDdotNet.TeamFoundation.EventHandlers.AssignedTo
+		SccLocalPath8 = RDdotNet.TeamFoundation.EventHandlers.AssignedTo
+		SccProjectUniqueName9 = RDdotNet.TeamFoundation.EventHandlers.ChangeSet\\RDdotNet.TeamFoundation.SourceControl.ChangeSet.vbproj
 		SccProjectTopLevelParentUniqueName9 = TFSEventHandler\u0020Server\u0020v1.0.sln
-		SccProjectName9 = HEAT
-		SccLocalPath9 = HEAT
-		SccProjectUniqueName10 = RDdotNet.TeamFoundation.WorkItemTracking\\RDdotNet.TeamFoundation.WorkItemTracking.vbproj
+		SccProjectName9 = RDdotNet.TeamFoundation.EventHandlers.ChangeSet
+		SccLocalPath9 = RDdotNet.TeamFoundation.EventHandlers.ChangeSet
+		SccProjectUniqueName10 = RDdotNet.TeamFoundation.EventHandlers.HeatITSM\\RDdotNet.TeamFoundation.WorkItemTracking.HEAT.vbproj
 		SccProjectTopLevelParentUniqueName10 = TFSEventHandler\u0020Server\u0020v1.0.sln
-		SccProjectName10 = RDdotNet.TeamFoundation.WorkItemTracking
-		SccLocalPath10 = RDdotNet.TeamFoundation.WorkItemTracking
+		SccProjectName10 = RDdotNet.TeamFoundation.EventHandlers.HeatITSM
+		SccLocalPath10 = RDdotNet.TeamFoundation.EventHandlers.HeatITSM
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -146,6 +146,16 @@ Global
 		{DD3A30C9-29DF-4265-AD11-C287ABBA3FEE}.Release|Any CPU.Build.0 = Release
 		{DD3A30C9-29DF-4265-AD11-C287ABBA3FEE}.Release|Mixed Platforms.ActiveCfg = Release
 		{DD3A30C9-29DF-4265-AD11-C287ABBA3FEE}.Release|Mixed Platforms.Build.0 = Release
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|.NET.ActiveCfg = Release|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -176,16 +186,6 @@ Global
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|.NET.ActiveCfg = Release|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5E630CFE-7565-490B-B682-7C438F9A929F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -198,9 +198,9 @@ Global
 		{EACA87E1-E3D7-44FD-88C6-F797E3786323} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
 		{0F4212BE-70A6-4773-9B92-9376B203CEAA} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
 		{53C9381A-F6F5-4AB9-BE84-90600D7FC113} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
+		{5E630CFE-7565-490B-B682-7C438F9A929F} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 		{0C7686BB-523D-4EA3-9B39-23BD60254C13} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
-		{5E630CFE-7565-490B-B682-7C438F9A929F} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 	EndGlobalSection
 EndGlobal

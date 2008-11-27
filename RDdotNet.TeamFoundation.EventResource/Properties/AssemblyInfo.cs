@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RDdotNet.TeamFoundation.EventResource")]
+[assembly: AssemblyTitle("Team Foundation Event Resource")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("RDdotNet")]
-[assembly: AssemblyProduct("RDdotNet.TeamFoundation.EventResource")]
-[assembly: AssemblyCopyright("Copyright © RDdotNet 2007")]
+[assembly: AssemblyCompany("Hinshelwood.com")]
+[assembly: AssemblyProduct("TFS Event Handler v1.0")]
+[assembly: AssemblyCopyright("Copyright © Martin Hinshelwood 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: System.Security.AllowPartiallyTrustedCallers()]
