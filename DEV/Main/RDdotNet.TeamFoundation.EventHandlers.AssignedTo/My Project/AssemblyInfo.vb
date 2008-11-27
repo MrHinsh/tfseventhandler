@@ -8,8 +8,8 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Team Foundation WorkItem Tracking")> 
+<Assembly: AssemblyTitle("Assignement Event Handler")> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("c19682a1-05b4-4240-8742-3cd83a9a5236")> 
+<Assembly: Guid("4e6592b3-ccee-428c-a0e3-4be4c3278c06")> 
 

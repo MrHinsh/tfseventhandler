@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D}</ProjectGuid>
+    <ProjectGuid>{0C7686BB-523D-4EA3-9B39-23BD60254C13}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation.WorkItemTracking</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.WorkItemTracking.Assignement</AssemblyName>
+    <RootNamespace>RDdotNet.TeamFoundation.SourceControl</RootNamespace>
+    <AssemblyName>RDdotNet.TeamFoundation.SourceControl.ChangeSet</AssemblyName>
     <MyType>Windows</MyType>
     <OptionStrict>On</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
@@ -20,10 +20,9 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <OptionInfer>On</OptionInfer>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TFSEventHandler_Assignement.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>TFSEventHandler_Changeset.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +30,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>MerrillLynch.TeamFoundation.WorkItemTracking.AssignedTo.xml</DocumentationFile>
+    <DocumentationFile>MerrillLynch.TeamFoundation.SourceControl.ChangeSet.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -40,20 +39,31 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>MerrillLynch.TeamFoundation.WorkItemTracking.AssignedTo.xml</DocumentationFile>
+    <DocumentationFile>MerrillLynch.TeamFoundation.SourceControl.ChangeSet.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <Reference Include="Microsoft.TeamFoundation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools\TeamFoundationServer\PrivateAssemblies\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +76,10 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NotifyCreatorHandler.vb" />
+    <Compile Include="..\Tools\SharedProjectFiles\SharedAssemblyInfo.vb">
+      <Link>SharedAssemblyInfo.vb</Link>
+    </Compile>
+    <Compile Include="ChangeSetHandler.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -82,8 +95,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="AssignedToHandler.vb" />
-    <Compile Include="ReAssignedHandler.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -94,7 +105,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HandlerDesign.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -104,16 +114,10 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="TFSEventHandler_Assignement.snk" />
+    <None Include="TFSEventHandler_Changeset.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssignedTo.htm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="NotifyCreator.htm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ReAssigned.htm">
+    <Content Include="ChangeSet.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -126,17 +130,10 @@
       <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
       <Name>RDdotNet.TeamFoundation.EventResource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.WorkItemTracking\RDdotNet.TeamFoundation.WorkItemTracking.vbproj">
-      <Project>{5E630CFE-7565-490B-B682-7C438F9A929F}</Project>
-      <Name>RDdotNet.TeamFoundation.WorkItemTracking</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
       <Project>{EACA87E1-E3D7-44FD-88C6-F797E3786323}</Project>
       <Name>RDdotNet.TeamFoundation</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
