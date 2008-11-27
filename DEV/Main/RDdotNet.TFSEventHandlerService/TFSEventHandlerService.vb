@@ -1,8 +1,8 @@
 Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 
 Public Class TFSEventHandlerService
 
@@ -42,7 +42,7 @@ Public Class TFSEventHandlerService
         End If
         My.Application.Log.WriteEntry(String.Format("TeamServerManager: Status of {0} is now {1}", name, Status.ToString), TraceEventType.Information)
         Select Case Status
-            Case RDdotNet.TeamFoundation.Status.InitializationComplete
+            Case Status.InitializationComplete
                 ServiceHostManager.Initilise()
         End Select
     End Sub
@@ -70,11 +70,11 @@ Public Class TFSEventHandlerService
         End If
         My.Application.Log.WriteEntry(String.Format("ServiceHostManager: Status of {0} is now {1}", name, Status.ToString), TraceEventType.Information)
         Select Case Status
-            Case RDdotNet.TeamFoundation.Status.Closed
+            Case Status.Closed
                 TeamServerManager.UnregisterEvent(ManagedType.EventType)
-            Case RDdotNet.TeamFoundation.Status.Connected
+            Case Status.Connected
                 TeamServerManager.RegisterEvent(ManagedType.EventType, ManagedType.BaseAddress)
-            Case RDdotNet.TeamFoundation.Status.InitializationComplete
+            Case Status.InitializationComplete
                 WorkItemChangedManager.Initilise()
         End Select
     End Sub

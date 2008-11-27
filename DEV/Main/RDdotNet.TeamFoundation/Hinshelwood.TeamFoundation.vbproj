@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EACA87E1-E3D7-44FD-88C6-F797E3786323}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RDdotNet.TeamFoundation</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation</AssemblyName>
+    <RootNamespace>Hinshelwood.TeamFoundation</RootNamespace>
+    <AssemblyName>Hinshelwood.TeamFoundation</AssemblyName>
     <MyType>Windows</MyType>
     <OptionStrict>On</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
@@ -31,7 +31,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>MerrillLynch.TeamFoundation.xml</DocumentationFile>
+    <DocumentationFile>Hinshelwood.TeamFoundation.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -40,7 +40,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>MerrillLynch.TeamFoundation.xml</DocumentationFile>
+    <DocumentationFile>Hinshelwood.TeamFoundation.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -153,9 +153,9 @@
     <Compile Include="EventResources\WorkItemEventQuerys.vb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\Hinshelwood.TeamFoundation.EventResource.csproj">
       <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+      <Name>Hinshelwood.TeamFoundation.EventResource</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,8 +7,8 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports RDdotNet.TeamFoundation.Helpers
-Imports RDdotNet.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Helpers
+Imports Hinshelwood.TeamFoundation
 
 ''' <summary>
 ''' Send an email to a user who is assigned a work item unless they are the one that assigned it to themselves
@@ -46,10 +46,10 @@ Public Class AssignedToHandler
             Return
         End If
 
-        Dim toName As String = RDdotNet.TeamFoundation.WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
-        Dim toAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(toName)
-        Dim fromName As String = RDdotNet.TeamFoundation.WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
-        Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(fromName)
+        Dim toName As String = WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
+        Dim toAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(toName)
+        Dim fromName As String = WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
+        Dim fromAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(fromName)
         If String.IsNullOrEmpty(toAddress) Then
             'Logger.Log("Can't send email because no email address was found for " + toName)
         Else

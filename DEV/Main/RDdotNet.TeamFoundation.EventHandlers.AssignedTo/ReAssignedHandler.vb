@@ -7,8 +7,8 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports RDdotNet.TeamFoundation.Helpers
-Imports RDdotNet.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Helpers
+Imports Hinshelwood.TeamFoundation
 
 ''' <summary>
 ''' Send an email to a user when a work item that they are assigned is re assigend to someone else unless they are the one that made the change.
@@ -43,9 +43,9 @@ Public Class ReAssignedHandler
             Return
         End If
         Dim toName As String = Querys.GetAssignedToName(e.Event).OldValue
-        Dim toAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(toName)
+        Dim toAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(toName)
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-        Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(fromName)
+        Dim fromAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(fromName)
         If String.IsNullOrEmpty(toAddress) Then
             'Logger.Log("Can't send email because no email address was found for " + toName)
         Else
