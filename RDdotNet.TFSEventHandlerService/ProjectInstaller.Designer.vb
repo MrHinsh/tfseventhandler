@@ -28,8 +28,8 @@
         '
         'ServiceInstaller1
         '
-        Me.ServiceInstaller1.DisplayName = "TFS Event Handler v1.0"
-        Me.ServiceInstaller1.ServiceName = "RDdotNet TFS Event Handler v1.0"
+        Me.ServiceInstaller1.DisplayName = "TFS Event Handler v1.1"
+        Me.ServiceInstaller1.ServiceName = "TFS Event Handler v1.1"
         Me.ServiceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic
         '
         'ProjectInstaller
