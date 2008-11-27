@@ -50,7 +50,7 @@ Namespace Config
         ''' <summary>
         ''' The configuration section name for this section.
         ''' </summary>
-        Public Const SectionName As String = "RDdotNet.TeamFoundation"
+        Public Const SectionName As String = "Hinshelwood.TeamFoundation"
 
         ''' <summary>
         ''' List of  services that will be initialized on the host.
