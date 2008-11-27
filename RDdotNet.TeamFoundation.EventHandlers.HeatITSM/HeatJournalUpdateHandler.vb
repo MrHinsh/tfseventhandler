@@ -8,8 +8,8 @@ Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
 Imports Microsoft.TeamFoundation.WorkItemTracking.Client
-Imports RDdotNet.TeamFoundation.Helpers
-Imports RDdotNet.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Helpers
+Imports Hinshelwood.TeamFoundation
 Imports System.Xml.Serialization
 
 ''' <summary>
@@ -59,7 +59,7 @@ Public Class HeatJournalUpdateHandler
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: HeatRef:" & HeatRef.Value)
         Dim ChangedByName As StringField = Querys.GetChangedByName(e.Event)
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: ChangedByName:" & ChangedByName.NewValue)
-        Dim UserName As String = RDdotNet.ActiveDirectory.Querys.GetUsername(ChangedByName.NewValue)
+        Dim UserName As String = Hinshelwood.ActiveDirectory.Querys.GetUsername(ChangedByName.NewValue)
         If String.IsNullOrEmpty(UserName) Then UserName = My.User.Name
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("HeatJournalUpdateHandler: UserName:" & UserName)
         Dim Duration As Integer = 1

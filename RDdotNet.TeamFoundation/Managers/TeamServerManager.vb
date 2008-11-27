@@ -1,7 +1,7 @@
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 Imports Microsoft.TeamFoundation.Client
 Imports Microsoft.TeamFoundation
 

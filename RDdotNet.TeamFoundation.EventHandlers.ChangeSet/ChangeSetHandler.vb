@@ -7,7 +7,7 @@ Imports System.Net.Mail
 Imports System.Configuration
 Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
-Imports RDdotNet.TeamFoundation
+Imports Hinshelwood.TeamFoundation
 Imports Microsoft.TeamFoundation.WorkItemTracking.Client
 Imports Microsoft.TeamFoundation.Common
 Imports Microsoft.TeamFoundation.Server
@@ -32,12 +32,12 @@ Public Class ChangeSetHandler
         Dim users As Collection(Of String) = GetAllUsersToEmail(TeamServer.Subject, project.Name)
         For Each user As String In users
             Dim toName As String = user
-            Dim toAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(user)
+            Dim toAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(user)
             Dim [to] As New MailAddress(toAddress, toName)
             Dim fromName As String = e.Event.Owner
-            Dim fromAddress As String = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(e.Event.Owner)
+            Dim fromAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(e.Event.Owner)
             Dim memberInfo As Identity = GroupSecurityService.ReadIdentity(SearchFactor.AccountName, e.Event.Owner, QueryMembership.None)
-            fromAddress = RDdotNet.ActiveDirectory.Querys.GetEmailAddress(memberInfo.DisplayName)
+            fromAddress = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(memberInfo.DisplayName)
             Dim from As New MailAddress(fromAddress, fromName)
             If String.IsNullOrEmpty(toAddress) Then
                 'Logger.Log("Can't send email because no email address was found for " + toName)

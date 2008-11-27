@@ -1,6 +1,7 @@
 ﻿Imports System.Net.Mail
-Imports RDdotNet.TeamFoundation.Helpers
+Imports Hinshelwood.TeamFoundation.Helpers
 Imports System.Text.RegularExpressions
+Imports Hinshelwood.TeamFoundation
 
 Public Class Mail
 
@@ -20,7 +21,7 @@ Public Class Mail
         replacers.Add("##ChangedByName##", WorkItemEventQuerys.GetChangedByName(m_NotifyEvent.Event))
         replacers.Add("##WorkItemID##", WorkItemEventQuerys.GetWorkItemID(m_NotifyEvent.Event))
         replacers.Add("##WorkItemType##", WorkItemEventQuerys.GetWorkItemType(m_NotifyEvent.Event))
-        replacers.Add("##ChangedByEmail##", RDdotNet.ActiveDirectory.Querys.GetEmailAddress(CStr(replacers("##ChangedByName##"))))
+        replacers.Add("##ChangedByEmail##", Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(CStr(replacers("##ChangedByName##"))))
         replacers.Add("##PortfolioProject##", m_NotifyEvent.Event.PortfolioProject)
         replacers.Add("##WorkItemTitle##", m_NotifyEvent.Event.WorkItemTitle)
         replacers.Add("##DisplayURL##", m_NotifyEvent.Event.DisplayUrl)
