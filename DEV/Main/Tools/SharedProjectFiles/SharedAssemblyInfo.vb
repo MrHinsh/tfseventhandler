@@ -8,18 +8,13 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("RDdotNet")> 
-<Assembly: AssemblyProduct("RDdotNet.TeamFoundation.WorkItemTracking.AssignedTo")> 
-<Assembly: AssemblyCopyright("Copyright © RDdotNet 2007")> 
-<Assembly: Security.AllowPartiallyTrustedCallers()> 
+<Assembly: AssemblyCompany("Hinshelwood.com")> 
+<Assembly: AssemblyProduct("TFS Event Handler v1.0")> 
+<Assembly: AssemblyCopyright("Copyright © Martin Hinshelwood 2007")> 
 <Assembly: AssemblyTrademark("")> 
-
+<Assembly: Security.AllowPartiallyTrustedCallers()> 
 <Assembly: ComVisible(False)>
-
-'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("4e6592b3-ccee-428c-a0e3-4be4c3278c06")> 
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -32,5 +27,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.*")> 
-<Assembly: AssemblyFileVersion("1.0.*")> 
+<Assembly: AssemblyVersion("1.0.1.*")> 
+<Assembly: AssemblyFileVersion("1.0.1.0")> 
