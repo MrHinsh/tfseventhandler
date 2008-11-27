@@ -2,8 +2,8 @@ Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 
 Public Delegate Sub EventHandlerDelegate(Of TEvent)(ByVal e As NotifyEventArgs(Of TEvent))
 

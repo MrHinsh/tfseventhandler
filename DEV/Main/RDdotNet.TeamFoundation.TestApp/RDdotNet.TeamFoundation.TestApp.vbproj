@@ -131,13 +131,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\RDdotNet.TeamFoundation.EventResource.csproj">
+    <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\Hinshelwood.TeamFoundation.EventResource.csproj">
       <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
-      <Name>RDdotNet.TeamFoundation.EventResource</Name>
+      <Name>Hinshelwood.TeamFoundation.EventResource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RDdotNet.TeamFoundation\RDdotNet.TeamFoundation.vbproj">
+    <ProjectReference Include="..\RDdotNet.TeamFoundation\Hinshelwood.TeamFoundation.vbproj">
       <Project>{EACA87E1-E3D7-44FD-88C6-F797E3786323}</Project>
-      <Name>RDdotNet.TeamFoundation</Name>
+      <Name>Hinshelwood.TeamFoundation</Name>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

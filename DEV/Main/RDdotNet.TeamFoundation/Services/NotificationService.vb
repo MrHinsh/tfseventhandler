@@ -1,12 +1,12 @@
 Imports System.ServiceModel
 Imports System.Runtime.Serialization
 Imports System.Collections.ObjectModel
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 
 <ServiceBehavior(InstanceContextMode:=InstanceContextMode.Single, AddressFilterMode:=AddressFilterMode.Any)> _
 Public Class NotificationService(Of TEvent As {New})
-    Implements RDdotNet.TeamFoundation.INotification
+    Implements INotification
     Implements IDisposable
 
     Private _EventHandler As EventHandlerDelegate(Of TEvent)

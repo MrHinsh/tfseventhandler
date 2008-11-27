@@ -1,8 +1,8 @@
 Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 
 
 Public Class Form1
@@ -66,9 +66,9 @@ Public Class Form1
         Else
             Me.uxListBoxTeamServer.Items.Add("StatusChange: " & Status.ToString)
             Select Case Status
-                Case TeamFoundation.Status.Connected
+                Case Status.Connected
                     ' MsgBox("TeamServerManager_TeamServerCreated: " & TeamServer.Subject.Name)
-                Case TeamFoundation.Status.InitializationComplete
+                Case Status.InitializationComplete
                     ServiceHostManager.Initilise()
             End Select
         End If
@@ -99,15 +99,15 @@ Public Class Form1
         Else
             Me.uxListBoxServiceHost.Items.Add("StatusChange: " & Status.ToString)
             Select Case Status
-                Case TeamFoundation.Status.Closed
+                Case Status.Closed
                     'MsgBox("ServiceHostManager_ServiceHostClosed: " & ManagedType.EventType.ToString & ":" & ManagedType.BaseAddress.ToString)
                     Me.ux_ListBoxEndPoints.Items.Remove(ManagedType.BaseAddress.ToString)
                     TeamServerManager.UnregisterEvent(ManagedType.EventType)
-                Case TeamFoundation.Status.Connected
+                Case Status.Connected
                     'MsgBox("ServiceHostManager_ServiceHostCreated: " & ManagedType.EventType.ToString & ":" & ManagedType.BaseAddress.ToString)
                     TeamServerManager.RegisterEvent(ManagedType.EventType, ManagedType.BaseAddress)
                     Me.ux_ListBoxEndPoints.Items.Add(ManagedType.BaseAddress.ToString)
-                Case TeamFoundation.Status.InitializationComplete
+                Case Status.InitializationComplete
                     EventHandlerManager_WorkItemChanged.Initilise()
                     EventHandlerManager_CheckinEvent.Initilise()
             End Select

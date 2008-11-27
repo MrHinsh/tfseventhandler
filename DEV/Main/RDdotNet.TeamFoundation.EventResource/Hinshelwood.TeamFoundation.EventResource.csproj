@@ -7,8 +7,8 @@
     <ProjectGuid>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RDdotNet.TeamFoundation.EventResource</RootNamespace>
-    <AssemblyName>RDdotNet.TeamFoundation.EventResource</AssemblyName>
+    <RootNamespace>Hinshelwood.TeamFoundation.EventResource</RootNamespace>
+    <AssemblyName>Hinshelwood.TeamFoundation.EventResource</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>

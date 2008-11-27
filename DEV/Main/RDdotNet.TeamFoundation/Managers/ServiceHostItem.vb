@@ -2,8 +2,8 @@ Imports System.ServiceModel
 Imports System.ServiceModel.Description
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
-Imports RDdotNet.TeamFoundation
-Imports RDdotNet.TeamFoundation.Config
+Imports Hinshelwood.TeamFoundation
+Imports Hinshelwood.TeamFoundation.Config
 
 Public Class ServiceHostItem
     Inherits AItem(Of ServiceHost, EventItemElement)
