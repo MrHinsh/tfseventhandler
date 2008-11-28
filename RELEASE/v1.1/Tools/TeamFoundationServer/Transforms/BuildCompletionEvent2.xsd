@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/VSET/TeamBuilds/2004/08/mtservices/buildCompletionEvent" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/VSET/TeamBuilds/2004/08/mtservices/buildCompletionEvent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="BuildCompletionEvent2" type="tns:BuildCompletionEvent2" />
+    <xs:complexType name="BuildCompletionEvent2">
+        <xs:sequence>
+            <xs:element name="TeamFoundationServerUrl" type="xs:anyURI" minOccurs="1" maxOccurs="1" />
+            <xs:element name="Url" type="xs:anyURI" minOccurs="1" maxOccurs="1" />
+            <xs:element name="TeamProject" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="AgentPath" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="DefinitionPath" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="BuildNumber" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="StartTime" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="FinishTime" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="ConfigurationFolderUri" type="xs:anyURI" minOccurs="1" maxOccurs="1" />
+            <xs:element name="SourceGetVersion" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="Quality" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Status" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="StatusCode" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="CompilationStatus" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="TestStatus" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="LogLocation" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="DropLocation" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="RequestedFor" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="RequestedBy" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="LastChangedOn" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="LastChangedBy" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="KeepForever" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+            <xs:element name="TimeZone" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="TimeZoneOffset" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="Subscriber" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
