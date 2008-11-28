@@ -25,7 +25,6 @@ Public Class Mail
         replacers.Add("##PortfolioProject##", m_NotifyEvent.Event.PortfolioProject)
         replacers.Add("##WorkItemTitle##", m_NotifyEvent.Event.WorkItemTitle)
         replacers.Add("##DisplayURL##", m_NotifyEvent.Event.DisplayUrl)
-        replacers.Add("##WorkItemDescription##", m_NotifyEvent.Event.CoreFields.StringFields.Find(New Predicate(Of StringField)(AddressOf FindDescription)))
         replacers.Add("##AssignedToName##", WorkItemEventQuerys.GetAssignedToName(m_NotifyEvent.Event))
         '---------------------------
         replacers.Add("##TFSURL##", m_TeamServer.Subject.Uri.ToString)
@@ -38,7 +37,7 @@ Public Class Mail
         Return replacers
     End Function
 
-    Private m_replacers As New Hashtable
+    Private m_replacers As Hashtable
 
     Private Function FindDescription(ByVal obj As StringField) As Boolean
         If obj.ReferenceName = "System.Description" Then Return True
@@ -52,7 +51,12 @@ Public Class Mail
             Dim x As New System.Text.RegularExpressions.Regex("##(.*?)##")
             For Each y As Match In x.Matches(Source)
                 If m_replacers.ContainsKey(y.Value) Then
-                    Source = Source.Replace(y.Value, m_replacers(y.Value).ToString)
+                    Try
+                        Source = Source.Replace(y.Value, m_replacers(y.Value).ToString)
+                    Catch ex As Exception
+                        Source = Source.Replace(y.Value, String.Format("?{0} Can't replace?", y.Value))
+                    End Try
+
                 Else
                     ' Not yet implemented
                     Source = Source.Replace(y.Value, String.Format("?{0} is not implemented?", y.Value))

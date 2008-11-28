@@ -112,6 +112,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="Wrapper.htm" />
     <None Include="TFSEventHandler_Assignement.snk" />
   </ItemGroup>
   <ItemGroup>
