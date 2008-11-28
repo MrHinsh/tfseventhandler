@@ -15,9 +15,16 @@ Public Class Querys
 
     End Sub
 
-    'Microsoft.VSTS.CMMI.Estimate
-    'Microsoft.VSTS.Scheduling.RemainingWork
-    'Microsoft.VSTS.Scheduling.CompletedWork
+    ''' <summary>
+    ''' Microsoft.VSTS.CMMI.Estimate
+    ''' Microsoft.VSTS.Scheduling.RemainingWork
+    ''' Microsoft.VSTS.Scheduling.CompletedWork
+    ''' System.Description
+    ''' </summary>
+    ''' <param name="Value"></param>
+    ''' <param name="ReferenceName"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetTextField(ByVal Value As WorkItemChangedEvent, ByVal ReferenceName As String) As TextField
         Return (From f In Value.TextFields Where f.ReferenceName = ReferenceName).SingleOrDefault
     End Function
