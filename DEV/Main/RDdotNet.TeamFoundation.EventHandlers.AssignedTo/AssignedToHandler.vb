@@ -34,7 +34,6 @@ Public Class AssignedToHandler
             Return False
         Else
             Return Not assignedName = ChangedByName _
-                    And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue _
                     And Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
         End If
     End Function
