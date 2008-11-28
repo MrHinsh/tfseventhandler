@@ -1,0 +1,10 @@
+<html>
+ <head><title>TFS Security Subsystem Notification</title></head>
+ <body style="font-family:courier new; font-size:12px;">
+  <div>Group membership has been changed.</div>
+  <br />
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;Group SID: <variable name="GroupSid" /></div>
+  <div>&nbsp;&nbsp;&nbsp;Member SID: <variable name="MemberSid" /></div>
+  <div>&nbsp;&nbsp;Change type: <variable name="ChangeType" /></div>
+ </body>
+</html>

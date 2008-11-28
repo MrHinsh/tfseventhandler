@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BranchMovedEvent" nillable="true" type="BranchMovedEvent" />
+  <xs:complexType name="BranchMovedEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ProjectUri" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NodeUri" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OldParentUri" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NewParentUri" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
