@@ -1,7 +1,7 @@
 Imports System.Xml
 Imports System.Xml.Xsl
 Imports System.Xml.XPath
-Imports System.io
+Imports System.IO
 Imports System.Text
 Imports System.Net.Mail
 Imports System.Configuration
@@ -9,6 +9,7 @@ Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
 Imports Hinshelwood.TeamFoundation.Helpers
 Imports Hinshelwood.TeamFoundation
+Imports Microsoft.TeamFoundation.Server
 
 ''' <summary>
 ''' Send an email to a user who is assigned a work item unless they are the one that assigned it to themselves
@@ -33,8 +34,13 @@ Public Class AssignedToHandler
         If String.IsNullOrEmpty(assignedName) Then
             Return False
         Else
-            Return Not assignedName = ChangedByName _
-                    And Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
+            Dim assignedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, assignedName, QueryMembership.Expanded)
+            If assignedIdentity.SecurityGroup Then
+                Return Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
+            Else
+                Return Not assignedName = ChangedByName _
+                            And Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
+            End If
         End If
     End Function
 
@@ -44,23 +50,17 @@ Public Class AssignedToHandler
             If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Is Not Valid ", TraceEventType.Warning)
             Return
         End If
+        Dim assignedName As String = WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
+        Dim assignedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, assignedName, QueryMembership.Expanded)
+        Dim ChangedByName As String = WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
+        Dim ChangedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, ChangedByName, QueryMembership.Expanded)
 
-        Dim toName As String = WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
-        Dim toAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(toName)
-        Dim fromName As String = WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
-        Dim fromAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(fromName)
-        If String.IsNullOrEmpty(toAddress) Then
-            'Logger.Log("Can't send email because no email address was found for " + toName)
-        Else
-            Dim [to] As New MailAddress(toAddress, toName)
-            Dim from As New MailAddress(fromAddress, fromName)
-            If TeamServer.ItemElement.TestMode Then
-                [to] = New Net.Mail.MailAddress(TeamServer.ItemElement.TestEmail)
-            End If
-            Dim Subject As String = "##PortfolioProject##:##WorkItemType## Assigned - ##WorkItemID##: ##WorkItemTitle##"
-            Dim x As New Mail(EventHandlerItem, TeamServer, e)
-            x.SendMail("AssignedTo", [to], from, Subject)
-        End If
+
+        Dim Subject As String = "##PortfolioProject##:##WorkItemType## Assigned - ##WorkItemID##: ##WorkItemTitle##"
+
+        Dim x As New UserNotificationService(EventHandlerItem, TeamServer, e)
+        x.SendNotification("AssignedTo", ChangedIdentity, assignedIdentity, Subject)
+
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Complete ")
     End Sub
 
