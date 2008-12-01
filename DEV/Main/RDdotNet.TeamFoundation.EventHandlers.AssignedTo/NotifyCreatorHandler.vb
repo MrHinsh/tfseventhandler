@@ -33,11 +33,9 @@ Public Class NotifyCreatorHandler
         If String.IsNullOrEmpty(createdName) Then
             Return False
         Else
-            Dim GroupSecurityService As IGroupSecurityService = CType(TeamServer.Subject.GetService(GetType(IGroupSecurityService)), IGroupSecurityService)
-            Dim assignedIdentity As Identity = GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, Querys.GetAssignedToName(e.Event).OldValue, QueryMembership.Expanded)
+            Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(Querys.GetAssignedToName(e.Event).OldValue, e.Event)
             If assignedIdentity.SecurityGroup Then
-                ' If group, don't check 
-
+                Return False
             End If
 
             Return Not createdName = ChangedByName And Not ChangedByName = Querys.GetAssignedToName(e.Event).OldValue
@@ -51,9 +49,9 @@ Public Class NotifyCreatorHandler
             Return
         End If
         Dim toName As String = Querys.GetCreatedByName(e.Event).OldValue
-        Dim toIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, toName, QueryMembership.Expanded)
+        Dim toIdentity As Identity = TeamServer.GetIdentityFromDisplayName(toName, e.Event)
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-        Dim fromIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, fromName, QueryMembership.Expanded)
+        Dim fromIdentity As Identity = TeamServer.GetIdentityFromDisplayName(fromName, e.Event)
 
         Dim Subject As String = "##PortfolioProject##:##WorkItemType## Owner Notification - ##WorkItemID##: ##WorkItemTitle##"
         Dim x As New UserNotificationService(EventHandlerItem, TeamServer, e)

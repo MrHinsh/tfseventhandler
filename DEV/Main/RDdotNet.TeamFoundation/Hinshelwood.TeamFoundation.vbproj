@@ -152,6 +152,10 @@
     <Compile Include="EventResources\WorkItemEventQuerys.vb" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RDdotNet.ActiveDirectory\Hinshelwood.ActiveDirectory.vbproj">
+      <Project>{53C9381A-F6F5-4AB9-BE84-90600D7FC113}</Project>
+      <Name>Hinshelwood.ActiveDirectory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RDdotNet.TeamFoundation.EventResource\Hinshelwood.TeamFoundation.EventResource.csproj">
       <Project>{0F4212BE-70A6-4773-9B92-9376B203CEAA}</Project>
       <Name>Hinshelwood.TeamFoundation.EventResource</Name>
