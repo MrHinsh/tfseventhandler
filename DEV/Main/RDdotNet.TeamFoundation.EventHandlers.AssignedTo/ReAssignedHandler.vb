@@ -45,10 +45,10 @@ Public Class ReAssignedHandler
         End If
 
         Dim toName As String = Querys.GetAssignedToName(e.Event).OldValue
-        Dim toIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, toName, QueryMembership.Expanded)
+        Dim toIdentity As Identity = TeamServer.GetIdentityFromDisplayName(toName)
 
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-        Dim fromIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, fromName, QueryMembership.Expanded)
+        Dim fromIdentity As Identity = TeamServer.GetIdentityFromDisplayName(fromName)
 
         Dim Subject As String = "##PortfolioProject##:##WorkItemType## Re-Assigned - ##WorkItemID##: ##WorkItemTitle##"
         Dim x As New UserNotificationService(EventHandlerItem, TeamServer, e)

@@ -34,7 +34,8 @@ Public Class AssignedToHandler
         If String.IsNullOrEmpty(assignedName) Then
             Return False
         Else
-            Dim assignedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, assignedName, QueryMembership.Expanded)
+
+            Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(assignedName, e.Event)
             If assignedIdentity.SecurityGroup Then
                 Return Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
             Else
@@ -51,9 +52,9 @@ Public Class AssignedToHandler
             Return
         End If
         Dim assignedName As String = WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
-        Dim assignedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, assignedName, QueryMembership.Expanded)
+        Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(assignedName, e.Event)
         Dim ChangedByName As String = WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
-        Dim ChangedIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, ChangedByName, QueryMembership.Expanded)
+        Dim ChangedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(ChangedByName, e.Event)
 
 
         Dim Subject As String = "##PortfolioProject##:##WorkItemType## Assigned - ##WorkItemID##: ##WorkItemTitle##"
