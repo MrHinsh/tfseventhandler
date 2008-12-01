@@ -13,19 +13,58 @@ Public Class TeamServerItem
 
     Private _SubscriptionIDs As New Generic.Dictionary(Of EventTypes, Integer)
     Private m_GroupSecurityService As IGroupSecurityService
-
+    Private m_CommonStructureService As ICommonStructureService
 
     Public Sub New(ByVal Subject As TeamFoundationServer, ByVal ItemElement As TeamServerItemElement)
         MyBase.New(Subject, ItemElement)
-        m_GroupSecurityService = CType(Subject.GetService(GetType(IGroupSecurityService)), IGroupSecurityService)
     End Sub
 
     Public ReadOnly Property GroupSecurityService() As IGroupSecurityService
         Get
+            If m_GroupSecurityService Is Nothing Then
+                m_GroupSecurityService = CType(Subject.GetService(GetType(IGroupSecurityService)), IGroupSecurityService)
+            End If
             Return m_GroupSecurityService
         End Get
     End Property
 
+    Public ReadOnly Property CommonStructureService() As ICommonStructureService
+        Get
+            If m_CommonStructureService Is Nothing Then
+                m_CommonStructureService = CType(Subject.GetService(GetType(ICommonStructureService)), ICommonStructureService)
+            End If
+            Return m_CommonStructureService
+        End Get
+    End Property
+
+    Public Function GetIdentityFromDisplayName(ByVal displayName As String, ByVal e As WorkItemChangedEvent, Optional ByVal QueryMembership As QueryMembership = QueryMembership.None) As Identity
+        ' Return App Group if you can
+        Dim grpIdent As Identity = GetGroupIdentityFromDisplayName(displayName, e.PortfolioProject, QueryMembership)
+        If Not grpIdent Is Nothing Then
+            Return grpIdent
+        End If
+        ' Not app group. Then return user is you can
+        Return GetUserIdentityFromDisplayName(displayName, QueryMembership)
+    End Function
+
+    Public Function GetUserIdentityFromDisplayName(ByVal displayName As String, Optional ByVal QueryMembership As QueryMembership = QueryMembership.None) As Identity
+        Dim username As String = Hinshelwood.ActiveDirectory.Querys.GetUsername(displayName)
+        Return m_GroupSecurityService.ReadIdentity(SearchFactor.AccountName, username, QueryMembership)
+    End Function
+
+    Public Function GetGroupIdentityFromDisplayName(ByVal displayName As String, ByVal projectName As String, Optional ByVal QueryMembership As QueryMembership = QueryMembership.None) As Identity
+        ' Return App Group if you can
+        Dim pi As ProjectInfo = m_CommonStructureService.GetProjectFromName(projectName)
+        Dim appGroup As Identity = (From i In m_GroupSecurityService.ListApplicationGroups(pi.Uri) Where i.DisplayName = displayName).SingleOrDefault
+        If Not appGroup Is Nothing Then
+            If QueryMembership = Server.QueryMembership.None Then
+                Return appGroup
+            Else
+                Return m_GroupSecurityService.ReadIdentity(SearchFactor.Sid, appGroup.Sid, QueryMembership)
+            End If
+        End If
+        Return Nothing
+    End Function
 
     Public Sub CollectSubscriptionID(ByVal EventType As EventTypes, ByVal SubscriptionID As Integer)
         If Not _SubscriptionIDs.ContainsKey(EventType) Then

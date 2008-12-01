@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Hinshelwood.com")> 
-<Assembly: AssemblyProduct("TFS Event Handler v1.2")> 
+<Assembly: AssemblyProduct("TFS Event Handler v1.3")> 
 <Assembly: AssemblyCopyright("Copyright © Martin Hinshelwood 2007")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: Security.AllowPartiallyTrustedCallers()> 
@@ -27,5 +27,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.2.1.*")> 
-<Assembly: AssemblyFileVersion("1.2.1.0")> 
+<Assembly: AssemblyVersion("1.3.1.*")> 
+<Assembly: AssemblyFileVersion("1.3.1.0")> 
