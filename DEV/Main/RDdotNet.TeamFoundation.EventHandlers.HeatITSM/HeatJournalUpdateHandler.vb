@@ -82,7 +82,7 @@ Public Class HeatJournalUpdateHandler
         'Microsoft.VSTS.CMMI.Estimate
         'Microsoft.VSTS.Scheduling.RemainingWork
         'Microsoft.VSTS.Scheduling.CompletedWork
-        Dim objMail As New Mail(EventHandlerItem, TeamServer, e)
+        Dim objNotify As New UserNotificationService(EventHandlerItem, TeamServer, e)
 
         Dim message As New System.Text.StringBuilder
 

@@ -1,4 +1,5 @@
 Imports Microsoft.TeamFoundation.Client
+Imports Microsoft.TeamFoundation.Server
 
 Public Interface IEventHandler(Of TEvent)
 

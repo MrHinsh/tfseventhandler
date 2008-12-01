@@ -2,8 +2,9 @@
 Imports Hinshelwood.TeamFoundation.Helpers
 Imports System.Text.RegularExpressions
 Imports Hinshelwood.TeamFoundation
+Imports Microsoft.TeamFoundation.Server
 
-Public Class Mail
+Public Class UserNotificationService
 
     Private m_EventHandlerItem As EventHandlerItem(Of WorkItemChangedEvent)
     Private m_TeamServer As TeamServerItem
@@ -99,25 +100,56 @@ Public Class Mail
     '' <summary>
     '' Sends email to assignee with details of the work item they've been assigned
     '' </summary>
-    Public Sub SendMail(ByVal EmailType As String, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String)
-        SendMail(EmailType.ToString, [to], from, Subject, False)
+    Public Sub SendNotification(ByVal EmailType As String, ByVal [to] As Identity, ByVal from As Identity, ByVal Subject As String)
+        SendNotification(EmailType.ToString, [to], from, Subject, False)
+        '  If TeamServer.ItemElement.TestMode Then
+        '[to] = New Net.Mail.MailAddress(TeamServer.ItemElement.TestEmail)
+        '    End If
     End Sub
 
     '' <summary>
     '' Sends email to assignee with details of the work item they've been assigned
     '' </summary>
-    Public Sub SendMail(ByVal EmailType As String, ByVal [to] As Net.Mail.MailAddress, ByVal from As Net.Mail.MailAddress, ByVal Subject As String, ByVal TypeIsBody As Boolean)
+    Public Sub SendNotification(ByVal EmailType As String, ByVal toIdentity As Identity, ByVal fromIdentity As Identity, ByVal Subject As String, ByVal TypeIsBody As Boolean)
         'Logger.Log("entering SendMail")
-        Dim mail As Net.Mail.MailMessage = New Net.Mail.MailMessage(New MailAddress(m_TeamServer.ItemElement.MailAddressFrom, m_TeamServer.ItemElement.MailFromName), [to])
+        Dim mail As Net.Mail.MailMessage = New Net.Mail.MailMessage
+        ' add from address
+        mail.From = New MailAddress(m_TeamServer.ItemElement.MailAddressFrom, m_TeamServer.ItemElement.MailFromName)
+        ' Add to addresses
+        If toIdentity.SecurityGroup Then
+            ' Add all to's
+            Dim toIdentitiesLessFrom = From i In toIdentity.Members Where Not i = fromIdentity.DisplayName
+            Dim toIdentities() As Identity = m_TeamServer.GroupSecurityService.ReadIdentities(SearchFactor.DistinguishedName, toIdentity.Members, QueryMembership.Expanded)
+            For Each i In toIdentities
+                If m_TeamServer.ItemElement.TestMode Then
+                    ' add fake to
+                    mail.To.Add(New MailAddress(m_TeamServer.ItemElement.TestEmail, i.DisplayName))
+                Else
+                    ' add to
+                    mail.To.Add(New MailAddress(i.MailAddress, i.DisplayName))
+                End If
+            Next
+        Else
+            If m_TeamServer.ItemElement.TestMode Then
+                ' add fake to
+                mail.To.Add(New MailAddress(m_TeamServer.ItemElement.TestEmail, toIdentity.DisplayName))
+            Else
+                ' add to
+                mail.To.Add(New MailAddress(toIdentity.MailAddress, toIdentity.DisplayName))
+            End If
+        End If
+        ' Dim mail As Net.Mail.MailMessage = New Net.Mail.MailMessage(New MailAddress(m_TeamServer.ItemElement.MailAddressFrom, m_TeamServer.ItemElement.MailFromName), [to])
+
         If TypeIsBody Then
             mail.Body = EmailType
         Else
             mail.Body = GetBody(EmailType)
         End If
+
         mail.IsBodyHtml = True
         ''Logger.Log(body)
-        If Not String.IsNullOrEmpty(from.Address) Then
-            mail.ReplyTo = [from]
+        If Not String.IsNullOrEmpty(fromIdentity.MailAddress) Then
+            mail.ReplyTo = New MailAddress(fromIdentity.MailAddress)
         End If
         mail.Subject = PerformReplace(Subject)
         '-----------------

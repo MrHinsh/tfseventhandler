@@ -1,7 +1,7 @@
 Imports System.Xml
 Imports System.Xml.Xsl
 Imports System.Xml.XPath
-Imports System.io
+Imports System.IO
 Imports System.Text
 Imports System.Net.Mail
 Imports System.Configuration
@@ -9,6 +9,7 @@ Imports System.Reflection
 Imports Microsoft.TeamFoundation.Client
 Imports Hinshelwood.TeamFoundation.Helpers
 Imports Hinshelwood.TeamFoundation
+Imports Microsoft.TeamFoundation.Server
 
 ''' <summary>
 ''' Send an email to a user when a work item that they are assigned is re assigend to someone else unless they are the one that made the change.
@@ -42,22 +43,17 @@ Public Class ReAssignedHandler
             If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("ReAssignedHandler: Is not valid ", TraceEventType.Warning)
             Return
         End If
+
         Dim toName As String = Querys.GetAssignedToName(e.Event).OldValue
-        Dim toAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(toName)
+        Dim toIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, toName, QueryMembership.Expanded)
+
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
-        Dim fromAddress As String = Hinshelwood.ActiveDirectory.Querys.GetEmailAddress(fromName)
-        If String.IsNullOrEmpty(toAddress) Then
-            'Logger.Log("Can't send email because no email address was found for " + toName)
-        Else
-            Dim [to] As New MailAddress(toAddress, toName)
-            Dim from As New MailAddress(fromAddress, fromName)
-            If TeamServer.ItemElement.TestMode Then
-                [to] = New Net.Mail.MailAddress(TeamServer.ItemElement.TestEmail)
-            End If
-            Dim Subject As String = "##PortfolioProject##:##WorkItemType## Re-Assigned - ##WorkItemID##: ##WorkItemTitle##"
-            Dim x As New Mail(EventHandlerItem, TeamServer, e)
-            x.SendMail("ReAssigned", [to], from, Subject)
-        End If
+        Dim fromIdentity As Identity = TeamServer.GroupSecurityService.ReadIdentity(SearchFactor.DistinguishedName, fromName, QueryMembership.Expanded)
+
+        Dim Subject As String = "##PortfolioProject##:##WorkItemType## Re-Assigned - ##WorkItemID##: ##WorkItemTitle##"
+        Dim x As New UserNotificationService(EventHandlerItem, TeamServer, e)
+        x.SendNotification("ReAssigned", toIdentity, fromIdentity, Subject)
+
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("ReAssignedHandler: Complete ")
     End Sub
 
