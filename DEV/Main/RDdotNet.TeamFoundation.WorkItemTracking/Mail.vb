@@ -187,17 +187,20 @@ Public Class UserNotificationService
         '-----------------
         If m_TeamServer.ItemElement.LogEvents Then
             Try
-                Dim PathSafeSubhject As String = Now.Ticks & "-" & mail.Subject & ".htm"
-                For Each x As Char In System.IO.Path.GetInvalidPathChars
-                    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
-                Next
-                For Each x As Char In System.IO.Path.GetInvalidFileNameChars
-                    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
-                Next
-                Dim PathsafeFile As String = System.IO.Path.Combine(m_TeamServer.ItemElement.EventLogPath, "Logs")
-                PathsafeFile = System.IO.Path.Combine(PathsafeFile, PathSafeSubhject)
+
+                Dim Filename As String = String.Format("{0}{1}.htm", EmailType, Now.Ticks)
+                'For Each x As Char In System.IO.Path.GetInvalidPathChars
+                '    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
+                'Next
+                'For Each x As Char In System.IO.Path.GetInvalidFileNameChars
+                '    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
+                'Next
+                Dim EventPath As String = System.IO.Path.Combine(m_TeamServer.ItemElement.EventLogPath, m_NotifyEvent.EventID.ToString)
+                System.IO.Directory.CreateDirectory(EventPath)
+                Dim FullPath As String = System.IO.Path.Combine(EventPath, Filename)
                 '-----------------
-                System.IO.File.AppendAllText(PathsafeFile, mail.Body)
+                System.IO.File.AppendAllText(FullPath, mail.Body)
+
             Catch ex As Exception
                 My.Application.Log.WriteException(ex, TraceEventType.Critical, "Email Log Issues")
             End Try
