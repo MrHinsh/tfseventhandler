@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Heat" EntityNamespace="Entities" Class="HeatDataContext" AccessModifier="Internal" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GLA1SQ96;Initial Catalog=Heat;Integrated Security=True" SettingsObjectName="RDdotNet.TeamFoundation.WorkItemTracking.My.MySettings" SettingsPropertyName="HeatConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.UpdateJournal" Method="UpdateJournal">
+    <Parameter Name="CallId" Parameter="callId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EntryText" Parameter="entryText" Type="System.String" DbType="Text" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.String" DbType="VarChar(96)" />
+    <Parameter Name="Duration" Parameter="duration" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
