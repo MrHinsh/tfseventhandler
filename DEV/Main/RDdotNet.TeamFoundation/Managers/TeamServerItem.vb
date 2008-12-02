@@ -48,19 +48,22 @@ Public Class TeamServerItem
     End Function
 
     Public Function GetUserIdentityFromDisplayName(ByVal displayName As String, Optional ByVal QueryMembership As QueryMembership = QueryMembership.None) As Identity
-        Dim username As String = Hinshelwood.ActiveDirectory.Querys.GetUsername(displayName)
-        Return m_GroupSecurityService.ReadIdentity(SearchFactor.AccountName, username, QueryMembership)
+        Dim username As String = Hinshelwood.ActiveDirectory.Querys.GetUsername(displayName) ' TODO: Fix for username is nothing
+        If String.IsNullOrEmpty(username) Then
+            Return Nothing
+        End If
+        Return GroupSecurityService.ReadIdentity(SearchFactor.AccountName, username, QueryMembership)
     End Function
 
     Public Function GetGroupIdentityFromDisplayName(ByVal displayName As String, ByVal projectName As String, Optional ByVal QueryMembership As QueryMembership = QueryMembership.None) As Identity
         ' Return App Group if you can
-        Dim pi As ProjectInfo = m_CommonStructureService.GetProjectFromName(projectName)
-        Dim appGroup As Identity = (From i In m_GroupSecurityService.ListApplicationGroups(pi.Uri) Where i.DisplayName = displayName).SingleOrDefault
+        Dim pi As ProjectInfo = CommonStructureService.GetProjectFromName(projectName)
+        Dim appGroup As Identity = (From i In GroupSecurityService.ListApplicationGroups(pi.Uri) Where i.DisplayName = displayName).SingleOrDefault
         If Not appGroup Is Nothing Then
             If QueryMembership = Server.QueryMembership.None Then
                 Return appGroup
             Else
-                Return m_GroupSecurityService.ReadIdentity(SearchFactor.Sid, appGroup.Sid, QueryMembership)
+                Return GroupSecurityService.ReadIdentity(SearchFactor.Sid, appGroup.Sid, QueryMembership)
             End If
         End If
         Return Nothing

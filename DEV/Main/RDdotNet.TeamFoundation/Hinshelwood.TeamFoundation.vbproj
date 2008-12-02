@@ -177,7 +177,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>MD "$(SolutionDir)..\PrivateAssemblies\"
-xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)..\PrivateAssemblies\" /y /e</PostBuildEvent>
+    <PostBuildEvent>MD "$(SolutionDir)\PrivateAssemblies\"
+xcopy "$(TargetDir)$(TargetName)*" "$(SolutionDir)\PrivateAssemblies\" /y /e</PostBuildEvent>
   </PropertyGroup>
 </Project>

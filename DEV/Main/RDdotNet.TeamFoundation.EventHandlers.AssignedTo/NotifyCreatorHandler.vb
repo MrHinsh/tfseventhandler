@@ -34,6 +34,10 @@ Public Class NotifyCreatorHandler
             Return False
         Else
             Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(Querys.GetAssignedToName(e.Event).OldValue, e.Event)
+            If assignedIdentity Is Nothing Then
+                If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteException(New Exception("Could not load identity"))
+                Return False
+            End If
             If assignedIdentity.SecurityGroup Then
                 Return False
             End If
@@ -49,7 +53,7 @@ Public Class NotifyCreatorHandler
             Return
         End If
         Dim toName As String = Querys.GetCreatedByName(e.Event).OldValue
-        Dim toIdentity As Identity = TeamServer.GetIdentityFromDisplayName(toName, e.Event)
+        Dim toIdentity As Identity = TeamServer.GetIdentityFromDisplayName(toName, e.Event, QueryMembership.Expanded)
         Dim fromName As String = WorkItemEventQuerys.GetChangedByName(e.Event)
         Dim fromIdentity As Identity = TeamServer.GetIdentityFromDisplayName(fromName, e.Event)
 
