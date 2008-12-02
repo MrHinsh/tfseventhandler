@@ -37,7 +37,7 @@ Public Class Querys
     '' </summary>
     Public Shared Function GetUsername(ByVal userDisplayName As String) As String
         Dim ds As DirectoryServices.DirectorySearcher = New DirectoryServices.DirectorySearcher()
-        ds.PropertiesToLoad.Add("mail")
+        ds.PropertiesToLoad.Add("sAMAccountName")
         ds.Filter = String.Format("(&(displayName={0})(objectCategory=person)((objectClass=user)))", userDisplayName)
 
         Dim results As DirectoryServices.SearchResultCollection = ds.FindAll()

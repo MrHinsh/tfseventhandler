@@ -36,6 +36,10 @@ Public Class AssignedToHandler
         Else
 
             Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(assignedName, e.Event)
+            If assignedIdentity Is Nothing Then
+                My.Application.Log.WriteException(New Exception(String.Format("Could not load identity for {0}", assignedName)))
+                Return False
+            End If
             If assignedIdentity.SecurityGroup Then
                 Return Not Querys.GetAssignedToName(e.Event).OldValue = Querys.GetAssignedToName(e.Event).NewValue
             Else
@@ -52,7 +56,7 @@ Public Class AssignedToHandler
             Return
         End If
         Dim assignedName As String = WorkItemTracking.Querys.GetAssignedToName(e.Event).NewValue
-        Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(assignedName, e.Event)
+        Dim assignedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(assignedName, e.Event, QueryMembership.Expanded)
         Dim ChangedByName As String = WorkItemTracking.Querys.GetChangedByName(e.Event).NewValue
         Dim ChangedIdentity As Identity = TeamServer.GetIdentityFromDisplayName(ChangedByName, e.Event)
 
@@ -60,7 +64,7 @@ Public Class AssignedToHandler
         Dim Subject As String = "##PortfolioProject##:##WorkItemType## Assigned - ##WorkItemID##: ##WorkItemTitle##"
 
         Dim x As New UserNotificationService(EventHandlerItem, TeamServer, e)
-        x.SendNotification("AssignedTo", ChangedIdentity, assignedIdentity, Subject)
+        x.SendNotification("AssignedTo", assignedIdentity, ChangedIdentity, Subject)
 
         If TeamServer.ItemElement.LogEvents Then My.Application.Log.WriteEntry("AssignedToHandler: Complete ")
     End Sub

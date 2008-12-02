@@ -118,8 +118,12 @@ Public Class UserNotificationService
         ' Add to addresses
         If toIdentity.SecurityGroup Then
             ' Add all to's
-            Dim toIdentitiesLessFrom = From i In toIdentity.Members Where Not i = fromIdentity.DisplayName
-            Dim toIdentities() As Identity = m_TeamServer.GroupSecurityService.ReadIdentities(SearchFactor.DistinguishedName, toIdentity.Members, QueryMembership.Expanded)
+            Dim toIdentitiesLessFrom = From i In toIdentity.Members Where Not i = fromIdentity.Sid
+            If toIdentitiesLessFrom.Count = 0 Then
+                ' Ifg there is nobody to send an email to, then exit.
+                Exit Sub
+            End If
+            Dim toIdentities() As Identity = m_TeamServer.GroupSecurityService.ReadIdentities(SearchFactor.Sid, toIdentitiesLessFrom.ToArray, QueryMembership.None)
             For Each i In toIdentities
                 If m_TeamServer.ItemElement.TestMode Then
                     ' add fake to
@@ -148,9 +152,30 @@ Public Class UserNotificationService
 
         mail.IsBodyHtml = True
         ''Logger.Log(body)
-        If Not String.IsNullOrEmpty(fromIdentity.MailAddress) Then
-            mail.ReplyTo = New MailAddress(fromIdentity.MailAddress)
+        If fromIdentity.SecurityGroup Then
+            ' Add all to's
+            Dim toIdentitiesLessFrom = From i In toIdentity.Members Where Not i = fromIdentity.Sid
+            If toIdentitiesLessFrom.Count > 0 Then
+                ' Ifg there is nobody to send an email to, then exit.
+                Dim toIdentities() As Identity = m_TeamServer.GroupSecurityService.ReadIdentities(SearchFactor.Sid, toIdentitiesLessFrom.ToArray, QueryMembership.None)
+                Dim x As New System.Text.StringBuilder
+                For Each i In toIdentities
+                    If m_TeamServer.ItemElement.TestMode Then
+                        ' add fake reply to
+                        x.AppendFormat("{0};", (New MailAddress(m_TeamServer.ItemElement.TestEmail, i.DisplayName).ToString))
+                    Else
+                        ' add reply to
+                        x.AppendFormat("{0};", (New MailAddress(i.MailAddress, i.DisplayName).ToString))
+                    End If
+                Next
+                mail.ReplyTo = New MailAddress(x.ToString)
+            End If
+        Else
+            If Not String.IsNullOrEmpty(fromIdentity.MailAddress) Then 'TODO: Add reply to multi
+                mail.ReplyTo = New MailAddress(fromIdentity.MailAddress)
+            End If
         End If
+       
         mail.Subject = PerformReplace(Subject)
         '-----------------
         Dim smtp As SmtpClient = New SmtpClient(m_TeamServer.ItemElement.MailServer)
@@ -161,17 +186,22 @@ Public Class UserNotificationService
         'Logger.Log("sending mail..")
         '-----------------
         If m_TeamServer.ItemElement.LogEvents Then
-            Dim PathSafeSubhject As String = Now.Ticks & "-" & mail.Subject & ".htm"
-            For Each x As Char In System.IO.Path.GetInvalidPathChars
-                PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
-            Next
-            For Each x As Char In System.IO.Path.GetInvalidFileNameChars
-                PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
-            Next
-            Dim PathsafeFile As String = System.IO.Path.Combine(m_TeamServer.ItemElement.EventLogPath, "Logs")
-            PathsafeFile = System.IO.Path.Combine(PathsafeFile, PathSafeSubhject)
-            '-----------------
-            System.IO.File.AppendAllText(PathsafeFile, mail.Body)
+            Try
+                Dim PathSafeSubhject As String = Now.Ticks & "-" & mail.Subject & ".htm"
+                For Each x As Char In System.IO.Path.GetInvalidPathChars
+                    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
+                Next
+                For Each x As Char In System.IO.Path.GetInvalidFileNameChars
+                    PathSafeSubhject = PathSafeSubhject.Replace(x, CChar("_"))
+                Next
+                Dim PathsafeFile As String = System.IO.Path.Combine(m_TeamServer.ItemElement.EventLogPath, "Logs")
+                PathsafeFile = System.IO.Path.Combine(PathsafeFile, PathSafeSubhject)
+                '-----------------
+                System.IO.File.AppendAllText(PathsafeFile, mail.Body)
+            Catch ex As Exception
+                My.Application.Log.WriteException(ex, TraceEventType.Critical, "Email Log Issues")
+            End Try
+           
         End If
         smtp.Send(mail)
     End Sub
