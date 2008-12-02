@@ -137,6 +137,7 @@
     <Compile Include="Config\UrlReplacementCollection.vb" />
     <Compile Include="Events\NotifyEventArgs.vb" />
     <Compile Include="Events\AEvent.vb" />
+    <Compile Include="LoggingFasad.vb" />
     <Compile Include="Managers\AItem.vb" />
     <Compile Include="Managers\AManager.vb" />
     <Compile Include="Managers\Item.vb" />
