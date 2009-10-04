@@ -10,20 +10,23 @@
                 <Button Content="Cancel" />
             </StackPanel>
             <DockPanel>
-                <ListBox DockPanel.Dock="Left" ItemTemplate="{DynamicResource HeaderTemplate}" ItemsSource="{Binding Settings}" SelectedItem="{Binding SelectedSetting, Mode=TwoWay}" />
-                <ContentControl ContentTemplate="{DynamicResource ContentTemplate}" Content="{Binding SelectedSetting}" />
+                <ListBox DockPanel.Dock="Left" 
+                         Background="DarkGray"
+                         ItemsSource="{Binding SettingsGroups}" 
+                         SelectedItem="{Binding SelectedSettingsGroup, Mode=TwoWay}" />
+                <ItemsControl ItemTemplate="{DynamicResource WrapperSettingsVewModelTemplate}" ItemsSource="{Binding SelectedSettingsGroup.Settings}" />
             </DockPanel>
             </DockPanel>
     </DataTemplate>
 
-    <DataTemplate x:Key="HeaderTemplate" DataType="{x:Type local:ISettingsViewModel}">
-        <Label Content="{Binding TabHeader}" />
+    <DataTemplate DataType="{x:Type local:SettingsGroupViewModel}">
+                <Label Content="{Binding Title}" />              
     </DataTemplate>
     
-    <DataTemplate x:Key="ContentTemplate" DataType="{x:Type local:ISettingsViewModel}">
+    <DataTemplate x:Key="WrapperSettingsVewModelTemplate" DataType="{x:Type local:SettingsViewModel}">
         <Border CornerRadius="5" Margin="5" Background="Gray"  BorderBrush="Gray" BorderThickness="2">
             <DockPanel>
-                <Label DockPanel.Dock="Top" Content="{Binding Header}" />
+                <ContentControl DockPanel.Dock="Top" Content="{Binding Header}" />
                 <Border CornerRadius="5" Background="DarkGray" Margin="5"  BorderBrush="Gray" BorderThickness="2">
                     <ContentControl Content="{Binding}" />
                 </Border>
@@ -31,9 +34,28 @@
         </Border>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type local:TeamServerListViewModel}">
-        <Label Content="Under Construction" />
+   <DataTemplate DataType="{x:Type local:HeaderViewModel}">
+                    <Label DockPanel.Dock="Top" Content="{Binding Header}" />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type local:CollectionHeaderViewModel}">
+                <StackPanel Orientation="Horizontal">
+                    <Label DockPanel.Dock="Top" Content="{Binding Header}" />
+            <Button Content="Add" />
+        </StackPanel>
     </DataTemplate>
 
-    
+     <DataTemplate DataType="{x:Type local:TeamServerListViewModel}">
+        <DockPanel>
+            <ListBox DockPanel.Dock="Left" ItemsSource="{Binding TeamServers}" />
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:TeamServerViewModel}">
+        <Border CornerRadius="5" Margin="5" Padding="5" Background="Black"  BorderBrush="Black" BorderThickness="2">
+            <Label Content="{Binding Header}" />
+            
+        </Border>
+    </DataTemplate>
+
 </ResourceDictionary>
