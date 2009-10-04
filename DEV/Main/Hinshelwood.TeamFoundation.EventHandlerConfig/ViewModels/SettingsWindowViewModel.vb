@@ -59,7 +59,7 @@ Public Class SettingsWindowViewModel
                             New BaseAddressViewModel(m_Model.BaseAddress) _
                             ))
         m_SettingsGroups.Add(New SettingsGroupViewModel("Events", _
-                                   New EventHandlerListViewModel(m_Model.EventItems) _
+                                   New EventListViewModel(m_Model.EventItems) _
                                    ))
 
         m_SettingsGroups.Add(New SettingsGroupViewModel("Servers", _

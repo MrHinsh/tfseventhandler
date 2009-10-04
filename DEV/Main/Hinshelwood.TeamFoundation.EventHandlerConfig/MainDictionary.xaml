@@ -20,7 +20,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:SettingsGroupViewModel}">
-                <Label Content="{Binding Title}" />              
+                <Label Content="{Binding Header.Header}" />              
     </DataTemplate>
     
     <DataTemplate x:Key="WrapperSettingsVewModelTemplate" DataType="{x:Type local:SettingsViewModel}">
@@ -39,10 +39,11 @@
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type local:CollectionHeaderViewModel}">
-                <StackPanel Orientation="Horizontal">
-                    <Label DockPanel.Dock="Top" Content="{Binding Header}" />
-            <Button Content="Add" />
-        </StackPanel>
+        <DockPanel>
+            <Button DockPanel.Dock="Right" Content="Add" />
+            <Label DockPanel.Dock="Left" Content="{Binding Header}" />
+        </DockPanel>
+                
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:SettingsViewModel}">
@@ -60,11 +61,51 @@
             <StackPanel>
                 <Label Content="{Binding Header}" />
                 <Border Margin="5">
-                    <Label Content="Options go here" />
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Right">
+                            <Button Content="Edit" />
+                            <Button Content="Delete" />
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel>
+                                <Label Content="{Binding Url}" ContentStringFormat="Server: {0}" />
+                            </StackPanel>
+                            <Label Content="Options go here" />
+                        </StackPanel>
+                    </DockPanel>
+                                        
                 </Border>
             </StackPanel>
             
         </Border>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type local:EventListViewModel}">
+        <DockPanel>
+            <ItemsControl ItemTemplate="{DynamicResource WrapperSettingsVewModelTemplate}" 
+                          Background="DarkGray" 
+                          ItemsSource="{Binding Events}" />
+        </DockPanel>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type local:EventViewModel}">
+        <DockPanel>
+            <ItemsControl ItemTemplate="{DynamicResource WrapperSettingsVewModelTemplate}" 
+                          Background="DarkGray" 
+                          ItemsSource="{Binding Handlers}" />
+        </DockPanel>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type local:HandlerViewModel}">
+        <DockPanel>
+            <Label Content="Options go here" />
+        </DockPanel>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type local:UrlReplacementListViewModel}">
+        <DockPanel>
+            <ItemsControl Background="DarkGray" ItemsSource="{Binding UrlReplacements}" />
+        </DockPanel>
     </DataTemplate>
 
 </ResourceDictionary>
