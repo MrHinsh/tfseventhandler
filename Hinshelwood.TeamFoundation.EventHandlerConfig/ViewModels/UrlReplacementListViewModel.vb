@@ -13,7 +13,7 @@ Public Class UrlReplacementListViewModel
     End Property
 
     Public Sub New(ByVal UrlReplacementItems As UrlReplacementItemCollection)
-        MyBase.New(New HeaderViewModel("Url Replacements"))
+        MyBase.New(New CollectionHeaderViewModel("Url Replacements"))
         m_UrlReplacements = New ObservableCollection(Of UrlReplacementViewModel)
 
         For Each i In UrlReplacementItems
@@ -21,6 +21,12 @@ Public Class UrlReplacementListViewModel
         Next
     End Sub
 
+    Friend Overrides Sub SavedReset()
+        MyBase.SavedReset()
+        For Each i In UrlReplacements
+            i.SavedReset()
+        Next
+    End Sub
    
 
 

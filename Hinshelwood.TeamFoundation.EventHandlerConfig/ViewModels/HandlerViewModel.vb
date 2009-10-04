@@ -1,6 +1,6 @@
 ﻿Imports Hinshelwood.TeamFoundation.Config
 
-Public Class EventHandlerViewModel
+Public Class HandlerViewModel
     Inherits SettingsViewModel
 
     Public Sub New(ByVal eventHandler As HandlerItemElement)

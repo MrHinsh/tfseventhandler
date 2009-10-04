@@ -21,5 +21,12 @@ Public Class TeamServerListViewModel
         Next
     End Sub
 
+    Friend Overrides Sub SavedReset()
+        MyBase.SavedReset()
+        For Each i In TeamServers
+            i.SavedReset()
+        Next
+    End Sub
+
 
 End Class

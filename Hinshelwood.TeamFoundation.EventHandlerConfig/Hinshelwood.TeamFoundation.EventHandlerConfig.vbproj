@@ -148,8 +148,9 @@
     </Compile>
     <Compile Include="ViewModels\BaseAddressViewModel.vb" />
     <Compile Include="ViewModels\CollectionHeaderViewModel.vb" />
-    <Compile Include="ViewModels\EventHandlerViewModel.vb" />
-    <Compile Include="ViewModels\EventsListViewModel.vb" />
+    <Compile Include="ViewModels\EventViewModel.vb" />
+    <Compile Include="ViewModels\HandlerViewModel.vb" />
+    <Compile Include="ViewModels\EventListViewModel.vb" />
     <Compile Include="ViewModels\HeaderViewModel.vb" />
     <Compile Include="ViewModels\SettingsGroupViewModel.vb" />
     <Compile Include="ViewModels\TeamServerViewModel.vb" />
@@ -173,6 +174,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="ViewModels\ViewModelsClassDiagram.cd" />
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
