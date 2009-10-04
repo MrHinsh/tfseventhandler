@@ -1,8 +1,8 @@
 ﻿Public Class CollectionHeaderViewModel
     Inherits HeaderViewModel
 
-    Public Sub New(ByVal header As String, ByVal shortHeader As String)
-        MyBase.New(header, shortHeader)
+    Public Sub New(ByVal header As String)
+        MyBase.New(header)
 
     End Sub
 
