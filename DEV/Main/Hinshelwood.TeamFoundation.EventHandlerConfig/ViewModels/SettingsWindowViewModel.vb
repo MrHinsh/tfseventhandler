@@ -55,7 +55,7 @@ Public Class SettingsWindowViewModel
         m_SettingsGroups = New ObservableCollection(Of SettingsGroupViewModel)
 
         m_SettingsGroups.Add(New SettingsGroupViewModel("General", _
-                            New SettingsViewModel(New HeaderViewModel("General", "General")), _
+                            New SettingsViewModel(New HeaderViewModel("General")), _
                             New BaseAddressViewModel(m_Model.BaseAddress) _
                             ))
         m_SettingsGroups.Add(New SettingsGroupViewModel("Events", _

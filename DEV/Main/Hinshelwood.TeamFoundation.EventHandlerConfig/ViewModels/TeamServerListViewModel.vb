@@ -13,7 +13,7 @@ Public Class TeamServerListViewModel
     End Property
 
     Public Sub New(ByVal TeamServerItems As TeamServerItemCollection)
-        MyBase.New(New CollectionHeaderViewModel("Team Servers", "Servers"))
+        MyBase.New(New CollectionHeaderViewModel("Team Servers"))
         m_TeamServers = New ObservableCollection(Of TeamServerViewModel)
 
         For Each ts In TeamServerItems
