@@ -1,0 +1,39 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Hinshelwood.TeamFoundation.EventHandlerConfig">
+    
+    <DataTemplate DataType="{x:Type local:SettingsWindowViewModel}">
+            <DockPanel Background="DarkGray">
+            <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="Save" />
+                <Button Content="Cancel" />
+            </StackPanel>
+            <DockPanel>
+                <ListBox DockPanel.Dock="Left" ItemTemplate="{DynamicResource HeaderTemplate}" ItemsSource="{Binding Settings}" SelectedItem="{Binding SelectedSetting, Mode=TwoWay}" />
+                <ContentControl ContentTemplate="{DynamicResource ContentTemplate}" Content="{Binding SelectedSetting}" />
+            </DockPanel>
+            </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="HeaderTemplate" DataType="{x:Type local:ISettingsViewModel}">
+        <Label Content="{Binding TabHeader}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ContentTemplate" DataType="{x:Type local:ISettingsViewModel}">
+        <Border CornerRadius="5" Margin="5" Background="Gray"  BorderBrush="Gray" BorderThickness="2">
+            <DockPanel>
+                <Label DockPanel.Dock="Top" Content="{Binding Header}" />
+                <Border CornerRadius="5" Background="DarkGray" Margin="5"  BorderBrush="Gray" BorderThickness="2">
+                    <ContentControl Content="{Binding}" />
+                </Border>
+            </DockPanel>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:TeamServerListViewModel}">
+        <Label Content="Under Construction" />
+    </DataTemplate>
+
+    
+</ResourceDictionary>
