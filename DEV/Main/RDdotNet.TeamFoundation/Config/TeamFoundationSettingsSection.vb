@@ -33,6 +33,34 @@ Namespace Config
             End Get
         End Property
 
+        Public Shared ReadOnly Property ServiceInstance() As SettingsSection
+            Get
+                If innerConfiguration Is Nothing Then
+                    innerConfiguration = LoadServiceConfiguration()
+                End If
+                Return innerConfiguration
+            End Get
+        End Property
+
+        Private Shared Function LoadServiceConfiguration() As SettingsSection
+            ' Open App.Config of executable
+            Dim filemap As New ExeConfigurationFileMap
+            filemap.ExeConfigFilename = "Hinshelwood.TFSEventHandler.exe"
+            Dim config As Configuration = ConfigurationManager.OpenMappedExeConfiguration(filemap, ConfigurationUserLevel.None)
+
+            Dim section As Object = config.GetSection("Hinshelwood.TFSEventHandler")
+            Dim configSection As SettingsSection = TryCast(section, SettingsSection)
+
+            If Not section Is Nothing AndAlso configSection Is Nothing Then
+                Throw New ConfigurationErrorsException
+            End If
+
+            If configSection Is Nothing Then
+                configSection = New SettingsSection()
+            End If
+            Return configSection
+        End Function
+
         Private Shared Function LoadConfiguration() As SettingsSection
             Dim section As Object = ConfigurationManager.GetSection(SettingsSection.SectionName)
             Dim configSection As SettingsSection = TryCast(section, SettingsSection)
