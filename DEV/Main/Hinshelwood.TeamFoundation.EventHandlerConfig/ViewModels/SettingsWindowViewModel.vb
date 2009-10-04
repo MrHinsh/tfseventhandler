@@ -7,9 +7,10 @@ Imports System.Net.Configuration
 Public Class SettingsWindowViewModel
     Inherits ObservableObject
 
-    Private m_Settings As ObservableCollection(Of ISettingsViewModel)
-    Private m_SelectedSetting As ISettingsViewModel
+    Private m_SettingsGroups As ObservableCollection(Of SettingsGroupViewModel)
+    Private m_SelectedSettingsGroup As SettingsGroupViewModel
     Private m_SaveRequired As Boolean
+    Private m_Model As TeamFoundation.Config.SettingsSection
 
     Public ReadOnly Property Title() As String
         Get
@@ -17,20 +18,20 @@ Public Class SettingsWindowViewModel
         End Get
     End Property
 
-    Public ReadOnly Property Settings() As ObservableCollection(Of ISettingsViewModel)
+    Public ReadOnly Property SettingsGroups() As ObservableCollection(Of SettingsGroupViewModel)
         Get
-            Return m_Settings
+            Return m_SettingsGroups
         End Get
     End Property
 
-    Public Property SelectedSetting() As ISettingsViewModel
+    Public Property SelectedSettingsGroup() As SettingsGroupViewModel
         Get
-            Return m_SelectedSetting
+            Return m_SelectedSettingsGroup
         End Get
-        Set(ByVal value As ISettingsViewModel)
-            If Not value.Equals(m_SelectedSetting) Then
-                m_SelectedSetting = value
-                OnPropertyChanged("SelectedSetting")
+        Set(ByVal value As SettingsGroupViewModel)
+            If Not value.Equals(m_SelectedSettingsGroup) Then
+                m_SelectedSettingsGroup = value
+                OnPropertyChanged("SelectedSettingsGroup")
             End If
         End Set
     End Property
@@ -48,17 +49,29 @@ Public Class SettingsWindowViewModel
     End Property
 
     Public Sub New()
-        m_Settings = New ObservableCollection(Of ISettingsViewModel)
+        m_Model = TeamFoundation.Config.SettingsSection.ServiceInstance
 
-        m_Settings.Add(New SettingsViewModel("General", "General"))
 
-        Dim x As TeamFoundation.Config.SettingsSection = TeamFoundation.Config.SettingsSection.ServiceInstance
+        m_SettingsGroups = New ObservableCollection(Of SettingsGroupViewModel)
 
-        m_Settings.Add(New BaseAddressViewModel(x.BaseAddress))
-        m_Settings.Add(New EventHandlerListViewModel(x.EventItems))
-        m_Settings.Add(New TeamServerListViewModel(x.TeamServerItems))
-        m_Settings.Add(New UrlReplacementListViewModel(x.UrlReplacementItems))
-        SelectedSetting = Settings(0)
+        m_SettingsGroups.Add(New SettingsGroupViewModel("General", _
+                            New SettingsViewModel(New HeaderViewModel("General", "General")), _
+                            New BaseAddressViewModel(m_Model.BaseAddress) _
+                            ))
+        m_SettingsGroups.Add(New SettingsGroupViewModel("Events", _
+                                   New EventHandlerListViewModel(m_Model.EventItems) _
+                                   ))
+
+        m_SettingsGroups.Add(New SettingsGroupViewModel("Servers", _
+                                   New TeamServerListViewModel(m_Model.TeamServerItems) _
+                                   ))
+
+        m_SettingsGroups.Add(New SettingsGroupViewModel("Replace", _
+                                  New UrlReplacementListViewModel(m_Model.UrlReplacementItems) _
+                                  ))
+
+
+        SelectedSettingsGroup = SettingsGroups(0)
     End Sub
 
 
