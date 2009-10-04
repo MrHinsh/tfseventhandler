@@ -28,6 +28,17 @@
         End Set
     End Property
 
+    Protected Overrides Sub OnPropertyChanged(ByVal propertyName As String)
+        MyBase.OnPropertyChanged(propertyName)
+        If Not propertyName.Equals("IsDirty") Then
+            IsDirty = True
+        End If
+    End Sub
+
+    Friend Overridable Sub SavedReset()
+        IsDirty = False
+    End Sub
+
     Public Sub New(ByVal headerViewModel As HeaderViewModel)
         m_Header = headerViewModel
     End Sub
