@@ -45,10 +45,10 @@ Namespace Config
         Private Shared Function LoadServiceConfiguration() As SettingsSection
             ' Open App.Config of executable
             Dim filemap As New ExeConfigurationFileMap
-            filemap.ExeConfigFilename = "Hinshelwood.TFSEventHandler.exe"
+            filemap.ExeConfigFilename = "Hinshelwood.TFSEventHandler.exe.config"
             Dim config As Configuration = ConfigurationManager.OpenMappedExeConfiguration(filemap, ConfigurationUserLevel.None)
 
-            Dim section As Object = config.GetSection("Hinshelwood.TFSEventHandler")
+            Dim section As Object = config.GetSection(SettingsSection.SectionName)
             Dim configSection As SettingsSection = TryCast(section, SettingsSection)
 
             If Not section Is Nothing AndAlso configSection Is Nothing Then

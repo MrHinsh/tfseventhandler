@@ -147,10 +147,13 @@
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseAddressViewModel.vb" />
+    <Compile Include="ViewModels\CollectionHeaderViewModel.vb" />
+    <Compile Include="ViewModels\HeaderViewModel.vb" />
+    <Compile Include="ViewModels\SettingsGroupViewModel.vb" />
+    <Compile Include="ViewModels\TeamServerViewModel.vb" />
     <Compile Include="ViewModels\UrlReplacementListViewModel.vb" />
     <Compile Include="ViewModels\TeamServerListViewModel.vb" />
     <Compile Include="ViewModels\EventHandlerListViewModel.vb" />
-    <Compile Include="ViewModels\ISettingsViewModel.vb" />
     <Compile Include="MVVM\ObservableObject.vb" />
     <Compile Include="ViewModels\SettingsViewModel.vb" />
     <Compile Include="ViewModels\SettingsWindowViewModel.vb" />
@@ -160,6 +163,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="Hinshelwood.TFSEventHandler.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>

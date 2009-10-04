@@ -5,7 +5,7 @@ Public Class BaseAddressViewModel
 
 
     Public Sub New(ByVal BaseAddress As BaseAddressItemElement)
-        MyBase.New("Base Address", "Address")
+        MyBase.New(New HeaderViewModel("Base Address", "Address"))
 
     End Sub
 
