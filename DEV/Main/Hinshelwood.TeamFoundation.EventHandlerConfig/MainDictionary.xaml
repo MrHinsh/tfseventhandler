@@ -45,15 +45,24 @@
         </StackPanel>
     </DataTemplate>
 
-     <DataTemplate DataType="{x:Type local:TeamServerListViewModel}">
+    <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+                    <Label Content="Options go here" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:TeamServerListViewModel}">
         <DockPanel>
-            <ListBox DockPanel.Dock="Left" ItemsSource="{Binding TeamServers}" />
+            <ItemsControl Background="DarkGray" ItemsSource="{Binding TeamServers}" />
         </DockPanel>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type local:TeamServerViewModel}">
-        <Border CornerRadius="5" Margin="5" Padding="5" Background="Black"  BorderBrush="Black" BorderThickness="2">
-            <Label Content="{Binding Header}" />
+        <Border CornerRadius="10" Margin="2" Padding="5" Background="DarkGray"  BorderBrush="Black" BorderThickness="2">
+            <StackPanel>
+                <Label Content="{Binding Header}" />
+                <Border Margin="5">
+                    <Label Content="Options go here" />
+                </Border>
+            </StackPanel>
             
         </Border>
     </DataTemplate>
