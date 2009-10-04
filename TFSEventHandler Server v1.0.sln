@@ -29,9 +29,13 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshelwood.TeamFoundation.
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshelwood.TeamFoundation.WorkItemTracking.HEAT", "RDdotNet.TeamFoundation.EventHandlers.HeatITSM\Hinshelwood.TeamFoundation.WorkItemTracking.HEAT.vbproj", "{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{3FF53532-6C2E-4EB7-9370-14EAE1F6FEE6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshelwood.TeamFoundation.EventHandlerConfig", "Hinshelwood.TeamFoundation.EventHandlerConfig\Hinshelwood.TeamFoundation.EventHandlerConfig.vbproj", "{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -74,6 +78,10 @@ Global
 		SccProjectTopLevelParentUniqueName10 = TFSEventHandler\u0020Server\u0020v1.0.sln
 		SccProjectName10 = RDdotNet.TeamFoundation.EventHandlers.HeatITSM
 		SccLocalPath10 = RDdotNet.TeamFoundation.EventHandlers.HeatITSM
+		SccProjectUniqueName11 = Hinshelwood.TeamFoundation.EventHandlerConfig\\Hinshelwood.TeamFoundation.EventHandlerConfig.vbproj
+		SccProjectTopLevelParentUniqueName11 = TFSEventHandler\u0020Server\u0020v1.0.sln
+		SccProjectName11 = Hinshelwood.TeamFoundation.EventHandlerConfig
+		SccLocalPath11 = Hinshelwood.TeamFoundation.EventHandlerConfig
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -186,6 +194,16 @@ Global
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Release|.NET.ActiveCfg = Release|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,6 +212,7 @@ Global
 		{5844BC8E-7516-492F-8DA4-EB35FC4C89D3} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
 		{17913AED-BE6C-4ABA-91E5-70386FE7AA17} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
 		{BDC1CC8A-816F-484C-A136-B36084E69AB0} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
+		{3FF53532-6C2E-4EB7-9370-14EAE1F6FEE6} = {B4EB46F8-5C2A-4E5A-85E0-C0A2587213C4}
 		{96EDA3A2-D48F-4773-84EF-38979EAF3419} = {01563050-09C4-496D-9CD9-7457D4ED197A}
 		{EACA87E1-E3D7-44FD-88C6-F797E3786323} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
 		{0F4212BE-70A6-4773-9B92-9376B203CEAA} = {5844BC8E-7516-492F-8DA4-EB35FC4C89D3}
@@ -202,5 +221,6 @@ Global
 		{FE07DAAA-CDCE-4FC5-958F-085BD7564D0D} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 		{0C7686BB-523D-4EA3-9B39-23BD60254C13} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
 		{4D2F46E2-1F30-4CF3-8F17-0264490D8CD3} = {BDC1CC8A-816F-484C-A136-B36084E69AB0}
+		{2AED25E2-5A04-46B4-BBC9-E6C97DBB9FE1} = {3FF53532-6C2E-4EB7-9370-14EAE1F6FEE6}
 	EndGlobalSection
 EndGlobal
