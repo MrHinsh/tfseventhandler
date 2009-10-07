@@ -23,14 +23,14 @@
         '
         'ServiceProcessInstaller1
         '
+        Me.ServiceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalService
         Me.ServiceProcessInstaller1.Password = Nothing
         Me.ServiceProcessInstaller1.Username = Nothing
         '
         'ServiceInstaller1
         '
-        Me.ServiceInstaller1.DisplayName = "TFS Event Handler v1.3"
-        Me.ServiceInstaller1.ServiceName = "TFS Event Handler v1.3"
-        Me.ServiceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic
+        Me.ServiceInstaller1.DisplayName = My.Application.Info.ProductName
+        Me.ServiceInstaller1.ServiceName = My.Application.Info.ProductName
         '
         'ProjectInstaller
         '
