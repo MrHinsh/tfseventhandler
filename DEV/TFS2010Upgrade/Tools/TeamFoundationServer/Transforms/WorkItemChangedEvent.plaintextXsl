@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:import href="TeamFoundation.xsl"/> <!-- Common TeamSystem elements -->
+  <xsl:template match="WorkItemChangedEvent">
+WORK ITEM <xsl:if test="ChangeType[.='New']">CREATED</xsl:if><xsl:if test="ChangeType[.='Change']">CHANGED</xsl:if>: <xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="Name[.='Work Item Type']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each><xsl:text>&#x20;</xsl:text><xsl:for-each select="CoreFields/IntegerFields/Field"><xsl:if test="Name[.='ID']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each> - <xsl:value-of select="WorkItemTitle" /><xsl:text>&#x20;</xsl:text>(<xsl:value-of select="DisplayUrl" />)
+--------------------------------------------------
+
+Team project: <xsl:value-of select="PortfolioProject" />
+Area: <xsl:value-of select="AreaPath" />
+Iteration: <xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.IterationPath']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each>
+Assigned to: <xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.AssignedTo']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each>
+State: <xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.State']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each>
+Reason: <xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.Reason']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each>
+<xsl:text>&#xD;</xsl:text><xsl:if test="ChangeType[.='New']">Created by:</xsl:if><xsl:if test="ChangeType[.='Change']">Changed by:</xsl:if><xsl:text>&#x20;</xsl:text><xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.ChangedBy']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each> 
+<xsl:text>&#xD;</xsl:text><xsl:if test="ChangeType[.='New']">Created date:</xsl:if><xsl:if test="ChangeType[.='Change']">Changed date:</xsl:if><xsl:text>&#x20;</xsl:text><xsl:for-each select="CoreFields/StringFields/Field"><xsl:if test="ReferenceName[.='System.ChangedDate']"><xsl:value-of select="NewValue"/></xsl:if></xsl:for-each> 
+
+<xsl:if test="boolean(/WorkItemChangedEvent/ChangedFields/IntegerFields/Field) or boolean(/WorkItemChangedEvent/ChangedFields/StringFields/Field) or boolean(/WorkItemChangedEvent/TextFields/TextField)">
+<xsl:if test="ChangeType[.='New']">
+
+--------------- OTHER FIELDS ----------------
+</xsl:if>
+<xsl:if test="ChangeType[.='Change']">
+
+--------------- CHANGED FIELDS ----------------
+</xsl:if>
+</xsl:if>
+<xsl:for-each select="TextFields/TextField">
+Field: <xsl:value-of select="Name"/>
+New value: <xsl:value-of disable-output-escaping="yes" select="Value"/><xsl:text>&#xD;</xsl:text><xsl:text>&#xD;</xsl:text>
+</xsl:for-each>
+<xsl:if test="ChangeType[.='Change']">    
+  <xsl:for-each select="ChangedFields/IntegerFields/Field">
+Field: <xsl:value-of select="Name"/>
+New value: <xsl:value-of select="NewValue"/><xsl:text>&#xD;</xsl:text>
+Old value: <xsl:value-of select="OldValue"/><xsl:text>&#xD;</xsl:text><xsl:text>&#xD;</xsl:text>
+  </xsl:for-each>      
+  <xsl:for-each select="ChangedFields/StringFields/Field">
+Field: <xsl:value-of select="Name"/> 
+New value: <xsl:value-of select="NewValue"/><xsl:text>&#xD;</xsl:text>
+Old value: <xsl:value-of select="OldValue"/><xsl:text>&#xD;</xsl:text><xsl:text>&#xD;</xsl:text>    
+  </xsl:for-each>
+</xsl:if>
+<xsl:if test="ChangeType[.='New']">    
+  <xsl:for-each select="ChangedFields/IntegerFields/Field">
+Field: <xsl:value-of select="Name"/>
+New value: <xsl:value-of select="NewValue"/><xsl:text>&#xD;</xsl:text>
+  </xsl:for-each>      
+  <xsl:for-each select="ChangedFields/StringFields/Field">
+  <xsl:if test="ReferenceName[.!='System.ChangedBy']">      
+Field: <xsl:value-of select="Name"/>
+New value: <xsl:value-of select="NewValue"/><xsl:text>&#xD;</xsl:text>
+  </xsl:if>
+  </xsl:for-each>    
+</xsl:if>
+<xsl:if test="boolean(/WorkItemChangedEvent/AddedFiles) or boolean(/WorkItemChangedEvent/AddedResourceLinks) or boolean(/WorkItemChangedEvent/AddedRelations) or boolean(/WorkItemChangedEvent/DeletedFiles) or boolean(/WorkItemChangedEvent/DeletedResourceLinks) or boolean(/WorkItemChangedEvent/ChangedResourceLinks) or boolean(/WorkItemChangedEvent/DeletedRelations) or boolean(/WorkItemChangedEvent/ChangedRelations)">
+
+--------------- LINKS AND ATTACHMENTS ----------------
+<xsl:for-each select="AddedFiles/AddedFile">
+File Attachment: <xsl:value-of select="Name"/>
+</xsl:for-each>
+<xsl:for-each select="AddedResourceLinks/AddedResourceLink">
+Link: <xsl:value-of select="Resource"/>
+</xsl:for-each>
+<xsl:for-each select="AddedRelations/AddedRelation">
+Related Work Item: <xsl:value-of select="WorkItemId"/>
+</xsl:for-each>
+<xsl:text>&#xD;</xsl:text>
+<xsl:if test="boolean(/WorkItemChangedEvent/DeletedFiles) or boolean(/WorkItemChangedEvent/DeletedResourceLinks) or boolean(/WorkItemChangedEvent/ChangedResourceLinks) or boolean(/WorkItemChangedEvent/DeletedRelations) or boolean(/WorkItemChangedEvent/ChangedRelations)">
+<xsl:text>&#xD;</xsl:text>
+</xsl:if>
+<xsl:if test="boolean(/WorkItemChangedEvent/DeletedFiles)">1 or more attachments have been deleted.  See work item for details.<xsl:text>&#xD;</xsl:text></xsl:if> 
+<xsl:if test="boolean(/WorkItemChangedEvent/DeletedResourceLinks)">1 or more links have been deleted.  See work item for details.<xsl:text>&#xD;</xsl:text></xsl:if>
+<xsl:if test="boolean(/WorkItemChangedEvent/ChangedResourceLinks)">1 or more links have been changed.  See work item for details.<xsl:text>&#xD;</xsl:text></xsl:if>
+<xsl:if test="boolean(/WorkItemChangedEvent/DeletedRelations)">1 or more related work items have been deleted.  See work item for details.<xsl:text>&#xD;</xsl:text></xsl:if>
+<xsl:if test="boolean(/WorkItemChangedEvent/ChangedRelations)">1 or more related work items have been changed.  See work item for details.<xsl:text>&#xD;</xsl:text>
+</xsl:if>  
+<xsl:text>&#xD;</xsl:text>
+</xsl:if>
+<xsl:call-template name="footer">
+<xsl:with-param name="format" select="'text'"/>
+<xsl:with-param name="alertOwner" select="Subscriber"/>
+<xsl:with-param name="timeZoneOffset" select="TimeZoneOffset"/>
+<xsl:with-param name="timeZoneName" select="TimeZone"/>
+</xsl:call-template>
+  </xsl:template>
+</xsl:stylesheet>

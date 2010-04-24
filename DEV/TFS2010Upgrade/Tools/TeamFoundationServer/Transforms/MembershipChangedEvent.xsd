@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="MembershipChangedEvent" nillable="true" type="MembershipChangedEvent" />
+ <xs:complexType name="MembershipChangedEvent">
+  <xs:sequence>
+   <xs:element minOccurs="0" maxOccurs="1" name="GroupSid" type="xs:string" />
+   <xs:element minOccurs="0" maxOccurs="1" name="MemberSid" type="xs:string" />
+   <xs:element minOccurs="0" maxOccurs="1" name="ChangeType" type="xs:string" />
+  </xs:sequence>
+ </xs:complexType>
+</xs:schema>
