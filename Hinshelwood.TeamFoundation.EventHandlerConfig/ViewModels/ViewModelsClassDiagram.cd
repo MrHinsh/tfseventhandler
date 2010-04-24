@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.UrlReplacementViewModel" HideInheritanceLine="true">
+    <Position X="8.75" Y="17.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UrlReplacementViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.BaseAddressViewModel" HideInheritanceLine="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseAddressViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.EventListViewModel" HideInheritanceLine="true">
+    <Position X="13" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAQ=</HashCode>
+      <FileName>ViewModels\EventListViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Events" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.EventViewModel" HideInheritanceLine="true">
+    <Position X="13" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\EventViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Handlers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.HandlerViewModel" HideInheritanceLine="true">
+    <Position X="16" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\HandlerViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.HeaderViewModel">
+    <Position X="3" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\HeaderViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.SettingsGroupViewModel">
+    <Position X="9" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAgAAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\SettingsGroupViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Settings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.SettingsViewModel">
+    <Position X="6" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAIAAAAAAIAAgAAAAAAAABgAAAAAA=</HashCode>
+      <FileName>ViewModels\SettingsViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Header" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.SettingsWindowViewModel">
+    <Position X="8" Y="4.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAEAAAIAAgAAAAEAgAAAAIAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\SettingsWindowViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SelectedSettingsGroup" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="SettingsGroups" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.TeamServerListViewModel" HideInheritanceLine="true">
+    <Position X="13.75" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAgAQAAAA=</HashCode>
+      <FileName>ViewModels\TeamServerListViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="TeamServers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.TeamServerViewModel" HideInheritanceLine="true">
+    <Position X="14.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAAAgAAAABAAACAAggQIAQARAUAACACAABACgAE=</HashCode>
+      <FileName>ViewModels\TeamServerViewModel.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hinshelwood.TeamFoundation.EventHandlerConfig.UrlReplacementListViewModel" HideInheritanceLine="true">
+    <Position X="9.25" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\UrlReplacementListViewModel.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="UrlReplacements" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
