@@ -1,0 +1,7 @@
+﻿<Window x:Class="SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Hinshelwood.TeamFoundation.EventHandlerConfig"
+    Title="{Binding Title}" Height="300" Width="300" local:NinjectContextBehaviour.ViewModel="{x:Type local:SettingsWindowViewModel}">
+   <ContentControl Content="{Binding}" />
+</Window>
