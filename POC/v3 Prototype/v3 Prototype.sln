@@ -1,0 +1,91 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshlabs.TfsEventHandler.Handlers.AssignedTo", "Hinshlabs.TfsEventHandler.Handlers.AssignedTo\Hinshlabs.TfsEventHandler.Handlers.AssignedTo.vbproj", "{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handlers", "Handlers", "{A25CD79A-7DBA-49FE-BC62-AF20D79B00D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{AED5A4DC-6423-448C-A40D-2F98A89AEC1E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshlabs.TfsEventHandler.WebUI", "Hinshlabs.TfsEventHandler.WebUI\Hinshlabs.TfsEventHandler.WebUI.vbproj", "{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshlabs.TfsEventHandler.WebUI.Tests", "Hinshlabs.TfsEventHandler.WebUI.Tests\Hinshlabs.TfsEventHandler.WebUI.Tests.vbproj", "{9CFCA0CB-6AD5-409F-9829-747FCF83034C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshlabs.TfsEventHandler.Handlers.Common", "Hinshlabs.TfsEventHandler.Handlers.Common\Hinshlabs.TfsEventHandler.Handlers.Common.vbproj", "{05C12F84-05D5-47D2-9739-6F1544F72FF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{09327580-82FD-46C4-8B82-5000FBFDD0BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{78D2DB1B-D3DC-4A85-BE9E-6E1192234675}"
+	ProjectSection(SolutionItems) = preProject
+		Tools\Common\SharedAssemblyInfo.vb = Tools\Common\SharedAssemblyInfo.vb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TfsServer", "TfsServer", "{A627F1A2-6473-4119-B562-E5CAC378DC32}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hinshlabs.TfsEventHandler.ServerEntryPoint", "Hinshlabs.TfsEventHandler.ServerEntryPoint\Hinshlabs.TfsEventHandler.ServerEntryPoint.vbproj", "{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Hinshlabs.TfsEventHandler.Handlers.AssignedTo\\Hinshlabs.TfsEventHandler.Handlers.AssignedTo.vbproj
+		SccProjectTopLevelParentUniqueName1 = v3\u0020Prototype.sln
+		SccProjectName1 = Hinshlabs.TfsEventHandler.Handlers.AssignedTo
+		SccLocalPath1 = Hinshlabs.TfsEventHandler.Handlers.AssignedTo
+		SccProjectUniqueName2 = Hinshlabs.TfsEventHandler.WebUI\\Hinshlabs.TfsEventHandler.WebUI.vbproj
+		SccProjectTopLevelParentUniqueName2 = v3\u0020Prototype.sln
+		SccProjectName2 = Hinshlabs.TfsEventHandler.WebUI
+		SccLocalPath2 = Hinshlabs.TfsEventHandler.WebUI
+		SccProjectUniqueName3 = Hinshlabs.TfsEventHandler.WebUI.Tests\\Hinshlabs.TfsEventHandler.WebUI.Tests.vbproj
+		SccProjectTopLevelParentUniqueName3 = v3\u0020Prototype.sln
+		SccProjectName3 = Hinshlabs.TfsEventHandler.WebUI.Tests
+		SccLocalPath3 = Hinshlabs.TfsEventHandler.WebUI.Tests
+		SccProjectUniqueName4 = Hinshlabs.TfsEventHandler.Handlers.Common\\Hinshlabs.TfsEventHandler.Handlers.Common.vbproj
+		SccProjectTopLevelParentUniqueName4 = v3\u0020Prototype.sln
+		SccProjectName4 = Hinshlabs.TfsEventHandler.Handlers.Common
+		SccLocalPath4 = Hinshlabs.TfsEventHandler.Handlers.Common
+		SccProjectUniqueName5 = Hinshlabs.TfsEventHandler.ServerEntryPoint\\Hinshlabs.TfsEventHandler.ServerEntryPoint.vbproj
+		SccProjectTopLevelParentUniqueName5 = v3\u0020Prototype.sln
+		SccProjectName5 = Hinshlabs.TfsEventHandler.ServerEntryPoint
+		SccLocalPath5 = Hinshlabs.TfsEventHandler.ServerEntryPoint
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CFCA0CB-6AD5-409F-9829-747FCF83034C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CFCA0CB-6AD5-409F-9829-747FCF83034C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CFCA0CB-6AD5-409F-9829-747FCF83034C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CFCA0CB-6AD5-409F-9829-747FCF83034C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C12F84-05D5-47D2-9739-6F1544F72FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C12F84-05D5-47D2-9739-6F1544F72FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C12F84-05D5-47D2-9739-6F1544F72FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C12F84-05D5-47D2-9739-6F1544F72FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4BBAFAA6-4505-48DF-A5D7-4B4DBC2AA31C} = {A25CD79A-7DBA-49FE-BC62-AF20D79B00D4}
+		{05C12F84-05D5-47D2-9739-6F1544F72FF4} = {A25CD79A-7DBA-49FE-BC62-AF20D79B00D4}
+		{1BA29188-85AA-4ABE-B507-AEBF0BE8E30B} = {AED5A4DC-6423-448C-A40D-2F98A89AEC1E}
+		{9CFCA0CB-6AD5-409F-9829-747FCF83034C} = {AED5A4DC-6423-448C-A40D-2F98A89AEC1E}
+		{78D2DB1B-D3DC-4A85-BE9E-6E1192234675} = {09327580-82FD-46C4-8B82-5000FBFDD0BB}
+		{E85CB5F7-B13F-4A49-BC98-5D1D885F7B4B} = {A627F1A2-6473-4119-B562-E5CAC378DC32}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="Hinshlabs.TfsEventHandler.WebUI.RegistrationService" CodeBehind="RegistrationService.svc.vb" %>
